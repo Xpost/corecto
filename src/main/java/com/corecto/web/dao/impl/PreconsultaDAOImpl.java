@@ -42,7 +42,7 @@ public class PreconsultaDAOImpl extends HibernateDaoSupport implements Preconsul
     /* (non-Javadoc)
 	 * @see com.corecto.web.dao.impl.PreconsultaDAO#saveNewPreconsulta(com.corecto.web.model.pojo.extra.Preconsulta)
 	 */
-    @Override
+    
 	public long saveNewPreconsulta(Preconsulta  preconsulta) throws DataAccessException {
     	LOG.info("PreconsultaDAOImpl.saveNewPatient()");
         getHibernateTemplate().save(preconsulta);
@@ -52,7 +52,7 @@ public class PreconsultaDAOImpl extends HibernateDaoSupport implements Preconsul
     /* (non-Javadoc)
 	 * @see com.corecto.web.dao.impl.PreconsultaDAO#loadPreconsultaById(java.lang.Long)
 	 */
-    @Override
+    
 	@SuppressWarnings("unchecked")
     public Preconsulta loadPreconsultaById(final Long idpreconsulta) throws DataAccessException {
 
@@ -68,7 +68,7 @@ public class PreconsultaDAOImpl extends HibernateDaoSupport implements Preconsul
     /* (non-Javadoc)
 	 * @see com.corecto.web.dao.impl.PreconsultaDAO#loadPreconsultaByConsulta(java.lang.Long)
 	 */
-    @Override
+    
 	@SuppressWarnings("unchecked")
     public Preconsulta loadPreconsultaByConsulta(final Long idconsulta) throws DataAccessException {
 

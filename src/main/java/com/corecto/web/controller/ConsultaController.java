@@ -6,26 +6,12 @@ package com.corecto.web.controller;
 
 
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.corecto.web.model.dto.PacienteDTO;
-import com.corecto.web.model.dto.PageResult;
 import com.corecto.web.service.PatientService;
-
-import fr.xebia.audit.Audited;
 
 //import fr.xebia.audit.Audited;
 
@@ -49,44 +35,44 @@ public class ConsultaController {
 	 PatientService patientService;
 	 
 	 
-	  @Audited(message = "Accion: Agregar Paciente")
-	    @RequestMapping(value = "/addNewPatient", method = RequestMethod.POST)
-	    public @ResponseBody
-	    long saveNewPaciente(@RequestBody PacienteDTO pacienteDTO ) {
-	    	LOG.info("ClientController.saveNewPaciente()");
-	        long returnNewId = -1;
-	        try {
-	        	returnNewId = patientService.savePatient(pacienteDTO);
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	            return -1;
-	        }
-
-	        return 	returnNewId;
-	    }
-	 
-	   @Audited(message = "Accion: Busqueda inical de pacientes en Listado")
-	    @RequestMapping(value = "/loadlistPatients", method = RequestMethod.GET)
-	    public @ResponseBody
-	    PageResult loadlistPatients(@RequestParam(value = "idpatient", required = false, defaultValue = "") String patientID,
-	    		@RequestParam(value = "domic", required = false, defaultValue = "") String domicilio,
-	    		@RequestParam(value = "sidx", required = false, defaultValue = "") String fieldName,
-	  		  @RequestParam(value = "sord", required = false, defaultValue = "") String order) {
-	    	LOG.info("ClientController.loadlistPatients()");
-	        List<PacienteDTO> listPatients = new ArrayList<PacienteDTO>();
-	        PageResult pageResult = new PageResult();
-	        try {
-	            listPatients = patientService.listPatients("", null, domicilio, "", "");
-	            pageResult.setPage("1");
-	            pageResult.setTotal("2");
-	            pageResult.setRecords(listPatients.size() + "");
-	            pageResult.setRows(listPatients);
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
-
-	        return pageResult;
-	    }
+//	  @Audited(message = "Accion: Agregar Paciente")
+//	    @RequestMapping(value = "/addNewPatient", method = RequestMethod.POST)
+//	    public @ResponseBody
+//	    long saveNewPaciente(@RequestBody PacienteDTO pacienteDTO ) {
+//	    	LOG.info("ClientController.saveNewPaciente()");
+//	        long returnNewId = -1;
+//	        try {
+//	        	returnNewId = patientService.savePatient(pacienteDTO);
+//	        } catch (Exception e) {
+//	            e.printStackTrace();
+//	            return -1;
+//	        }
+//
+//	        return 	returnNewId;
+//	    }
+//	 
+//	   @Audited(message = "Accion: Busqueda inical de pacientes en Listado")
+//	    @RequestMapping(value = "/loadlistPatients", method = RequestMethod.GET)
+//	    public @ResponseBody
+//	    PageResult loadlistPatients(@RequestParam(value = "idpatient", required = false, defaultValue = "") String patientID,
+//	    		@RequestParam(value = "domic", required = false, defaultValue = "") String domicilio,
+//	    		@RequestParam(value = "sidx", required = false, defaultValue = "") String fieldName,
+//	  		  @RequestParam(value = "sord", required = false, defaultValue = "") String order) {
+//	    	LOG.info("ClientController.loadlistPatients()");
+//	        List<PacienteDTO> listPatients = new ArrayList<PacienteDTO>();
+//	        PageResult pageResult = new PageResult();
+//	        try {
+//	            listPatients = patientService.listPatients("", null, domicilio, "", "");
+//	            pageResult.setPage("1");
+//	            pageResult.setTotal("2");
+//	            pageResult.setRecords(listPatients.size() + "");
+//	            pageResult.setRows(listPatients);
+//	        } catch (Exception e) {
+//	            e.printStackTrace();
+//	        }
+//
+//	        return pageResult;
+//	    }
 	   
 	   
 /*   
@@ -198,18 +184,6 @@ public class ConsultaController {
     }
     
    */ 
-    @RequestMapping(value = "/loadAllCat", method = RequestMethod.GET)
-    public @ResponseBody
-    Map<String, Object> loadAllCat() {
-    	LOG.info("ClientController.listClients()");
-        Map<String, Object> catalogs = new HashMap<String, Object>();
-        try {
-            catalogs = patientService.loadAllAddPatientCat();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return catalogs;
-    }
+ 
 
 }

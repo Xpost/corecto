@@ -39,7 +39,7 @@ public class ExaProctoDAOImpl extends HibernateDaoSupport implements ExaProctoDA
 	Logger LOG = LoggerFactory.getLogger(ExaProctoDAOImpl.class);
 
 
-    @Override
+    
 	public long saveNewExaProcto(ExaProcto  exaProcto) throws DataAccessException {
     	LOG.info("PreconsultaDAOImpl.saveNewExaProcto()");
         getHibernateTemplate().save(exaProcto);
@@ -47,7 +47,7 @@ public class ExaProctoDAOImpl extends HibernateDaoSupport implements ExaProctoDA
     }
     
 
-    @Override
+    
 	@SuppressWarnings("unchecked")
     public ExaProcto loadExaProctoById(final Long idexaprocto) throws DataAccessException {
 
@@ -61,7 +61,7 @@ public class ExaProctoDAOImpl extends HibernateDaoSupport implements ExaProctoDA
     }
     
 
-    @Override
+    
 	@SuppressWarnings("unchecked")
     public ExaProcto loadExaProctoByConsulta(final Long idconsulta) throws DataAccessException {
 

@@ -39,7 +39,7 @@ public class RespuestaTrataNeoDAOImpl extends HibernateDaoSupport implements Res
 	Logger LOG = LoggerFactory.getLogger(RespuestaTrataNeoDAOImpl.class);
 
 
-    @Override
+    
 	public long saveNewRespuestaTrataNeo(RespuestaTrataNeo respuestaTrataNeo) throws DataAccessException {
     	LOG.info("RespuestaTrataNeoDAOImpl.saveNewRespuestaTrataNeo()");
         getHibernateTemplate().save(respuestaTrataNeo);
@@ -47,7 +47,7 @@ public class RespuestaTrataNeoDAOImpl extends HibernateDaoSupport implements Res
     }
     
 
-    @Override
+    
 	@SuppressWarnings("unchecked")
     public RespuestaTrataNeo loadRespuestaTrataNeoById(final Long idrespuestatrataneo) throws DataAccessException {
 
@@ -61,7 +61,7 @@ public class RespuestaTrataNeoDAOImpl extends HibernateDaoSupport implements Res
     }
     
 
-    @Override
+    
 	@SuppressWarnings("unchecked")
     public RespuestaTrataNeo loadRespuestaTrataNeoByConsulta(final Long idconsulta) throws DataAccessException {
 

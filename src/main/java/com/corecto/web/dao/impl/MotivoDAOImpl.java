@@ -38,7 +38,7 @@ public class MotivoDAOImpl extends HibernateDaoSupport implements MotivoDAO {
 
 	Logger LOG = LoggerFactory.getLogger(MotivoDAOImpl.class);
 	
-    @Override
+    
 	public long saveNewMotivo(Motivo  motivo) throws DataAccessException {
     	LOG.info("MotivoDAOImpl.saveNewMotivo()");
         getHibernateTemplate().save(motivo);
@@ -46,7 +46,7 @@ public class MotivoDAOImpl extends HibernateDaoSupport implements MotivoDAO {
     }
     
 
-    @Override
+    
 	@SuppressWarnings("unchecked")
     public Motivo loadMotivoById(final Long idMotivo) throws DataAccessException {
 
@@ -60,7 +60,7 @@ public class MotivoDAOImpl extends HibernateDaoSupport implements MotivoDAO {
     }
     
 
-    @Override
+    
 	@SuppressWarnings("unchecked")
     public Motivo loadMotivoByConsulta(final Long idconsulta) throws DataAccessException {
 

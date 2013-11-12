@@ -39,7 +39,7 @@ public class EvaClinicaDAOImpl extends HibernateDaoSupport implements EvaClinica
 	Logger LOG = LoggerFactory.getLogger(EvaClinicaDAOImpl.class);
 
 
-    @Override
+    
 	public long saveNewEvaClinica(EvaClinica evaClinica) throws DataAccessException {
     	LOG.info("EvaClinicaDAOImpl.saveNewEvaClinica()");
         getHibernateTemplate().save(evaClinica);
@@ -47,7 +47,7 @@ public class EvaClinicaDAOImpl extends HibernateDaoSupport implements EvaClinica
     }
     
 
-    @Override
+    
 	@SuppressWarnings("unchecked")
     public EvaClinica loadEvaClinicaById(final Long idevaclinica) throws DataAccessException {
 
@@ -61,7 +61,7 @@ public class EvaClinicaDAOImpl extends HibernateDaoSupport implements EvaClinica
     }
     
 
-    @Override
+    
 	@SuppressWarnings("unchecked")
     public EvaClinica loadEvaClinicaByConsulta(final Long idconsulta) throws DataAccessException {
 

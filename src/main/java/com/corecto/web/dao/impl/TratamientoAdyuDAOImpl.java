@@ -39,7 +39,7 @@ public class TratamientoAdyuDAOImpl extends HibernateDaoSupport implements Trata
 	Logger LOG = LoggerFactory.getLogger(TratamientoAdyuDAOImpl.class);
 
 
-    @Override
+    
 	public long saveNewTratamientoAdyu(TratamientoAdyu  tratamientoAdyu) throws DataAccessException {
     	LOG.info("TratamientoAdyuDAOImpl.saveNewTratamientoAdyu()");
         getHibernateTemplate().save(tratamientoAdyu);
@@ -47,7 +47,7 @@ public class TratamientoAdyuDAOImpl extends HibernateDaoSupport implements Trata
     }
     
 
-    @Override
+    
 	@SuppressWarnings("unchecked")
     public TratamientoAdyu loadTratamientoAdyuById(final Long idtratamientoadyu) throws DataAccessException {
 
@@ -61,7 +61,7 @@ public class TratamientoAdyuDAOImpl extends HibernateDaoSupport implements Trata
     }
     
 
-    @Override
+    
 	@SuppressWarnings("unchecked")
     public TratamientoAdyu loadTratamientoAdyuByConsulta(final Long idconsulta) throws DataAccessException {
 

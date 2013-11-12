@@ -39,7 +39,7 @@ public class ConductaPostNeoDAOImpl extends HibernateDaoSupport implements Condu
 	Logger LOG = LoggerFactory.getLogger(ConductaPostNeoDAOImpl.class);
 
 
-    @Override
+    
 	public long saveNewConductaPostNeo(ConductaPostNeo  conductaPostNeo) throws DataAccessException {
     	LOG.info("ConductaPostNeoDAOImpl.saveNewConductaPostNeo()");
         getHibernateTemplate().save(conductaPostNeo);
@@ -47,7 +47,7 @@ public class ConductaPostNeoDAOImpl extends HibernateDaoSupport implements Condu
     }
     
 
-    @Override
+    
 	@SuppressWarnings("unchecked")
     public ConductaPostNeo loadConductaPostNeoById(final Long idconductapostneo) throws DataAccessException {
 
@@ -61,7 +61,7 @@ public class ConductaPostNeoDAOImpl extends HibernateDaoSupport implements Condu
     }
     
 
-    @Override
+    
 	@SuppressWarnings("unchecked")
     public ConductaPostNeo loadConductaPostNeoByConsulta(final Long idconsulta) throws DataAccessException {
 

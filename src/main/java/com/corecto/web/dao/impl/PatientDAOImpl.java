@@ -296,7 +296,7 @@ return listResult;
         getHibernateTemplate().delete(cliente);
     }*/
 
-	@Override
+	
     @SuppressWarnings("unchecked")
 	public List<CatOs> loadAllCatOS() throws DataAccessException {
 		List<CatOs> lstResults = getHibernateTemplate().find(

@@ -39,7 +39,7 @@ public class AntecedentesDAOImpl extends HibernateDaoSupport implements Antecede
 	Logger LOG = LoggerFactory.getLogger(AntecedentesDAOImpl.class);
 
 
-    @Override
+    
 	public long saveNewAntecedentes(Antecedentes  antecedentes) throws DataAccessException {
     	LOG.info("AntecedentesDAOImpl.saveNewAntecedentes()");
         getHibernateTemplate().save(antecedentes);
@@ -47,7 +47,7 @@ public class AntecedentesDAOImpl extends HibernateDaoSupport implements Antecede
     }
     
 
-    @Override
+    
 	@SuppressWarnings("unchecked")
     public Antecedentes loadAntecedentesById(final Long idantecedente) throws DataAccessException {
 
@@ -61,7 +61,7 @@ public class AntecedentesDAOImpl extends HibernateDaoSupport implements Antecede
     }
     
 
-    @Override
+    
 	@SuppressWarnings("unchecked")
     public Antecedentes loadAntecedentesByConsulta(final Long idconsulta) throws DataAccessException {
 

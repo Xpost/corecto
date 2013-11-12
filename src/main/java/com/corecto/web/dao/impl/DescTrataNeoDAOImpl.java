@@ -39,15 +39,14 @@ public class DescTrataNeoDAOImpl extends HibernateDaoSupport implements DescTrat
 	Logger LOG = LoggerFactory.getLogger(DescTrataNeoDAOImpl.class);
 
 
-    @Override
-	public long saveNewDescTrataNeo(DescTrataNeo  descTrataNeo) throws DataAccessException {
+    public long saveNewDescTrataNeo(DescTrataNeo  descTrataNeo) throws DataAccessException {
     	LOG.info("DescTrataNeoDAOImpl.saveNewDescTrataNeo()");
         getHibernateTemplate().save(descTrataNeo);
         return descTrataNeo.getIddesctrataneo();
     }
     
 
-    @Override
+    
 	@SuppressWarnings("unchecked")
     public DescTrataNeo loadDescTrataNeoById(final Long iddesctrataneo) throws DataAccessException {
 
@@ -61,7 +60,7 @@ public class DescTrataNeoDAOImpl extends HibernateDaoSupport implements DescTrat
     }
     
 
-    @Override
+    
 	@SuppressWarnings("unchecked")
     public DescTrataNeo loadDescTrataNeoByConsulta(final Long idconsulta) throws DataAccessException {
 

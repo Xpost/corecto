@@ -39,7 +39,7 @@ public class EstadificacionDAOImpl extends HibernateDaoSupport implements Estadi
 	Logger LOG = LoggerFactory.getLogger(EstadificacionDAOImpl.class);
 
 
-    @Override
+    
 	public long saveNewEstadificacion(Estadificacion estadificacion) throws DataAccessException {
     	LOG.info("EstadificacionDAOImpl.saveNewPatient()");
         getHibernateTemplate().save(estadificacion);
@@ -47,7 +47,7 @@ public class EstadificacionDAOImpl extends HibernateDaoSupport implements Estadi
     }
     
 
-    @Override
+    
 	@SuppressWarnings("unchecked")
     public Estadificacion loadEstadificacionById(final Long idestadificacion) throws DataAccessException {
 
@@ -61,7 +61,7 @@ public class EstadificacionDAOImpl extends HibernateDaoSupport implements Estadi
     }
     
 
-    @Override
+    
 	@SuppressWarnings("unchecked")
     public Estadificacion loadEstadificacionByConsulta(final Long idconsulta) throws DataAccessException {
 

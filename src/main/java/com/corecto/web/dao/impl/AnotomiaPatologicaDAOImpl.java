@@ -39,7 +39,7 @@ public class AnotomiaPatologicaDAOImpl extends HibernateDaoSupport implements An
 	Logger LOG = LoggerFactory.getLogger(AnotomiaPatologicaDAOImpl.class);
 
 
-    @Override
+    
 	public long saveNewAnotomiaPatologica(AnotomiaPatologica  anotomiaPatologica) throws DataAccessException {
     	LOG.info("AnotomiaPatologicaDAOImpl.saveNewAnotomiaPatologica()");
         getHibernateTemplate().save(anotomiaPatologica);
@@ -47,7 +47,7 @@ public class AnotomiaPatologicaDAOImpl extends HibernateDaoSupport implements An
     }
     
 
-    @Override
+    
 	@SuppressWarnings("unchecked")
     public AnotomiaPatologica loadAnotomiaPatologicaById(final Long idanotomia) throws DataAccessException {
 
@@ -61,7 +61,7 @@ public class AnotomiaPatologicaDAOImpl extends HibernateDaoSupport implements An
     }
     
 
-    @Override
+    
 	@SuppressWarnings("unchecked")
     public AnotomiaPatologica loadAnotomiaPatologicaByConsulta(final Long idconsulta) throws DataAccessException {
 
