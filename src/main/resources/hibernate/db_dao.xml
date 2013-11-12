@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+    	<bean id="hibernateDaoSupport" abstract="true" class="org.springframework.orm.hibernate3.support.HibernateDaoSupport" >
+    		<property name="hibernateTemplate" ref="hibernateTemplate" />
+    	</bean>
+    	
+   	    <bean id="patientDAO" parent="hibernateDaoSupport"
+    		class="com.corecto.web.dao.impl.PatientDAOImpl" />
+
+<!--    	    <bean id="alertDAO" parent="hibernateDaoSupport" -->
+<!--     		class="invcont.web.dao.impl.AlertDAOImpl" /> -->
+    		
+<!--         <bean id="clientDAO" parent="hibernateDaoSupport" -->
+<!--     		class="com.sigepro.web.dao.impl.ClientDAOImpl" /> -->
+    		
+<!--     	<bean id="abonoDAO" parent="hibernateDaoSupport" -->
+<!--     		class="com.sigepro.web.dao.impl.AbonoDAOImpl" /> -->
+
+<!--     	<bean id="incidenciaDAO" parent="hibernateDaoSupport" -->
+<!--     		class="com.sigepro.web.dao.impl.IncidenciaDAOImpl" /> -->
+    		    
+<!--     	<bean id="visitaDAO" parent="hibernateDaoSupport" -->
+<!--     		class="com.sigepro.web.dao.impl.VisitaDAOImpl" />     -->
+	
+<!-- 	    <bean id="historialDAO" parent="hibernateDaoSupport" -->
+<!--     		class="com.sigepro.web.dao.impl.HistorialDAOImpl" />     -->
+    		
+</beans>

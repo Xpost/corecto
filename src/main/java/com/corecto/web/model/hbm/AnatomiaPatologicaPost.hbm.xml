@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-nov-2013 20:22:21 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.corecto.web.model.pojo.extra.AnatomiaPatologicaPost" table="ANATOMIA_PATOLOGICA_POST" schema="DBCORECTO" >
+        <id name="idanatomiapatopost" type="long">
+            <column name="IDANATOMIAPATOPOST" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="consulta" class="com.corecto.web.model.pojo.extra.Consulta" fetch="select">
+            <column name="IDCONSULTA" />
+        </many-to-one>
+        <property name="nroBiopsia" type="string">
+            <column name="NRO_BIOPSIA" length="100" />
+        </property>
+        <property name="fechaAp" type="date">
+            <column name="FECHA_AP" length="10" />
+        </property>
+        <property name="diagHisto" type="string">
+            <column name="DIAG_HISTO" length="200" />
+        </property>
+        <property name="gradoDif" type="string">
+            <column name="GRADO_DIF" length="25" />
+        </property>
+        <property name="tumor" type="string">
+            <column name="TUMOR" length="25" />
+        </property>
+        <property name="ganResecados" type="string">
+            <column name="GAN_RESECADOS" length="50" />
+        </property>
+        <property name="ganPositivos" type="string">
+            <column name="GAN_POSITIVOS" length="50" />
+        </property>
+        <property name="invVascular" type="string">
+            <column name="INV_VASCULAR" length="25" />
+        </property>
+        <property name="invPeri" type="string">
+            <column name="INV_PERI" length="25" />
+        </property>
+        <property name="linfa" type="string">
+            <column name="LINFA" length="25" />
+        </property>
+        <property name="buddingTumoral" type="string">
+            <column name="BUDDING_TUMORAL" length="25" />
+        </property>
+        <property name="pushingBorder" type="string">
+            <column name="PUSHING_BORDER" length="25" />
+        </property>
+        <property name="gradoRegresion" type="string">
+            <column name="GRADO_REGRESION" length="100" />
+        </property>
+        <property name="cap" type="string">
+            <column name="CAP" length="100" />
+        </property>
+        <property name="rtaComPato" type="string">
+            <column name="RTA_COM_PATO" length="25" />
+        </property>
+        <property name="ihq" type="string">
+            <column name="IHQ" length="25" />
+        </property>
+        <property name="kras" type="string">
+            <column name="KRAS" length="25" />
+        </property>
+    </class>
+</hibernate-mapping>

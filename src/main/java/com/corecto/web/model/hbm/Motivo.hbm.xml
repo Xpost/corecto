@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-nov-2013 20:22:21 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.corecto.web.model.pojo.extra.Motivo" table="MOTIVO" schema="DBCORECTO" >
+        <id name="idmotivo" type="long">
+            <column name="IDMOTIVO" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="consulta" class="com.corecto.web.model.pojo.extra.Consulta" fetch="select">
+            <column name="IDCONSULTA" />
+        </many-to-one>
+        <property name="motivo" type="string">
+            <column name="MOTIVO" length="100" />
+        </property>
+        <property name="fechaInicio" type="binary">
+            <column name="FECHA_INICIO" />
+        </property>
+        <property name="evoMeses" type="java.lang.Integer">
+            <column name="EVO_MESES" />
+        </property>
+    </class>
+</hibernate-mapping>

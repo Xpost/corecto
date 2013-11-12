@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-nov-2013 20:22:21 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.corecto.web.model.pojo.extra.Estadificacion" table="ESTADIFICACION" schema="DBCORECTO" >
+        <id name="idestadificacion" type="long">
+            <column name="IDESTADIFICACION" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="consulta" class="com.corecto.web.model.pojo.extra.Consulta" fetch="select">
+            <column name="IDCONSULTA" />
+        </many-to-one>
+        <property name="rmCentro" type="string">
+            <column name="RM_CENTRO" length="50" />
+        </property>
+        <property name="rmFecha" type="date">
+            <column name="RM_FECHA" length="10" />
+        </property>
+        <property name="rmDistEsfinter" type="string">
+            <column name="RM_DIST_ESFINTER" length="25" />
+        </property>
+        <property name="rmDistAnal" type="string">
+            <column name="RM_DIST_ANAL" length="25" />
+        </property>
+        <property name="rmAltura" type="string">
+            <column name="RM_ALTURA" length="25" />
+        </property>
+        <property name="rmTumor" type="string">
+            <column name="RM_TUMOR" length="50" />
+        </property>
+        <property name="crm" type="string">
+            <column name="CRM" length="25" />
+        </property>
+        <property name="emvi" type="string">
+            <column name="EMVI" length="25" />
+        </property>
+        <property name="depSatelites" type="string">
+            <column name="DEP_SATELITES" length="25" />
+        </property>
+        <property name="tumoRectoInferior" type="string">
+            <column name="TUMO_RECTO_INFERIOR" length="25" />
+        </property>
+        <property name="ganglios" type="string">
+            <column name="GANGLIOS" length="25" />
+        </property>
+        <property name="infiltraEsfinter" type="string">
+            <column name="INFILTRA_ESFINTER" length="25" />
+        </property>
+        <property name="tcTorax" type="string">
+            <column name="TC_TORAX" length="25" />
+        </property>
+        <property name="tcAbd" type="string">
+            <column name="TC_ABD" length="25" />
+        </property>
+        <property name="petCt" type="string">
+            <column name="PET_CT" length="25" />
+        </property>
+        <property name="mts" type="string">
+            <column name="MTS" length="25" />
+        </property>
+        <property name="suv" type="string">
+            <column name="SUV" length="100" />
+        </property>
+        <property name="marTumFecha" type="date">
+            <column name="MAR_TUM_FECHA" length="10" />
+        </property>
+        <property name="ceaAumentado" type="string">
+            <column name="CEA_AUMENTADO" length="25" />
+        </property>
+        <property name="ca19" type="string">
+            <column name="CA_19" length="25" />
+        </property>
+        <property name="tnmT" type="string">
+            <column name="TNM_T" length="25" />
+        </property>
+        <property name="tnmN" type="string">
+            <column name="TNM_N" length="25" />
+        </property>
+        <property name="tnmM" type="string">
+            <column name="TNM_M" length="25" />
+        </property>
+        <property name="tnmPt" type="string">
+            <column name="TNM_PT" length="25" />
+        </property>
+        <property name="tnmPn" type="string">
+            <column name="TNM_PN" length="25" />
+        </property>
+        <property name="tnmPm" type="string">
+            <column name="TNM_PM" length="25" />
+        </property>
+        <property name="metastasis" type="string">
+            <column name="METASTASIS" length="100" />
+        </property>
+        <property name="revRmFecha" type="date">
+            <column name="REV_RM_FECHA" length="10" />
+        </property>
+        <property name="revDistanEsfinter" type="string">
+            <column name="REV_DISTAN_ESFINTER" length="50" />
+        </property>
+        <property name="revDistanAnal" type="string">
+            <column name="REV_DISTAN_ANAL" length="50" />
+        </property>
+        <property name="revAltura" type="string">
+            <column name="REV_ALTURA" length="25" />
+        </property>
+        <property name="revTumor" type="string">
+            <column name="REV_TUMOR" length="25" />
+        </property>
+        <property name="revCrm" type="string">
+            <column name="REV_CRM" length="25" />
+        </property>
+        <property name="revEmvi" type="string">
+            <column name="REV_EMVI" length="25" />
+        </property>
+        <property name="revEstadifTumores" type="string">
+            <column name="REV_ESTADIF_TUMORES" length="25" />
+        </property>
+        <property name="revGanIngui" type="string">
+            <column name="REV_GAN_INGUI" length="25" />
+        </property>
+        <property name="revGanLateral" type="string">
+            <column name="REV_GAN_LATERAL" length="25" />
+        </property>
+        <property name="revInfiltraEsf" type="string">
+            <column name="REV_INFILTRA_ESF" length="25" />
+        </property>
+    </class>
+</hibernate-mapping>

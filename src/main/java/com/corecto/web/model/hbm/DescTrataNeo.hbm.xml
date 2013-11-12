@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-nov-2013 20:22:21 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.corecto.web.model.pojo.extra.DescTrataNeo" table="DESC_TRATA_NEO" schema="DBCORECTO" >
+        <id name="iddesctrataneo" type="long">
+                <column name="IDDESCTRATANEO" />
+            <generator class="increment" />
+        </id>     
+            <property name="radioterapia" type="string">
+                <column name="RADIOTERAPIA" length="25" />
+            </property>
+            <property name="radioDosis" type="string">
+                <column name="RADIO_DOSIS" length="25" />
+            </property>
+            <property name="radioFechaInicio" type="date">
+                <column name="RADIO_FECHA_INICIO" length="10" />
+            </property>
+            <property name="radioFechaFinal" type="date">
+                <column name="RADIO_FECHA_FINAL" length="10" />
+            </property>
+            <property name="radioSuspendio" type="string">
+                <column name="RADIO_SUSPENDIO" length="25" />
+            </property>
+            <property name="quimioEsquema" type="string">
+                <column name="QUIMIO_ESQUEMA" length="25" />
+            </property>
+            <property name="quimioNroCiclos" type="string">
+                <column name="QUIMIO_NRO_CICLOS" length="25" />
+            </property>
+            <property name="quimioFechaInicio" type="date">
+                <column name="QUIMIO_FECHA_INICIO" length="10" />
+            </property>
+            <property name="quimioFechaFinal" type="date">
+                <column name="QUIMIO_FECHA_FINAL" length="10" />
+            </property>
+            <property name="toxicidad" type="string">
+                <column name="TOXICIDAD" length="25" />
+            </property>
+            <property name="toxGrado" type="string">
+                <column name="TOX_GRADO" length="25" />
+            </property>
+        <many-to-one name="consulta" class="com.corecto.web.model.pojo.extra.Consulta" fetch="select">
+            <column name="IDCONSULTA" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

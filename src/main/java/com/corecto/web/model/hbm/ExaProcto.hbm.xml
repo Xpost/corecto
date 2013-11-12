@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-nov-2013 20:22:21 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.corecto.web.model.pojo.extra.ExaProcto" table="EXA_PROCTO" schema="DBCORECTO" >
+        <id name="idexaprocto" type="long">
+            <column name="IDEXAPROCTO" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="consulta" class="com.corecto.web.model.pojo.extra.Consulta" fetch="select">
+            <column name="IDCONSULTA" />
+        </many-to-one>
+        <property name="tactoRectal" type="string">
+            <column name="TACTO_RECTAL" length="25" />
+        </property>
+        <property name="rsc" type="string">
+            <column name="RSC" length="25" />
+        </property>
+        <property name="rscAltura" type="string">
+            <column name="RSC_ALTURA" length="25" />
+        </property>
+        <property name="rscFecha" type="clob">
+            <column name="RSC_FECHA" />
+        </property>
+        <property name="vcc" type="string">
+            <column name="VCC" length="25" />
+        </property>
+        <property name="vccAltura" type="string">
+            <column name="VCC_ALTURA" length="25" />
+        </property>
+        <property name="vccFecha" type="date">
+            <column name="VCC_FECHA" length="10" />
+        </property>
+        <property name="ee" type="string">
+            <column name="EE" length="25" />
+        </property>
+        <property name="eeInfiltra" type="string">
+            <column name="EE_INFILTRA" length="25" />
+        </property>
+        <property name="eeFecha" type="date">
+            <column name="EE_FECHA" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

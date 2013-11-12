@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-nov-2013 20:22:21 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.corecto.web.model.pojo.extra.ConductaPostNeo" table="CONDUCTA_POST_NEO" schema="DBCORECTO" >
+        <id name="idconductapostneo" type="long">
+            <column name="IDCONDUCTAPOSTNEO" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="consulta" class="com.corecto.web.model.pojo.extra.Consulta" fetch="select">
+            <column name="IDCONSULTA" />
+        </many-to-one>
+        <property name="cirugia" type="string">
+            <column name="CIRUGIA" length="25" />
+        </property>
+        <property name="milesCilindrico" type="string">
+            <column name="MILES_CILINDRICO" length="100" />
+        </property>
+        <property name="urgencia" type="string">
+            <column name="URGENCIA" length="25" />
+        </property>
+        <property name="urgenciaFecha" type="date">
+            <column name="URGENCIA_FECHA" length="10" />
+        </property>
+        <property name="cirujano" type="string">
+            <column name="CIRUJANO" length="200" />
+        </property>
+        <property name="WS" type="string">
+            <column name="W_S" length="25" />
+        </property>
+        <property name="fechaInicio" type="date">
+            <column name="FECHA_INICIO" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

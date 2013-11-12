@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-nov-2013 20:22:21 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.corecto.web.model.pojo.extra.Consulta" table="CONSULTA" schema="DBCORECTO" >
+        <id name="idconsulta" type="long">
+            <column name="IDCONSULTA" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="catHospital" class="com.corecto.web.model.pojo.extra.CatHospital" fetch="select">
+            <column name="IDHOSPITAL" />
+        </many-to-one>
+        <property name="medico" type="string">
+            <column name="MEDICO" length="200" />
+        </property>
+        <property name="diaghistologico" type="java.lang.Boolean">
+            <column name="DIAGHISTOLOGICO" />
+        </property>
+        <property name="fecha" type="date">
+            <column name="FECHA" length="10" />
+        </property>
+        <set name="anotomiaPatologicas" table="ANOTOMIA_PATOLOGICA" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCONSULTA" />
+            </key>
+            <one-to-many class="com.corecto.web.model.pojo.extra.AnotomiaPatologica" />
+        </set>
+        <set name="descTrataNeos" table="DESC_TRATA_NEO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCONSULTA" />
+            </key>
+            <one-to-many class="com.corecto.web.model.pojo.extra.DescTrataNeo" />
+        </set>
+        <set name="conductaPostNeos" table="CONDUCTA_POST_NEO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCONSULTA" />
+            </key>
+            <one-to-many class="com.corecto.web.model.pojo.extra.ConductaPostNeo" />
+        </set>
+        <set name="tratamientoAdyus" table="TRATAMIENTO_ADYU" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCONSULTA" />
+            </key>
+            <one-to-many class="com.corecto.web.model.pojo.extra.TratamientoAdyu" />
+        </set>
+        <set name="respuestaTrataNeos" table="RESPUESTA_TRATA_NEO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCONSULTA" />
+            </key>
+            <one-to-many class="com.corecto.web.model.pojo.extra.RespuestaTrataNeo" />
+        </set>
+        <set name="anatomiaPatologicaPosts" table="ANATOMIA_PATOLOGICA_POST" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCONSULTA" />
+            </key>
+            <one-to-many class="com.corecto.web.model.pojo.extra.AnatomiaPatologicaPost" />
+        </set>
+        <set name="tratamientos" table="TRATAMIENTO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCONSULTA" />
+            </key>
+            <one-to-many class="com.corecto.web.model.pojo.extra.Tratamiento" />
+        </set>
+        <set name="preconsultas" table="PRECONSULTA" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCONSULTA" />
+            </key>
+            <one-to-many class="com.corecto.web.model.pojo.extra.Preconsulta" />
+        </set>
+        <set name="antecedenteses" table="ANTECEDENTES" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCONSULTA" />
+            </key>
+            <one-to-many class="com.corecto.web.model.pojo.extra.Antecedentes" />
+        </set>
+        <set name="estadificacions" table="ESTADIFICACION" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCONSULTA" />
+            </key>
+            <one-to-many class="com.corecto.web.model.pojo.extra.Estadificacion" />
+        </set>
+        <set name="evaClinicas" table="EVA_CLINICA" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCONSULTA" />
+            </key>
+            <one-to-many class="com.corecto.web.model.pojo.extra.EvaClinica" />
+        </set>
+        <set name="motivos" table="MOTIVO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCONSULTA" />
+            </key>
+            <one-to-many class="com.corecto.web.model.pojo.extra.Motivo" />
+        </set>
+        <set name="exaProctos" table="EXA_PROCTO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCONSULTA" />
+            </key>
+            <one-to-many class="com.corecto.web.model.pojo.extra.ExaProcto" />
+        </set>
+    </class>
+</hibernate-mapping>

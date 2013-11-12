@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-nov-2013 20:22:21 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.corecto.web.model.pojo.extra.EvaClinica" table="EVA_CLINICA" schema="DBCORECTO" >
+        <id name="idevaclinica" type="long">
+            <column name="IDEVACLINICA" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="consulta" class="com.corecto.web.model.pojo.extra.Consulta" fetch="select">
+            <column name="IDCONSULTA" />
+        </many-to-one>
+        <property name="abdomen" type="string">
+            <column name="ABDOMEN" length="25" />
+        </property>
+        <property name="colon" type="string">
+            <column name="COLON" length="25" />
+        </property>
+        <property name="recto" type="string">
+            <column name="RECTO" length="25" />
+        </property>
+        <property name="adenopatias" type="string">
+            <column name="ADENOPATIAS" length="100" />
+        </property>
+        <property name="notas" type="string">
+            <column name="NOTAS" length="2000" />
+        </property>
+    </class>
+</hibernate-mapping>

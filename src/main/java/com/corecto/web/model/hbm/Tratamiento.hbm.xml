@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-nov-2013 20:22:21 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.corecto.web.model.pojo.extra.Tratamiento" table="TRATAMIENTO" schema="DBCORECTO" >
+        <id name="idtratamiento" type="long">
+            <column name="IDTRATAMIENTO" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="consulta" class="com.corecto.web.model.pojo.extra.Consulta" fetch="select">
+            <column name="IDCONSULTA" />
+        </many-to-one>
+        <property name="udaondo" type="string">
+            <column name="UDAONDO" length="100" />
+        </property>
+        <property name="cirugia" type="string">
+            <column name="CIRUGIA" length="25" />
+        </property>
+        <property name="quimioterapiaInduc" type="string">
+            <column name="QUIMIOTERAPIA_INDUC" length="100" />
+        </property>
+        <property name="quimi0teInducNroCiclos" type="string">
+            <column name="QUIMI0TE_INDUC_NRO_CICLOS" length="25" />
+        </property>
+        <property name="quimioOtra" type="string">
+            <column name="QUIMIO_OTRA" length="100" />
+        </property>
+        <property name="quimioterapiaInter" type="string">
+            <column name="QUIMIOTERAPIA_INTER" length="100" />
+        </property>
+        <property name="quimi0teInterNroCiclos" type="string">
+            <column name="QUIMI0TE_INTER_NRO_CICLOS" length="25" />
+        </property>
+    </class>
+</hibernate-mapping>

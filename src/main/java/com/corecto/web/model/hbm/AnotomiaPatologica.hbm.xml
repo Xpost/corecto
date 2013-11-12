@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-nov-2013 20:22:21 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.corecto.web.model.pojo.extra.AnotomiaPatologica" table="ANOTOMIA_PATOLOGICA" schema="DBCORECTO" >
+        <id name="idanotomia" type="long">
+            <column name="IDANOTOMIA" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="consulta" class="com.corecto.web.model.pojo.extra.Consulta" fetch="select">
+            <column name="IDCONSULTA" />
+        </many-to-one>
+        <property name="biopsia" type="string">
+            <column name="BIOPSIA" length="100" />
+        </property>
+        <property name="fechaDiag" type="date">
+            <column name="FECHA_DIAG" length="10" />
+        </property>
+        <property name="diagHistologico" type="string">
+            <column name="DIAG_HISTOLOGICO" length="200" />
+        </property>
+        <property name="apSugestiva" type="string">
+            <column name="AP_SUGESTIVA" length="25" />
+        </property>
+        <property name="ihq" type="string">
+            <column name="IHQ" length="25" />
+        </property>
+        <property name="expresionConserv" type="string">
+            <column name="EXPRESION_CONSERV" length="100" />
+        </property>
+        <property name="diagnosticadoEn" type="string">
+            <column name="DIAGNOSTICADO_EN" length="200" />
+        </property>
+        <property name="gradoDif" type="string">
+            <column name="GRADO_DIF" length="50" />
+        </property>
+        <property name="baseDiagCirugia" type="string">
+            <column name="BASE_DIAG_CIRUGIA" length="25" />
+        </property>
+        <property name="baseDiag" type="string">
+            <column name="BASE_DIAG" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>

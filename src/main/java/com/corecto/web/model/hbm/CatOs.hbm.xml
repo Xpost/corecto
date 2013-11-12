@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-sep-2013 0:48:57 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.corecto.web.model.pojo.extra.CatOs" table="CAT_OS" schema="DBCORECTO">
+        <id name="idos" type="java.lang.Integer">
+            <column name="IDOS" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="200" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="DESCRIPCION" length="200" />
+        </property>
+        <property name="estado" type="java.lang.Boolean">
+            <column name="ESTADO" />
+        </property>
+        <set name="pacientes" table="PACIENTE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDOS" />
+            </key>
+            <one-to-many class="com.corecto.web.model.pojo.extra.Paciente" />
+        </set>
+    </class>
+</hibernate-mapping>
