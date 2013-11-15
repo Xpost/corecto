@@ -1,5 +1,7 @@
 package com.corecto.web.model.pojo.extra;
 
+import java.util.Date;
+
 // Generated 11-nov-2013 20:22:20 by Hibernate Tools 3.4.0.CR1
 
 /**
@@ -10,7 +12,8 @@ public class Motivo implements java.io.Serializable {
 	private long idmotivo;
 	private Consulta consulta;
 	private String motivo;
-	private byte[] fechaInicio;
+	private String motivoOtro;
+	private Date fechaInicio;
 	private Integer evoMeses;
 
 	public Motivo() {
@@ -21,7 +24,7 @@ public class Motivo implements java.io.Serializable {
 	}
 
 	public Motivo(long idmotivo, Consulta consulta, String motivo,
-			byte[] fechaInicio, Integer evoMeses) {
+			Date fechaInicio, Integer evoMeses) {
 		this.idmotivo = idmotivo;
 		this.consulta = consulta;
 		this.motivo = motivo;
@@ -53,11 +56,11 @@ public class Motivo implements java.io.Serializable {
 		this.motivo = motivo;
 	}
 
-	public byte[] getFechaInicio() {
+	public Date getFechaInicio() {
 		return this.fechaInicio;
 	}
 
-	public void setFechaInicio(byte[] fechaInicio) {
+	public void setFechaInicio(Date fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
 
@@ -68,5 +71,15 @@ public class Motivo implements java.io.Serializable {
 	public void setEvoMeses(Integer evoMeses) {
 		this.evoMeses = evoMeses;
 	}
+
+	public String getMotivoOtro() {
+		return motivoOtro;
+	}
+
+	public void setMotivoOtro(String motivoOtro) {
+		this.motivoOtro = motivoOtro;
+	}
+	
+	
 
 }

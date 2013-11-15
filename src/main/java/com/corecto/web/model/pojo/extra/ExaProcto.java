@@ -2,7 +2,6 @@ package com.corecto.web.model.pojo.extra;
 
 // Generated 11-nov-2013 20:22:20 by Hibernate Tools 3.4.0.CR1
 
-import java.sql.Clob;
 import java.util.Date;
 
 /**
@@ -13,9 +12,10 @@ public class ExaProcto implements java.io.Serializable {
 	private long idexaprocto;
 	private Consulta consulta;
 	private String tactoRectal;
+	private String tactoRectalInfiltra;
 	private String rsc;
 	private String rscAltura;
-	private Clob rscFecha;
+	private Date rscFecha;
 	private String vcc;
 	private String vccAltura;
 	private Date vccFecha;
@@ -31,7 +31,7 @@ public class ExaProcto implements java.io.Serializable {
 	}
 
 	public ExaProcto(long idexaprocto, Consulta consulta, String tactoRectal,
-			String rsc, String rscAltura, Clob rscFecha, String vcc,
+			String rsc, String rscAltura, Date rscFecha, String vcc,
 			String vccAltura, Date vccFecha, String ee, String eeInfiltra,
 			Date eeFecha) {
 		this.idexaprocto = idexaprocto;
@@ -88,11 +88,11 @@ public class ExaProcto implements java.io.Serializable {
 		this.rscAltura = rscAltura;
 	}
 
-	public Clob getRscFecha() {
+	public Date getRscFecha() {
 		return this.rscFecha;
 	}
 
-	public void setRscFecha(Clob rscFecha) {
+	public void setRscFecha(Date rscFecha) {
 		this.rscFecha = rscFecha;
 	}
 
@@ -143,5 +143,15 @@ public class ExaProcto implements java.io.Serializable {
 	public void setEeFecha(Date eeFecha) {
 		this.eeFecha = eeFecha;
 	}
+
+	public String getTactoRectalInfiltra() {
+		return tactoRectalInfiltra;
+	}
+
+	public void setTactoRectalInfiltra(String tactoRectalInfiltra) {
+		this.tactoRectalInfiltra = tactoRectalInfiltra;
+	}
+	
+	
 
 }

@@ -14,7 +14,10 @@
         <property name="motivo" type="string">
             <column name="MOTIVO" length="100" />
         </property>
-        <property name="fechaInicio" type="binary">
+        <property name="motivoOtro" type="string">
+            <column name="MOTIVO_OTRO" length="200" />
+        </property>
+        <property name="fechaInicio" type="date">
             <column name="FECHA_INICIO" />
         </property>
         <property name="evoMeses" type="java.lang.Integer">

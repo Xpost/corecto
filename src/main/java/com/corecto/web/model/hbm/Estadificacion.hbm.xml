@@ -44,6 +44,9 @@
         <property name="ganglios" type="string">
             <column name="GANGLIOS" length="25" />
         </property>
+        <property name="gangliosLate" type="string">
+            <column name="GANGLIOS_LATE" length="25" />
+        </property>        
         <property name="infiltraEsfinter" type="string">
             <column name="INFILTRA_ESFINTER" length="25" />
         </property>
@@ -92,6 +95,10 @@
         <property name="metastasis" type="string">
             <column name="METASTASIS" length="100" />
         </property>
+        <property name="metastasisOtra" type="string">
+            <column name="METASTASIS_OTRA" length="100" />
+        </property>
+        
         <property name="revRmFecha" type="date">
             <column name="REV_RM_FECHA" length="10" />
         </property>

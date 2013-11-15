@@ -12,10 +12,10 @@ public class Tratamiento implements java.io.Serializable {
 	private String udaondo;
 	private String cirugia;
 	private String quimioterapiaInduc;
-	private String quimi0teInducNroCiclos;
+	private String quimioteInducNroCiclos;
 	private String quimioOtra;
 	private String quimioterapiaInter;
-	private String quimi0teInterNroCiclos;
+	private String quimioteInterNroCiclos;
 
 	public Tratamiento() {
 	}
@@ -33,10 +33,10 @@ public class Tratamiento implements java.io.Serializable {
 		this.udaondo = udaondo;
 		this.cirugia = cirugia;
 		this.quimioterapiaInduc = quimioterapiaInduc;
-		this.quimi0teInducNroCiclos = quimi0teInducNroCiclos;
+		this.quimioteInducNroCiclos = quimi0teInducNroCiclos;
 		this.quimioOtra = quimioOtra;
 		this.quimioterapiaInter = quimioterapiaInter;
-		this.quimi0teInterNroCiclos = quimi0teInterNroCiclos;
+		this.quimioteInterNroCiclos = quimi0teInterNroCiclos;
 	}
 
 	public long getIdtratamiento() {
@@ -79,12 +79,12 @@ public class Tratamiento implements java.io.Serializable {
 		this.quimioterapiaInduc = quimioterapiaInduc;
 	}
 
-	public String getQuimi0teInducNroCiclos() {
-		return this.quimi0teInducNroCiclos;
+	public String getQuimioteInducNroCiclos() {
+		return this.quimioteInducNroCiclos;
 	}
 
-	public void setQuimi0teInducNroCiclos(String quimi0teInducNroCiclos) {
-		this.quimi0teInducNroCiclos = quimi0teInducNroCiclos;
+	public void setQuimioteInducNroCiclos(String quimi0teInducNroCiclos) {
+		this.quimioteInducNroCiclos = quimi0teInducNroCiclos;
 	}
 
 	public String getQuimioOtra() {
@@ -103,12 +103,12 @@ public class Tratamiento implements java.io.Serializable {
 		this.quimioterapiaInter = quimioterapiaInter;
 	}
 
-	public String getQuimi0teInterNroCiclos() {
-		return this.quimi0teInterNroCiclos;
+	public String getQuimioteInterNroCiclos() {
+		return this.quimioteInterNroCiclos;
 	}
 
-	public void setQuimi0teInterNroCiclos(String quimi0teInterNroCiclos) {
-		this.quimi0teInterNroCiclos = quimi0teInterNroCiclos;
+	public void setQuimioteInterNroCiclos(String quimi0teInterNroCiclos) {
+		this.quimioteInterNroCiclos = quimi0teInterNroCiclos;
 	}
 
 }

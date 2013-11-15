@@ -166,36 +166,36 @@
 				        	<div class="span3">     
 								<label for="nombreC"><strong>Peso</strong></label>
 								<div class="input-append">		
-									<input type="text" class="span10" id="localidadC" name="localidadC" />
+									<input type="text" class="span6 onlyNumbers" id="pesoPre" name="pesoPre" />
 									<span class="add-on">kg</span>											
 								</div>	
 								<label for="direccionC"><strong>Talla</strong></label>
 										<div class="input-append">		
-									<input type="text" class="span10" id="localidadC" name="localidadC" />
+									<input type="text" class="span6 onlyNumbers" id="tallePre" name="tallePre" />
 									<span class="add-on">cm</span>											
 								</div>	
 								<label for="localidadC"><strong>Superficie corporal</strong></label>
 								<div class="input-append">		
-									<input type="text" class="span10" id="localidadC" name="localidadC" />
+									<input type="text" class="span6 onlyNumbers" id="superPre" name="superPre" />
 									<span class="add-on">m&#178;</span>											
 								</div>	
 							</div>	
 						<div class="span6">
 						  <label for="tipoComprobanteCaja"><strong>Performance Status</strong></label>
 						   <label class="radio inline">
-								 <input type="radio" name="sexo" id="masSex" value="M" checked="checked">0
+								 <input type="radio" name="performanceRadio" id="performanceRadio" value="0" checked="checked">0
 							</label>
 							<label class="radio inline">
-								 <input type="radio" name="sexo" id="masSex" value="M" checked="checked">1
+								 <input type="radio" name="performanceRadio" id="performanceRadio" value="1" >1
 							</label>
 							<label class="radio inline">
-								 <input type="radio" name="sexo" id="masSex" value="M" checked="checked">2
+								 <input type="radio" name="performanceRadio" id="performanceRadio" value="2" >2
 							</label>
 							<label class="radio inline">
-								 <input type="radio" name="sexo" id="masSex" value="M" checked="checked">3
+								 <input type="radio" name="performanceRadio" id="performanceRadio" value="3" >3
 							</label>
 							<label class="radio inline">
-								 <input type="radio" name="sexo" id="masSex" value="M" checked="checked">4
+								 <input type="radio" name="performanceRadio" id="performanceRadio" value="4" >4
 							</label>
 					
 				  		</div>	
@@ -203,7 +203,7 @@
 							<div class="row-fluid">	 
 								<div class="span7">							 
 									<label for="comentC"><strong>Comentario</strong></label>
-								  		<textarea name="comentC" id="comentC" rows="3" class="input-block-level"></textarea>
+								  		<textarea name="comentPreconsulta" id="comentPreconsulta" rows="3" class="input-block-level"></textarea>
 								</div>
 							</div>
 							<div class="row-fluid">	 
@@ -226,38 +226,38 @@
 					<div class="row-fluid">
 					<div class="span4">
 					<label class="checkbox">
-					<input type="checkbox"> Dolor abodminal
+					<input type="checkbox" id="motivo1"> Dolor abodminal
 					</label>
 					<label class="checkbox">
-					<input type="checkbox"> Dolor pelviano
+					<input type="checkbox" id="motivo2"> Dolor pelviano
 					</label>
 					<label class="checkbox">
-					<input type="checkbox"> Enterorragia
+					<input type="checkbox" id="motivo3"> Enterorragia
 					</label>
 					<label class="checkbox">
-					<input type="checkbox"> Diarrea
+					<input type="checkbox" id="motivo4"> Diarrea
 					</label>
 					<label class="checkbox">
-					<input type="checkbox"> Tumor palpable
+					<input type="checkbox" id="motivo5"> Tumor palpable
 					</label>
 					<label class="checkbox">
-					<input type="checkbox"> Perdida de peso
+					<input type="checkbox" id="motivo6"> Perdida de peso
 					</label>
 					<label class="checkbox">
-					<input type="checkbox"> Constipación
+					<input type="checkbox" id="motivo7"> Constipación
 					</label>
 					<label class="checkbox">
-					<input type="checkbox"> Adenopatías
+					<input type="checkbox" id="motivo8"> Adenopatías
 					</label>
 					<label class="">Otros						
 					</label>
-					<input type="text" class="span12" id="localidadC" name="localidadC" />		
+					<input type="text" class="span12" id="motivoOtro" name="motivoOtro" />		
 					</div>
 					 <div class="span3 ">	
 					<label for="dateStart"><strong>Fecha de inicio de sintomas</strong></label>
-				   	<input type="text" class="span5" id="dateStart" alt="dateP" name="dateStart" placeHolder="dd/MM/yyyy" />			  		
+				   	<input type="text" class="span5" id="dateStartMotivo" alt="dateP" name="dateStartMotivo" placeHolder="dd/MM/yyyy" />			  		
 					<label for="dateStart"><strong>Tiempo de evolucion en meses</strong></label>
-				    <input type="text" class="span8" id="dateStart"  name="dateStart"  />			  	
+				    <input type="text" class="span3 onlyNumbers" id="mesesMotivo"  name="mesesMotivo"  />			  	
 				  	</div>
 				  </div>	
 					</fieldset>
@@ -273,22 +273,22 @@
 						<div class="span12">
 						  <label for="tipoComprobanteCaja"><strong>Personales</strong></label>
 						   <label class="radio inline">
-							<input type="checkbox"> Tabaquismo
+							<input type="checkbox" id="apersonal1"> Tabaquismo
 							</label>
 							<label class="radio inline">
-							<input type="checkbox"> Cardiovasculares
+							<input type="checkbox" id="apersonal2"> Cardiovasculares
 							</label>
 							<label class="radio inline">
-							<input type="checkbox"> Alcohólismo
+							<input type="checkbox" id="apersonal3" > Alcohólismo
 							</label>
 							<label class="radio inline">
-							<input type="checkbox"> DBT
+							<input type="checkbox" id="apersonal4"> DBT
 							</label>
 							<label class="radio inline">
-							<input type="checkbox"> Ninguno
+							<input type="checkbox" id="apersonal5" > Ninguno
 							</label>
 							<label class="radio inline">
-							Otro:  <input type="text" class="span9" id="dateStart"  name="dateStart"  />
+							Otro:  <input type="text" class="span9" id="otroAPersonal"  name="otroAPersonal"  />
 							</label>	
 				  		</div>			  	
 				  </div>	
@@ -297,28 +297,28 @@
 						<div class="span12">
 						  <label for="tipoComprobanteCaja"><strong>Personales patológicos</strong></label>
 						   <label class="radio inline">
-							<input type="checkbox"> Ninguno
+							<input type="checkbox" id="apersonalPat1" > Ninguno
 							</label>
 							<label class="radio inline">
-							<input type="checkbox"> Colitis ulcerativa
+							<input type="checkbox" id="apersonalPat2" > Colitis ulcerativa
 							</label>
 							<label class="radio inline">
-							<input type="checkbox"> Adenoma Velloso
+							<input type="checkbox" id="apersonalPat3" > Adenoma Velloso
 							</label>
 							<label class="radio inline">
-							<input type="checkbox"> Enfermadad de CROHN
+							<input type="checkbox" id="apersonalPat4" > Enfermadad de CROHN
 							</label>
 							<label class="radio inline">
-							<input type="checkbox" id="neoplasia" > Neoplasia maligna
+							<input type="checkbox" id="neoplasia"  > Neoplasia maligna
 							</label>
 							<label class="radio inline">
-							<input type="checkbox"> HIV
+							<input type="checkbox" id="apersonalPat5"> HIV
 							</label>
 							<div id="ocultoDiv" style="display: none;margin-top:8px" class="form-inline">
 								<div class="row-fluid">
 								<div class="span12">
 								<label class=""> Cual neoplasia: </label>
-								<input type="text" class="span4" id="dateStart"  name="dateStart"  />
+								<input type="text" class="span4" id="neoPlasiaText"  name="neoPlasiaText"  />
 								</div>
 								</div>
 							</div>
@@ -329,7 +329,7 @@
 						<div class="span12">
 						  <label for="tipoComprobanteCaja"><strong>Familiares de cáncer de colon o recto</strong></label>
 						   <label class="radio">
-							<input type="checkbox"> Ninguno
+							<input type="checkbox" id="checkfamMenorNin" > Ninguno
 							</label>
 							<div style="display: block;margin-bottom:5px">
 								<label class="radio" style="display: inline;">
@@ -365,20 +365,20 @@
 						<div class="span12">
 						  <label for="tipoComprobanteCaja"><strong>Antecedente de Síndrome CCRH</strong></label>
 						   <label class="radio inline">
-							<input type="radio" name="anteSindrome"> No
+							<input type="radio" name="anteSindrome" value="1"> No
 							</label>
 							<label class="radio inline">
-							<input type="radio" name="anteSindrome"> No sabe
+							<input type="radio" name="anteSindrome" value="2"> No sabe
 							</label>
 							<label class="radio inline">
-							<input type="radio" name="anteSindrome"> En estudio
+							<input type="radio" name="anteSindrome" value="3"> En estudio
 							</label>
 								<label class="radio inline">
-								<input type="radio" name="anteSindrome" id="checkCCRHSI"> Si
+								<input type="radio" name="anteSindrome" value="4" id="checkCCRHSI"> Si
 								</label>
 								<div id="divCCRHSI" class="form-inline" style="display: none; margin-left: 20px">
 								<label class="radio inline" >
-								<input type="checkbox" id="checkMYH)"> PAF
+								<input type="checkbox" id="checkPAF"> PAF
 								</label>
 								<label class="radio inline" >
 								<input type="checkbox" id="checkLYNCH"> LYNCH
@@ -409,19 +409,19 @@
 							<div class="span12">
 							  <label for="tipoComprobanteCaja"><strong>Abdomen</strong></label>
 							   <label class="radio inline">
-								<input type="checkbox"> Tumor palpable
+								<input type="checkbox" id="haAbdomen1"> Tumor palpable
 								</label>
 								<label class="radio inline">
-								<input type="checkbox"> Móvil
+								<input type="checkbox" id="haAbdomen2"> Móvil
 								</label>
 								<label class="radio inline">
-								<input type="checkbox"> Fija
+								<input type="checkbox" id="haAbdomen3"> Fija
 								</label>
 								<label class="radio inline">
-								<input type="checkbox"> Hepatomegalia
+								<input type="checkbox" id="haAbdomen4"> Hepatomegalia
 								</label>
 								<label class="radio inline">
-								<input type="checkbox"> Ascitis
+								<input type="checkbox" id="haAbdomen5"> Ascitis
 								</label>
 					  		</div>			  	
 					  </div>	
@@ -430,22 +430,22 @@
 							<div class="span12">
 							  <label for="tipoComprobanteCaja"><strong>Colon</strong></label>
 							   <label class="radio inline">
-								<input type="checkbox"> Ciego
+								<input type="checkbox" id="haColon1" > Ciego
 								</label>
 								<label class="radio inline">
-								<input type="checkbox"> Apéndice
+								<input type="checkbox" id="haColon2" > Apéndice
 								</label>
 								<label class="radio inline">
-								<input type="checkbox"> Colon ascendente
+								<input type="checkbox" id="haColon3" > Colon ascendente
 								</label>
 								<label class="radio inline">
-								<input type="checkbox"> Colon descendente
+								<input type="checkbox" id="haColon4" > Colon descendente
 								</label>
 								<label class="radio inline">
-								<input type="checkbox"> Colon sigmoideo
+								<input type="checkbox" id="haColon5" > Colon sigmoideo
 								</label>
 								<label class="radio inline">
-								<input type="checkbox"> Colon transverso
+								<input type="checkbox" id="haColon6" > Colon transverso
 								</label>		
 					  		</div>			  	
 					  </div> 
@@ -454,28 +454,28 @@
 							<div class="span6">
 							  <label for="tipoComprobanteCaja"><strong>Recto</strong></label>
 							   <label class="radio inline">
-								<input type="checkbox"> Tercio superior
+								<input type="checkbox" id="haRecto1" > Tercio superior
 								</label>
 								<label class="radio inline">
-								<input type="checkbox"> Tercio medio
+								<input type="checkbox" id="haRecto2" > Tercio medio
 								</label>
 								<label class="radio inline">
-								<input type="checkbox"> Tercio inferior
+								<input type="checkbox" id="haRecto3" > Tercio inferior
 								</label>
 					  		</div>		
 					  		<div class="span6">
 							  <label for="tipoComprobanteCaja"><strong>Adenopatias</strong></label>
 							   <label class="radio inline">
-								<input type="checkbox"> No
+								<input type="checkbox" id="haAdenopatia1"> No
 								</label>
 								<label class="radio inline">
-								<input type="checkbox"> Inguinales
+								<input type="checkbox" id="haAdenopatia2" > Inguinales
 								</label>
 								<label class="radio inline">
-								<input type="checkbox"> Cervicales
+								<input type="checkbox" id="haAdenopatia3" > Cervicales
 								</label>
 								<label class="radio inline">
-								<input type="checkbox"> Otras
+								<input type="checkbox" id="haAdenopatia4"> Otras
 								</label>	
 					  		</div>			  	
 					  </div> 
@@ -556,28 +556,28 @@
 									</label>
 								</div>	
 								<div class="span8" style="padding-bottom:1.1em;display: none" id="divRSC">	
-								<label for="esfinterRectal"><strong>Medida</strong></label>
+								<label for="rscMedida"><strong>Medida</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion1" value="0" checked="checked">
+									    <input type="radio" name="rscMedida" id="opcion1" value="0" >
 										0-5cm
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion2" value="1">
+									    <input type="radio" name="rscMedida" id="opcion2" value="1">
 										5-10 cm
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion3" value="2">
+									    <input type="radio" name="rscMedida" id="opcion3" value="2">
 										10-12 cm
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion4" value="3">
+									    <input type="radio" name="rscMedida" id="opcion4" value="3">
 										> 12 cm
 									</label>		
 								<div class="form-inline" style="display: inline;margin-left:20px">			
-									<label for="esfinterRectal">Altura</label>
-										<input type="text" class="input-mini" >
+									<label for="rscAltura">Altura</label>
+										<input type="text" class="input-mini" id="rscAltura" >
 									<label for="esfinterRectal">Fecha</label>
-										<input type="text" class="span2" alt="dateP" >
+										<input type="text" class="span2" alt="dateP" id="rscFecha" >
 								</div>		
 								</div>	
 					  </div> 					  
@@ -597,43 +597,43 @@
 									</label>
 								</div>	
 									<div class="span4" style="padding-bottom:1.1em;display: none" id="divVCC">	
-								<label for="esfinterRectal"><strong>Tipo</strong></label>
+								<label for="vccTipo"><strong>Tipo</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion1" value="0" checked="checked">
+									    <input type="radio" name="vccTipo" id="opcion1" value="0" checked="checked">
 										Completa
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion2" value="1">
+									    <input type="radio" name="vccTipo" id="opcion2" value="1">
 										Incompleta
 									</label>
 									<label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion2" value="1">
+									    <input type="radio" name="vccTipo" id="opcion2" value="2">
 										T.infranqueable
 									</label>
 									</div>
 								<div class="span8" style="padding-bottom:1.1em;display: none" id="divVCC1">	
 								<label for="esfinterRectal"><strong>Medida</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion1" value="0" checked="checked">
+									    <input type="radio" name="vccMedida" id="opcion1" value="0" checked="checked">
 										0-5cm
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion2" value="1">
+									    <input type="radio" name="vccMedida" id="opcion2" value="1">
 										5-10 cm
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion3" value="2">
+									    <input type="radio" name="vccMedida" id="opcion3" value="2">
 										10-12 cm
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion4" value="3">
+									    <input type="radio" name="vccMedida" id="opcion4" value="3">
 										> 12 cm
 									</label>		
 								<div class="form-inline" style="display: inline;margin-left:20px">			
 									<label for="esfinterRectal">Altura</label>
-										<input type="text" class="input-mini" >
+										<input type="text" class="input-mini"  id="vccAltura" >
 									<label for="esfinterRectal">Fecha</label>
-										<input type="text" class="span2" alt="dateP" >
+										<input type="text" class="span2" alt="dateP" id="vccFecha"  >
 								</div>		
 								</div>	
 					  </div> 					  
@@ -643,7 +643,7 @@
 							  <label for="tipoComprobanteCaja"><strong>EE</strong></label>
 								<div class="row-fluid">	
 								<div class="span2" style="padding-bottom:1.1em;margin-left:2.5641%">	
-								<label for="rsc"><strong>Presente</strong></label>
+								<label for="ee"><strong>Presente</strong></label>
 								    <label class="radio inline">
 									    <input type="radio" name="eePresente" id="opcion1" value="0" checked="checked">
 										No
@@ -654,33 +654,33 @@
 									</label>
 								</div>	
 									<div class="span4" style="padding-bottom:1.1em;display: none" id="divEE">	
-								<label for="esfinterRectal"><strong>Tipo</strong></label>
+								<label for="eeTipo"><strong>Tipo</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion1" value="0" checked="checked">
+									    <input type="radio" name="eeTipo" id="opcion1" value="0" checked="checked">
 										1
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion2" value="1">
+									    <input type="radio" name="eeTipo" id="opcion2" value="1">
 										2
 									</label>
 									<label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion3" value="3">
+									    <input type="radio" name="eeTipo" id="opcion3" value="2">
 										3
 									</label>
 									<label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion4" value="3">
+									    <input type="radio" name="eeTipo" id="opcion4" value="3">
 										4
 									</label>
 									<label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion4" value="3">
+									    <input type="radio" name="eeTipoN" id="opcion1" value="1">
 										N0
 									</label>
 										<label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion4" value="3">
+									    <input type="radio" name="eeTipoN" id="opcion2" value="2">
 										N1
 									</label>
 										<label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion4" value="3">
+									    <input type="radio" name="eeTipoN" id="opcion3" value="3">
 										N2
 									</label>
 									</div>
@@ -698,26 +698,26 @@
 									</label>
 								</div>
 								<div class="span8" style="padding-bottom:1.1em;display: none" id="divEEesfinter">									
-								<label for="esfinterRectal"><strong>Medida</strong></label>
+								<label for="eeMedida"><strong>Medida</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion1" value="0" checked="checked">
+									    <input type="radio" name="eeMedida" id="opcion1" value="0" checked="checked">
 										0-5cm
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion2" value="1">
+									    <input type="radio" name="eeMedida" id="opcion2" value="1">
 										5-10 cm
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion3" value="2">
+									    <input type="radio" name="eeMedida" id="opcion3" value="2">
 										10-12 cm
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion4" value="3">
+									    <input type="radio" name="eeMedida" id="opcion4" value="3">
 										> 12 cm
 									</label>		
 									<div class="form-inline" style="display: inline;margin-left:20px">			
 										<label for="esfinterRectal">Fecha</label>
-											<input type="text" class="span2" alt="dateP" >
+											<input type="text" class="span2" alt="dateP" id="eeFecha" >
 									</div>		
 								</div>	
 							</div>	
@@ -729,33 +729,33 @@
 							<div class="span12">
 							  <label for=""><strong>RM</strong></label>
 								<div class="span10 form-inline" style="padding-bottom:1.1em;">	
-								   <label for="esfinterRectal">Centro</label>
-									<input type="text" class="span2" >
-								   <label for="esfinterRectal">Fecha</label>
-									<input type="text" class="span2" alt="dateP" >
-									  <label for="esfinterRectal" style="margin-left:25px">Distancia a la porción superior del esfínter</label>
-									<input type="text" class="span2"  >
+								   <label for="centroRM">Centro</label>
+									<input type="text" class="span2" id="centroRM" >
+								   <label for="fechaRM">Fecha</label>
+									<input type="text" class="span2" alt="dateP"  id="fechaRM">
+									  <label for="distanciaSupRM" style="margin-left:25px">Distancia a la porción superior del esfínter</label>
+									<input type="text" class="span2"  id="distanciaSupRM" >
 								</div>	
 								<div class="span10 form-inline" style="padding-bottom:1.1em;">	
-								   <label for="esfinterRectal" style="margin-right:24px">Distancia al margen anal</label>
+								   <label for="distanciaMarARadio" style="margin-right:24px">Distancia al margen anal</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion1" value="0" >
+									    <input type="radio" name="distanciaMarARadio" id="opcion1" value="0" >
 										0-5cm
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion2" value="1">
+									    <input type="radio" name="distanciaMarARadio" id="opcion2" value="1">
 										5-10 cm
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion3" value="2">
+									    <input type="radio" name="distanciaMarARadio" id="opcion3" value="2">
 										10-12 cm
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion4" value="3">
+									    <input type="radio" name="distanciaMarARadio" id="opcion4" value="3">
 										> 12 cm
 									</label>	
 								   <label  style="margin-left:25px" for="esfinterRectal">Altura</label>
-									<input type="text" class="span2" >	
+									<input type="text" class="span2" id="alturaRM" >	
 								</div>	
 	
 					  		</div>			  	
@@ -763,61 +763,61 @@
 						<div class="row-fluid">
 							<div class="span12">
 								<div class="span10" style="padding-bottom:1.1em;">	
-								<label for="rsc"><strong>T</strong></label>
+								<label for="numT"><strong>T</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="rscPresente" id="opcion1" value="0" checked="checked">
+									    <input type="radio" name="numTRadio" id="opcion1" value="0" checked="checked">
 										X
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="rscPresente" id="opcion2" value="1">
+									    <input type="radio" name="numTRadio" id="opcion2" value="1">
 										1
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="rscPresente" id="opcion2" value="1">
+									    <input type="radio" name="numTRadio" id="opcion2" value="2">
 										2
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="rscPresente" id="opcion2" value="1">
+									    <input type="radio" name="numTRadio" id="opcion2" value="3">
 										3a
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="rscPresente" id="opcion2" value="1">
+									    <input type="radio" name="numTRadio" id="opcion2" value="4">
 										3b
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="rscPresente" id="opcion2" value="1">
+									    <input type="radio" name="numTRadio" id="opcion2" value="5">
 										3c
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="rscPresente" id="opcion2" value="1">
+									    <input type="radio" name="numTRadio" id="opcion2" value="6">
 										3d
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="rscPresente" id="opcion2" value="1">
+									    <input type="radio" name="numTRadio" id="opcion2" value="7">
 										4a
 									</label>	
 								    <label class="radio inline">
-									    <input type="radio" name="rscPresente" id="opcion2" value="1">
+									    <input type="radio" name="numTRadio" id="opcion2" value="8">
 										4b
 									</label>	
 									 <label class="radio inline" style="margin-left:50px">
-									    <input type="radio" name="rscPresente2" id="opcion2" value="1">
+									    <input type="radio" name="numTNRadio" id="opcion2" value="1">
 										N0
 									</label>
 								   <label class="radio inline">
-									    <input type="radio" name="rscPresente2" id="opcion2" value="1">
+									    <input type="radio" name="numTNRadio" id="opcion2" value="2">
 										N1a
 									</label>
 									  <label class="radio inline">
-									    <input type="radio" name="rscPresente2" id="opcion2" value="1">
+									    <input type="radio" name="numTNRadio" id="opcion2" value="3">
 										N1b
 									</label>
 									 <label class="radio inline">
-									    <input type="radio" name="rscPresente2" id="opcion2" value="1">
+									    <input type="radio" name="numTNRadio" id="opcion2" value="4">
 										N2a
 									</label>	
 									 <label class="radio inline">
-									    <input type="radio" name="rscPresente2" id="opcion2" value="1">
+									    <input type="radio" name="numTNRadio" id="opcion2" value="5">
 										N2b
 									</label>																																		
 								</div>	
@@ -826,13 +826,13 @@
 							<div class="row-fluid">
 							<div class="span12">
 								<div class="span10" style="padding-bottom:1.1em;">	
-								<label for="rsc"><strong>CRM</strong></label>
+								<label for="crmPresente"><strong>CRM</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="rscPresente" id="opcion1" value="0" >
+									    <input type="radio" name="crmPresente" id="opcion1" value="0" >
 										Positivo
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="rscPresente" id="opcion2" value="1">
+									    <input type="radio" name="crmPresente" id="opcion2" value="1">
 										Negativo
 									</label>																																
 								</div>	
@@ -852,23 +852,23 @@
 										Negativo
 									</label>		
 									 <label class="radio inline" style="margin-left:50px">
-									    <input type="radio" name="rscPresente3" id="opcion2" value="1">
+									    <input type="radio" name="emviPresente" id="opcion2" value="2">
 										0
 									</label>
 								   <label class="radio inline">
-									    <input type="radio" name="rscPresente3" id="opcion2" value="1">
+									    <input type="radio" name="emviPresente" id="opcion2" value="3">
 										1
 									</label>
 									  <label class="radio inline">
-									    <input type="radio" name="rscPresente3" id="opcion2" value="1">
+									    <input type="radio" name="emviPresente" id="opcion2" value="4">
 										2
 									</label>
 									 <label class="radio inline">
-									    <input type="radio" name="rscPresente3" id="opcion2" value="1">
+									    <input type="radio" name="emviPresente" id="opcion2" value="5">
 										3
 									</label>	
 									 <label class="radio inline">
-									    <input type="radio" name="rscPresente3" id="opcion2" value="1">
+									    <input type="radio" name="emviPresente" id="opcion2" value="6">
 										4
 									</label>																																			
 								</div>	
@@ -878,7 +878,7 @@
 						<div class="row-fluid">
 							<div class="span12">
 								<div class="span4" style="padding-bottom:1.1em;">	
-								<label for="rsc"><strong>Depósitos satélites</strong></label>
+								<label for="depoSati"><strong>Depósitos satélites</strong></label>
 								    <label class="radio inline">
 									    <input type="radio" name="depoSati" id="opcion1" value="0" >
 										Si
@@ -889,7 +889,7 @@
 									</label>																															
 								</div>	
 								<div class="span5" style="padding-bottom:1.1em;">	
-								<label for="rsc"><strong>Estadificación tumores de recto inferior</strong></label>
+								<label for="estaRInterior"><strong>Estadificación tumores de recto inferior</strong></label>
 								    <label class="radio inline">
 									    <input type="radio" name="estaRInterior" id="opcion1" value="0" >
 										1
@@ -899,11 +899,11 @@
 										2
 									</label>	
 								    <label class="radio inline">
-									    <input type="radio" name="estaRInterior" id="opcion2" value="1">
+									    <input type="radio" name="estaRInterior" id="opcion2" value="2">
 										3
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="estaRInterior" id="opcion2" value="1">
+									    <input type="radio" name="estaRInterior" id="opcion2" value="3">
 										4
 									</label>																																																
 								</div>	
@@ -913,7 +913,7 @@
 						<div class="row-fluid">
 							<div class="span12">
 								<div class="span3" style="padding-bottom:1.1em;">	
-								<label for="rsc"><strong>Ganglios Inguinales</strong></label>
+								<label for="inguinales"><strong>Ganglios Inguinales</strong></label>
 								    <label class="radio inline">
 									    <input type="radio" name="inguinales" id="opcion1" value="0" >
 										Si
@@ -924,7 +924,7 @@
 									</label>																															
 								</div>	
 								<div class="span3" style="padding-bottom:1.1em;">	
-								<label for="rsc"><strong>Ganglios Laterales</strong></label>
+								<label for="gaLate"><strong>Ganglios Laterales</strong></label>
 								    <label class="radio inline">
 									    <input type="radio" name="gaLate" id="opcion1" value="0" >
 										Si
@@ -935,13 +935,13 @@
 									</label>																															
 								</div>	
 					            <div class="span4" style="padding-bottom:1.1em;">	
-								<label for="rsc"><strong>Infiltra Esfinter</strong></label>
+								<label for="esfinter"><strong>Infiltra Esfinter</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinter" id="opcion1" value="0" >
+									    <input type="radio" name="esfinterRM" id="opcion1" value="0" >
 										Si
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinter" id="opcion2" value="1">
+									    <input type="radio" name="esfinterRM" id="opcion2" value="1">
 										No
 									</label>																															
 								</div>	
@@ -951,52 +951,52 @@
 						<div class="row-fluid">
 							<div class="span12">
 								<div class="span2" style="padding-bottom:1.1em;">	
-								<label for="rsc"><strong>TC torax</strong></label>
+								<label for="tcTorax"><strong>TC torax</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinter" id="opcion1" value="0" >
+									    <input type="radio" name="tcTorax" id="opcion1" value="0" >
 										Si
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinter" id="opcion2" value="1">
+									    <input type="radio" name="tcTorax" id="opcion2" value="1">
 										No
 									</label>																															
 								</div>	
 							<div class="span2" style="padding-bottom:1.1em;">		
-								<label for="rsc"><strong>TC abdomen-pelvis</strong></label>
+								<label for="tcAbdomen"><strong>TC abdomen-pelvis</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinter" id="opcion1" value="0" >
+									    <input type="radio" name="tcAbdomen" id="opcion1" value="0" >
 										Si
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinter" id="opcion2" value="1">
+									    <input type="radio" name="tcAbdomen" id="opcion2" value="1">
 										No
 									</label>																															
 								</div>	
 								<div class="span2" style="padding-bottom:1.1em;">		
-								<label for="rsc"><strong>PET-CT</strong></label>
+								<label for="petTC"><strong>PET-CT</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinter" id="opcion1" value="0" >
+									    <input type="radio" name="petTC" id="opcion1" value="0" >
 										Si
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinter" id="opcion2" value="1">
+									    <input type="radio" name="petTC" id="opcion2" value="1">
 										No
 									</label>																															
 								</div>
 								<div class="span2" style="padding-bottom:1.1em;">		
-								<label for="rsc"><strong>MTS</strong></label>
+								<label for="mtsRadio"><strong>MTS</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinter" id="opcion1" value="0" >
+									    <input type="radio" name="mtsRadio" id="opcion1" value="0" >
 										Si
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinter" id="opcion2" value="1">
+									    <input type="radio" name="mtsRadio" id="opcion2" value="1">
 										No
 									</label>																																
 								</div>
 								<div class="span4 form-inline">			
 									<label  style="margin-left:25px" for="esfinterRectal">SUV</label>
-									<input type="text" class="span4" >																																
+									<input type="text" class="span4" id="suvEstati">																																
 								</div>								
 					  		</div>			  	
 					  </div> 	
@@ -1005,28 +1005,28 @@
 							<div class="span12">
 							  <label for=""><strong>Marcadores tumorales</strong></label>
 								<div class="span3 form-inline" style="padding-bottom:1.1em;">	
-								   <label for="esfinterRectal">Fecha</label>
-									<input type="text" class="span5" alt="dateP" >
+								   <label for="marcaTuFecha">Fecha</label>
+									<input type="text" class="span5" alt="dateP" id="marcaTuFecha" >
 								</div>
 								<div class="span2" style="padding-bottom:1.1em;">		
-								<label for="rsc"><strong>CEA aumentado</strong></label>
+								<label for="ceaAument"><strong>CEA aumentado</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinter" id="opcion1" value="0" >
+									    <input type="radio" name="ceaAument" id="opcion1" value="0" >
 										Si
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinter" id="opcion2" value="1">
+									    <input type="radio" name="ceaAument" id="opcion2" value="1">
 										No
 									</label>																																
 								</div>
 							<div class="span2" style="padding-bottom:1.1em;">		
-								<label for="rsc"><strong>CA 19-9 aumentado</strong></label>
+								<label for="caAument"><strong>CA 19-9 aumentado</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinter" id="opcion1" value="0" >
+									    <input type="radio" name="caAument" id="opcion1" value="0" >
 										Si
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinter" id="opcion2" value="1">
+									    <input type="radio" name="caAument" id="opcion2" value="1">
 										No
 									</label>																																
 								</div>
@@ -1038,22 +1038,22 @@
 							  <label for=""><strong>TNM</strong></label>
 								<div class="span12 form-inline" style="padding-bottom:1.1em;">	
 								  <label for="esfinterRectal">T</label>
-									<input type="text" class="input-small" >
+									<input type="text" class="input-small" id="tnmValT" >
 								 <label for="esfinterRectal">N</label>
-									<input type="text" class="input-small"  >
+									<input type="text" class="input-small" id="tnmValN" >
 							     <label for="esfinterRectal">M</label>
-									<input type="text" class="input-small"  >
+									<input type="text" class="input-small" id="tnmValM"  >
 								</div>
 								</div>
 							<div class="span5">
 					           <label for=""><strong>pTNM</strong></label>
 								<div class="span12 form-inline" style="padding-bottom:1.1em;">	
 								  <label for="esfinterRectal">pT</label>
-									<input type="text" class="input-small" >
+									<input type="text" class="input-small" id="ptnmValT" >
 								 <label for="esfinterRectal">pN</label>
-									<input type="text" class="input-small"  >
+									<input type="text" class="input-small" id="ptnmValN" >
 							     <label for="esfinterRectal">pM</label>
-									<input type="text" class="input-small"  >
+									<input type="text" class="input-small" id="ptnmValM" >
 								</div>
 							</div>
 						</div>
@@ -1063,43 +1063,43 @@
 							  <label for=""><strong>Metástasis a distancia</strong></label>
 								<div class="span12 form-inline" style="padding-bottom:1.1em;">	
 									<label class="radio inline">
-									<input type="checkbox" name="rscPresente" id="opcion1" value="0" checked="checked">
+									<input type="checkbox" name="metastaDist1" id="metastaDist1" value="0" >
 										Ninguna
 									</label>
 								    <label class="radio inline">
-									    <input type="checkbox" name="rscPresente" id="opcion2" value="1">
+									    <input type="checkbox" name="metastaDist2" id="metastaDist2" value="1">
 										Hueso
 									</label>
 								    <label class="radio inline">
-									    <input type="checkbox" name="rscPresente" id="opcion2" value="1">
+									    <input type="checkbox" name="metastaDist3" id="metastaDist3" value="1">
 										Pulmón
 									</label>
 								    <label class="radio inline">
-									    <input type="checkbox" name="rscPresente" id="opcion2" value="1">
+									    <input type="checkbox" name="metastaDist4" id="metastaDist4" value="1">
 										Desc.
 									</label>
 								    <label class="radio inline">
-									    <input type="checkbox" name="rscPresente" id="opcion2" value="1">
+									    <input type="checkbox" name="metastaDist5" id="metastaDist5" value="1">
 										Piel y TCS
 									</label>
 								    <label class="radio inline">
-									    <input type="checkbox" name="rscPresente" id="opcion2" value="1">
+									    <input type="checkbox" name="metastaDist5" id="metastaDist5" value="1">
 										Cerebro
 									</label>
 								    <label class="radio inline">
-									    <input type="checkbox" name="rscPresente" id="opcion2" value="1">
+									    <input type="checkbox" name="metastaDist6" id="metastaDist6" value="1">
 										Ganglios Dist
 									</label>
 								    <label class="radio inline">
-									    <input type="checkbox" name="rscPresente" id="opcion2" value="1">
+									    <input type="checkbox" name="metastaDist7" id="metastaDist7" value="1">
 										Ovario
 									</label>	
 								    <label class="radio inline">
-									    <input type="checkbox" name="rscPresente" id="opcion2" value="1">
+									    <input type="checkbox" name="metastaDist8" id="metastaDist8" value="1">
 										Hígado
 									</label>	
 									 <label class="radio inline" style="margin-left:30px">Otras</label>
-									    <input type="text" name="rscPresente2" id="opcion2">
+									    <input type="text" name="metastaDistOtras"  id="metastaDistOtras">
    								     </div>			  
 							</div>
 						</div>
@@ -1109,29 +1109,29 @@
 							<legend>Revisión RM en Correcto</legend>
 						<div class="row-fluid">
 							<div class="span2">	  	 
-							  	<label for="esfinterRectal">Fecha</label>
-								 <input type="text" class="span8" alt="dateP" >
+							  	<label for="revisionRMFecha">Fecha</label>
+								 <input type="text" class="span8" alt="dateP" id="revisionRMFecha">
 							</div>	 
 							<div class="span3">	  	 
-								   	<label for="esfinterRectal">Distancia a la porción superior del esfínter</label>
-								 <input type="text" class="span8" >
+								   	<label for="revisionRMDistan">Distancia a la porción superior del esfínter</label>
+								 <input type="text" class="span8"  id="revisionRMDistan" >
 							</div>	 
 								<div class="span6 form-inline" style="padding-bottom:1.1em;">	
-								   <label for="esfinterRectal" style="margin-right:24px">Distancia al margen anal</label>
+								   <label for="revisionRMMargen" style="margin-right:24px">Distancia al margen anal</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion1" value="0" >
+									    <input type="radio" name="revisionRMMargen" id="opcion1" value="0" >
 										0-5cm
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion2" value="1">
+									    <input type="radio" name="revisionRMMargen" id="opcion2" value="1">
 										5-10 cm
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion3" value="2">
+									    <input type="radio" name="revisionRMMargen" id="opcion3" value="2">
 										10-12 cm
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion4" value="3">
+									    <input type="radio" name="revisionRMMargen" id="opcion4" value="3">
 										> 12 cm
 									</label>	
 					  			</div>	
@@ -1139,7 +1139,7 @@
 					  		<div class="row-fluid">	
 					  			<div class="span6">	  	 
 					  			 <label  for="esfinterRectal">Altura</label>
-					  				 <input type="text" class="input-small" >
+					  				 <input type="text" class="input-small" id="revisionAlturaRM" >
 					  			 </div>
 					  		</div>
 					  		<br>	
@@ -1156,31 +1156,31 @@
 										1
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="tRevision" id="opcion2" value="1">
+									    <input type="radio" name="tRevision" id="opcion2" value="2">
 										2
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="tRevision" id="opcion2" value="1">
+									    <input type="radio" name="tRevision" id="opcion2" value="3">
 										3a
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="tRevision" id="opcion2" value="1">
+									    <input type="radio" name="tRevision" id="opcion2" value="4">
 										3b
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="tRevision" id="opcion2" value="1">
+									    <input type="radio" name="tRevision" id="opcion2" value="5">
 										3c
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="tRevision" id="opcion2" value="1">
+									    <input type="radio" name="tRevision" id="opcion2" value="6">
 										3d 
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="tRevision" id="opcion2" value="1">
+									    <input type="radio" name="tRevision" id="opcion2" value="7">
 										4a
 									</label>	
 								    <label class="radio inline">
-									    <input type="radio" name="tRevision" id="opcion2" value="1">
+									    <input type="radio" name="tRevision" id="opcion2" value="8">
 										4b
 									</label>	
 									<label class="radio inline" style="margin-left:50px">
@@ -1188,19 +1188,19 @@
 										N0
 									</label>
 								   <label class="radio inline">
-									    <input type="radio" name="tRevision2" id="opcion2" value="1">
+									    <input type="radio" name="tRevision2" id="opcion2" value="2">
 										N1a
 									</label>
 									  <label class="radio inline">
-									    <input type="radio" name="tRevision2" id="opcion2" value="1">
+									    <input type="radio" name="tRevision2" id="opcion2" value="3">
 										N1b
 									</label>
 									 <label class="radio inline">
-									    <input type="radio" name="tRevision2" id="opcion2" value="1">
+									    <input type="radio" name="tRevision2" id="opcion2" value="4">
 										N2a
 									</label>	
 									 <label class="radio inline">
-									    <input type="radio" name="tRevision2" id="opcion2" value="1">
+									    <input type="radio" name="tRevision2" id="opcion2" value="5">
 										N2b
 									</label>	
    								     </div>			  
@@ -1210,44 +1210,44 @@
 						<div class="row-fluid">
 							<div class="span12">
 								<div class="span3" style="padding-bottom:1.1em;">	
-								<label for="rsc"><strong>CRM</strong></label>
+								<label for="revisionCRMPresente"><strong>CRM</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="rscPresente" id="opcion1" value="0" >
+									    <input type="radio" name="revisionCRMPresente" id="opcion1" value="0" >
 										Positivo
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="rscPresente" id="opcion2" value="1">
+									    <input type="radio" name="revisionCRMPresente" id="opcion2" value="1">
 										Negativo
 									</label>																																
 								</div>	
 							<div class="span7" style="padding-bottom:1.1em;">	
 								<label for="rsc"><strong>EMVI</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="emviPresente" id="opcion1" value="0" >
+									    <input type="radio" name="revisionemviPresente" id="opcion1" value="0" >
 										Positivo
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="emviPresente" id="opcion2" value="1">
+									    <input type="radio" name="revisionemviPresente" id="opcion2" value="1">
 										Negativo
 									</label>		
 									 <label class="radio inline" style="margin-left:50px">
-									    <input type="radio" name="rscPresente3" id="opcion2" value="1">
+									    <input type="radio" name="revisionemviPresente" id="opcion2" value="2">
 										0
 									</label>
 								   <label class="radio inline">
-									    <input type="radio" name="rscPresente3" id="opcion2" value="1">
+									    <input type="radio" name="revisionemviPresente" id="opcion2" value="3">
 										1
 									</label>
 									  <label class="radio inline">
-									    <input type="radio" name="rscPresente3" id="opcion2" value="1">
+									    <input type="radio" name="revisionemviPresente" id="opcion2" value="4">
 										2
 									</label>
 									 <label class="radio inline">
-									    <input type="radio" name="rscPresente3" id="opcion2" value="1">
+									    <input type="radio" name="revisionemviPresente" id="opcion2" value="5">
 										3
 									</label>	
 									 <label class="radio inline">
-									    <input type="radio" name="rscPresente3" id="opcion2" value="1">
+									    <input type="radio" name="revisionemviPresente" id="opcion2" value="6">
 										4
 									</label>																																			
 								</div>	
@@ -1257,19 +1257,19 @@
 						 	<div class="span7" style="padding-bottom:1.1em;">	
 								<label for="rsc"><strong>Estadificación tumores de recto inferior</strong></label>		
 								   <label class="radio inline">
-									    <input type="radio" name="rscPresente3" id="opcion2" value="1">
+									    <input type="radio" name="revisionEstaTu" id="opcion2" value="1">
 										1
 									</label>
 									  <label class="radio inline">
-									    <input type="radio" name="rscPresente3" id="opcion2" value="1">
+									    <input type="radio" name="revisionEstaTu" id="opcion2" value="2">
 										2
 									</label>
 									 <label class="radio inline">
-									    <input type="radio" name="rscPresente3" id="opcion2" value="1">
+									    <input type="radio" name="revisionEstaTu" id="opcion2" value="3">
 										3
 									</label>	
 									 <label class="radio inline">
-									    <input type="radio" name="rscPresente3" id="opcion2" value="1">
+									    <input type="radio" name="revisionEstaTu" id="opcion2" value="4">
 										4
 									</label>																																			
 								</div>	
@@ -1277,35 +1277,35 @@
 						<div class="row-fluid">
 							<div class="span12">
 								<div class="span3" style="padding-bottom:1.1em;">	
-								<label for="rsc"><strong>Ganglios Inguinales</strong></label>
+								<label for="revisioninguinales"><strong>Ganglios Inguinales</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="inguinales" id="opcion1" value="0" >
+									    <input type="radio" name="revisioninguinales" id="opcion1" value="0" >
 										Si
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="inguinales" id="opcion2" value="1">
+									    <input type="radio" name="revisioninguinales" id="opcion2" value="1">
 										No
 									</label>																															
 								</div>	
 								<div class="span3" style="padding-bottom:1.1em;">	
-								<label for="rsc"><strong>Ganglios Laterales</strong></label>
+								<label for="revisiongaLate"><strong>Ganglios Laterales</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="gaLate" id="opcion1" value="0" >
+									    <input type="radio" name="revisiongaLate" id="opcion1" value="0" >
 										Si
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="gaLate" id="opcion2" value="1">
+									    <input type="radio" name="revisiongaLate" id="opcion2" value="1">
 										No
 									</label>																															
 								</div>	
 					            <div class="span4" style="padding-bottom:1.1em;">	
-								<label for="rsc"><strong>Infiltra Esfinter</strong></label>
+								<label for="revisionesfinter"><strong>Infiltra Esfinter</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinter" id="opcion1" value="0" >
+									    <input type="radio" name="revisionesfinter" id="opcion1" value="0" >
 										Si
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinter" id="opcion2" value="1">
+									    <input type="radio" name="revisionesfinter" id="opcion2" value="1">
 										No
 									</label>																															
 								</div>	
@@ -1319,77 +1319,77 @@
 			<div class="row-fluid">
 			<div class="span3">
 				    <label><strong>Nº Biopsia</strong></label>
-					<input type="text" name="esfinter" id="opcion1" >
+					<input type="text" name="esfinter" id="nroBiopsia" >
 					<label><strong>AP Sugestiva de IMS</strong></label>
 			        <label class="radio inline">
-						 <input type="radio" name="esfinter" id="opcion1" value="0" >
+						 <input type="radio" name="sugesIMS" id="opcion1" value="0" >
 								Si
 					</label>
 					<label class="radio inline">
-						   <input type="radio" name="esfinter" id="opcion2" value="1">
+						   <input type="radio" name="sugesIMS" id="opcion2" value="1">
 								No
 				    </label>
 			</div>
 			<div class="span3">
-					<label for="esfinterRectal"><strong>Fecha</strong></label>
-					<input type="text" class="span5" alt="dateP" >
+					<label for="fechaBiopsia"><strong>Fecha</strong></label>
+					<input type="text" class="span5" alt="dateP" id="fechaBiopsia" placeholder="dd/MM/yyyy" >
 					   <label><strong>IHQ</strong></label>
 			        <label class="radio inline">
-						 <input type="radio" name="esfinter" id="opcion1" value="0" >
+						 <input type="radio" name="ihqBiopsiaRadio" id="opcion1" value="0" >
 								Si
 					</label>
 					<label class="radio inline">
-						   <input type="radio" name="esfinter" id="opcion2" value="1">
+						   <input type="radio" name="ihqBiopsiaRadio" id="opcion2" value="1">
 								No
 				    </label>		
 			</div>		
 			<div class="span3">
 					<label><strong>Diagnóstico Histológico</strong></label>
-					<input type="text" name="esfinter" id="opcion1" >
+					<input type="text" name="diagHisto"  id="diagHisto">
 					<label><strong>Expresión conservada</strong></label>
 			        <label class="radio inline">
-						 <input type="radio" name="esfinter" id="opcion1" value="0" >
+						 <input type="radio" name="expConservadaRadio" id="opcion1" value="0" >
 								Si
 					</label>
 					<label class="radio inline">
-						   <input type="radio" name="esfinter" id="opcion2" value="1">
+						   <input type="radio" name="expConservadaRadio" id="opcion2" value="1">
 								No
 				    </label>		
 				    <label><strong>Nota</strong></label>
-					<input type="text" name="esfinter" id="opcion1" >
+					<input type="text" name="notaExpConservada" id="notaExpConservada" >
 			</div>
 			</div>
 			<div class="row-fluid">	 
 					<div class="span7">							 
 							<label for="comentC"><strong>Diagnosticado en</strong></label>
-								  <textarea name="comentC" id="comentC" rows="3" class="input-block-level"></textarea>
+								  <textarea name="diagnostiWhere" id="diagnostiWhere" rows="3" class="input-block-level"></textarea>
 						</div>
 			</div>
 			<div class="row-fluid">	 
 					<div class="span9">		
 					<label><strong>Grado de diferenciación</strong></label>
 			        <label class="radio inline">
-						 <input type="radio" name="esfinter" id="opcion1" value="0" >
+						 <input type="radio" name="gradoDiferRadio" id="opcion1" value="0" >
 								Diferenciado
 					</label>
 					<label class="radio inline">
-						   <input type="radio" name="esfinter" id="opcion2" value="1">
+						   <input type="radio" name="gradoDiferRadio" id="opcion2" value="1">
 								Moderadamente diferenciado
 				    </label>
 				    <label class="radio inline">
-						   <input type="radio" name="esfinter" id="opcion2" value="1">
+						   <input type="radio" name="gradoDiferRadio" id="opcion2" value="2">
 								Poco diferenciado
 				    </label>
 				    <label class="radio inline">
-						   <input type="radio" name="esfinter" id="opcion2" value="1">
+						   <input type="radio" name="gradoDiferRadio" id="opcion2" value="3">
 								Indiferenciado
 				    </label>
 				    <label class="radio inline">
-						   <input type="radio" name="esfinter" id="opcion2" value="1">
+						   <input type="radio" name="gradoDiferRadio" id="opcion2" value="4">
 								Anillo de sello
 				    </label>	
 				    <label class="radio inline">
-						   <input type="radio" name="esfinter" id="opcion2" value="1">
+						   <input type="radio" name="gradoDiferRadio" id="opcion2" value="5">
 								Mucina
 				    </label>				    			    		    
 				    </div>
@@ -1400,24 +1400,24 @@
 					<label style="display:inline;margin-right:8px"><strong>Base del diagnóstico</strong></label>
 					<label>Cirugía</label>
 			        <label class="radio inline">
-						 <input type="radio" name="esfinter" id="opcion1" value="0" >
+						 <input type="radio" name="cirugiaHayRadio" id="opcion1" value="0" >
 								Si
 					</label>
 					<label class="radio inline">
-						   <input type="radio" name="esfinter" id="opcion2" value="1">
+						   <input type="radio" name="cirugiaHayRadio" id="opcion2" value="1">
 								No
 				    </label>	    
 				    <label class="radio inline">
-						   <input type="radio" name="esfinter" id="opcion2" value="1" style="margin-top:9px">
+						   <input type="radio" name="cirugiaHayRadio" id="opcion2" value="2" style="margin-top:9px">
 								Otros:
-							<input type="text" name="otro" id="" style="margin-bottom: 0px;">
+							<input type="text" name="otroBaseDiag" id="otroBaseDiag" style="margin-bottom: 0px;">
 				    </label>
 					<label class="radio inline">
-						   <input type="radio" name="esfinter" id="opcion2" value="1">
+						   <input type="radio" name="cirugiaHayRadio" id="opcion2" value="3">
 								RSC
 				    </label>
 					<label class="radio inline">
-						   <input type="radio" name="esfinter" id="opcion2" value="1">
+						   <input type="radio" name="cirugiaHayRadio" id="opcion2" value="4">
 								VCC
 				    </label>				    				    			    
 				    </div>
@@ -1431,17 +1431,17 @@
 				<div class="span10">	  	
 				 <label><strong>Udaondo</strong></label>
 					<label class="radio inline">
-						 <input type="radio" name="esfinter" id="opcion1" value="0" >
+						 <input type="radio" name="udaOndoRadio" id="opcion1" value="0" >
 								Si
 					</label>
 					<label class="radio inline">
-						   <input type="radio" name="esfinter" id="opcion2" value="1">
+						   <input type="radio" name="udaOndoRadio" id="opcion2" value="1">
 								No
 				    </label>	    
 				    <label class="radio inline">
-						   <input type="radio" name="esfinter" id="opcion2" value="1" style="margin-top:9px">
+						   <input type="radio" name="udaOndoRadio" id="opcion2" value="2" style="margin-top:9px">
 								Otro:
-							<input type="text" class="" name="otro" id="" style="margin-bottom: 0px;">
+							<input type="text" class="" name="udaOndoOtro" id="udaOndoOtro" style="margin-bottom: 0px;">
 				    </label>
 			</div>
 			</div>
@@ -1450,11 +1450,11 @@
 				<div class="span10">	  	
 				 <label><strong>Cirugía (ir a AP)</strong></label>
 					<label class="radio inline">
-						 <input type="radio" name="esfinter" id="opcion1" value="0" >
+						 <input type="radio" name="cirugiaTrataRadio" id="opcion1" value="0" >
 								Si
 					</label>
 					<label class="radio inline">
-						   <input type="radio" name="esfinter" id="opcion2" value="1">
+						   <input type="radio" name="cirugiaTrataRadio" id="opcion2" value="1">
 								No
 				    </label>	    
 			</div>
@@ -1464,38 +1464,38 @@
 				<div class="span10">	  	
 				 <label><strong>Quimioterapia de inducción</strong></label>
 					<label class="radio inline">
-						 <input type="radio" name="esfinter" id="opcion1" value="0" >
+						 <input type="radio" name="quimioInduccion" id="opcion1" value="0" >
 								XELOX
 					</label>
 					<label class="radio inline">
-						   <input type="radio" name="esfinter" id="opcion2" value="1">
+						   <input type="radio" name="quimioInduccion" id="opcion2" value="1">
 								BFOL
 				    </label>
 					<label class="radio inline">
-						   <input type="radio" name="esfinter" id="opcion2" value="1">
+						   <input type="radio" name="quimioInduccion" id="opcion2" value="2">
 								FOLFOX
 				    </label>
 					<label class="radio inline">
-						   <input type="radio" name="esfinter" id="opcion2" value="1">
+						   <input type="radio" name="quimioInduccion" id="opcion2" value="3">
 								CAPECITABINA
 				    </label>
 				    <label class="radio inline">
-						   <input type="radio" name="esfinter" id="opcion2" value="1" style="margin-top:9px">
+						   <input type="radio" name="quimioInduccion" id="opcion2" value="4" style="margin-top:9px">
 								Otro:
-							<input type="text" class="" name="otro" id="" style="margin-bottom: 0px;">
+							<input type="text" class="" name="quimioInduccionOtro" id="quimioInduccionOtro" style="margin-bottom: 0px;">
 				    </label>
 				    <label class="radio inline">
 								N Ciclos:
-							<select class="input-mini">
+							<select class="input-mini" id="quimioInduccionCiclos">
 							<option value="0">0</option>
-							<option value="0">1</option>
-							<option value="0">2</option>
-							<option value="0">3</option>
-							<option value="0">4</option>
-							<option value="0">5</option>
-							<option value="0">6</option>
-							<option value="0">7</option>
-							<option value="0">8</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
 							</select>
 				    </label>			    				    				    				    	    
 			</div>
@@ -1505,13 +1505,13 @@
 				<div class="span10">	  	
 				 <label><strong>Quimioradioterapia</strong></label>
 					<label class="radio inline">
-						 <input type="radio" name="esfinter" id="opcion1" value="0" >
+						 <input type="radio" name="quimioradioInduRadio" id="opcion1" value="0" >
 								Capecitabina
 					</label>
 				    <label class="radio inline">
-						   <input type="radio" name="esfinter" id="opcion2" value="1" style="margin-top:9px">
+						   <input type="radio" name="quimioradioInduRadio" id="opcion2" value="1" style="margin-top:9px">
 								Otro:
-							<input type="text" class="" name="otro" id="" style="margin-bottom: 0px;">
+							<input type="text" class="" name="quimioradioInduRadioOtro" id="quimioradioInduRadioOtro" style="margin-bottom: 0px;">
 				    </label>	    				    				    	    
 				</div>
 			</div>		
@@ -1520,34 +1520,34 @@
 				<div class="span10">	  	
 				 <label><strong>Quimioterapia de Intervalo precirugia</strong></label>
 					<label class="radio inline">
-						 <input type="radio" name="esfinter" id="opcion1" value="0" >
+						 <input type="radio" name="quimioIntervalRadio" id="opcion1" value="0" >
 								Si
 					</label>
 					<label class="radio inline">
-						 <input type="radio" name="esfinter" id="opcion1" value="0" >
+						 <input type="radio" name="quimioIntervalRadio" id="opcion1" value="1" >
 								No
 					</label>	
 					<label class="radio inline">
-						 <input type="radio" name="esfinter" id="opcion1" value="0" >
+						 <input type="radio" name="quimioIntervalRadio" id="opcion1" value="2" >
 								Capecitabina
 					</label>									
 				    <label class="radio inline">
-						   <input type="radio" name="esfinter" id="opcion2" value="1" style="margin-top:9px">
+						   <input type="radio" name="quimioIntervalRadio" id="opcion2" value="3" style="margin-top:9px">
 								Otro:
-							<input type="text" class="" name="otro" id="" style="margin-bottom: 0px;">
+							<input type="text" class="" name="quimioIntervalRadioOtro" id="quimioIntervalRadioOtro" style="margin-bottom: 0px;">
 				    </label>
 				  	<label class="radio inline">
 								N Ciclos:
-							<select class="input-mini">
+							<select class="input-mini" id="quimioIntervalCiclos">
 							<option value="0">0</option>
-							<option value="0">1</option>
-							<option value="0">2</option>
-							<option value="0">3</option>
-							<option value="0">4</option>
-							<option value="0">5</option>
-							<option value="0">6</option>
-							<option value="0">7</option>
-							<option value="0">8</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
 							</select>
 				    </label>	  	    				    				    	    
 				</div>
@@ -1573,29 +1573,29 @@
 				  <div class="span12" >  
 				    <label class="radio inline">
 								Dosis total:
-							<input type="text" class="" name="otro" id="" style="margin-bottom: 0px;">
+							<input type="text" class="" name="dosisTotalRadioTer" id="dosisTotalRadioTer" style="margin-bottom: 0px;">
 				    </label>
 				    <label class="radio inline">
 					  Fecha inicio:
-						<input type="text" class="span5" alt="dateP" >
+						<input type="text" class="span5" alt="dateP" id="fechaInicioRadioTer" >
 					</label>	 
 					 <label class="radio inline">
 					  Fecha final:
-						<input type="text" class="span5" alt="dateP" >
+						<input type="text" class="span5" alt="dateP" id="fechaFinRadioTer"  >
 					</label>
 					<label><strong>Suspendio</strong></label>
 					<label class="radio inline">
-						 <input type="radio" name="suspenRadio" id="opcion1" value="0" >
+						 <input type="radio" name="suspenRadioTerRadio" id="opcion1" value="0" >
 								No
 					</label>
 					<label class="radio inline">
-						   <input type="radio" name="suspenRadio" id="opcion2" value="1">
+						   <input type="radio" name="suspenRadioTerRadio" id="opcion2" value="1">
 								Si
 				    </label>	
 				    <div id="suspenDiv" style="display: none">
 				     <label class="radio inline">
 								Dias:
-					<input type="text" class="input-mini" name="otro" id="" style="margin-bottom: 0px;">
+					<input type="text" class="input-mini" name="diasSuspenRadioTer" id="diasSuspenRadioTer" style="margin-bottom: 0px;">
 				    </label>
 				    </div>
 				   </div> 
@@ -1618,29 +1618,29 @@
 				  <div class="span12" >  
 				    <label class="radio inline">
 								Esquema:
-						<input type="text" class="" name="otro" id="" style="margin-bottom: 0px;">
+						<input type="text" class="" name="quimioEsquema" id="quimioEsquema" style="margin-bottom: 0px;">
 				    </label>
 				    <label class="radio inline">
 					  N ciclos:
-							<select class="input-mini">
+							<select class="input-mini" id="quimioNroCiclos">
 								<option value="0">0</option>
-								<option value="0">1</option>
-								<option value="0">2</option>
-								<option value="0">3</option>
-								<option value="0">4</option>
-								<option value="0">5</option>
-								<option value="0">6</option>
-								<option value="0">7</option>
-								<option value="0">8</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
 							</select>				
 					</label>
 				    <label class="radio inline">
 					  Fecha inicio:
-						<input type="text" class="span5" alt="dateP" >
+						<input type="text" class="span5" alt="dateP" id="fechaInicioQuimio" >
 					</label>	 						 
 					 <label class="radio inline">
 					  Fecha finalización:
-						<input type="text" class="span5" alt="dateP" >
+						<input type="text" class="span5" alt="dateP" id="fechaFinQuimio"  >
 					</label>
 				   </div> 
 				  </div> 
@@ -1676,32 +1676,32 @@
 							  <label for=""><strong>RM post tratamiento</strong></label>
 								<div class="span10 form-inline" style="padding-bottom:1.1em;">	
 								   <label for="esfinterRectal">Centro</label>
-									<input type="text" class="span2" >
+									<input type="text" class="span2" id="centroPostTrata" >
 								   <label for="esfinterRectal">Fecha</label>
-									<input type="text" class="span2" alt="dateP" >
+									<input type="text" class="span2" alt="dateP" id="fechaPostTrata" >
 									  <label for="esfinterRectal" style="margin-left:25px">Distancia a la porción superior del esfínter</label>
-									<input type="text" class="span2"  >
+									<input type="text" class="span2" id="distanciaPostTrata"  >
 								</div>	
 								<div class="span10 form-inline" style="padding-bottom:1.1em;">	
 								   <label for="esfinterRectal" style="margin-right:24px">Distancia al margen anal</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion1" value="0" >
+									    <input type="radio" name="distMargenPostTrataRadio" id="opcion1" value="0" >
 										0-5cm
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion2" value="1">
+									    <input type="radio" name="distMargenPostTrataRadio" id="opcion2" value="1">
 										5-10 cm
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion3" value="2">
+									    <input type="radio" name="distMargenPostTrataRadio" id="opcion3" value="2">
 										10-12 cm
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion4" value="3">
+									    <input type="radio" name="distMargenPostTrataRadio" id="opcion4" value="3">
 										> 12 cm
 									</label>	
 								   <label  style="margin-left:25px" for="esfinterRectal">Altura</label>
-									<input type="text" class="span2" >	
+									<input type="text" class="span2" name="alturaPostTrataRadio" id="alturaPostTrataRadio">	
 								</div>	
 	
 					  		</div>			  	
@@ -1711,59 +1711,59 @@
 								<div class="span10" style="padding-bottom:1.1em;">	
 								<label for="rsc"><strong>T</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="rscPresente" id="opcion1" value="0" checked="checked">
+									    <input type="radio" name="tumorPostTrataRadio" id="opcion1" value="0" checked="checked">
 										X
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="rscPresente" id="opcion2" value="1">
+									    <input type="radio" name="tumorPostTrataRadio" id="opcion2" value="1">
 										1
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="rscPresente" id="opcion2" value="1">
+									    <input type="radio" name="tumorPostTrataRadio" id="opcion2" value="2">
 										2
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="rscPresente" id="opcion2" value="1">
+									    <input type="radio" name="tumorPostTrataRadio" id="opcion2" value="3">
 										3a
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="rscPresente" id="opcion2" value="1">
+									    <input type="radio" name="tumorPostTrataRadio" id="opcion2" value="4">
 										3b
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="rscPresente" id="opcion2" value="1">
+									    <input type="radio" name="tumorPostTrataRadio" id="opcion2" value="5">
 										3c
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="rscPresente" id="opcion2" value="1">
+									    <input type="radio" name="tumorPostTrataRadio" id="opcion2" value="6">
 										3d
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="rscPresente" id="opcion2" value="1">
+									    <input type="radio" name=tumorPostTrataRadio id="opcion2" value="7">
 										4a
 									</label>	
 								    <label class="radio inline">
-									    <input type="radio" name="rscPresente" id="opcion2" value="1">
+									    <input type="radio" name="tumorPostTrataRadio" id="opcion2" value="8">
 										4b
 									</label>	
 									 <label class="radio inline" style="margin-left:50px">
-									    <input type="radio" name="rscPresente2" id="opcion2" value="1">
+									    <input type="radio" name="tumorPostTrataNRadio" id="opcion2" value="1">
 										N0
 									</label>
 								   <label class="radio inline">
-									    <input type="radio" name="rscPresente2" id="opcion2" value="1">
+									    <input type="radio" name="tumorPostTrataNRadio" id="opcion2" value="2">
 										N1a
 									</label>
 									  <label class="radio inline">
-									    <input type="radio" name="rscPresente2" id="opcion2" value="1">
+									    <input type="radio" name="tumorPostTrataNRadio" id="opcion2" value="3">
 										N1b
 									</label>
 									 <label class="radio inline">
-									    <input type="radio" name="rscPresente2" id="opcion2" value="1">
+									    <input type="radio" name="tumorPostTrataNRadio" id="opcion2" value="4">
 										N2a
 									</label>	
 									 <label class="radio inline">
-									    <input type="radio" name="rscPresente2" id="opcion2" value="1">
+									    <input type="radio" name="tumorPostTrataNRadio" id="opcion2" value="5">
 										N2b
 									</label>																																		
 								</div>	
@@ -1772,13 +1772,13 @@
 							<div class="row-fluid">
 							<div class="span12">
 								<div class="span10" style="padding-bottom:1.1em;">	
-								<label for="rsc"><strong>CRM</strong></label>
+								<label for="crmPostTrataRadio"><strong>CRM</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="rscPresente" id="opcion1" value="0" >
+									    <input type="radio" name="crmPostTrataRadio" id="opcion1" value="0" >
 										Positivo
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="rscPresente" id="opcion2" value="1">
+									    <input type="radio" name="crmPostTrataRadio" id="opcion2" value="1">
 										Negativo
 									</label>																																
 								</div>	
@@ -1790,31 +1790,31 @@
 								<div class="span10" style="padding-bottom:1.1em;">	
 								<label for="rsc"><strong>EMVI</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="emviPresente" id="opcion1" value="0" >
+									    <input type="radio" name="emviPostTrataRadio" id="opcion1" value="0">
 										Positivo
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="emviPresente" id="opcion2" value="1">
+									    <input type="radio" name="emviPostTrataRadio" id="opcion2" value="1">
 										Negativo
 									</label>		
 									 <label class="radio inline" style="margin-left:50px">
-									    <input type="radio" name="rscPresente3" id="opcion2" value="1">
+									    <input type="radio" name="emviPostTrataRadio" id="opcion2" value="2">
 										0
 									</label>
 								   <label class="radio inline">
-									    <input type="radio" name="rscPresente3" id="opcion2" value="1">
+									    <input type="radio" name="emviPostTrataRadio" id="opcion2" value="3">
 										1
 									</label>
 									  <label class="radio inline">
-									    <input type="radio" name="rscPresente3" id="opcion2" value="1">
+									    <input type="radio" name="emviPostTrataRadio" id="opcion2" value="4">
 										2
 									</label>
 									 <label class="radio inline">
-									    <input type="radio" name="rscPresente3" id="opcion2" value="1">
+									    <input type="radio" name="emviPostTrataRadio" id="opcion2" value="5">
 										3
 									</label>	
 									 <label class="radio inline">
-									    <input type="radio" name="rscPresente3" id="opcion2" value="1">
+									    <input type="radio" name="emviPostTrataRadio" id="opcion2" value="6">
 										4
 									</label>																																			
 								</div>	
@@ -1824,55 +1824,55 @@
 						<div class="row-fluid">
 							<div class="span12">
 								<div class="span2" style="padding-bottom:1.1em;">	
-								<label for="rsc"><strong>Depósitos satélites</strong></label>
+								<label for="depoSatiRadio"><strong>Depósitos satélites</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="depoSati" id="opcion1" value="0" >
+									    <input type="radio" name="depoSatiRadio" id="opcion1" value="0" >
 										Si
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="depoSati" id="opcion2" value="1">
+									    <input type="radio" name="depoSatiRadio" id="opcion2" value="1">
 										No
 									</label>																															
 								</div>	
 								<div class="span4" style="padding-bottom:1.1em;">	
-								<label for="rsc"><strong>Estadificación tumores de recto inferior</strong></label>
+								<label for="estaRInteriorRadio"><strong>Estadificación tumores de recto inferior</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="estaRInterior" id="opcion1" value="0" >
+									    <input type="radio" name="estaRInteriorRadio" id="opcion1" value="0" >
 										1
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="estaRInterior" id="opcion2" value="1">
+									    <input type="radio" name="estaRInteriorRadio" id="opcion2" value="1">
 										2
 									</label>	
 								    <label class="radio inline">
-									    <input type="radio" name="estaRInterior" id="opcion2" value="1">
+									    <input type="radio" name="estaRInteriorRadio" id="opcion2" value="2">
 										3
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="estaRInterior" id="opcion2" value="1">
+									    <input type="radio" name="estaRInteriorRadio" id="opcion2" value="3">
 										4
 									</label>																																																
 								</div>	
 								<div class="span5" style="padding-bottom:1.1em;">	
-								<label for="rsc"><strong>Grado de regresion</strong></label>
+								<label for="gradoRegresionRadio"><strong>Grado de regresion</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="estaRInterior" id="opcion1" value="0" >
+									    <input type="radio" name="gradoRegresionRadio" id="opcion1" value="0" >
 										5
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="estaRInterior" id="opcion2" value="1">
+									    <input type="radio" name="gradoRegresionRadio" id="opcion2" value="1">
 										4
 									</label>	
 								    <label class="radio inline">
-									    <input type="radio" name="estaRInterior" id="opcion3" value="1">
+									    <input type="radio" name="gradoRegresionRadio" id="opcion3" value="2">
 										3
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="estaRInterior" id="opcion4" value="1">
+									    <input type="radio" name="gradoRegresionRadio" id="opcion4" value="3">
 										2
 									</label>
 									<label class="radio inline">
-									    <input type="radio" name="estaRInterior" id="opcion5" value="1">
+									    <input type="radio" name="gradoRegresionRadio" id="opcion5" value="4">
 										1
 									</label>																																																									
 								</div>
@@ -1882,35 +1882,35 @@
 						<div class="row-fluid">
 							<div class="span12">
 								<div class="span3" style="padding-bottom:1.1em;">	
-								<label for="rsc"><strong>Ganglios Inguinales</strong></label>
+								<label for="inguinalesRadio"><strong>Ganglios Inguinales</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="inguinales" id="opcion1" value="0" >
+									    <input type="radio" name="inguinalesRadio" id="opcion1" value="0" >
 										Si
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="inguinales" id="opcion2" value="1">
+									    <input type="radio" name="inguinalesRadio" id="opcion2" value="1">
 										No
 									</label>																															
 								</div>	
 								<div class="span3" style="padding-bottom:1.1em;">	
-								<label for="rsc"><strong>Ganglios Laterales</strong></label>
+								<label for="gaLateRadio"><strong>Ganglios Laterales</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="gaLate" id="opcion1" value="0" >
+									    <input type="radio" name="gaLateRadio" id="opcion1" value="0" >
 										Si
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="gaLate" id="opcion2" value="1">
+									    <input type="radio" name="gaLateRadio" id="opcion2" value="1">
 										No
 									</label>																															
 								</div>	
 					            <div class="span4" style="padding-bottom:1.1em;">	
-								<label for="rsc"><strong>Infiltra Esfinter</strong></label>
+								<label for="infiltraEsPostRadio"><strong>Infiltra Esfinter</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinter" id="opcion1" value="0" >
+									    <input type="radio" name="infiltraEsPostRadio" id="opcion1" value="0" >
 										Si
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinter" id="opcion2" value="1">
+									    <input type="radio" name="infiltraEsPostRadio" id="opcion2" value="1">
 										No
 									</label>																															
 								</div>	
@@ -1919,26 +1919,26 @@
 						<br> 	
 					  	<div class="row-fluid">
 							<div class="span11"> 
-							  <label for=""><strong>Evaluación de la respuesta</strong></label>
+							  <label for="evaPostRadio"><strong>Evaluación de la respuesta</strong></label>
 								<div class="span12 form-inline" style="padding-bottom:1.1em;">	
 									<label class="radio inline">
-									<input type="radio" name="rscPresente" id="opcion1" value="0" checked="checked">
+									<input type="radio" name="evaPostRadio" id="opcion1" value="0">
 										RC
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="rscPresente" id="opcion1" value="1">
+									    <input type="radio" name="evaPostRadio" id="opcion1" value="1">
 										RP
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="rscPresente" id="opcion2" value="2">
+									    <input type="radio" name="evaPostRadio" id="opcion2" value="2">
 										EE
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="rscPresente" id="opcion3" value="3">
+									    <input type="radio" name="evaPostRadio" id="opcion3" value="3">
 										PE
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="rscPresente" id="opcion4" value="4">
+									    <input type="radio" name="evaPostRadio" id="opcion4" value="4">
 										No evaluable
 									</label>		  
 								</div>
@@ -1955,47 +1955,47 @@
 							<div class="span12">
 							  <label for="tipoComprobanteCaja"><strong>Tacto rectal</strong></label>
 								<div class="span2" style="padding-bottom:1.1em;">	
-								<label for="movilRectal"><strong>Movil</strong></label>
+								<label for="movilRectalRadio"><strong>Movil</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="movilRectal" id="opcion1" value="0" checked="checked">
+									    <input type="radio" name="movilRectalRadio" id="opcion1" value="0" checked="checked">
 										No
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="movilRectal" id="opcion2" value="1">
+									    <input type="radio" name="movilRectalRadio" id="opcion2" value="1">
 										Si
 									</label>
 								</div>	
 								<div class="span2" style="padding-bottom:1.1em;">	
-								<label for="fijoRectal"><strong>Fijo</strong></label>
+								<label for="fijoRectalRadio"><strong>Fijo</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="fijoRectal" id="opcion1" value="0" checked="checked">
+									    <input type="radio" name="fijoRectalRadio" id="opcion1" value="0" checked="checked">
 										No
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="fijoRectal" id="opcion2" value="1">
+									    <input type="radio" name="fijoRectalRadio" id="opcion2" value="1">
 										Si
 									</label>
 								</div>	
 								<div class="span5" style="padding-bottom:1.1em;">	
-								<label for="esfinterRectal"><strong>Infiltra esfinter</strong></label>
+								<label for="esfinterPostRectalRadio"><strong>Infiltra esfinter</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion1" value="0" checked="checked">
+									    <input type="radio" name="esfinterPostRectalRadio" id="opcion1" value="0" checked="checked">
 										No
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion2" value="1">
+									    <input type="radio" name="esfinterPostRectalRadio" id="opcion2" value="1">
 										Si
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion3" value="2">
+									    <input type="radio" name="esfinterPostRectalRadio" id="opcion3" value="2">
 										Esfinter interno
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion4" value="3">
+									    <input type="radio" name="esfinterPostRectalRadio" id="opcion4" value="3">
 										Esfinter externo
 									</label>
 									<label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion5" value="4">
+									    <input type="radio" name="esfinterPostRectalRadio" id="opcion5" value="4">
 										Poco móvil
 									</label>					
 								</div>	
@@ -2005,39 +2005,39 @@
 							<div class="span12">
 							  <label for="tipoComprobanteCaja"><strong>RSC</strong></label>
 								<div class="span2" style="padding-bottom:1.1em;">	
-								<label for="rsc"><strong>Presente</strong></label>
+								<label for="rscPostPresenteRadio"><strong>Presente</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="rscPresente" id="opcion1" value="0" checked="checked">
+									    <input type="radio" name="rscPostPresenteRadio" id="opcion1" value="0" checked="checked">
 										No
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="rscPresente" id="opcion2" value="1">
+									    <input type="radio" name="rscPostPresenteRadio" id="opcion2" value="1">
 										Si
 									</label>
 								</div>	
 								<div class="span8" style="padding-bottom:1.1em;display: none" id="divRSC">	
-								<label for="esfinterRectal"><strong>Medida</strong></label>
+								<label for="rscesfinterRectalRadio"><strong>Medida</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion1" value="0" checked="checked">
+									    <input type="radio" name="rscesfinterRectalRadio" id="opcion1" value="0" checked="checked">
 										0-5cm
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion2" value="1">
+									    <input type="radio" name="rscesfinterRectalRadio" id="opcion2" value="1">
 										5-10 cm
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion3" value="2">
+									    <input type="radio" name="rscesfinterRectalRadio" id="opcion3" value="2">
 										10-12 cm
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion4" value="3">
+									    <input type="radio" name="rscesfinterRectalRadio" id="opcion4" value="3">
 										> 12 cm
 									</label>		
 								<div class="form-inline" style="display: inline;margin-left:20px">			
 									<label for="esfinterRectal">Altura</label>
-										<input type="text" class="input-mini" >
+										<input type="text" class="input-mini" id="alturaRSC">
 									<label for="esfinterRectal">Fecha</label>
-										<input type="text" class="span2" alt="dateP" >
+										<input type="text" class="span2" alt="dateP" id="fechaRSC">
 								</div>		
 								</div>	
 						  </div> 					  
@@ -2046,54 +2046,54 @@
 							<div class="span12">
 							  <label for="tipoComprobanteCaja"><strong>VCC</strong></label>
 								<div class="span2" style="padding-bottom:1.1em;">	
-								<label for="rsc"><strong>Presente</strong></label>
+								<label for="vccPresentePostRadio"><strong>Presente</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="vccPresente" id="opcion1" value="0" checked="checked">
+									    <input type="radio" name="vccPresentePostRadio" id="opcion1" value="0" checked="checked">
 										No
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="vccPresente" id="opcion2" value="1">
+									    <input type="radio" name="vccPresentePostRadio" id="opcion2" value="1">
 										Si
 									</label>
 								</div>	
 									<div class="span4" style="padding-bottom:1.1em;display: none" id="divVCC">	
-								<label for="esfinterRectal"><strong>Tipo</strong></label>
+								<label for="tipoVCCRadio"><strong>Tipo</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion1" value="0" checked="checked">
+									    <input type="radio" name="tipoVCCRadio" id="opcion1" value="0" checked="checked">
 										Completa
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion2" value="1">
+									    <input type="radio" name="tipoVCCRadio" id="opcion2" value="1">
 										Incompleta
 									</label>
 									<label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion2" value="1">
+									    <input type="radio" name="tipoVCCRadio" id="opcion2" value="2">
 										T.infranqueable
 									</label>
 									</div>
 								<div class="span8" style="padding-bottom:1.1em;display: none" id="divVCC1">	
-								<label for="esfinterRectal"><strong>Medida</strong></label>
+								<label for="vccMedidaRadio"><strong>Medida</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion1" value="0" checked="checked">
+									    <input type="radio" name="vccMedidaRadio" id="opcion1" value="0" checked="checked">
 										0-5cm
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion2" value="1">
+									    <input type="radio" name="vccMedidaRadio" id="opcion2" value="1">
 										5-10 cm
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion3" value="2">
+									    <input type="radio" name="vccMedidaRadio" id="opcion3" value="2">
 										10-12 cm
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion4" value="3">
+									    <input type="radio" name="vccMedidaRadio" id="opcion4" value="3">
 										> 12 cm
 									</label>		
 								<div class="form-inline" style="display: inline;margin-left:20px">			
 									<label for="esfinterRectal">Altura</label>
-										<input type="text" class="input-mini" >
+										<input type="text" class="input-mini" id="vccAlturaPost">
 									<label for="esfinterRectal">Fecha</label>
-										<input type="text" class="span2" alt="dateP" >
+										<input type="text" class="span2" alt="dateP" id="vccFechaPost" >
 								</div>		
 								</div>	
 					  </div> 					  
@@ -2103,81 +2103,81 @@
 							  <label for="tipoComprobanteCaja"><strong>EE</strong></label>
 								<div class="row-fluid">	
 								<div class="span2" style="padding-bottom:1.1em;margin-left:2.5641%">	
-								<label for="rsc"><strong>Presente</strong></label>
+								<label for="eePresenteRadio"><strong>Presente</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="eePresente" id="opcion1" value="0" checked="checked">
+									    <input type="radio" name="eePresenteRadio" id="opcion1" value="0" checked="checked">
 										No
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="eePresente" id="opcion2" value="1">
+									    <input type="radio" name="eePresenteRadio" id="opcion2" value="1">
 										Si
 									</label>
 								</div>	
 									<div class="span4" style="padding-bottom:1.1em;display: none" id="divEE">	
-								<label for="esfinterRectal"><strong>Tumor</strong></label>
+								<label for="eeTumorRadio"><strong>Tumor</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion1" value="0" checked="checked">
+									    <input type="radio" name="eeTumorRadio" id="opcion1" value="0" checked="checked">
 										1
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion2" value="1">
+									    <input type="radio" name="eeTumorRadio" id="opcion2" value="1">
 										2
 									</label>
 									<label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion3" value="3">
+									    <input type="radio" name="eeTumorRadio" id="opcion3" value="2">
 										3
 									</label>
 									<label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion4" value="3">
+									    <input type="radio" name="eeTumorRadio" id="opcion4" value="3">
 										4
 									</label>
 									<label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion4" value="3">
+									    <input type="radio" name="eeTumorNRadio" id="opcion4" value="0">
 										N0
 									</label>
 										<label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion4" value="3">
+									    <input type="radio" name="eeTumorNRadio" id="opcion4" value="1">
 										N1
 									</label>
 										<label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion4" value="3">
+									    <input type="radio" name="eeTumorNRadio" id="opcion4" value="2">
 										N2
 									</label>
 									</div>
 								</div>	
 								<div class="row-fluid">	
 								<div class="span2" style="padding-bottom:1.1em;display: none;margin-left:2.5641%" id="divEE1">	
-								 <label for="eeesfinter"><strong>Infiltra esfinter</strong></label>
+								 <label for="eeesfinterRadio"><strong>Infiltra esfinter</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="eeesfinter" id="opcion1" value="0" checked="checked">
+									    <input type="radio" name="eeesfinterRadio" id="opcion1" value="0" checked="checked">
 										No
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="eeesfinter" id="opcion2" value="1">
+									    <input type="radio" name="eeesfinterRadio" id="opcion2" value="1">
 										Si
 									</label>
 								</div>
 								<div class="span8" style="padding-bottom:1.1em;display: none" id="divEEesfinter">									
-								<label for="esfinterRectal"><strong>Medida</strong></label>
+								<label for="esfinterMedidaRadio"><strong>Medida</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion1" value="0" checked="checked">
+									    <input type="radio" name="esfinterMedidaRadio" id="opcion1" value="0" checked="checked">
 										0-5cm
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion2" value="1">
+									    <input type="radio" name="esfinterMedidaRadio" id="opcion2" value="1">
 										5-10 cm
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion3" value="2">
+									    <input type="radio" name="esfinterMedidaRadio" id="opcion3" value="2">
 										10-12 cm
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion4" value="3">
+									    <input type="radio" name="esfinterMedidaRadio" id="opcion4" value="3">
 										> 12 cm
 									</label>		
 									<div class="form-inline" style="display: inline;margin-left:20px">			
-										<label for="esfinterRectal">Fecha</label>
-											<input type="text" class="span2" alt="dateP" >
+										<label for="eePostFecha">Fecha</label>
+											<input type="text" class="span2" alt="dateP" id="eePostFecha" >
 									</div>		
 								</div>	
 							</div>	
@@ -2194,7 +2194,7 @@
 							<div class="span12">
 							  <label for="tipoComprobanteCaja"><strong>Cirugia</strong></label>
 								<div class="span2" style="padding-bottom:1.1em;">	
-								<label for="rsc"><strong>Presente</strong></label>
+								<label for="ciruNeoRadio"><strong>Presente</strong></label>
 								    <label class="radio inline">
 									    <input type="radio" name="ciruNeoRadio" id="opcion1" value="0" checked="checked">
 										No
@@ -2205,36 +2205,36 @@
 									</label>
 								</div>	
 								<div class="span2" style="padding-bottom:1.1em;display: none" id="ciruNeoDiv">	
-								<label for="esfinterRectal"><strong>Procedimiento</strong></label>
+								<label for="prodCiruRadio"><strong>Procedimiento</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="prodCiru" id="opcion1" value="0" checked="checked">
+									    <input type="radio" name="prodCiruRadio" id="opcion1" value="0" checked="checked">
 										RA
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="prodCiru" id="opcion2" value="1">
+									    <input type="radio" name="prodCiruRadio" id="opcion2" value="1">
 										RAUB
 									</label>
 									</div>
 								<div class="span7" style="padding-bottom:1.1em;display: none" id="ciruNeoDiv1">	
-								<label for="esfinterRectal"><strong>Miles cilíndrico:</strong></label>
+								<label for="milesCiliRadio"><strong>Miles cilíndrico:</strong></label>
 								<label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion1" value="0" >
+									    <input type="radio" name="milesCiliRadio" id="opcion1" value="0" >
 										Si
 								</label>
 								<label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion2" value="1">
+									    <input type="radio" name="milesCiliRadio" id="opcion2" value="1">
 										No
 								</label>	
 								<div class="form-inline" style="display: inline;margin-left:20px">			
 									<label for="esfinterRectal">Otro</label>
-										<input type="text" class="input-small" >
+										<input type="text" class="input-small" id="milesCiliOtro" >
 								</div>
 								</div>	
 						  </div> 					  
 						</div>
 						<div class="row-fluid">
 							<div class="span12">
-									<label for="rsc"><strong>Urgencia</strong></label>
+									<label for="urgenciaRadio"><strong>Urgencia</strong></label>
 								    <label class="radio inline">
 									    <input type="radio" name="urgenciaRadio" id="opcion1" value="0" checked="checked">
 										No
@@ -2245,7 +2245,7 @@
 									</label>
 									<div class="form-inline" style="display: inline;margin-left:20px">			
 										<label for="esfinterRectal">Fecha</label>
-											<input type="text" class="input-small" alt="dateP" >
+											<input type="text" class="input-small" alt="dateP" id="urgenciaFecha">
 									</div>		
 							</div>			
 						</div>
@@ -2257,11 +2257,11 @@
 										<div class="span3">
 									    <label class="radio inline">
 											Nombre
-											<input type="text" class="span10" >
+											<input type="text" class="span10" id="cirujaName" >
 										</label>
 										</div>	
 										<div class="span6">
-										<label for="rsc"><strong>WAIT AND SEE</strong></label>
+										<label for="waitSeeRadio"><strong>WAIT AND SEE</strong></label>
 									    <label class="radio inline">
 										    <input type="radio" name="waitSeeRadio" id="opcion1" value="0" checked="checked">
 											No
@@ -2272,7 +2272,7 @@
 										</label>
 										<div class="form-inline" style="display: inline;margin-left:20px">			
 										<label for="esfinterRectal">Fecha inicio</label>
-											<input type="text" class="input-small" alt="dateP" >
+											<input type="text" class="input-small" alt="dateP" id="fechaInicioConducta" >
 									</div>	
 									</div>
 								 </div>	
@@ -2287,16 +2287,16 @@
 			<div class="row-fluid">
 			<div class="span3">
 				    <label><strong>Nº Biopsia</strong></label>
-					<input type="text" name="esfinter" id="opcion1" >
+					<input type="text" name="esfinter" id="nroBiopsiaPost" >
 			</div>
 			<div class="span3">
 					<label for="esfinterRectal"><strong>Fecha AP</strong></label>
-					<input type="text" class="span5" alt="dateP" >		
+					<input type="text" class="span5" alt="dateP"  id="fechaBiopsiaPost" >		
 			</div>
 			<div class="row-fluid">		
 				<div class="span10">
 						<label><strong>Diagnóstico Histológico</strong></label>
-						<input type="text" name="esfinter" id="opcion1" class="span9" >
+						<input type="text" name="diagBiopsiaPost" id="diagBiopsiaPost" class="span9" >
 				</div>	
 			</div>
 			<br>	  			
@@ -2304,23 +2304,23 @@
 					<div class="span9">		
 					<label><strong>Grado de diferenciación</strong></label>
 			        <label class="radio inline">
-						 <input type="radio" name="esfinter" id="opcion1" value="0" >
+						 <input type="radio" name="gradoDiferPostRadio" id="opcion1" value="0" >
 								Diferenciado
 					</label>
 					<label class="radio inline">
-						   <input type="radio" name="esfinter" id="opcion2" value="1">
+						   <input type="radio" name="gradoDiferPostRadio" id="opcion2" value="1">
 								Moderadamente diferenciado
 				    </label>
 				    <label class="radio inline">
-						   <input type="radio" name="esfinter" id="opcion2" value="1">
+						   <input type="radio" name="gradoDiferPostRadio" id="opcion2" value="2">
 								Poco diferenciado
 				    </label>
 				    <label class="radio inline">
-						   <input type="radio" name="esfinter" id="opcion2" value="1">
+						   <input type="radio" name="gradoDiferPostRadio" id="opcion2" value="3">
 								Indiferenciado
 				    </label>
 				    <label class="radio inline">
-						   <input type="radio" name="esfinter" id="opcion2" value="1">
+						   <input type="radio" name="gradoDiferPostRadio" id="opcion2" value="4">
 								No determinado
 				    </label>					    			    		    
 				    </div>
@@ -2330,46 +2330,46 @@
 						<div class="span5">		
 								<label for="esfinterRectal"><strong>Tumor</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion1" value="0" checked="checked">
+									    <input type="radio" name="tumorAnatPostRadio" id="opcion1" value="0" checked="checked">
 										1
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion2" value="1">
+									    <input type="radio" name="tumorAnatPostRadio" id="opcion2" value="1">
 										2
 									</label>
 									<label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion3" value="3">
+									    <input type="radio" name="tumorAnatPostRadio" id="opcion3" value="2">
 										3
 									</label>
 									<label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion4" value="3">
+									    <input type="radio" name="tumorAnatPostRadio" id="opcion4" value="3">
 										4a
 									</label>
 									<label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion4" value="3">
+									    <input type="radio" name="tumorAnatPostRadio" id="opcion4" value="4">
 										4b
 									</label>									
 									<label class="radio inline" style="margin-left: 30px ">
-									    <input type="radio" name="esfinterRectalN" id="opcion4" value="3">
+									    <input type="radio" name="tumorAnatPostNRadio" id="opcion4" value="1">
 										N0
 									</label>
 										<label class="radio inline">
-									    <input type="radio" name="esfinterRectalN" id="opcion4" value="3">
+									    <input type="radio" name="tumorAnatPostNRadio" id="opcion4" value="2">
 										N1
 									</label>
 										<label class="radio inline">
-									    <input type="radio" name="esfinterRectalN" id="opcion4" value="3">
+									    <input type="radio" name="tumorAnatPostNRadio" id="opcion4" value="3">
 										N2
 									</label>
 					</div>	  
 					<div class="span6" style="margin-top:16px">		
 								    <label class="radio inline">
 								    Ganglios resecados
-									    <input type="text" name="esfinterRectal" class="input-small" id="opcion1" >
+									    <input type="text" id="gangliosResaPost" class="input-small" id="gangliosResaPost" >
 									</label>
 								    <label class="radio inline">
 								    Ganglios positivos
-									    <input type="text" name="esfinterRectal" class="input-small" id="opcion2" >		
+									    <input type="text" id="gangliosPosiPost" class="input-small" id="gangliosPosiPost" >		
 									</label>
 					</div>	  
 		</div>	
@@ -2377,35 +2377,35 @@
 					<div class="row-fluid">
 							<div class="span12">
 								<div class="span3" style="padding-bottom:1.1em;">	
-								<label for="rsc"><strong>Invasión Vascular</strong></label>
+								<label for="invaVascularRadio"><strong>Invasión Vascular</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="inguinales" id="opcion1" value="0" >
+									    <input type="radio" name="invaVascularRadio" id="opcion1" value="0" >
 										Si
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="inguinales" id="opcion2" value="1">
+									    <input type="radio" name="invaVascularRadio" id="opcion2" value="1">
 										No
 									</label>																															
 								</div>	
 								<div class="span3" style="padding-bottom:1.1em;">	
-								<label for="rsc"><strong>Invasión Perineural</strong></label>
+								<label for="invaPeriRadio"><strong>Invasión Perineural</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="gaLate" id="opcion1" value="0" >
+									    <input type="radio" name="invaPeriRadio" id="opcion1" value="0" >
 										Si
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="gaLate" id="opcion2" value="1">
+									    <input type="radio" name="invaPeriRadio" id="opcion2" value="1">
 										No
 									</label>																															
 								</div>	
 					            <div class="span4" style="padding-bottom:1.1em;">	
-								<label for="rsc"><strong>Linfatica</strong></label>
+								<label for="linfaTicaRadio"><strong>Linfatica</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinter" id="opcion1" value="0" >
+									    <input type="radio" name="linfaTicaRadio" id="opcion1" value="0" >
 										Si
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinter" id="opcion2" value="1">
+									    <input type="radio" name="linfaTicaRadio" id="opcion2" value="1">
 										No
 									</label>																															
 								</div>	
@@ -2415,24 +2415,24 @@
 					<div class="row-fluid">
 							<div class="span12">
 								<div class="span3" style="padding-bottom:1.1em;">	
-								<label for="rsc"><strong>Budding Tumoral</strong></label>
+								<label for="buddTomoralRadio"><strong>Budding Tumoral</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="inguinales" id="opcion1" value="0" >
+									    <input type="radio" name="buddTomoralRadio" id="opcion1" value="0" >
 										Si
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="inguinales" id="opcion2" value="1">
+									    <input type="radio" name="buddTomoralRadio" id="opcion2" value="1">
 										No
 									</label>																															
 								</div>	
 								<div class="span3" style="padding-bottom:1.1em;">	
-								<label for="rsc"><strong>Pushing Border</strong></label>
+								<label for="pushBorderRadio"><strong>Pushing Border</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="inguinales" id="opcion1" value="0" >
+									    <input type="radio" name="pushBorderRadio" id="opcion1" value="0" >
 										Si
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="inguinales" id="opcion2" value="1">
+									    <input type="radio" name="pushBorderRadio" id="opcion2" value="1">
 										No
 									</label>																															
 								</div>	
@@ -2445,21 +2445,21 @@
 								<label for="rsc"><strong>Grado de regresión</strong></label>
 								    <label class="radio inline">
 								   Dvorak
-									    <input type="text" name="esfinterRectal" class="input-small" id="opcion2" >		
+									    <input type="text" name="gradoRegresionDvorak" id="gradoRegresionDvorak" class="input-small" >		
 									</label>
 								    <label class="radio inline">
 								    CAP
-									    <input type="text" name="esfinterRectal" class="input-small" id="opcion2" >		
+									    <input type="text" name="capVal" id="capVal" class="input-small" id="opcion2" >		
 									</label>																															
 								</div>	
 								<div class="span3" style="padding-bottom:1.1em;">	
-								<label for="rsc"><strong>Rta completa patológica</strong></label>
+								<label for="rtaCompletaRadio"><strong>Rta completa patológica</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="inguinales" id="opcion1" value="0" >
+									    <input type="radio" name="rtaCompletaRadio" id="rtaCompPato" value="0" >
 										Si
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="inguinales" id="opcion2" value="1">
+									    <input type="radio" name="rtaCompletaRadio" id="rtaCompPato" value="1">
 										No
 									</label>																															
 								</div>	
@@ -2469,7 +2469,7 @@
 					<div class="row-fluid">
 							<div class="span12">
 								<div class="span3" style="padding-bottom:1.1em;">	
-								<label for="rsc"><strong>IHQ</strong></label>
+								<label for="ihqRadio"><strong>IHQ</strong></label>
 								    <label class="radio inline">
 									    <input type="radio" name="ihqRadio" id="opcion1" value="0" >
 										Si
@@ -2494,11 +2494,11 @@
 								</div>	
 								<div class="span5" style="padding-bottom:1.1em;display: none" id="krasDiv">	
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion1" value="0" checked="checked">
+									    <input type="radio" name="tipoKrasRadio" id="opcion1" value="0" checked="checked">
 										WT
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion2" value="1">
+									    <input type="radio" name="tipoKrasRadio" id="opcion2" value="1">
 										M
 									</label>
 									</div>
@@ -2529,37 +2529,37 @@
 								<div class="span12">		
 									<label for="rsc"><strong>Quimioterapia</strong></label>
 								    <label class="radio inline">
-									    <input type="radio" name="trataRadio" id="opcion1" value="0" >
+									    <input type="radio" name="quimiotrataRadio" id="opcion1" value="0" >
 										XELOX
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="trataRadio" id="opcion2" value="1">
+									    <input type="radio" name="quimiotrataRadio" id="opcion2" value="1">
 										BFOL
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="trataRadio" id="opcion2" value="1">
+									    <input type="radio" name="quimiotrataRadio" id="opcion2" value="2">
 										FOLFOX
 									</label>
 								    <label class="radio inline">
-									    <input type="radio" name="trataRadio" id="opcion2" value="1">
+									    <input type="radio" name="quimiotrataRadio" id="opcion2" value="3">
 										CAPECITABINA
 									</label>
 								    <label class="radio inline">
 								    	Otro:
-									    <input type="text" name="trataRadio" id="opcion2">										
+									    <input type="text" name="quimiotrataOtro" id="quimiotrataOtro">										
 									</label>	
 									<label class="radio inline">
 												N Ciclos:
-										<select class="input-mini">
+										<select class="input-mini" id="nroCiclosTrata">
 											<option value="0">0</option>
-											<option value="0">1</option>
-											<option value="0">2</option>
-											<option value="0">3</option>
-											<option value="0">4</option>
-											<option value="0">5</option>
-											<option value="0">6</option>
-											<option value="0">7</option>
-											<option value="0">8</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
 										</select>
 				    				</label>																											
 								</div>	
@@ -2567,7 +2567,7 @@
 			       <br>
 					<div class="row-fluid">
 								<div class="span12">		
-									<label for="rsc"><strong>Radioterapia</strong></label>
+									<label for="radioTeRadio"><strong>Radioterapia</strong></label>
 								    <label class="radio inline">
 									    <input type="radio" name="radioTeRadio" id="opcion1" value="0" checked="checked">
 										No
@@ -2583,15 +2583,15 @@
 							    <div class="" style="padding-bottom:1.1em;display: none" id="radioTeDiv">	
 									<div class="span3">
 											<label><strong>Dosis total</strong></label>
-											<input type="text" name="esfinter" id="opcion1" >
+											<input type="text" name="dosisTotalTrata" id="dosisTotalTrata" >
 									</div>
 									<div class="span2">
 											<label for=""><strong>Fecha Inicio</strong></label>
-											<input type="text" class="span7" alt="dateP" >		
+											<input type="text" class="span7" alt="dateP" id="dosisTRataFechaInicio" >		
 									</div>
 									<div class="span2">
 											<label for=""><strong>Fecha Finalización</strong></label>
-											<input type="text" class="span7" alt="dateP" >		
+											<input type="text" class="span7" alt="dateP"  id="dosisTRataFechaFin"  >		
 									</div>	
 									<div class="span2">
 										<label for=""><strong>Suspendio</strong></label>
@@ -2601,7 +2601,7 @@
 										</label>
 										<div id="suspendioYesRadioTeDiv" class="radio inline" style="padding-bottom:1.1em;display: none" >
 										<label class="radio inline"><strong>Dias:</strong></label>
-										<input type="text" class="span4 radio inline" >
+										<input type="text" class="span4 radio inline" id="suspenTrataDias" >
 										</div>												
 									</div>	
 								</div>
@@ -2812,25 +2812,6 @@ jQuery(function() {
 	});	
 	
 	
-	
-	
-	 jQuery.ajax({
-         url: '<c:url value="/loadAllCat.htm" />',
-         type: "GET",
-         dataType: "json",
-         contentType: "application/json",
-         data:"", 
-         success: function(resp){                                       
-        	 var options = $("#typeId");
-        	 $.each(resp.obraSociales, function() {
-        	     options.append($("<option />").val(this.idos).text(this.nombre));
-        	 });
-//         	 var options = $("#clientState");
-//         	 $.each(resp.estadoCli, function() {
-//         	     options.append($("<option />").val(this.idestadocli).text(this.descripcion));
-//         	 });
-         }
-       });
 
 	 jQuery("input[alt=dateP]").datepicker({
 		 showButtonPanel: true,
@@ -2847,78 +2828,864 @@ jQuery(function() {
 		 });
 	 
 	 
-	jQuery("#addClientForm").validate({
-		focusInvalid:false,
-	    rules: {
-	    	nombreC:{required: true},
-			emailC:{email:true},
-			cuitC:{digits:true}
-        },
-	    messages: {
-	    	nombreC: {required: "Campo obligatorio"},
-	    	emailC:{email:"Email incorrecto"},
-	    	cuitC:{digits:"Campo numerico"}
-	    },
-  	submitHandler: function() { 	  	
-  		var nombreNew = jQuery("#nombreC").val();
-  		var direccionNew = jQuery("#direccionC").val();
-  		var localidadNew = jQuery("#localidadC").val();
-  		var fechaNac = jQuery("#dateStart").val();
-  		var emailNew = jQuery("#emailC").val();
-  		var telNew = jQuery("#telC-1").val();
-  		var telNew2 =" ";
-  		if (jQuery("#telC-2").length>0){
-  			telNew2 = jQuery("#telC-2").val();
-  		}
-  		var telNew3 =" ";
-  		if (jQuery("#telC-3").length>0){
-  				telNew3 = jQuery("#telC-3").val();
-  		}
-  		var cuitNew = jQuery("#cuitC").val();
-  		var puntuaNew = 1;
-  		var comentNew = jQuery("#comentC").val();
-  		var typeId = jQuery("#typeId").val();
-  		var numOS = jQuery("#numOS").val();
-	    var sexoSelected = jQuery("input[name=sexo]:checked").val();
 
-  		
-  		var patient = {'idos':typeId,'nombre':nombreNew,'domicilio':localidadNew,'mail':emailNew,'telefono':telNew+"@@"+telNew2+"@@"+telNew3,
-  						'notas':comentNew,'fechanac':fechaNac,'nroOs':numOS,"sexo":sexoSelected};		  		 
-  		 
-        jQuery.ajax({
-             url: '<c:url value="/addNewPatient.htm" />',
-             type: "POST",
-             dataType: "json",
-             contentType: "application/json",
-             data: JSON.stringify( patient ), 
-             success: function(resp){                                       
-            	 if(resp!=-1){ 
-            		 jQuery("#dialogSuccessOperation").dialog("open");
-         				cleanScreenAdd();
-         	 	}
-         	 	else{
-           		 jQuery("#dialogErrorOperation").dialog("open");
-         	 	}           
-             }
-           });
-  		
-  	}
-	         
-  });
+  
+  
+jQuery("#addPreconsulta").validate({
+	focusInvalid:false,
+    rules: {
+//	    	nombreC:{required: true},
+    },
+    messages: {
+//	    	nombreC: {required: "Campo obligatorio"},
+    },
+	submitHandler: function() { 	  	
+		
+		var peso = jQuery("#pesoPre").val();
+		var talla = jQuery("#tallePre").val();
+		var superficie = jQuery("#superPre").val();  		
+        var performance = jQuery("input[name=performanceRadio]:checked").val();
+        var comentario = jQuery("#comentPreconsulta").val();
 	
-// 	function loadLastClientId(){
-// 	    jQuery.ajax({
-// 	        url: '<c:url value="/loadLastClientNum.htm" />',
-// 	        type: "GET",
-// 	        dataType: "json",
-// 	        contentType: "application/json",
-// 	        data: "", 
-// 	        success: function(resp){                                       
-// 	       			jQuery("#clientNum").val(resp+1);        
-// 	        }
-// 	      });
-// 	}
+		var preConsulta = {'peso':peso,'talla':talla,'supcorporal':superficie,'performanceStatus':performance,'comentario':comentario};		  		 
+		 
+    jQuery.ajax({
+         url: '<c:url value="/addNewPreconsulta.htm" />',
+         type: "POST",
+         dataType: "json",
+         contentType: "application/json",
+         data: JSON.stringify( preConsulta ), 
+         success: function(resp){                                       
+        	 if(resp!=-1){ 
+        		 jQuery("#dialogSuccessOperation").dialog("option","title","Agregar PreConsulta");
+        		 jQuery("#dialogSuccessOperation").dialog("open");
+     	 	}
+     	 	else{
+       		 jQuery("#dialogErrorOperation").dialog("open");
+     	 	}           
+         }
+       });  		
+	}
+         
+});  
+  
+jQuery("#addMotivo").validate({
+	focusInvalid:false,
+    rules: {
+//	    	nombreC:{required: true},
+    },
+    messages: {
+//	    	nombreC: {required: "Campo obligatorio"},
+    },
+	submitHandler: function() { 	  	
+		var motivosX = "";
+		
+		if($("#motivo1").is(':checked')) {  
+			motivosX =  motivosX+"-"+$("#motivo1").attr("id");
+    } 
+		if($("#motivo2").is(':checked')) {  
+			motivosX =  motivosX+"-"+$("#motivo2").attr("id");
+    } 
+		if($("#motivo3").is(':checked')) {  
+			motivosX =  motivosX+"-"+$("#motivo3").attr("id");
+    } 
+		if($("#motivo4").is(':checked')) {  
+			motivosX =  motivosX+"-"+$("#motivo4").attr("id");
+    } 
+		if($("#motivo5").is(':checked')) {  
+			motivosX =  motivosX+"-"+$("#motivo5").attr("id");
+    } 
+		if($("#motivo6").is(':checked')) {  
+			motivosX =  motivosX+"-"+$("#motivo6").attr("id");
+    } 
+		if($("#motivo7").is(':checked')) {  
+			motivosX =  motivosX+"-"+$("#motivo7").attr("id");
+    } 
+		if($("#motivo8").is(':checked')) {  
+			motivosX =  motivosX+"-"+$("#motivo8").attr("id");
+    } 
+		  		
+		var otroMotivo = jQuery("#motivoOtro").val();
+		var fechaMotivo = jQuery("#dateStartMotivo").val();  		
+    var mesesMotivo = jQuery("#mesesMotivo").val();
 	
+		var motivo = {'motivo':motivosX,'motivoOtro':otroMotivo,'fechaInicio':fechaMotivo,'evoMeses':mesesMotivo};		  		 
+		 
+    jQuery.ajax({
+         url: '<c:url value="/addNewMotivo.htm" />',
+         type: "POST",
+         dataType: "json",
+         contentType: "application/json",
+         data: JSON.stringify( motivo ), 
+         success: function(resp){                                       
+        	 if(resp!=-1){ 
+        		 jQuery("#dialogSuccessOperation").dialog("option","title","Agregar Motivo");
+        		 jQuery("#dialogSuccessOperation").dialog("open");
+     	 	}
+     	 	else{
+       		 jQuery("#dialogErrorOperation").dialog("open");
+     	 	}           
+         }
+       });  		
+	}
+         
+});	
+
+jQuery("#addAntecedentes").validate({
+	focusInvalid:false,
+    rules: {
+//	    	nombreC:{required: true},
+    },
+    messages: {
+//	    	nombreC: {required: "Campo obligatorio"},
+    },
+	submitHandler: function() { 	  	
+		var apersonal = "";
+		
+		if($("#apersonal1").is(':checked')) {  
+			apersonal =  apersonal+"-"+$("#apersonal1").attr("id");
+		}
+		if($("#apersonal2").is(':checked')) {  
+			apersonal =  apersonal+"-"+$("#apersonal2").attr("id");
+		}
+		if($("#apersonal3").is(':checked')) {  
+			apersonal =  apersonal+"-"+$("#apersonal3").attr("id");
+		}		
+		if($("#apersonal4").is(':checked')) {  
+			apersonal =  apersonal+"-"+$("#apersonal4").attr("id");
+		}
+		if($("#apersonal5").is(':checked')) {  
+			apersonal =  apersonal+"-"+$("#apersonal5").attr("id");
+		}
+			
+		var otroAPersonal = jQuery("#otroAPersonal").val();
+		
+		var apersonalPat = "";
+		
+		if($("#apersonalPat1").is(':checked')) {  
+			apersonalPat =  apersonalPat+"-"+$("#apersonalPat1").attr("id");
+		}
+		if($("#apersonalPat2").is(':checked')) {  
+			apersonalPat =  apersonalPat+"-"+$("#apersonalPat2").attr("id");
+		}
+		if($("#apersonalPat3").is(':checked')) {  
+			apersonalPat =  apersonalPat+"-"+$("#apersonalPat3").attr("id");
+		}
+		if($("#apersonalPat4").is(':checked')) {  
+			apersonalPat =  apersonalPat+"-"+$("#apersonalPat4").attr("id");
+		}
+		if($("#apersonalPat5").is(':checked')) {  
+			apersonalPat =  apersonalPat+"-"+$("#apersonalPat5").attr("id");
+		}
+		if($("#apersonalPat4").is(':checked')) {  
+			apersonalPat =  apersonalPat+"-"+$("#apersonalPat4").attr("id");
+		}		
+		if($("#neoplasia").is(':checked')) {  
+			apersonalPat =  apersonalPat+"-"+$("#neoplasia").attr("id");
+		}				
+		var neoPlasiaText = jQuery("#neoPlasiaText").val();
+		
+		var famCancer = "";
+		
+		if($("#checkfamMenorNin").is(':checked')) {  
+			famCancer =  famCancer+"-"+$("#checkfamMenorNin").attr("id");
+		}
+		if($("#checkfamMenor60").is(':checked')) {  
+			famCancer =  famCancer+"-"+$("#checkfamMenor60").attr("id");
+			var famMenor60Nro = jQuery("#famMenor60").val();		
+		}
+		if($("#checkfamMayor60").is(':checked')) {  
+			famCancer =  famCancer+"-"+$("#checkfamMayor60").attr("id");
+			var famMayor60Nro = jQuery("#famMayor60").val();	
+		}
+		if($("#checkfamSegundoGrado").is(':checked')) {  
+			famCancer =  famCancer+"-"+$("#checkfamSegundoGrado").attr("id");
+			var famSegundoGradoNro = jQuery("#famSegundoGrado").val();
+		}
+	  	
+		var anteSindrome = jQuery("input[name=anteSindrome]:checked").val();
+		
+		var siSindrome = "";
+		
+		if($("#checkPAF").is(':checked')) {  
+			siSindrome =  siSindrome+"-"+$("#checkPAF").attr("id");
+		}
+		if($("#checkLYNCH").is(':checked')) {  
+			siSindrome =  siSindrome+"-"+$("#checkLYNCH").attr("id");
+		}
+		if($("#checkMYH").is(':checked')) {  
+			siSindrome =  siSindrome+"-"+$("#checkMYH").attr("id");
+		}
+
+		var antecedentes = {'personales':peso,'personalesPatologicos':talla,'neoplasia':superficie,'familiarCancer':performance,'antecedentesCcrh':comentario};		  		 
+		 
+    jQuery.ajax({
+         url: '<c:url value="/addNewAntecedente.htm" />',
+         type: "POST",
+         dataType: "json",
+         contentType: "application/json",
+         data: JSON.stringify( antecedentes ), 
+         success: function(resp){                                       
+        	 if(resp!=-1){ 
+        		 jQuery("#dialogSuccessOperation").dialog("option","title","Agregar Antecedentes");
+        		 jQuery("#dialogSuccessOperation").dialog("open");
+     	 	}
+     	 	else{
+       		 jQuery("#dialogErrorOperation").dialog("open");
+     	 	}           
+         }
+       });  		
+	}
+         
+});  
+
+
+
+jQuery("#addEvaluacionClinica").validate({
+	focusInvalid:false,
+    rules: {
+//	    	nombreC:{required: true},
+    },
+    messages: {
+//	    	nombreC: {required: "Campo obligatorio"},
+    },
+	submitHandler: function() { 	
+		
+		var evaAbdomen = "";
+		
+		if($("#haAbdomen1").is(':checked')) {  
+			evaAbdomen =  evaAbdomen+"-"+$("#haAbdomen1").attr("id");
+		}
+		if($("#haAbdomen2").is(':checked')) {  
+			evaAbdomen =  evaAbdomen+"-"+$("#haAbdomen2").attr("id");
+		}
+		if($("#haAbdomen3").is(':checked')) {  
+			evaAbdomen =  evaAbdomen+"-"+$("#haAbdomen3").attr("id");
+		}		
+		if($("#haAbdomen4").is(':checked')) {  
+			evaAbdomen =  evaAbdomen+"-"+$("#haAbdomen4").attr("id");
+		}
+		if($("#haAbdomen5").is(':checked')) {  
+			evaAbdomen =  evaAbdomen+"-"+$("#haAbdomen5").attr("id");
+		}
+				
+		var evaColon = "";
+		
+		if($("#haColon1").is(':checked')) {  
+			evaColon =  evaColon+"-"+$("#haColon1").attr("id");
+		}
+		if($("#haColon2").is(':checked')) {  
+			evaColon =  evaColon+"-"+$("#haColon2").attr("id");
+		}
+		if($("#haColon3").is(':checked')) {  
+			evaColon =  evaColon+"-"+$("#haColon3").attr("id");
+		}
+		if($("#haColon4").is(':checked')) {  
+			evaColon =  evaColon+"-"+$("#haColon4").attr("id");
+		}
+		if($("#haColon5").is(':checked')) {  
+			evaColon =  evaColon+"-"+$("#haColon5").attr("id");
+		}
+		if($("#haColon6").is(':checked')) {  
+			evaColon =  evaColon+"-"+$("#haColon6").attr("id");
+		}		
+
+		var evaRecto = "";
+
+		if($("#haRecto1").is(':checked')) {  
+			evaRecto =  evaRecto+"-"+$("#haRecto1").attr("id");
+		}	
+		if($("#haRecto2").is(':checked')) {  
+			evaRecto =  evaRecto+"-"+$("#haRecto2").attr("id");
+		}	
+		if($("#haRecto3").is(':checked')) {  
+			evaRecto =  evaRecto+"-"+$("#haRecto3").attr("id");
+		}	
+		
+		var evaAdenopatia = "";
+
+		if($("#haAdenopatia1").is(':checked')) {  
+			evaAdenopatia =  evaAdenopatia+"-"+$("#haAdenopatia1").attr("id");
+		}	
+		if($("#haAdenopatia2").is(':checked')) {  
+			evaAdenopatia =  evaAdenopatia+"-"+$("#haAdenopatia2").attr("id");
+		}	
+		if($("#haAdenopatia3").is(':checked')) {  
+			evaAdenopatia =  evaAdenopatia+"-"+$("#haAdenopatia3").attr("id");
+		}	
+		if($("#haAdenopatia4").is(':checked')) {  
+			evaAdenopatia =  evaAdenopatia+"-"+$("#haAdenopatia4").attr("id");
+		}	
+
+		var notasEvaCli = jQuery("#notasEvaCli").val();
+		
+		var evaClinica = {'abdomen':evaAbdomen,'colon':evaColon,'recto':evaRecto,'adenopatias':evaAdenopatia,'notas':notasEvaCli};		  		 
+		 
+    jQuery.ajax({
+         url: '<c:url value="/addNewEvaClinica.htm" />',
+         type: "POST",
+         dataType: "json",
+         contentType: "application/json",
+         data: JSON.stringify( evaClinica ), 
+         success: function(resp){                                       
+        	 if(resp!=-1){ 
+        		 jQuery("#dialogSuccessOperation").dialog("option","title","Agregar Evaluación Clinica");
+        		 jQuery("#dialogSuccessOperation").dialog("open");
+     	 	}
+     	 	else{
+       		 jQuery("#dialogErrorOperation").dialog("open");
+     	 	}           
+         }
+       });  		
+	}
+         
+});  
+
+
+jQuery("#addExaProctologico").validate({
+	focusInvalid:false,
+    rules: {
+//	    	nombreC:{required: true},
+    },
+    messages: {
+//	    	nombreC: {required: "Campo obligatorio"},
+    },
+	submitHandler: function() { 	
+		
+		
+		var movilRectal = jQuery("input[name=movilRectal]:checked").val();
+		var fijoRectal = jQuery("input[name=fijoRectal]:checked").val();
+		var esfinterRectal = jQuery("input[name=esfinterRectal]:checked").val();
+		
+		var rscPresente = jQuery("input[name=rscPresente]:checked").val();
+		var rscMedida = jQuery("input[name=rscMedida]:checked").val();
+		var rscAltura = jQuery("#rscAltura").val();
+		var rscFecha = jQuery("#rscFecha").val();
+
+		var vccPresente = jQuery("input[name=vccPresente]:checked").val();
+		var vccTipo = jQuery("input[name=vccTipo]:checked").val();
+		var vccMedida = jQuery("input[name=vccMedida]:checked").val();
+		var vccAltura = jQuery("#vccAltura").val();
+		var vccFecha = jQuery("#vccFecha").val();
+		
+		var eePresente = jQuery("input[name=eePresente]:checked").val();
+		var eeTipo = jQuery("input[name=eeTipo]:checked").val();
+		var eeTipoN = jQuery("input[name=eeTipoN]:checked").val();
+		var eeesfinter = jQuery("input[name=eeesfinter]:checked").val();
+		var eeMedida = jQuery("input[name=eeMedida]:checked").val();
+		var eeFecha = jQuery("#eeFecha").val();
+		
+		var exaProcto = {'tactoRectal':movilRectal+"//"+fijoRectal,'tactoRectalInfiltra':esfinterRectal,'rsc':rscPresente+"//"+rscMedida,'rscAltura':rscAltura,'rscFecha':rscFecha,
+						 'vcc':vccPresente+"//"+vccTipo+"//"+vccMedida,'vccAltura':vccAltura,'vccFecha':vccFecha,'ee':eePresente+"//"+eeTipo+"//"+eeTipoN,'eeInfiltra':eeesfinter+"//"+eeMedida,'eeFecha':eeFecha};		  		 
+		 
+    jQuery.ajax({
+         url: '<c:url value="/addNewExaProcto.htm" />',
+         type: "POST",
+         dataType: "json",
+         contentType: "application/json",
+         data: JSON.stringify( exaProcto ), 
+         success: function(resp){                                       
+        	 if(resp!=-1){ 
+        		 jQuery("#dialogSuccessOperation").dialog("option","title","Agregar Evaluación Clinica");
+        		 jQuery("#dialogSuccessOperation").dialog("open");
+     	 	}
+     	 	else{
+       		 jQuery("#dialogErrorOperation").dialog("open");
+     	 	}           
+         }
+       });  		
+	}
+         
+});  
+
+
+
+jQuery("#addEstadificacion").validate({
+	focusInvalid:false,
+    rules: {
+//	    	nombreC:{required: true},
+    },
+    messages: {
+//	    	nombreC: {required: "Campo obligatorio"},
+    },
+	submitHandler: function() { 	
+		
+		var centroRM = jQuery("#centroRM").val();
+		var fechaRM = jQuery("#fechaRM").val();
+		var distanciaSupRM = jQuery("#distanciaSupRM").val();
+		var distanciaMarARadio = jQuery("input[name=distanciaMarARadio]:checked").val();
+		var alturaRM = jQuery("#alturaRM").val();
+		var numTRadio = jQuery("input[name=numTRadio]:checked").val();
+		var numTNRadio = jQuery("input[name=numTNRadio]:checked").val();
+		var crmPresente = jQuery("input[name=crmPresente]:checked").val();
+		var emviPresente = jQuery("input[name=emviPresente]:checked").val();
+		var depoSati = jQuery("input[name=depoSati]:checked").val();
+		var estaRInterior = jQuery("input[name=estaRInterior]:checked").val();
+		var inguinales = jQuery("input[name=inguinales]:checked").val();
+		var gaLate = jQuery("input[name=gaLate]:checked").val();
+		var esfinterRM = jQuery("input[name=esfinterRM]:checked").val();
+		var tcTorax = jQuery("input[name=tcTorax]:checked").val();
+		var tcAbdomen = jQuery("input[name=tcAbdomen]:checked").val();
+		var petTC = jQuery("input[name=petTC]:checked").val();
+		var mtsRadio = jQuery("input[name=mtsRadio]:checked").val();
+		var suvEstati = jQuery("#suvEstati").val();
+		var marcaTuFecha = jQuery("#marcaTuFecha").val();
+		var ceaAument = jQuery("input[name=ceaAument]:checked").val();
+		var caAument = jQuery("input[name=caAument]:checked").val();
+		var tnmValT = jQuery("#tnmValT").val();
+		var tnmValN = jQuery("#tnmValN").val();
+		var tnmValM = jQuery("#tnmValM").val();
+		var ptnmValT = jQuery("#ptnmValT").val();
+		var ptnmValN = jQuery("#ptnmValN").val();
+		var ptnmValM = jQuery("#ptnmValM").val();
+		
+		var metastasis = "";
+
+		if($("#metastaDist1").is(':checked')) {  
+			metastasis =  metastasis+"-"+$("#metastaDist1").attr("id");
+		}	
+		if($("#metastaDist2").is(':checked')) {  
+			metastasis =  metastasis+"-"+$("#metastaDist2").attr("id");
+		}
+		if($("#metastaDist3").is(':checked')) {  
+			metastasis =  metastasis+"-"+$("#metastaDist3").attr("id");
+		}
+		if($("#metastaDist4").is(':checked')) {  
+			metastasis =  metastasis+"-"+$("#metastaDist4").attr("id");
+		}
+		if($("#metastaDist5").is(':checked')) {  
+			metastasis =  metastasis+"-"+$("#metastaDist5").attr("id");
+		}
+		if($("#metastaDist6").is(':checked')) {  
+			metastasis =  metastasis+"-"+$("#metastaDist6").attr("id");
+		}
+		if($("#metastaDist7").is(':checked')) {  
+			metastasis =  metastasis+"-"+$("#metastaDist7").attr("id");
+		}
+		if($("#metastaDist8").is(':checked')) {  
+			metastasis =  metastasis+"-"+$("#metastaDist8").attr("id");
+		}
+		var metastaDistOtras = jQuery("#metastaDistOtras").val();
+		
+		var revisionRMFecha = jQuery("#revisionRMFecha").val();
+		var revisionRMDistan = jQuery("#revisionRMDistan").val();
+		var revisionRMMargen = jQuery("input[name=revisionRMMargen]:checked").val();
+		var revisionAlturaRM = jQuery("#revisionAlturaRM").val();
+		var tRevision = jQuery("input[name=tRevision]:checked").val();
+		var tRevision2 = jQuery("input[name=tRevision2]:checked").val();
+		var revisionCRMPresente = jQuery("input[name=revisionCRMPresente]:checked").val();
+		var revisionemviPresente = jQuery("input[name=revisionemviPresente]:checked").val();
+		var revisionEstaTu = jQuery("input[name=revisionEstaTu]:checked").val();
+		var revisioninguinales = jQuery("input[name=revisioninguinales]:checked").val();
+		var revisiongaLate = jQuery("input[name=revisiongaLate]:checked").val();
+		var revisionesfinter = jQuery("input[name=revisionesfinter]:checked").val();
+		
+		var estadificacion = {'rmCentro':centroRM,'rmFecha':fechaRM,'rmDistEsfinter':distanciaSupRM,'rmDistAnal':distanciaMarARadio,'rmAltura':alturaRM,
+						 	  'rmTumor':numTRadio+"//"+numTNRadio,'crm':crmPresente,'emvi':emviPresente,'depSatelites':depoSati,'tumoRectoInferior':estaRInterior,'ganglios':inguinales,
+						 	 'gangliosLate':gaLate, 'infiltraEsfinter':esfinterRM,'tcTorax':tcTorax,'tcAbd':tcAbdomen,'petCt':petTC,'mts':mtsRadio,'suv':suvEstati,
+						 	  'marTumFecha':marcaTuFecha,'ceaAumentado':ceaAument,'ca19':caAument,'tnmT':tnmValT,'tnmN':tnmValN,'tnmM':tnmValM,
+						 	  'tnmPt':ptnmValT,'tnmPn':ptnmValN,'tnmPm':ptnmValM,'metastasis':metastasis,'metastasisOtra':metastaDistOtras, 'revRmFecha':revisionRMFecha,'revDistanEsfinter':revisionRMDistan,
+						 	 'revDistanAnal':revisionRMMargen,'revAltura':revisionAlturaRM,'revTumor':tRevision+"//"+tRevision2,'revCrm':revisionCRMPresente,'revEmvi':revisionemviPresente,
+						 	 'revEstadifTumores':revisionEstaTu,'revGanIngui':revisioninguinales,'revGanLateral':revisiongaLate,'revInfiltraEsf':revisionesfinter};		  		 
+		 
+    jQuery.ajax({
+         url: '<c:url value="/addNewEstadificacion.htm" />',
+         type: "POST",
+         dataType: "json",
+         contentType: "application/json",
+         data: JSON.stringify( estadificacion ), 
+         success: function(resp){                                       
+        	 if(resp!=-1){ 
+        		 jQuery("#dialogSuccessOperation").dialog("option","title","Agregar Estadificación");
+        		 jQuery("#dialogSuccessOperation").dialog("open");
+     	 	}
+     	 	else{
+       		 jQuery("#dialogErrorOperation").dialog("open");
+     	 	}           
+         }
+       });  		
+	}
+         
+});  
+
+
+
+jQuery("#addAnaPatologica").validate({
+	focusInvalid:false,
+    rules: {
+//	    	nombreC:{required: true},
+    },
+    messages: {
+//	    	nombreC: {required: "Campo obligatorio"},
+    },
+	submitHandler: function() { 	
+		
+		var nroBiopsia = jQuery("#nroBiopsia").val();
+		var sugesIMS = jQuery("input[name=sugesIMS]:checked").val();
+		var fechaBiopsia = jQuery("#fechaBiopsia").val();
+		var ihqBiopsiaRadio = jQuery("input[name=ihqBiopsiaRadio]:checked").val();
+		var diagHisto = jQuery("#diagHisto").val();
+		var expConservadaRadio = jQuery("input[name=expConservadaRadio]:checked").val();
+		var notaExpConservada = jQuery("#notaExpConservada").val();
+		var diagnostiWhere = jQuery("#diagnostiWhere").val();
+		var gradoDiferRadio = jQuery("input[name=gradoDiferRadio]:checked").val();
+		var cirugiaHayRadio = jQuery("input[name=cirugiaHayRadio]:checked").val();
+		var otroBaseDiag = jQuery("#otroBaseDiag").val();
+		
+		var anaPatologica = {'biopsia':nroBiopsia,'fechaDiag':fechaBiopsia,'diagHistologico':diagHisto,'apSugestiva':sugesIMS,'ihq':ihqBiopsiaRadio,
+						 	  'expresionConserv':expConservadaRadio+"//"+notaExpConservada,'diagnosticadoEn':diagnostiWhere,'gradoDif':gradoDiferRadio,
+						 	  'baseDiagCirugia':cirugiaHayRadio,'baseDiag':otroBaseDiag};		  		 
+		 
+    jQuery.ajax({
+         url: '<c:url value="/addNewAnaPatologica.htm" />',
+         type: "POST",
+         dataType: "json",
+         contentType: "application/json",
+         data: JSON.stringify( anaPatologica ), 
+         success: function(resp){                                       
+        	 if(resp!=-1){ 
+        		 jQuery("#dialogSuccessOperation").dialog("option","title","Agregar Anatomia Patológica");
+        		 jQuery("#dialogSuccessOperation").dialog("open");
+     	 	}
+     	 	else{
+       		 jQuery("#dialogErrorOperation").dialog("open");
+     	 	}           
+         }
+       });  		
+	}
+         
+});  
+
+jQuery("#addTratamiento").validate({
+	focusInvalid:false,
+    rules: {
+//	    	nombreC:{required: true},
+    },
+    messages: {
+//	    	nombreC: {required: "Campo obligatorio"},
+    },
+	submitHandler: function() { 	
+		
+		var udaOndoRadio = jQuery("input[name=udaOndoRadio]:checked").val();
+		var udaOndoOtro = jQuery("#udaOndoOtro").val();
+		
+		var cirugiaTrataRadio = jQuery("input[name=cirugiaTrataRadio]:checked").val();
+		var quimioInduccion = jQuery("input[name=quimioInduccion]:checked").val();
+		var quimioInduccionOtro = jQuery("#quimioInduccionOtro").val();
+		var quimioInduccionCiclos = jQuery("#quimioInduccionCiclos").val();
+		var quimioradioInduRadio = jQuery("input[name=quimioradioInduRadio]:checked").val();
+		var quimioradioInduRadioOtro = jQuery("#quimioradioInduRadioOtro").val();
+		var quimioIntervalRadio = jQuery("input[name=quimioIntervalRadio]:checked").val();
+		var quimioIntervalRadioOtro = jQuery("#quimioIntervalRadioOtro").val();
+		var quimioIntervalCiclos = jQuery("#quimioIntervalCiclos").val();	
+		
+
+		var tratamiento = {'udaondo':udaOndoRadio+"//"+udaOndoOtro,'cirugia':cirugiaTrataRadio,'quimioterapiaInduc':quimioInduccion+"//"+quimioInduccionOtro,
+							 'quimioteInducNroCiclos':quimioInduccionCiclos,'quimioOtra':quimioradioInduRadio+"//"+quimioradioInduRadioOtro, 
+							 'quimioterapiaInter':quimioIntervalRadio+"//"+quimioIntervalRadioOtro,'quimioteInterNroCiclos':quimioIntervalCiclos};		  		 
+		 
+    jQuery.ajax({
+         url: '<c:url value="/addTratamiento.htm" />',
+         type: "POST",
+         dataType: "json",
+         contentType: "application/json",
+         data: JSON.stringify( tratamiento ), 
+         success: function(resp){                                       
+        	 if(resp!=-1){ 
+        		 jQuery("#dialogSuccessOperation").dialog("option","title","Agregar Anatomia Patológica");
+        		 jQuery("#dialogSuccessOperation").dialog("open");
+     	 	}
+     	 	else{
+       		 jQuery("#dialogErrorOperation").dialog("open");
+     	 	}           
+         }
+       });  		
+	}
+         
+});  
+
+
+jQuery("#addDescTrataNeoadyuante").validate({
+	focusInvalid:false,
+    rules: {
+//	    	nombreC:{required: true},
+    },
+    messages: {
+//	    	nombreC: {required: "Campo obligatorio"},
+    },
+	submitHandler: function() { 	
+		
+		var radioTera = jQuery("input[name=radioTera]:checked").val();
+		var dosisTotalRadioTer = jQuery("#dosisTotalRadioTer").val();	
+		var fechaInicioRadioTer = jQuery("#fechaInicioRadioTer").val();
+		var fechaFinRadioTer = jQuery("#fechaFinRadioTer").val();
+		var suspenRadioTerRadio = jQuery("input[name=suspenRadioTerRadio]:checked").val();
+		var diasSuspenRadioTer = jQuery("#diasSuspenRadioTer").val();
+		var quimioRadio = jQuery("input[name=quimioRadio]:checked").val();
+		var quimioEsquema = jQuery("#quimioEsquema").val();
+		var quimioNroCiclos = jQuery("#quimioNroCiclos").val();
+		var fechaInicioQuimio = jQuery("#fechaInicioQuimio").val();
+		var fechaFinQuimio = jQuery("#fechaFinQuimio").val();
+		var toxiRadio = jQuery("input[name=toxiRadio]:checked").val();
+		var gradoIII = jQuery("input[name=gradoIII]:checked").val();
+
+		var descTrataNeoadyuante = {'radioterapia':radioTera,'radioDosis':dosisTotalRadioTer,'radioFechaInicio':fechaInicioRadioTer,
+							 'radioFechaFinal':fechaFinRadioTer,'radioSuspendio':suspenRadioTerRadio+"//"+diasSuspenRadioTer, 
+							 'quimioEsquema':quimioRadio+"//"+quimioEsquema,'quimioNroCiclos':quimioNroCiclos,'quimioNroCiclos':quimioNroCiclos,
+							 'quimioFechaInicio':fechaInicioQuimio,'quimioFechaFinal':fechaFinQuimio,'toxicidad':toxiRadio,'toxGrado':gradoIII};		  		 
+		 
+    jQuery.ajax({
+         url: '<c:url value="/addNewdescTrataNeoadyuante.htm" />',
+         type: "POST",
+         dataType: "json",
+         contentType: "application/json",
+         data: JSON.stringify( descTrataNeoadyuante ), 
+         success: function(resp){                                       
+        	 if(resp!=-1){ 
+        		 jQuery("#dialogSuccessOperation").dialog("option","title","Agregar Anatomia Patológica");
+        		 jQuery("#dialogSuccessOperation").dialog("open");
+     	 	}
+     	 	else{
+       		 jQuery("#dialogErrorOperation").dialog("open");
+     	 	}           
+         }
+       });  		
+	}
+         
+});  
+
+
+jQuery("#addRespuestaNeoadyuante").validate({
+	focusInvalid:false,
+    rules: {
+//	    	nombreC:{required: true},
+    },
+    messages: {
+//	    	nombreC: {required: "Campo obligatorio"},
+    },
+	submitHandler: function() { 	
+			
+		var centroPostTrata = jQuery("#centroPostTrata").val();	
+		var fechaPostTrata = jQuery("#fechaPostTrata").val();
+		var distanciaPostTrata = jQuery("#distanciaPostTrata").val();
+		var distMargenPostTrataRadio = jQuery("input[name=distMargenPostTrataRadio]:checked").val();
+		var alturaPostTrataRadio = jQuery("#alturaPostTrataRadio").val();
+		var tumorPostTrataRadio = jQuery("input[name=tumorPostTrataRadio]:checked").val();
+		var tumorPostTrataNRadio = jQuery("input[name=tumorPostTrataNRadio]:checked").val();
+		var crmPostTrataRadio = jQuery("input[name=crmPostTrataRadio]:checked").val();
+		var emviPostTrataRadio = jQuery("input[name=emviPostTrataRadio]:checked").val();
+		var depoSatiRadio = jQuery("input[name=depoSatiRadio]:checked").val();
+		var estaRInteriorRadio = jQuery("input[name=estaRInteriorRadio]:checked").val();
+		var gradoRegresionRadio = jQuery("input[name=gradoRegresionRadio]:checked").val();
+		var inguinalesRadio = jQuery("input[name=inguinalesRadio]:checked").val();
+		var gaLateRadio = jQuery("input[name=gaLateRadio]:checked").val();
+		var infiltraEsPostRadio = jQuery("input[name=infiltraEsPostRadio]:checked").val();
+		var evaPostRadio = jQuery("input[name=evaPostRadio]:checked").val();
+		
+		var movilRectalRadio = jQuery("input[name=movilRectalRadio]:checked").val();
+		var fijoRectalRadio = jQuery("input[name=fijoRectalRadio]:checked").val();
+		var esfinterPostRectalRadio = jQuery("input[name=esfinterPostRectalRadio]:checked").val();
+		var rscPostPresenteRadio = jQuery("input[name=rscPostPresenteRadio]:checked").val();
+		var rscesfinterRectalRadio = jQuery("input[name=rscesfinterRectalRadio]:checked").val();
+		var alturaRSC = jQuery("#alturaRSC").val();
+		var fechaRSC = jQuery("#fechaRSC").val();
+		var vccPresentePostRadio = jQuery("input[name=vccPresentePostRadio]:checked").val();
+		var tipoVCCRadio = jQuery("input[name=tipoVCCRadio]:checked").val();
+		var vccMedidaRadio = jQuery("input[name=vccMedidaRadio]:checked").val();
+		var vccAlturaPost = jQuery("input[name=vccAlturaPost]:checked").val();
+		var vccFechaPost = jQuery("input[name=vccFechaPost]:checked").val();
+		var eePresenteRadio = jQuery("input[name=eePresenteRadio]:checked").val();
+		
+		var eeTumorRadio = jQuery("input[name=eeTumorRadio]:checked").val();
+		var eeTumorNRadio = jQuery("input[name=eeTumorNRadio]:checked").val();
+		var eeesfinterRadio = jQuery("input[name=eeesfinterRadio]:checked").val();
+		var esfinterMedidaRadio = jQuery("input[name=esfinterMedidaRadio]:checked").val();
+		var eePostFecha = jQuery("#eePostFecha").val();
+	
+
+		var respuestaNeoadyuante = {'rmFecha':fechaPostTrata,'rmCentro':centroPostTrata,'rmDistEsfinter':distanciaPostTrata,
+							 'rmDistAnal':distMargenPostTrataRadio,'rmAltura':alturaPostTrataRadio, "rmTumor":tumorPostTrataRadio+"//"+tumorPostTrataNRadio,
+							 'crm':crmPostTrataRadio,'emvi':emviPostTrataRadio,'depSatelites':depoSatiRadio,
+							 'gangliosImgui':inguinalesRadio,'gangliosLateral':gaLateRadio,'infiltraEsf':infiltraEsPostRadio,'estadifTumor':estaRInteriorRadio,
+							 'gradoRegre':gradoRegresionRadio,'evaRespuesta':evaPostRadio,'tactoRectal':movilRectalRadio+"//"+fijoRectalRadio,'exaInfiltraEsf':esfinterPostRectalRadio,
+							 'rsc':rscPostPresenteRadio+"//"+rscesfinterRectalRadio,'rscAltura':alturaRSC,'rscFecha':fechaRSC,'vcc':vccPresentePostRadio+"//"+tipoVCCRadio+"//"+vccMedidaRadio,
+							 'vccAltura':vccAlturaPost,'vccFecha':vccFechaPost,'ee':eePresenteRadio+"//"+eeTumorRadio+"//"+eeTumorNRadio,'eeInfiltraEsf':eeesfinterRadio+"//"+esfinterMedidaRadio,
+							 'eeFecha':eePostFecha};		  		 
+		 
+    jQuery.ajax({
+         url: '<c:url value="/addNewRespuestaNeoadyuante.htm" />',
+         type: "POST",
+         dataType: "json",
+         contentType: "application/json",
+         data: JSON.stringify( respuestaNeoadyuante ), 
+         success: function(resp){                                       
+        	 if(resp!=-1){ 
+        		 jQuery("#dialogSuccessOperation").dialog("option","title","Agregar Anatomia Patológica");
+        		 jQuery("#dialogSuccessOperation").dialog("open");
+     	 	}
+     	 	else{
+       		 jQuery("#dialogErrorOperation").dialog("open");
+     	 	}           
+         }
+       });  		
+	}
+         
+});  
+
+
+
+jQuery("#addConductaPostNeo").validate({
+	focusInvalid:false,
+    rules: {
+//	    	nombreC:{required: true},
+    },
+    messages: {
+//	    	nombreC: {required: "Campo obligatorio"},
+    },
+	submitHandler: function() { 	
+			
+		var ciruNeoRadio = jQuery("input[name=ciruNeoRadio]:checked").val();
+		var prodCiruRadio = jQuery("input[name=prodCiruRadio]:checked").val();
+		var milesCiliRadio = jQuery("input[name=milesCiliRadio]:checked").val();
+		var milesCiliOtro = jQuery("#milesCiliOtro").val();
+		var urgenciaRadio = jQuery("input[name=urgenciaRadio]:checked").val();
+		var urgenciaFecha = jQuery("#urgenciaFecha").val();
+		var cirujaName = jQuery("#cirujaName").val();
+		var waitSeeRadio = jQuery("input[name=waitSeeRadio]:checked").val();
+		var fechaInicioConducta = jQuery("#fechaInicioConducta").val();
+	
+	
+
+		var conductaPostNeo = {'cirugia':ciruNeoRadio+"//"+prodCiruRadio,'milesCilindrico':milesCiliRadio+"//"+milesCiliOtro,'urgencia':urgenciaRadio,
+							 'urgenciaFecha':urgenciaFecha,'cirujano':cirujaName, "WS":waitSeeRadio,
+							 'fechaInicio':fechaInicioConducta};		  		 
+		 
+    jQuery.ajax({
+         url: '<c:url value="/addNewConductaPostNeo.htm" />',
+         type: "POST",
+         dataType: "json",
+         contentType: "application/json",
+         data: JSON.stringify( conductaPostNeo ), 
+         success: function(resp){                                       
+        	 if(resp!=-1){ 
+        		 jQuery("#dialogSuccessOperation").dialog("option","title","Agregar Anatomia Patológica");
+        		 jQuery("#dialogSuccessOperation").dialog("open");
+     	 	}
+     	 	else{
+       		 jQuery("#dialogErrorOperation").dialog("open");
+     	 	}           
+         }
+       });  		
+	}
+         
+});  
+
+
+jQuery("#addTratamientoAdyu").validate({
+	focusInvalid:false,
+    rules: {
+//	    	nombreC:{required: true},
+    },
+    messages: {
+//	    	nombreC: {required: "Campo obligatorio"},
+    },
+	submitHandler: function() { 	
+			
+		var trataAdyuYesRadio = jQuery("input[name=trataAdyuYesRadio]:checked").val();
+		var quimiotrataRadio = jQuery("input[name=quimiotrataRadio]:checked").val();
+		var quimiotrataOtro = jQuery("#quimiotrataOtro").val();
+		var nroCiclosTrata = jQuery("#nroCiclosTrata").val();	
+		var radioTeRadio = jQuery("input[name=radioTeRadio]:checked").val();
+
+		var dosisTotalTrata = jQuery("#dosisTotalTrata").val();
+		var dosisTRataFechaInicio = jQuery("#dosisTRataFechaInicio").val();
+		var dosisTRataFechaFin = jQuery("#dosisTRataFechaFin").val();	
+		var suspendioYesRadio = jQuery("input[name=suspendioYesRadio]:checked").val();
+		var suspenTrataDias = jQuery("#suspenTrataDias").val();
+		var comentCTrataAdyu = jQuery("#comentCTrataAdyu").val();
+		
+		var tratamientoAdyu = {'quimioterapia':trataAdyuYesRadio+"//"+quimiotrataRadio+"//"+quimiotrataOtro,'quimioNroCiclos':nroCiclosTrata,'radioterapia':radioTeRadio,
+							 'radioDosis':dosisTotalTrata,'radioFechaInicio':dosisTRataFechaInicio, "radioFechaFinal":dosisTRataFechaFin,
+							 'suspendio':suspendioYesRadio+"//"+suspenTrataDias,'notas':comentCTrataAdyu};		  		 
+		 
+    jQuery.ajax({
+         url: '<c:url value="/addNewTrataAdtuvante.htm" />',
+         type: "POST",
+         dataType: "json",
+         contentType: "application/json",
+         data: JSON.stringify( tratamientoAdyu ), 
+         success: function(resp){                                       
+        	 if(resp!=-1){ 
+        		 jQuery("#dialogSuccessOperation").dialog("option","title","Agregar Anatomia Patológica");
+        		 jQuery("#dialogSuccessOperation").dialog("open");
+     	 	}
+     	 	else{
+       		 jQuery("#dialogErrorOperation").dialog("open");
+     	 	}           
+         }
+       });  		
+	}
+         
+});  
+
+
+jQuery("#addAnaPatologicaPost").validate({
+	focusInvalid:false,
+    rules: {
+//	    	nombreC:{required: true},
+    },
+    messages: {
+//	    	nombreC: {required: "Campo obligatorio"},
+    },
+	submitHandler: function() { 	
+			
+		var nroBiopsiaPost = jQuery("#nroBiopsiaPost").val();
+		var fechaBiopsiaPost = jQuery("#fechaBiopsiaPost").val();
+		var diagBiopsiaPost = jQuery("#diagBiopsiaPost").val();		
+		var gradoDiferPostRadio = jQuery("input[name=gradoDiferPostRadio]:checked").val();
+		var tumorAnatPostRadio = jQuery("input[name=tumorAnatPostRadio]:checked").val();
+		var tumorAnatPostNRadio = jQuery("input[name=tumorAnatPostNRadio]:checked").val();
+		var gangliosResaPost = jQuery("#gangliosResaPost").val();
+		var gangliosPosiPost = jQuery("#gangliosPosiPost").val();
+		var invaVascularRadio = jQuery("input[name=invaVascularRadio]:checked").val();
+		var invaPeriRadio = jQuery("input[name=invaPeriRadio]:checked").val();
+		var linfaTicaRadio = jQuery("input[name=linfaTicaRadio]:checked").val();
+		var buddTomoralRadio = jQuery("input[name=buddTomoralRadio]:checked").val();
+		var pushBorderRadio = jQuery("input[name=pushBorderRadio]:checked").val();
+		var gradoRegresionDvorak = jQuery("#gradoRegresionDvorak").val();
+		var capVal = jQuery("#capVal").val();
+		var rtaCompletaRadio = jQuery("input[name=rtaCompletaRadio]:checked").val();
+		var ihqRadio = jQuery("input[name=ihqRadio]:checked").val();
+		var krasRadio = jQuery("input[name=krasRadio]:checked").val();
+		var tipoKrasRadio = jQuery("input[name=tipoKrasRadio]:checked").val();
+		
+		var anaPatologica = {'nroBiopsia':nroBiopsiaPost,'fechaAp':fechaBiopsiaPost,'diagHisto':diagBiopsiaPost,
+							 'gradoDif':gradoDiferPostRadio,'tumor':tumorAnatPostRadio+"//"+tumorAnatPostNRadio, "ganResecados":gangliosResaPost,'ganPositivos':gangliosPosiPost,
+							 'invVascular':invaVascularRadio,'invPeri':invaPeriRadio,'linfa':linfaTicaRadio,'buddingTumoral':buddTomoralRadio,
+							 'pushingBorder':pushBorderRadio,'gradoRegresion':gradoRegresionDvorak,'cap':capVal,'rtaComPato':rtaCompletaRadio,
+							 'ihq':ihqRadio,'kras':krasRadio+"//"+tipoKrasRadio};		  		 
+		 
+    jQuery.ajax({
+         url: '<c:url value="/addNewAnaPatoPost.htm" />',
+         type: "POST",
+         dataType: "json",
+         contentType: "application/json",
+         data: JSON.stringify( anaPatologica ), 
+         success: function(resp){                                       
+        	 if(resp!=-1){ 
+        		 jQuery("#dialogSuccessOperation").dialog("option","title","Agregar Anatomia Patológica");
+        		 jQuery("#dialogSuccessOperation").dialog("open");
+     	 	}
+     	 	else{
+       		 jQuery("#dialogErrorOperation").dialog("open");
+     	 	}           
+         }
+       });  		
+	}
+         
+});  
+
+
 	jQuery("#dialogErrorOperation,#dialogErrorOperationMap").dialog({
 		autoOpen: false,
 		height: 180,
@@ -2950,59 +3717,12 @@ jQuery(function() {
 		}
 	});	 	
 	
-	
-	$("#addNumberBtn").click(function(){
-		var idLastNum = jQuery('#phone-container input').last().attr("id");
-		var counter = parseInt(idLastNum.split("-")[1]);
-		var phoneForm = jQuery('#phone-form').clone(true);
-		if (counter==1){
-			jQuery('#helpB').hide();
-		}else{
-			$("#phone-form-"+(counter-1)).find('#helpB').hide();
-			$("#phone-form-"+(counter-1)).find("#removeBtn").hide();
-			if (counter<2){
-				phoneForm.find('#helpB').show();
-			}
-		}
-		phoneForm.find("label").html("<strong>"+phoneForm.find("label").text()+" "+(counter+1)+"</strong>");
-		phoneForm.find("#removeBtn").show();
-		phoneForm.find("input").attr("id","telC-"+(counter+1)).val("");
-		phoneForm.attr("id","phone-form-"+counter);
-		phoneForm.insertAfter('#phone-container div:last-child');
-	});
-	
-	$("#removeBtn").click(function(){
-		var idSelecNum = $(this).prev().attr("id");
-		var counter = parseInt(idSelecNum.split("-")[1]);
-		jQuery('#phone-form-'+(counter-1)).remove();		
-		jQuery('#phone-container div:last-child').find('#helpB').show();
-		$("#phone-form-"+(counter-2)).find("#removeBtn").show();
-	});
-	
-	$("#createMapModal").click(function(){
-		var direccion = jQuery("#direccionC").val();
-		var localidad = jQuery("#localidadC option:selected").text();
-		if (localidad=="" || direccion==""){
-			jQuery("#dialogErrorOperationMap").dialog("option","title","Error al buscar en el mapa");
-     		jQuery("#dialogErrorOperationMap").dialog("open");
-     		return;
-		}	 
-		loadGMScript(callBackFindDir);
-		jQuery( "#modalMap" ).modal( "show" );
-		
-	});	 
-	
-	$("#saveCoordinationBtn").click(function(){
-		var location =returnMarkerPosition();
-		jQuery.data(document.body,"clientLocation",{"latitude":location.jb,"longitude":location.kb} );
-		jQuery( "#modalMap" ).modal( "hide" );	 
-	});
 
-	function callBackFindDir(){
-		var direccion = jQuery("#direccionC").val(); 
-		var localidad = jQuery("#localidadC option:selected").text();
-	    createLocationRequest(direccion+", "+localidad+", Argentina");
-	}
+    jQuery(".onlyNumbers").bind("keypress",function(event) {
+	    var chars = "0123456789.,";
+        var chr = String.fromCharCode(event.charCode == undefined ? event.keyCode : event.charCode);
+        return event.ctrlKey || (chr < ' ' || !chars || chars.indexOf(chr) > -1);
+    });
 
 });
 //Other functions

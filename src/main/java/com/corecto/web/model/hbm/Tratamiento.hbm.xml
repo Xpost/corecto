@@ -20,8 +20,8 @@
         <property name="quimioterapiaInduc" type="string">
             <column name="QUIMIOTERAPIA_INDUC" length="100" />
         </property>
-        <property name="quimi0teInducNroCiclos" type="string">
-            <column name="QUIMI0TE_INDUC_NRO_CICLOS" length="25" />
+        <property name="quimioteInducNroCiclos" type="string">
+            <column name="QUIMIOTE_INDUC_NRO_CICLOS" length="25" />
         </property>
         <property name="quimioOtra" type="string">
             <column name="QUIMIO_OTRA" length="100" />
@@ -29,8 +29,8 @@
         <property name="quimioterapiaInter" type="string">
             <column name="QUIMIOTERAPIA_INTER" length="100" />
         </property>
-        <property name="quimi0teInterNroCiclos" type="string">
-            <column name="QUIMI0TE_INTER_NRO_CICLOS" length="25" />
+        <property name="quimioteInterNroCiclos" type="string">
+            <column name="QUIMIOTE_INTER_NRO_CICLOS" length="25" />
         </property>
     </class>
 </hibernate-mapping>
