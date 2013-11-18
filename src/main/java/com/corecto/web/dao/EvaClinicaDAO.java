@@ -4,7 +4,7 @@ import org.springframework.dao.DataAccessException;
 
 import com.corecto.web.model.pojo.extra.EvaClinica;
 
-public interface EvaClinicaDAO {
+public interface EvaClinicaDAO extends DAO{
 
 	public  long saveNewEvaClinica(EvaClinica  preconsulta)
 			throws DataAccessException;

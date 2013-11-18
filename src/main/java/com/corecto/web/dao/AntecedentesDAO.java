@@ -4,7 +4,7 @@ import org.springframework.dao.DataAccessException;
 
 import com.corecto.web.model.pojo.extra.Antecedentes;
 
-public interface AntecedentesDAO {
+public interface AntecedentesDAO extends DAO{
 
 	public  long saveNewAntecedentes(Antecedentes preconsulta)
 			throws DataAccessException;

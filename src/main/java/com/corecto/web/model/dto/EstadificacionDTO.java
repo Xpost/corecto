@@ -4,6 +4,7 @@ package com.corecto.web.model.dto;
 public class EstadificacionDTO {
 	
 	private String idestadificacion;
+	private long idConsulta;
 	private String rmCentro;
 	private String rmFecha;
 	private String rmDistEsfinter;
@@ -46,6 +47,13 @@ public class EstadificacionDTO {
 	private String revInfiltraEsf;
 	
 	
+	
+	public long getIdConsulta() {
+		return idConsulta;
+	}
+	public void setIdConsulta(long idConsulta) {
+		this.idConsulta = idConsulta;
+	}
 	public String getIdestadificacion() {
 		return idestadificacion;
 	}

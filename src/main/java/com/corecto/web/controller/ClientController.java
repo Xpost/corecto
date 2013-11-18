@@ -11,6 +11,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.lang3.text.WordUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,6 +92,31 @@ public class ClientController {
 	        return pageResult;
 	    }
 	   
+	   
+	    @Audited(message = "Accion: Seleccionar Paciente")
+	    @RequestMapping(value = "/selectPatient", method = RequestMethod.GET)
+	    public @ResponseBody
+	    boolean seleccionarPaciente(@RequestParam(value = "idPatient", required = false, defaultValue = "") long idPatient,
+	    		@RequestParam(value = "paName", required = false, defaultValue = "") String paName,
+	    		@RequestParam(value = "op", required = false, defaultValue = "") boolean operation, HttpServletRequest request, HttpServletResponse response) {
+	    	LOG.info("ClientController.seleccionarPaciente()");
+	        try {
+	        	if(operation){ 
+	            request.getSession().setAttribute("PACIENTE_ID", idPatient);
+	            request.getSession().setAttribute("PACIENTE_NOMBRE",  WordUtils.capitalize(paName));
+	        	}
+	        	else{
+		            request.getSession().removeAttribute("PACIENTE_ID");
+		            request.getSession().removeAttribute("PACIENTE_NOMBRE");
+	        	}
+	        	
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            return false;
+	        }
+
+	        return true;
+	    }
 	   
 /*   
 //    @Autowired

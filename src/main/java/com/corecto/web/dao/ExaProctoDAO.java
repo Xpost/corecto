@@ -4,7 +4,7 @@ import org.springframework.dao.DataAccessException;
 
 import com.corecto.web.model.pojo.extra.ExaProcto;
 
-public interface ExaProctoDAO {
+public interface ExaProctoDAO extends DAO {
 
 	public  long saveNewExaProcto(ExaProcto exaProcto)
 			throws DataAccessException;

@@ -156,6 +156,17 @@
 	       </div><!--/.nav-collapse -->
           </div>
         </div>
+             <div class="navbar-inner container" id="selectedPatientDiv" style="min-height:20px;display: none;">
+                    <div class="nav-collapse collapse" style="min-height:20px" >
+                       <ul class="nav" style="min-height:20px">
+            				<li class="divider-vertical" style="min-height: 20px; height: 25px;">
+            				<a href="#" style="padding: 2px 0"><strong>Paciente seleccionado:</strong><span id="selectedPatientName"></span> </a>
+            				<input type="hidden" value="" id="idPacienteSelected">
+            				</li>
+            			</ul>	
+            			<button type="button" class="close" style="color: white;opacity:0.8">×</button>
+          			</div>
+             </div>  
       </div>
 
     <div class="container">
@@ -438,7 +449,8 @@ jQuery("#listClientTable").jqGrid({
 							formatter:function(){
 								return "<div style='margin-left: 7px;'>"+
 								'<div onmouseout="jQuery(this).removeClass(\'ui-state-hover\')" onmouseover="jQuery(this).addClass(\'ui-state-hover\');"  class="ui-pg-div ui-inline-edit" style="float: left; cursor: pointer; display: block;margin-left: 4px;margin-right: 4px;" title="Modificar fila seleccionada"><span op="edit" class="ui-icon ui-icon-pencil"></span></div>'+											
-								'<div onmouseout="jQuery(this).removeClass(\'ui-state-hover\')" onmouseover="jQuery(this).addClass(\'ui-state-hover\');"  class="ui-pg-div ui-inline-edit" style="float: left; cursor: pointer; display: block;" title="Eliminar fila seleccionada"><span op="delete" class="ui-icon ui-icon-trash"></span></div>'+											
+								'<div onmouseout="jQuery(this).removeClass(\'ui-state-hover\')" onmouseover="jQuery(this).addClass(\'ui-state-hover\');"  class="ui-pg-div ui-inline-edit" style="float: left; cursor: pointer; display: block;" title="Eliminar fila seleccionada"><span op="delete" class="ui-icon ui-icon-trash"></span></div>'+
+								'<div onmouseout="jQuery(this).removeClass(\'ui-state-hover\')" onmouseover="jQuery(this).addClass(\'ui-state-hover\');"  class="ui-pg-div ui-inline-edit" style="float: left; cursor: pointer; display: block;margin-left: 4px;margin-right: 4px;" title="Seleccionar paciente"><span op="select" class="ui-icon ui-icon-check"></span></div>'+
 								"</div>";
 								}
 
@@ -521,6 +533,12 @@ jQuery("#listClientTable").jqGrid({
 			 		return false;
 		            }
 			 	}
+			 if(e.target.attributes.op.value=="select"){		 		
+				 var row = jQuery('#listClientTable').jqGrid('getRowData',rowid);										 
+				 selectPatient(row);		
+	             return false;
+	            }
+			 
 		       //return true;    // allow select the row
             //  return false;   // not allow select the row
 			 // prevent row selection if one click on the button
@@ -677,6 +695,26 @@ $("#removeBtn").click(function(){
 });
 //Other functions
 
+function selectPatient(row){
+	jQuery("#selectedPatientName").html(" "+(capitaliseFirstLetter(row.nombre)));
+	jQuery("#idPacienteSelected").val(row.idpaciente);
+	   jQuery.ajax({
+	          url: '<c:url value="/selectPatient.htm" />',
+	          type: "GET",
+	          dataType: "json",
+	          contentType: "application/json",
+	          data: {idPatient:row.idpaciente,paName:row.nombre,op:true}, 
+	          success: function(resp){     
+         	 if(resp){
+         		jQuery("#selectedPatientDiv").show();
+	          	 }
+         	 else{
+         		 jQuery("#dialogErrorOperation").dialog("open");
+         		 }
+         	 }
+	        });	 
+	}
+	
 function updateClient(row){
 	jQuery('#listClientTable').jqGrid('setGridState','hidden');	
 	

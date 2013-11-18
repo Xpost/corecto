@@ -5,6 +5,7 @@ public class PreconsultaDTO {
 
 	
 	private long idpreconsulta;
+	private long idConsulta;
 	private String peso;
 	private String talla;
 	private String supcorporal;
@@ -26,6 +27,13 @@ public class PreconsultaDTO {
 		this.supcorporal = supcorporal;
 		this.performanceStatus = performanceStatus;
 		this.comentario = comentario;
+	}
+	
+	public long getIdConsulta() {
+		return idConsulta;
+	}
+	public void setIdConsulta(long idConsulta) {
+		this.idConsulta = idConsulta;
 	}
 	public long getIdpreconsulta() {
 		return idpreconsulta;

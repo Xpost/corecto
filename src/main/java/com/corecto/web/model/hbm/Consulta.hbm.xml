@@ -11,6 +11,9 @@
         <many-to-one name="catHospital" class="com.corecto.web.model.pojo.extra.CatHospital" fetch="select">
             <column name="IDHOSPITAL" />
         </many-to-one>
+        <many-to-one name="paciente" class="com.corecto.web.model.pojo.extra.Paciente" fetch="select">
+            <column name="IDPACIENTE" />
+        </many-to-one>
         <property name="medico" type="string">
             <column name="MEDICO" length="200" />
         </property>

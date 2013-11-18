@@ -24,6 +24,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import com.corecto.web.dao.PatientDAO;
 import com.corecto.web.model.dto.PacienteDTO;
 import com.corecto.web.model.pojo.extra.CatOs;
+import com.corecto.web.model.pojo.extra.Consulta;
 import com.corecto.web.model.pojo.extra.Paciente;
 
 
@@ -41,8 +42,27 @@ import com.corecto.web.model.pojo.extra.Paciente;
 public class PatientDAOImpl extends HibernateDaoSupport implements PatientDAO {
 
 	Logger LOG = LoggerFactory.getLogger(PatientDAOImpl.class);
+	 
 	
+    public Consulta loadConsultaByIdClient(long idPaciente) throws DataAccessException {
+    	LOG.info("PatientDAOImpl.loadConsultaByIdClient()");
+        List<Consulta> lstResult = getHibernateTemplate().find(
+                "select C from Consulta as C where C.paciente.idpaciente='" + idPaciente + "'");
+        
+        
+        if (lstResult.isEmpty()) {
+            return null;
+        } else
+            return lstResult.get(0);
+    }
 	
+    public long saveNewConsulta(Consulta  consulta) throws DataAccessException {
+    	LOG.info("PatientDAOImpl.saveNewPatient()");
+        getHibernateTemplate().save(consulta);
+        return consulta.getIdconsulta();
+    }
+    
+    
     public long saveNewPatient(Paciente  paciente) throws DataAccessException {
     	LOG.info("PatientDAOImpl.saveNewPatient()");
         getHibernateTemplate().save(paciente);

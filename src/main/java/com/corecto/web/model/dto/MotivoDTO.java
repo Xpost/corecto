@@ -4,6 +4,7 @@ package com.corecto.web.model.dto;
 public class MotivoDTO {
 
 	private String idmotivo;
+	private long idConsulta;
 	private String motivo;
 	private String fechaInicio;
 	private String evoMeses;
@@ -16,6 +17,20 @@ public class MotivoDTO {
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+	
+	public long getIdConsulta() {
+		return idConsulta;
+	}
+
+
+
+	public void setIdConsulta(long idConsulta) {
+		this.idConsulta = idConsulta;
+	}
+
+
+
 	public String getIdmotivo() {
 		return idmotivo;
 	}

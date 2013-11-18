@@ -11,6 +11,45 @@
    	    <bean id="patientDAO" parent="hibernateDaoSupport"
     		class="com.corecto.web.dao.impl.PatientDAOImpl" />
 
+   	    <bean id="preconsultaDAO" parent="hibernateDaoSupport"
+    		class="com.corecto.web.dao.impl.PreconsultaDAOImpl" />
+    		
+    		   	  <bean id="anatomiaPatologicaPostDAO" parent="hibernateDaoSupport"
+    		class="com.corecto.web.dao.impl.AnatomiaPatologicaPostDAOImpl" />
+    		
+    		   	  <bean id="anotomiaPatologicaDAO" parent="hibernateDaoSupport"
+    		class="com.corecto.web.dao.impl.AnotomiaPatologicaDAOImpl" />
+    		
+    		   	 <bean id="antecedentesDAO" parent="hibernateDaoSupport"
+    		class="com.corecto.web.dao.impl.AntecedentesDAOImpl" />
+    		
+    		   	 <bean id="conductaPostNeoDAO" parent="hibernateDaoSupport"
+    		class="com.corecto.web.dao.impl.ConductaPostNeoDAOImpl" />
+    		
+    		   	 <bean id="descTrataNeoDAO" parent="hibernateDaoSupport"
+    		class="com.corecto.web.dao.impl.DescTrataNeoDAOImpl" />
+    		
+    		   	 <bean id="estadificacionDAO" parent="hibernateDaoSupport"
+    		class="com.corecto.web.dao.impl.EstadificacionDAOImpl" />
+    		
+    		   	 <bean id="evaClinicaDAO" parent="hibernateDaoSupport"
+    		class="com.corecto.web.dao.impl.EvaClinicaDAOImpl" />
+
+    		   	<bean id="exaProctoDAO" parent="hibernateDaoSupport"
+    		class="com.corecto.web.dao.impl.ExaProctoDAOImpl" />
+    		
+    			<bean id="motivoDAO" parent="hibernateDaoSupport"
+    		class="com.corecto.web.dao.impl.MotivoDAOImpl" />
+    		
+    		    <bean id="respuestaTrataNeoDAO" parent="hibernateDaoSupport"
+    		class="com.corecto.web.dao.impl.RespuestaTrataNeoDAOImpl" />
+    		
+    		    <bean id="tratamientoAdyuDAO" parent="hibernateDaoSupport"
+    		class="com.corecto.web.dao.impl.TratamientoAdyuDAOImpl" />
+    		
+    		    <bean id="tratamientoDAO" parent="hibernateDaoSupport"
+    		class="com.corecto.web.dao.impl.TratamientoDAOImpl" />    		
+				
 <!--    	    <bean id="alertDAO" parent="hibernateDaoSupport" -->
 <!--     		class="invcont.web.dao.impl.AlertDAOImpl" /> -->
     		

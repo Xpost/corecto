@@ -35,5 +35,11 @@
         <property name="notas" type="string">
             <column name="NOTAS" length="300" />
         </property>
+        <set name="consultas" table="CONSULTA" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDPACIENTE" />
+            </key>
+            <one-to-many class="com.corecto.web.model.pojo.extra.Consulta" />
+        </set>
     </class>
 </hibernate-mapping>

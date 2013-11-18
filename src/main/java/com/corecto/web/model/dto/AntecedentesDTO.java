@@ -5,6 +5,7 @@ public class AntecedentesDTO {
 	
 	
 	private String idantecedente;
+	private long idConsulta;
 	private String personales;
 	private String personalesPatologicos;
 	private String neoplasia;
@@ -12,6 +13,13 @@ public class AntecedentesDTO {
 	private String antecedentesCcrh;
 	
 	
+	
+	public long getIdConsulta() {
+		return idConsulta;
+	}
+	public void setIdConsulta(long idConsulta) {
+		this.idConsulta = idConsulta;
+	}
 	public String getIdantecedente() {
 		return idantecedente;
 	}

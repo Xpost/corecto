@@ -5,6 +5,7 @@ public class AnatomiaPatologicaPostDTO {
 
 	
 	private String idanatomiapatopost;
+	private long idConsulta;
 	private String nroBiopsia;
 	private String fechaAp;
 	private String diagHisto;
@@ -24,6 +25,12 @@ public class AnatomiaPatologicaPostDTO {
 	private String kras;
 	
 	
+	public long getIdConsulta() {
+		return idConsulta;
+	}
+	public void setIdConsulta(long idConsulta) {
+		this.idConsulta = idConsulta;
+	}
 	public String getIdanatomiapatopost() {
 		return idanatomiapatopost;
 	}

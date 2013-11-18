@@ -7,6 +7,7 @@ import org.springframework.dao.DataAccessException;
 
 import com.corecto.web.model.dto.PacienteDTO;
 import com.corecto.web.model.pojo.extra.CatOs;
+import com.corecto.web.model.pojo.extra.Consulta;
 import com.corecto.web.model.pojo.extra.Paciente;
 
 
@@ -39,6 +40,8 @@ public interface PatientDAO extends DAO {
 //    List<EstadoCli> loadAllClientState() throws DataAccessException;
 //
 //    String loadLastClientNum() throws DataAccessException ;
+	
+  long saveNewConsulta(Consulta  consulta) throws DataAccessException ;
 
   long saveNewPatient(Paciente  paciente) throws DataAccessException;
 
@@ -46,7 +49,7 @@ public interface PatientDAO extends DAO {
   
   List<PacienteDTO> getPatientsByParameters(final Date initialDate, final Long patientID, final String direction, final String fieldSort, final String sort) throws DataAccessException;
 
-
+  Consulta loadConsultaByIdClient(long idPaciente) throws DataAccessException;
 	
 	
 }

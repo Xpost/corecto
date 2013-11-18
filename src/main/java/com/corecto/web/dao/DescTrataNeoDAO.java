@@ -4,7 +4,7 @@ import org.springframework.dao.DataAccessException;
 
 import com.corecto.web.model.pojo.extra.DescTrataNeo;
 
-public interface DescTrataNeoDAO {
+public interface DescTrataNeoDAO extends DAO {
 
 	public  long saveNewDescTrataNeo(DescTrataNeo descTrataNeo)
 			throws DataAccessException;

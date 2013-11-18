@@ -4,7 +4,7 @@ import org.springframework.dao.DataAccessException;
 
 import com.corecto.web.model.pojo.extra.Motivo;
 
-public interface MotivoDAO {
+public interface MotivoDAO extends DAO {
 
 	public  long saveNewMotivo(Motivo preconsulta)
 			throws DataAccessException;

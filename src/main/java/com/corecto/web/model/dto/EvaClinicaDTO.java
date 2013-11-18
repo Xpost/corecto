@@ -4,6 +4,7 @@ package com.corecto.web.model.dto;
 public class EvaClinicaDTO {
 
 	private String idevaclinica;
+	private long idConsulta;
 	private String abdomen;
 	private String colon;
 	private String recto;
@@ -15,6 +16,19 @@ public class EvaClinicaDTO {
 		super();
 	}
 	
+	
+	public long getIdConsulta() {
+		return idConsulta;
+	}
+
+
+
+	public void setIdConsulta(long idConsulta) {
+		this.idConsulta = idConsulta;
+	}
+
+
+
 	public String getIdevaclinica() {
 		return idevaclinica;
 	}

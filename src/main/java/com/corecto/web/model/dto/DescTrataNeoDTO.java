@@ -4,6 +4,7 @@ package com.corecto.web.model.dto;
 public class DescTrataNeoDTO {
 	
 	private String iddesctrataneo;
+	private long idConsulta;
 	private String idconsulta;
 	private String radioterapia;
 	private String radioDosis;
@@ -18,6 +19,12 @@ public class DescTrataNeoDTO {
 	private String toxGrado;
 	
 	
+	public long getIdConsulta() {
+		return idConsulta;
+	}
+	public void setIdConsulta(long idConsulta) {
+		this.idConsulta = idConsulta;
+	}
 	public String getIddesctrataneo() {
 		return iddesctrataneo;
 	}

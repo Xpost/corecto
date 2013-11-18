@@ -4,7 +4,7 @@ import org.springframework.dao.DataAccessException;
 
 import com.corecto.web.model.pojo.extra.AnotomiaPatologica;
 
-public interface AnotomiaPatologicaDAO {
+public interface AnotomiaPatologicaDAO extends DAO {
 
 	public  long saveNewAnotomiaPatologica(AnotomiaPatologica anotomiaPatologica)
 			throws DataAccessException;

@@ -9,13 +9,19 @@
 		<property name="daos">
             <map>
                 <entry key="com.corecto.web.dao.PatientDAO" value-ref="patientDAO"/>               
-<!--                  <entry key="com.sigepro.web.dao.AbonoDAO" value-ref="abonoDAO"/> -->
-<!--                  <entry key="com.sigepro.web.dao.IncidenciaDAO" value-ref="incidenciaDAO"/> -->
-<!--                  <entry key="com.sigepro.web.dao.VisitaDAO" value-ref="visitaDAO"/> -->
-<!--                  <entry key="com.sigepro.web.dao.HistorialDAO" value-ref="historialDAO"/>   -->
-<!--                  <entry key="com.decorart.web.dao.OrdenCompraDAO" value-ref="ordenCompraDAO"/>    -->
-<!--                  <entry key="com.decorart.web.dao.ProductoOCDAO" value-ref="productoOCDAO"/>    -->
-<!--  				 <entry key="com.decorart.web.dao.PagoDAO" value-ref="pagoDAO"/>                                                        -->
+                <entry key="com.corecto.web.dao.PreconsultaDAO" value-ref="preconsultaDAO"/>
+                <entry key="com.corecto.web.dao.AnatomiaPatologicaPostDAO" value-ref="anatomiaPatologicaPostDAO"/>
+                <entry key="com.corecto.web.dao.AnotomiaPatologicaDAO" value-ref="anotomiaPatologicaDAO"/>
+                <entry key="com.corecto.web.dao.AntecedentesDAO" value-ref="antecedentesDAO"/>
+                <entry key="com.corecto.web.dao.ConductaPostNeoDAO" value-ref="conductaPostNeoDAO"/>
+                <entry key="com.corecto.web.dao.DescTrataNeoDAO" value-ref="descTrataNeoDAO"/>
+                <entry key="com.corecto.web.dao.EstadificacionDAO" value-ref="estadificacionDAO"/>
+                <entry key="com.corecto.web.dao.EvaClinicaDAO" value-ref="evaClinicaDAO"/>
+				<entry key="com.corecto.web.dao.ExaProctoDAO" value-ref="exaProctoDAO"/>
+				<entry key="com.corecto.web.dao.MotivoDAO" value-ref="motivoDAO"/>
+				<entry key="com.corecto.web.dao.RespuestaTrataNeoDAO" value-ref="respuestaTrataNeoDAO"/>
+				<entry key="com.corecto.web.dao.TratamientoAdyuDAO" value-ref="tratamientoAdyuDAO"/>
+				<entry key="com.corecto.web.dao.TratamientoDAO" value-ref="tratamientoDAO"/>
             </map>
 		</property>
 	</bean>

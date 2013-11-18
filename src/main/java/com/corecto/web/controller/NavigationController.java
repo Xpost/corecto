@@ -4,6 +4,9 @@
  **************************************************************************************/
 package com.corecto.web.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,9 +56,11 @@ public class NavigationController {
     }
 
     @RequestMapping(value = "/agregarConsulta")
-    public ModelAndView loadAddConsultPage() {
+    public ModelAndView loadAddConsultPage( HttpServletRequest request, HttpServletResponse response) {
         ModelAndView model = new ModelAndView();
         model.setViewName("agregarConsulta");
+        model.addObject("PACIENTE_ID",request.getSession().getAttribute("PACIENTE_ID"));
+        model.addObject("PACIENTE_NOMBRE",request.getSession().getAttribute("PACIENTE_NOMBRE"));
         return model;
     }
     

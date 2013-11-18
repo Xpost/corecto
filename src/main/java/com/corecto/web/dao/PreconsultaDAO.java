@@ -4,7 +4,7 @@ import org.springframework.dao.DataAccessException;
 
 import com.corecto.web.model.pojo.extra.Preconsulta;
 
-public interface PreconsultaDAO {
+public interface PreconsultaDAO extends DAO {
 
 	public  long saveNewPreconsulta(Preconsulta preconsulta)
 			throws DataAccessException;

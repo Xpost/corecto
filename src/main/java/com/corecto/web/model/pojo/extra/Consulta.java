@@ -13,6 +13,7 @@ public class Consulta implements java.io.Serializable {
 
 	private long idconsulta;
 	private CatHospital catHospital;
+	private Paciente paciente;
 	private String medico;
 	private Boolean diaghistologico;
 	private Date fecha;
@@ -72,6 +73,15 @@ public class Consulta implements java.io.Serializable {
 		this.evaClinicas = evaClinicas;
 		this.motivos = motivos;
 		this.exaProctos = exaProctos;
+	}
+
+	
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
 	}
 
 	public long getIdconsulta() {

@@ -4,6 +4,7 @@ package com.corecto.web.model.dto;
 public class ExaProctoDTO {
 	
 	private String idexaprocto;
+	private long idConsulta;
 	private String tactoRectal;
 	private String tactoRectalInfiltra;
 	private String rsc;
@@ -17,6 +18,12 @@ public class ExaProctoDTO {
 	private String eeFecha;
 	
 	
+	public long getIdConsulta() {
+		return idConsulta;
+	}
+	public void setIdConsulta(long idConsulta) {
+		this.idConsulta = idConsulta;
+	}
 	public String getIdexaprocto() {
 		return idexaprocto;
 	}

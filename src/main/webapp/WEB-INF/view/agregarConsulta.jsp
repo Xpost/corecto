@@ -139,9 +139,21 @@
 	       </div><!--/.nav-collapse -->
           </div>
         </div>
+             <div class="navbar-inner container" id="selectedPatientDiv" style="min-height:20px;">
+                    <div class="nav-collapse collapse" style="min-height:20px" >
+                       <ul class="nav" style="min-height:20px">
+            				<li class="divider-vertical" style="min-height: 20px; height: 25px;">
+            				<a href="#" style="padding: 2px 0"><strong>Paciente seleccionado:</strong><span id="selectedPatientName"> ${PACIENTE_NOMBRE}</span> </a>
+            				<input type="hidden" value="${PACIENTE_ID}" id="idPacienteSelected">
+            				</li>
+            			</ul>	
+            			<button type="button" class="close" style="color: white;opacity:0.8">×</button>
+          			</div>
+             </div>      
       </div>
 
     <div class="container">
+    <br>
      <div class="row-fluid">
         <div class="span12">
 			<ul class="nav nav-tabs" id="myTab">
@@ -161,7 +173,7 @@
 				 <div class="row-fluid">
 			     <div class="span12 ">
 					  <div class="row-fluid">
-			 	  		 <form id="addClientForm" action="" method="post">
+			 	  		 <form id="addPreconsultaForm" action="" method="post">
 				         <div class="row-fluid">
 				        	<div class="span3">     
 								<label for="nombreC"><strong>Peso</strong></label>
@@ -208,7 +220,7 @@
 							</div>
 							<div class="row-fluid">	 
 							<div class="pull-right">			
-					               <button type="button" onclick="jQuery('#addClientForm').submit();" class="btn btn-primary">Guardar</button>
+					               <button type="button" onclick="jQuery('#addPreconsultaForm').submit();" class="btn btn-primary">Guardar</button>
 					               <button type="button" onclick="cleanScreenAdd();" class="btn" >Resetear</button>	
 							</div>
 							</div>
@@ -219,6 +231,7 @@
 			      </div><!--/row-->		
 				</div>
 		<div class="tab-pane" id="consulta">
+				  <form id="addMotivoAntecedentesForm" action="" method="post">
 				 <div class="row-fluid">
 			     <div class="span12 ">
 				<fieldset>
@@ -394,13 +407,15 @@
 
 			  		<div class="row-fluid">	 
 					<div class="pull-right">			
-		               <button type="button" onclick="jQuery('#addClientForm').submit();" class="btn btn-primary">Guardar</button>
+		               <button type="button" onclick="jQuery('#addMotivoAntecedentesForm').submit();" class="btn btn-primary">Guardar</button>
 		               <button type="button" onclick="cleanScreenAdd();" class="btn" >Resetear</button>	
 					</div>
 				   </div>
 			      </div>
+			      </form>
 			</div>
 			<div class="tab-pane" id="evaClinica">
+				<form id="addEvaClinicaForm" action="" method="post">
 				 <div class="row-fluid">
 				     <div class="span12 ">
 				     	<fieldset>
@@ -488,9 +503,17 @@
 						</div>					  
 					 </fieldset> 
 				      </div>
-			      </div><!--/row-->		
+			      </div><!--/row-->
+			      <div class="row-fluid">	 
+					<div class="pull-right">			
+		               <button type="button" onclick="jQuery('#addEvaClinicaForm').submit();" class="btn btn-primary">Guardar</button>
+		               <button type="button" onclick="cleanScreenAdd();" class="btn" >Resetear</button>	
+					</div>
+			      </div>		
+			      </form>
 				</div>	
 			<div class="tab-pane" id="exaProcto">
+					<form id="addExaProctoForm" action="" method="post">	
 						<div class="row-fluid">
 							<div class="span12">
 							  <label for="tipoComprobanteCaja"><strong>Tacto rectal</strong></label>
@@ -722,9 +745,17 @@
 								</div>	
 							</div>	
 					  </div> 					  
-			</div>					
+			</div>
+			 <div class="row-fluid">	 
+					<div class="pull-right">			
+		               <button type="button" onclick="jQuery('#addExaProctoForm').submit();" class="btn btn-primary">Guardar</button>
+		               <button type="button" onclick="cleanScreenAdd();" class="btn" >Resetear</button>	
+					</div>
+		      </div>				
+		</form>			
 		</div>
 		<div class="tab-pane" id="estadific">
+				<form id="addEstadificacionForm" action="" method="post">	
 						<div class="row-fluid">
 							<div class="span12">
 							  <label for=""><strong>RM</strong></label>
@@ -1313,9 +1344,17 @@
 						 </div> 			
 					 </fieldset>
 					 </div>
-					 </div>																						
+					 </div>
+	 			 <div class="row-fluid">	 
+					<div class="pull-right">			
+		               <button type="button" onclick="jQuery('#addEstadificacionForm').submit();" class="btn btn-primary">Guardar</button>
+		               <button type="button" onclick="cleanScreenAdd();" class="btn" >Resetear</button>	
+					</div>
+		      </div>	
+		</form>			 																						
 		</div>
 	<div class="tab-pane" id="anPatologica">
+		<form id="addAnatomiaPatalogiaForm" action="" method="post">	
 			<div class="row-fluid">
 			<div class="span3">
 				    <label><strong>Nº Biopsia</strong></label>
@@ -1421,9 +1460,17 @@
 								VCC
 				    </label>				    				    			    
 				    </div>
-			</div>		  
+			</div>		 
+			   <div class="row-fluid">	 
+					<div class="pull-right">			
+		               <button type="button" onclick="jQuery('#addAnatomiaPatalogiaForm').submit();" class="btn btn-primary">Guardar</button>
+		               <button type="button" onclick="cleanScreenAdd();" class="btn" >Resetear</button>	
+					</div>
+		      </div>
+		</form>	 
 		</div>	
 		<div class="tab-pane" id="tratamiento">
+		   <form id="addtratamientoForm" action="" method="post">	
 			<div class="row-fluid">
 				<fieldset>
 			<legend>Tratamiento</legend>
@@ -1554,8 +1601,16 @@
 			</div>							
 		</fieldset>
 		</div>			
+	 <div class="row-fluid">	 
+					<div class="pull-right">			
+		               <button type="button" onclick="jQuery('#addtratamientoForm').submit();" class="btn btn-primary">Guardar</button>
+		               <button type="button" onclick="cleanScreenAdd();" class="btn" >Resetear</button>	
+					</div>
+		      </div>
+		</form>
 		</div>	
-		<div class="tab-pane" id="traNeoAd">
+	<div class="tab-pane" id="traNeoAd">
+		   <form id="addTratamientoNeoAdForm" action="" method="post">	
 				<div class="row-fluid">
 				<div class="span10">	  	
 				 <label><strong>Radioterapia</strong></label>
@@ -2281,9 +2336,17 @@
 					</fieldset>
 				  </div>
 			  </div>		
-		   </div>	
+		   </div>
+		   	<div class="row-fluid">	 
+					<div class="pull-right">			
+		               <button type="button" onclick="jQuery('#addTratamientoNeoAdForm').submit();" class="btn btn-primary">Guardar</button>
+		               <button type="button" onclick="cleanScreenAdd();" class="btn" >Resetear</button>	
+					</div>
+		      </div>	
+		 </form>  
 	     </div>     			
 		<div class="tab-pane" id="anaPato">
+			<form id="addAnatomiaPostForm" action="" method="post">	
 			<div class="row-fluid">
 			<div class="span3">
 				    <label><strong>Nº Biopsia</strong></label>
@@ -2507,8 +2570,16 @@
 						  </div> 					                
 					</div>													
 		</div>
+				   	<div class="row-fluid">	 
+					<div class="pull-right">			
+		               <button type="button" onclick="jQuery('#addAnatomiaPostForm').submit();" class="btn btn-primary">Guardar</button>
+		               <button type="button" onclick="cleanScreenAdd();" class="btn" >Resetear</button>	
+					</div>
+		      </div>	
+	</form>	
       </div><!--/row-->
-      	<div class="tab-pane" id="trataAdyu">
+      <div class="tab-pane" id="trataAdyu">
+      	 <form id="addTrataAdyuForm" action="" method="post">	
 		 <div class="row-fluid">
 			  <div class="span12 ">
 					<div class="row-fluid">
@@ -2617,6 +2688,13 @@
 				</div>	   
 			</div> 
 	     </div><!-- end tab -->
+	     	   <div class="row-fluid">	 
+					<div class="pull-right">			
+		               <button type="button" onclick="jQuery('#addTrataAdyuForm').submit();" class="btn btn-primary">Guardar</button>
+		               <button type="button" onclick="cleanScreenAdd();" class="btn" >Resetear</button>	
+					</div>
+		      </div>
+	    </form> 
        </div>
 	</div>
       <hr>
@@ -2646,6 +2724,7 @@
 <script type="text/javascript" src="js/jquery.validate.js" ></script> 
 <script type="text/javascript" src="js/googleMapInfo.js" charset="UTF-8"  ></script> 
 <script type="text/javascript">
+var CONSULTA_ID="-1";
 jQuery(function() {
 	
     $('#myTab a').click(function (e) {
@@ -2667,6 +2746,20 @@ jQuery(function() {
 	
 	cleanScreenAdd();
 	$("#nombreC").focus();
+	
+	jQuery.ajax({
+	     url: '<c:url value="/loadConsultaId.htm" />',
+	     type: "GET",
+	     dataType: "json",
+	     contentType: "application/json",
+	     data: {}, 
+	     success: function(resp){                                       
+	          if(resp!=null){
+	        	  CONSULTA_ID=resp;
+	          }
+	     }
+	   });  		
+	     
 	
 	$("#checkfamMenor60").click(function(){
 		if($(this).is(':checked')){
@@ -2831,7 +2924,7 @@ jQuery(function() {
 
   
   
-jQuery("#addPreconsulta").validate({
+jQuery("#addPreconsultaForm").validate({
 	focusInvalid:false,
     rules: {
 //	    	nombreC:{required: true},
@@ -2847,7 +2940,7 @@ jQuery("#addPreconsulta").validate({
         var performance = jQuery("input[name=performanceRadio]:checked").val();
         var comentario = jQuery("#comentPreconsulta").val();
 	
-		var preConsulta = {'peso':peso,'talla':talla,'supcorporal':superficie,'performanceStatus':performance,'comentario':comentario};		  		 
+		var preConsulta = {'idConsulta':CONSULTA_ID,'peso':peso,'talla':talla,'supcorporal':superficie,'performanceStatus':performance,'comentario':comentario};		  		 
 		 
     jQuery.ajax({
          url: '<c:url value="/addNewPreconsulta.htm" />',
@@ -2869,7 +2962,7 @@ jQuery("#addPreconsulta").validate({
          
 });  
   
-jQuery("#addMotivo").validate({
+jQuery("#addMotivoAntecedentesForm").validate({
 	focusInvalid:false,
     rules: {
 //	    	nombreC:{required: true},
@@ -2909,7 +3002,7 @@ jQuery("#addMotivo").validate({
 		var fechaMotivo = jQuery("#dateStartMotivo").val();  		
     var mesesMotivo = jQuery("#mesesMotivo").val();
 	
-		var motivo = {'motivo':motivosX,'motivoOtro':otroMotivo,'fechaInicio':fechaMotivo,'evoMeses':mesesMotivo};		  		 
+		var motivo = {'idConsulta':CONSULTA_ID,'motivo':motivosX,'motivoOtro':otroMotivo,'fechaInicio':fechaMotivo,'evoMeses':mesesMotivo};		  		 
 		 
     jQuery.ajax({
          url: '<c:url value="/addNewMotivo.htm" />',
@@ -2921,6 +3014,7 @@ jQuery("#addMotivo").validate({
         	 if(resp!=-1){ 
         		 jQuery("#dialogSuccessOperation").dialog("option","title","Agregar Motivo");
         		 jQuery("#dialogSuccessOperation").dialog("open");
+        		 submitAntecedentes();
      	 	}
      	 	else{
        		 jQuery("#dialogErrorOperation").dialog("open");
@@ -2931,15 +3025,16 @@ jQuery("#addMotivo").validate({
          
 });	
 
-jQuery("#addAntecedentes").validate({
-	focusInvalid:false,
-    rules: {
-//	    	nombreC:{required: true},
-    },
-    messages: {
-//	    	nombreC: {required: "Campo obligatorio"},
-    },
-	submitHandler: function() { 	  	
+// jQuery("#addAntecedentes").validate({
+// 	focusInvalid:false,
+//     rules: {
+// 	    	nombreC:{required: true},
+//     },
+//     messages: {
+// 	    	nombreC: {required: "Campo obligatorio"},
+//     },
+// 	submitHandler: function() { 	
+function submitAntecedentes(){	
 		var apersonal = "";
 		
 		if($("#apersonal1").is(':checked')) {  
@@ -2992,15 +3087,18 @@ jQuery("#addAntecedentes").validate({
 		}
 		if($("#checkfamMenor60").is(':checked')) {  
 			famCancer =  famCancer+"-"+$("#checkfamMenor60").attr("id");
-			var famMenor60Nro = jQuery("#famMenor60").val();		
+			var famMenor60Nro = jQuery("#famMenor60").val();	
+			famCancer =  famCancer+"*"+famMenor60Nro;
 		}
 		if($("#checkfamMayor60").is(':checked')) {  
 			famCancer =  famCancer+"-"+$("#checkfamMayor60").attr("id");
-			var famMayor60Nro = jQuery("#famMayor60").val();	
+			var famMayor60Nro = jQuery("#famMayor60").val();
+			famCancer =  famCancer+"*"+famMayor60Nro;
 		}
 		if($("#checkfamSegundoGrado").is(':checked')) {  
 			famCancer =  famCancer+"-"+$("#checkfamSegundoGrado").attr("id");
 			var famSegundoGradoNro = jQuery("#famSegundoGrado").val();
+			famCancer =  famCancer+"*"+famSegundoGradoNro;
 		}
 	  	
 		var anteSindrome = jQuery("input[name=anteSindrome]:checked").val();
@@ -3017,7 +3115,8 @@ jQuery("#addAntecedentes").validate({
 			siSindrome =  siSindrome+"-"+$("#checkMYH").attr("id");
 		}
 
-		var antecedentes = {'personales':peso,'personalesPatologicos':talla,'neoplasia':superficie,'familiarCancer':performance,'antecedentesCcrh':comentario};		  		 
+		var antecedentes = {'idConsulta':CONSULTA_ID,'personales':apersonal+"//"+otroAPersonal,'personalesPatologicos':apersonalPat,'neoplasia':neoPlasiaText,
+				'familiarCancer':famCancer,'antecedentesCcrh':anteSindrome+"//"+siSindrome};		  		 
 		 
     jQuery.ajax({
          url: '<c:url value="/addNewAntecedente.htm" />',
@@ -3037,11 +3136,11 @@ jQuery("#addAntecedentes").validate({
        });  		
 	}
          
-});  
+ 
 
 
 
-jQuery("#addEvaluacionClinica").validate({
+jQuery("#addEvaClinicaForm").validate({
 	focusInvalid:false,
     rules: {
 //	    	nombreC:{required: true},
@@ -3119,7 +3218,7 @@ jQuery("#addEvaluacionClinica").validate({
 
 		var notasEvaCli = jQuery("#notasEvaCli").val();
 		
-		var evaClinica = {'abdomen':evaAbdomen,'colon':evaColon,'recto':evaRecto,'adenopatias':evaAdenopatia,'notas':notasEvaCli};		  		 
+		var evaClinica = {'idConsulta':CONSULTA_ID,'abdomen':evaAbdomen,'colon':evaColon,'recto':evaRecto,'adenopatias':evaAdenopatia,'notas':notasEvaCli};		  		 
 		 
     jQuery.ajax({
          url: '<c:url value="/addNewEvaClinica.htm" />',
@@ -3142,7 +3241,7 @@ jQuery("#addEvaluacionClinica").validate({
 });  
 
 
-jQuery("#addExaProctologico").validate({
+jQuery("#addExaProctoForm").validate({
 	focusInvalid:false,
     rules: {
 //	    	nombreC:{required: true},
@@ -3175,7 +3274,7 @@ jQuery("#addExaProctologico").validate({
 		var eeMedida = jQuery("input[name=eeMedida]:checked").val();
 		var eeFecha = jQuery("#eeFecha").val();
 		
-		var exaProcto = {'tactoRectal':movilRectal+"//"+fijoRectal,'tactoRectalInfiltra':esfinterRectal,'rsc':rscPresente+"//"+rscMedida,'rscAltura':rscAltura,'rscFecha':rscFecha,
+		var exaProcto = {'idConsulta':CONSULTA_ID,'tactoRectal':movilRectal+"//"+fijoRectal,'tactoRectalInfiltra':esfinterRectal,'rsc':rscPresente+"//"+rscMedida,'rscAltura':rscAltura,'rscFecha':rscFecha,
 						 'vcc':vccPresente+"//"+vccTipo+"//"+vccMedida,'vccAltura':vccAltura,'vccFecha':vccFecha,'ee':eePresente+"//"+eeTipo+"//"+eeTipoN,'eeInfiltra':eeesfinter+"//"+eeMedida,'eeFecha':eeFecha};		  		 
 		 
     jQuery.ajax({
@@ -3200,7 +3299,7 @@ jQuery("#addExaProctologico").validate({
 
 
 
-jQuery("#addEstadificacion").validate({
+jQuery("#addEstadificacionForm").validate({
 	focusInvalid:false,
     rules: {
 //	    	nombreC:{required: true},
@@ -3280,7 +3379,7 @@ jQuery("#addEstadificacion").validate({
 		var revisiongaLate = jQuery("input[name=revisiongaLate]:checked").val();
 		var revisionesfinter = jQuery("input[name=revisionesfinter]:checked").val();
 		
-		var estadificacion = {'rmCentro':centroRM,'rmFecha':fechaRM,'rmDistEsfinter':distanciaSupRM,'rmDistAnal':distanciaMarARadio,'rmAltura':alturaRM,
+		var estadificacion = {'idConsulta':CONSULTA_ID,'rmCentro':centroRM,'rmFecha':fechaRM,'rmDistEsfinter':distanciaSupRM,'rmDistAnal':distanciaMarARadio,'rmAltura':alturaRM,
 						 	  'rmTumor':numTRadio+"//"+numTNRadio,'crm':crmPresente,'emvi':emviPresente,'depSatelites':depoSati,'tumoRectoInferior':estaRInterior,'ganglios':inguinales,
 						 	 'gangliosLate':gaLate, 'infiltraEsfinter':esfinterRM,'tcTorax':tcTorax,'tcAbd':tcAbdomen,'petCt':petTC,'mts':mtsRadio,'suv':suvEstati,
 						 	  'marTumFecha':marcaTuFecha,'ceaAumentado':ceaAument,'ca19':caAument,'tnmT':tnmValT,'tnmN':tnmValN,'tnmM':tnmValM,
@@ -3310,7 +3409,7 @@ jQuery("#addEstadificacion").validate({
 
 
 
-jQuery("#addAnaPatologica").validate({
+jQuery("#addAnatomiaPatalogiaForm").validate({
 	focusInvalid:false,
     rules: {
 //	    	nombreC:{required: true},
@@ -3332,7 +3431,7 @@ jQuery("#addAnaPatologica").validate({
 		var cirugiaHayRadio = jQuery("input[name=cirugiaHayRadio]:checked").val();
 		var otroBaseDiag = jQuery("#otroBaseDiag").val();
 		
-		var anaPatologica = {'biopsia':nroBiopsia,'fechaDiag':fechaBiopsia,'diagHistologico':diagHisto,'apSugestiva':sugesIMS,'ihq':ihqBiopsiaRadio,
+		var anaPatologica = {'idConsulta':CONSULTA_ID,'biopsia':nroBiopsia,'fechaDiag':fechaBiopsia,'diagHistologico':diagHisto,'apSugestiva':sugesIMS,'ihq':ihqBiopsiaRadio,
 						 	  'expresionConserv':expConservadaRadio+"//"+notaExpConservada,'diagnosticadoEn':diagnostiWhere,'gradoDif':gradoDiferRadio,
 						 	  'baseDiagCirugia':cirugiaHayRadio,'baseDiag':otroBaseDiag};		  		 
 		 
@@ -3356,7 +3455,7 @@ jQuery("#addAnaPatologica").validate({
          
 });  
 
-jQuery("#addTratamiento").validate({
+jQuery("#addtratamientoForm").validate({
 	focusInvalid:false,
     rules: {
 //	    	nombreC:{required: true},
@@ -3380,7 +3479,7 @@ jQuery("#addTratamiento").validate({
 		var quimioIntervalCiclos = jQuery("#quimioIntervalCiclos").val();	
 		
 
-		var tratamiento = {'udaondo':udaOndoRadio+"//"+udaOndoOtro,'cirugia':cirugiaTrataRadio,'quimioterapiaInduc':quimioInduccion+"//"+quimioInduccionOtro,
+		var tratamiento = {'idConsulta':CONSULTA_ID,'udaondo':udaOndoRadio+"//"+udaOndoOtro,'cirugia':cirugiaTrataRadio,'quimioterapiaInduc':quimioInduccion+"//"+quimioInduccionOtro,
 							 'quimioteInducNroCiclos':quimioInduccionCiclos,'quimioOtra':quimioradioInduRadio+"//"+quimioradioInduRadioOtro, 
 							 'quimioterapiaInter':quimioIntervalRadio+"//"+quimioIntervalRadioOtro,'quimioteInterNroCiclos':quimioIntervalCiclos};		  		 
 		 
@@ -3405,7 +3504,7 @@ jQuery("#addTratamiento").validate({
 });  
 
 
-jQuery("#addDescTrataNeoadyuante").validate({
+jQuery("#addTratamientoNeoAdForm").validate({
 	focusInvalid:false,
     rules: {
 //	    	nombreC:{required: true},
@@ -3429,7 +3528,7 @@ jQuery("#addDescTrataNeoadyuante").validate({
 		var toxiRadio = jQuery("input[name=toxiRadio]:checked").val();
 		var gradoIII = jQuery("input[name=gradoIII]:checked").val();
 
-		var descTrataNeoadyuante = {'radioterapia':radioTera,'radioDosis':dosisTotalRadioTer,'radioFechaInicio':fechaInicioRadioTer,
+		var descTrataNeoadyuante = {'idConsulta':CONSULTA_ID,'radioterapia':radioTera,'radioDosis':dosisTotalRadioTer,'radioFechaInicio':fechaInicioRadioTer,
 							 'radioFechaFinal':fechaFinRadioTer,'radioSuspendio':suspenRadioTerRadio+"//"+diasSuspenRadioTer, 
 							 'quimioEsquema':quimioRadio+"//"+quimioEsquema,'quimioNroCiclos':quimioNroCiclos,'quimioNroCiclos':quimioNroCiclos,
 							 'quimioFechaInicio':fechaInicioQuimio,'quimioFechaFinal':fechaFinQuimio,'toxicidad':toxiRadio,'toxGrado':gradoIII};		  		 
@@ -3503,7 +3602,7 @@ jQuery("#addRespuestaNeoadyuante").validate({
 		var eePostFecha = jQuery("#eePostFecha").val();
 	
 
-		var respuestaNeoadyuante = {'rmFecha':fechaPostTrata,'rmCentro':centroPostTrata,'rmDistEsfinter':distanciaPostTrata,
+		var respuestaNeoadyuante = {'idConsulta':CONSULTA_ID,'rmFecha':fechaPostTrata,'rmCentro':centroPostTrata,'rmDistEsfinter':distanciaPostTrata,
 							 'rmDistAnal':distMargenPostTrataRadio,'rmAltura':alturaPostTrataRadio, "rmTumor":tumorPostTrataRadio+"//"+tumorPostTrataNRadio,
 							 'crm':crmPostTrataRadio,'emvi':emviPostTrataRadio,'depSatelites':depoSatiRadio,
 							 'gangliosImgui':inguinalesRadio,'gangliosLateral':gaLateRadio,'infiltraEsf':infiltraEsPostRadio,'estadifTumor':estaRInteriorRadio,
@@ -3556,7 +3655,7 @@ jQuery("#addConductaPostNeo").validate({
 	
 	
 
-		var conductaPostNeo = {'cirugia':ciruNeoRadio+"//"+prodCiruRadio,'milesCilindrico':milesCiliRadio+"//"+milesCiliOtro,'urgencia':urgenciaRadio,
+		var conductaPostNeo = {'idConsulta':CONSULTA_ID,'cirugia':ciruNeoRadio+"//"+prodCiruRadio,'milesCilindrico':milesCiliRadio+"//"+milesCiliOtro,'urgencia':urgenciaRadio,
 							 'urgenciaFecha':urgenciaFecha,'cirujano':cirujaName, "WS":waitSeeRadio,
 							 'fechaInicio':fechaInicioConducta};		  		 
 		 
@@ -3581,7 +3680,7 @@ jQuery("#addConductaPostNeo").validate({
 });  
 
 
-jQuery("#addTratamientoAdyu").validate({
+jQuery("#addTrataAdyuForm").validate({
 	focusInvalid:false,
     rules: {
 //	    	nombreC:{required: true},
@@ -3604,12 +3703,12 @@ jQuery("#addTratamientoAdyu").validate({
 		var suspenTrataDias = jQuery("#suspenTrataDias").val();
 		var comentCTrataAdyu = jQuery("#comentCTrataAdyu").val();
 		
-		var tratamientoAdyu = {'quimioterapia':trataAdyuYesRadio+"//"+quimiotrataRadio+"//"+quimiotrataOtro,'quimioNroCiclos':nroCiclosTrata,'radioterapia':radioTeRadio,
+		var tratamientoAdyu = {'idConsulta':CONSULTA_ID,'quimioterapia':trataAdyuYesRadio+"//"+quimiotrataRadio+"//"+quimiotrataOtro,'quimioNroCiclos':nroCiclosTrata,'radioterapia':radioTeRadio,
 							 'radioDosis':dosisTotalTrata,'radioFechaInicio':dosisTRataFechaInicio, "radioFechaFinal":dosisTRataFechaFin,
 							 'suspendio':suspendioYesRadio+"//"+suspenTrataDias,'notas':comentCTrataAdyu};		  		 
 		 
     jQuery.ajax({
-         url: '<c:url value="/addNewTrataAdtuvante.htm" />',
+         url: '<c:url value="/addNewTrataAdyuvante.htm" />',
          type: "POST",
          dataType: "json",
          contentType: "application/json",
@@ -3629,7 +3728,7 @@ jQuery("#addTratamientoAdyu").validate({
 });  
 
 
-jQuery("#addAnaPatologicaPost").validate({
+jQuery("#addAnatomiaPostForm").validate({
 	focusInvalid:false,
     rules: {
 //	    	nombreC:{required: true},
@@ -3659,7 +3758,7 @@ jQuery("#addAnaPatologicaPost").validate({
 		var krasRadio = jQuery("input[name=krasRadio]:checked").val();
 		var tipoKrasRadio = jQuery("input[name=tipoKrasRadio]:checked").val();
 		
-		var anaPatologica = {'nroBiopsia':nroBiopsiaPost,'fechaAp':fechaBiopsiaPost,'diagHisto':diagBiopsiaPost,
+		var anaPatologica = {'idConsulta':CONSULTA_ID,'nroBiopsia':nroBiopsiaPost,'fechaAp':fechaBiopsiaPost,'diagHisto':diagBiopsiaPost,
 							 'gradoDif':gradoDiferPostRadio,'tumor':tumorAnatPostRadio+"//"+tumorAnatPostNRadio, "ganResecados":gangliosResaPost,'ganPositivos':gangliosPosiPost,
 							 'invVascular':invaVascularRadio,'invPeri':invaPeriRadio,'linfa':linfaTicaRadio,'buddingTumoral':buddTomoralRadio,
 							 'pushingBorder':pushBorderRadio,'gradoRegresion':gradoRegresionDvorak,'cap':capVal,'rtaComPato':rtaCompletaRadio,

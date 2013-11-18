@@ -5,6 +5,7 @@ public class TratamientoDTO {
 	
 	
 	private String idtratamiento;
+	private long idConsulta;
 	private String udaondo;
 	private String cirugia;
 	private String quimioterapiaInduc;
@@ -14,6 +15,12 @@ public class TratamientoDTO {
 	private String quimioteInterNroCiclos;
 	
 	
+	public long getIdConsulta() {
+		return idConsulta;
+	}
+	public void setIdConsulta(long idConsulta) {
+		this.idConsulta = idConsulta;
+	}
 	public String getIdtratamiento() {
 		return idtratamiento;
 	}

@@ -4,6 +4,7 @@ package com.corecto.web.model.dto;
 public class ConductaPostNeoDTO {
 	
 	private String idconductapostneo;
+	private long idConsulta;
 	private String cirugia;
 	private String milesCilindrico;
 	private String urgencia;
@@ -13,6 +14,12 @@ public class ConductaPostNeoDTO {
 	private String fechaInicio;
 	
 	
+	public long getIdConsulta() {
+		return idConsulta;
+	}
+	public void setIdConsulta(long idConsulta) {
+		this.idConsulta = idConsulta;
+	}
 	public String getIdconductapostneo() {
 		return idconductapostneo;
 	}

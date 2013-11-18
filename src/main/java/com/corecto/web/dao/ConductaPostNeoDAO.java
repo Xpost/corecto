@@ -4,7 +4,7 @@ import org.springframework.dao.DataAccessException;
 
 import com.corecto.web.model.pojo.extra.ConductaPostNeo;
 
-public interface ConductaPostNeoDAO {
+public interface ConductaPostNeoDAO extends DAO {
 
 	public  long saveNewConductaPostNeo(ConductaPostNeo preconsulta)
 			throws DataAccessException;

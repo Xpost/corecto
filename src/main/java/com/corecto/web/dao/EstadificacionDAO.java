@@ -4,7 +4,7 @@ import org.springframework.dao.DataAccessException;
 
 import com.corecto.web.model.pojo.extra.Estadificacion;
 
-public interface EstadificacionDAO {
+public interface EstadificacionDAO extends DAO {
 
 	public  long saveNewEstadificacion(Estadificacion preconsulta)
 			throws DataAccessException;

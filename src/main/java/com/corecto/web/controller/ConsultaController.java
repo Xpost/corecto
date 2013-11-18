@@ -6,12 +6,34 @@ package com.corecto.web.controller;
 
 
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.corecto.web.service.PatientService;
+import com.corecto.web.model.dto.AnatomiaPatologicaPostDTO;
+import com.corecto.web.model.dto.AnotomiaPatologicaDTO;
+import com.corecto.web.model.dto.AntecedentesDTO;
+import com.corecto.web.model.dto.ConductaPostNeoDTO;
+import com.corecto.web.model.dto.DescTrataNeoDTO;
+import com.corecto.web.model.dto.EstadificacionDTO;
+import com.corecto.web.model.dto.EvaClinicaDTO;
+import com.corecto.web.model.dto.ExaProctoDTO;
+import com.corecto.web.model.dto.MotivoDTO;
+import com.corecto.web.model.dto.PreconsultaDTO;
+import com.corecto.web.model.dto.RespuestaTrataNeoDTO;
+import com.corecto.web.model.dto.TratamientoAdyuDTO;
+import com.corecto.web.model.dto.TratamientoDTO;
+import com.corecto.web.service.ConsultaService;
+
+import fr.xebia.audit.Audited;
 
 //import fr.xebia.audit.Audited;
 
@@ -32,24 +54,240 @@ public class ConsultaController {
 	Logger LOG = LoggerFactory.getLogger(ConsultaController.class);
 
 	 @Autowired
-	 PatientService patientService;
+	 ConsultaService consultaService;
 	 
 	 
-//	  @Audited(message = "Accion: Agregar Paciente")
-//	    @RequestMapping(value = "/addNewPatient", method = RequestMethod.POST)
-//	    public @ResponseBody
-//	    long saveNewPaciente(@RequestBody PacienteDTO pacienteDTO ) {
-//	    	LOG.info("ClientController.saveNewPaciente()");
-//	        long returnNewId = -1;
-//	        try {
-//	        	returnNewId = patientService.savePatient(pacienteDTO);
-//	        } catch (Exception e) {
-//	            e.printStackTrace();
-//	            return -1;
-//	        }
-//
-//	        return 	returnNewId;
-//	    }
+	  @Audited(message = "Accion: Cargar consulta")
+	    @RequestMapping(value = "/loadConsultaId", method = RequestMethod.GET)
+	    public @ResponseBody
+	    long loadConsultaId(HttpServletRequest request, HttpServletResponse response ) {
+	    	LOG.info("ConsultaController.loadConsultaId()");
+	        long returnConsultaId = -1;
+	        try {
+	            Object idPatient =  request.getSession().getAttribute("PACIENTE_ID");
+	            if (idPatient!=null){   	
+	            	returnConsultaId = consultaService.loadConsulta((Long)idPatient);	
+	            }	        	
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            return -1;
+	        }
+
+	        return 	returnConsultaId;
+	    }
+	 
+	 
+	  @Audited(message = "Accion: Agregar Preconsulta")
+	    @RequestMapping(value = "/addNewPreconsulta", method = RequestMethod.POST)
+	    public @ResponseBody
+	    long saveNewPresonculta(@RequestBody PreconsultaDTO preconsultaDTO ) {
+	    	LOG.info("ConsultaController.saveNewPresonculta()");
+	        long returnNewId = -1;
+	        try {
+	        	returnNewId = consultaService.savePreconsulta(preconsultaDTO);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            return -1;
+	        }
+
+	        return 	returnNewId;
+	    }
+	  
+	  @Audited(message = "Accion: Agregar Motivo")
+	    @RequestMapping(value = "/addNewMotivo", method = RequestMethod.POST)
+	    public @ResponseBody
+	    long saveNewMotivo(@RequestBody MotivoDTO motivoDTO ) {
+	    	LOG.info("ConsultaController.saveNewMotivo()");
+	        long returnNewId = -1;
+	        try {
+	        	returnNewId = consultaService.saveMotivo(motivoDTO);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            return -1;
+	        }
+
+	        return 	returnNewId;
+	    }
+	  
+	  @Audited(message = "Accion: Agregar Antecedente")
+	    @RequestMapping(value = "/addNewAntecedente", method = RequestMethod.POST)
+	    public @ResponseBody
+	    long saveNewAntecedente(@RequestBody AntecedentesDTO antecedentesDTO ) {
+	    	LOG.info("ConsultaController.saveNewAntecedente()");
+	        long returnNewId = -1;
+	        try {
+	        	returnNewId = consultaService.saveAntecedentes(antecedentesDTO);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            return -1;
+	        }
+
+	        return 	returnNewId;
+	    }
+	  
+	  @Audited(message = "Accion: Agregar Evaluacion clinica")
+	    @RequestMapping(value = "/addNewEvaClinica", method = RequestMethod.POST)
+	    public @ResponseBody
+	    long saveNewEvaClinica(@RequestBody EvaClinicaDTO evaClinicaDTO ) {
+	    	LOG.info("ConsultaController.saveNewEvaClinica()");
+	        long returnNewId = -1;
+	        try {
+	        	returnNewId = consultaService.saveEvaClinica(evaClinicaDTO);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            return -1;
+	        }
+
+	        return 	returnNewId;
+	    }
+	  
+	  @Audited(message = "Accion: Agregar Antecedente")
+	    @RequestMapping(value = "/addNewExaProcto", method = RequestMethod.POST)
+	    public @ResponseBody
+	    long saveNewExaProctologico(@RequestBody ExaProctoDTO exaProctoDTO ) {
+	    	LOG.info("ConsultaController.saveNewExaProctologico()");
+	        long returnNewId = -1;
+	        try {
+	        	returnNewId = consultaService.saveExaProctologico(exaProctoDTO);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            return -1;
+	        }
+
+	        return 	returnNewId;
+	    }
+	  
+	  @Audited(message = "Accion: Agregar Estadificacion")
+	    @RequestMapping(value = "/addNewEstadificacion", method = RequestMethod.POST)
+	    public @ResponseBody
+	    long saveNewEstadificacion(@RequestBody EstadificacionDTO estadificacionDTO ) {
+	    	LOG.info("ConsultaController.saveNewEstadificacion()");
+	        long returnNewId = -1;
+	        try {
+	        	returnNewId = consultaService.saveEstadificacion(estadificacionDTO);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            return -1;
+	        }
+
+	        return 	returnNewId;
+	    }
+	  
+	  @Audited(message = "Accion: Agregar Anatomia Patalogica")
+	    @RequestMapping(value = "/addNewAnaPatologica", method = RequestMethod.POST)
+	    public @ResponseBody
+	    long saveNewAnatomiaPagologica(@RequestBody AnotomiaPatologicaDTO anotomiaPatologicaDTO ) {
+	    	LOG.info("ConsultaController.saveNewAnatomiaPagologica()");
+	        long returnNewId = -1;
+	        try {
+	        	returnNewId = consultaService.saveAnaPatologica(anotomiaPatologicaDTO);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            return -1;
+	        }
+
+	        return 	returnNewId;
+	    }	
+	  
+	  @Audited(message = "Accion: Agregar Tratamiento")
+	    @RequestMapping(value = "/addTratamiento", method = RequestMethod.POST)
+	    public @ResponseBody
+	    long saveNewTratamiento(@RequestBody TratamientoDTO tratamientoDTO ) {
+	    	LOG.info("ConsultaController.saveNewTratamiento()");
+	        long returnNewId = -1;
+	        try {
+	        	returnNewId = consultaService.saveTratamiento(tratamientoDTO);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            return -1;
+	        }
+
+	        return 	returnNewId;
+	    }
+	  
+	  @Audited(message = "Accion: Agregar Desc Tratamiento NeoAdyuante")
+	    @RequestMapping(value = "/addNewdescTrataNeoadyuante", method = RequestMethod.POST)
+	    public @ResponseBody
+	    long saveNewDescTrataNeoadyuante(@RequestBody DescTrataNeoDTO descTrataNeoDTO ) {
+	    	LOG.info("ConsultaController.saveNewDescTrataNeoadyuante()");
+	        long returnNewId = -1;
+	        try {
+	        	returnNewId = consultaService.saveDescTrataNeoadyuante(descTrataNeoDTO);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            return -1;
+	        }
+
+	        return 	returnNewId;
+	    }
+	  
+	  @Audited(message = "Accion: Agregar Respuesta NeoAdyuante")
+	    @RequestMapping(value = "/addNewRespuestaNeoadyuante", method = RequestMethod.POST)
+	    public @ResponseBody
+	    long saveNewRespTrataNeoadyuante(@RequestBody RespuestaTrataNeoDTO respuestaTrataNeoDTO ) {
+	    	LOG.info("ConsultaController.saveNewRespTrataNeoadyuante()");
+	        long returnNewId = -1;
+	        try {
+	        	returnNewId = consultaService.saveRespuestaTrataNeoadyuante(respuestaTrataNeoDTO);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            return -1;
+	        }
+
+	        return 	returnNewId;
+	    }
+	  
+	  
+	  @Audited(message = "Accion: Agregar Conducta post neoadyuante")
+	    @RequestMapping(value = "/addNewConductaPostNeo", method = RequestMethod.POST)
+	    public @ResponseBody
+	    long saveNewConductaPostNeoadyuante(@RequestBody ConductaPostNeoDTO conductaPostNeoDTO ) {
+	    	LOG.info("ConsultaController.saveNewConductaPostNeoadyuante()");
+	        long returnNewId = -1;
+	        try {
+	        	returnNewId = consultaService.saveConducataPostNeoAdyuante(conductaPostNeoDTO);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            return -1;
+	        }
+
+	        return 	returnNewId;
+	    }
+
+	  
+	  @Audited(message = "Accion: Agregar Anatomia Patologica post")
+	    @RequestMapping(value = "/addNewAnaPatoPost", method = RequestMethod.POST)
+	    public @ResponseBody
+	    long saveNewAnaPatologicaPost(@RequestBody AnatomiaPatologicaPostDTO patologicaPostDTO ) {
+	    	LOG.info("ConsultaController.saveNewAnaPatologicaPost()");
+	        long returnNewId = -1;
+	        try {
+	        	returnNewId = consultaService.saveAnatomiaPatologicaPost(patologicaPostDTO);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            return -1;
+	        }
+
+	        return 	returnNewId;
+	    }		  
+	  
+	  
+	  @Audited(message = "Accion: Agregar Tratamiento adyuvante")
+	    @RequestMapping(value = "/addNewTrataAdyuvante", method = RequestMethod.POST)
+	    public @ResponseBody
+	    long saveNewTrataAdyuvante(@RequestBody TratamientoAdyuDTO tratamientoAdyuDTO ) {
+	    	LOG.info("ConsultaController.saveNewTrataAdyuvante()");
+	        long returnNewId = -1;
+	        try {
+	        	returnNewId = consultaService.saveTratamientoAdyuvante(tratamientoAdyuDTO);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            return -1;
+	        }
+
+	        return 	returnNewId;
+	    }		  
+	  
 //	 
 //	   @Audited(message = "Accion: Busqueda inical de pacientes en Listado")
 //	    @RequestMapping(value = "/loadlistPatients", method = RequestMethod.GET)
