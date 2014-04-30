@@ -29,6 +29,9 @@
         <property name="mail" type="string">
             <column name="MAIL" length="100" />
         </property>
+   		<property name="dni" type="string">
+            <column name="DNI" length="100" />
+        </property>        
         <property name="nroOs" type="string">
             <column name="NRO_OS" length="100" />
         </property>

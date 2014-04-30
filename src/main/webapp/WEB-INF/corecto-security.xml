@@ -46,7 +46,8 @@
 	<http auto-config="true" use-expressions="true">
 		<intercept-url pattern="/account/*.do" access="hasRole('ROLE_USER') and fullyAuthenticated" />
 		<intercept-url pattern="/login.htm" access="permitAll"/>
-		<intercept-url pattern="/getAlertProducts.htm" access="permitAll"/>
+		<intercept-url pattern="/contacto.htm" access="permitAll"/>
+<!-- 		<intercept-url pattern="/getAlertProducts.htm" access="permitAll"/> -->
 		<intercept-url pattern="/*" access="hasRole('ROLE_USER')"/>
 		
 <!--		<port-mappings>-->

@@ -22,6 +22,7 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.corecto.web.dao.PatientDAO;
+import com.corecto.web.model.dto.FilterDTO;
 import com.corecto.web.model.dto.PacienteDTO;
 import com.corecto.web.model.pojo.extra.CatOs;
 import com.corecto.web.model.pojo.extra.Consulta;
@@ -70,6 +71,16 @@ public class PatientDAOImpl extends HibernateDaoSupport implements PatientDAO {
     }
     
     
+    public Long checkConsultByPatientId(Long  patientId) throws DataAccessException {
+    	LOG.info("PatientDAOImpl.checkConsultByPatientId()");
+        List<Long> lstResult = getHibernateTemplate().find("select C.idconsulta from Consulta as C where C.paciente.idpaciente='" + patientId + "'");
+        if (lstResult.isEmpty()) {
+            return null;
+        } else
+            return lstResult.get(0);
+       }
+    
+    
     public List<PacienteDTO> getPatientsByParameters(final Date initialDate, final Long patientID, final String direction, final String fieldSort, final String sort) throws DataAccessException {
 
 		
@@ -101,7 +112,7 @@ public class PatientDAOImpl extends HibernateDaoSupport implements PatientDAO {
 
     			
                 Query query = session.createQuery(
-                        "select new com.corecto.web.model.dto.PacienteDTO(P.idpaciente,O.idos,O.nombre,P.nombre,P.sexo,P.fechanac,P.domicilio,P.telefono,P.mail,P.nroOs,P.notas) "
+                        "select new com.corecto.web.model.dto.PacienteDTO(P.idpaciente,O.idos,O.nombre,P.nombre,P.sexo,P.fechanac,P.domicilio,P.telefono,P.mail,P.nroOs,P.notas,P.dni) "
                                 + " FROM Paciente as P, CatOs as O" + " WHERE P.catOs=O.idos "+finalQuery+" order by P.idpaciente");
 
                 List result = query.list();
@@ -115,18 +126,11 @@ LOG.info("Cantidad:"+listResult.size());
 return listResult;
 }
     
-/*
-    public Integer saveClient(Cliente cliente) throws DataAccessException {
-    	LOG.info("ClientDAOImpl.saveClient()");
-        getHibernateTemplate().saveOrUpdate(cliente);
-        return cliente.getIdcliente();
-    }
     
+    
+    public List<Paciente> getPatientsByName(final String name, final String fieldSort, final String sort, final int maxResult) throws DataAccessException {
 
-
-    public List<Cliente> getClientsByName(final String name, final String fieldSort, final String sort, final int maxResult) throws DataAccessException {
-
-        List<Cliente> listResult = new ArrayList<Cliente>();
+        List<Paciente> listResult = new ArrayList<Paciente>();
         HibernateCallback callback = new HibernateCallback() {
 
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
@@ -137,8 +141,8 @@ return listResult;
             	}
                 Query query = session.createQuery(
                         "select C "
-                                + " FROM Cliente as C" + " WHERE LOWER(C.nombre) LIKE '%" + name.toLowerCase()
-                                + "%'" + " order by "+orderBy+" "+sort).setMaxResults(maxResult);
+                                + " FROM Paciente as C" + " WHERE LOWER(C.nombre) LIKE '%" + name.toLowerCase()
+                                + "%' order by "+orderBy+" "+sort).setMaxResults(maxResult);
 
                 List result = query.list();
                 return result;
@@ -146,10 +150,49 @@ return listResult;
             }
         };
 
-        listResult = (List<Cliente>) this.getHibernateTemplate().execute(callback);
+        listResult = (List<Paciente>) this.getHibernateTemplate().execute(callback);
         LOG.info("Cantidad:"+listResult.size());
         return listResult;
     }
+    
+    
+    public List<Paciente> getPatientsByFilter(final FilterDTO filter) throws DataAccessException {
+
+        List<Paciente> listResult = new ArrayList<Paciente>();
+        HibernateCallback callback = new HibernateCallback() {
+
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+
+            	String name = "";
+            	String dni = "";
+            	if(!filter.getNombre().isEmpty()){
+            		name=" LOWER(C.nombre) LIKE '%"+filter.getNombre().toLowerCase()+"%' and";
+            	}
+            	if(!filter.getDni().isEmpty()){
+            		dni=" C.dni LIKE '"+filter.getDni()+"%' and";
+            	}
+            	
+            	String orderBy = "C.nombre";
+                Query query = session.createQuery(
+                        "select C "
+                                + " FROM Paciente as C" + " WHERE"+name+dni
+                                + " C.idpaciente is not null order by "+orderBy);
+
+                List result = query.list();
+                return result;
+
+            }
+        };
+
+        listResult = (List<Paciente>) this.getHibernateTemplate().execute(callback);
+        LOG.info("Cantidad:"+listResult.size());
+        return listResult;
+    }
+    
+    
+/*
+
+
     
     
     public List<Cliente> getClientsByParameters(final String name,final String lastName, final String cuit, final String score,final String fieldSort, final String sort) throws DataAccessException {
@@ -310,11 +353,7 @@ return listResult;
     }
     
     
-    
-    public void deleteClient(Cliente cliente) throws DataAccessException {
-    	LOG.info("deleteClient()");
-        getHibernateTemplate().delete(cliente);
-    }*/
+*/
 
 	
     @SuppressWarnings("unchecked")
@@ -328,5 +367,8 @@ return listResult;
             return lstResults;
 	} 
 	
-
+    public void deletePatient(Paciente paciente) throws DataAccessException {
+    	LOG.info("deletePatient()");
+        getHibernateTemplate().delete(paciente);
+    }
 }

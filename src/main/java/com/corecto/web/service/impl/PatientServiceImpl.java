@@ -19,9 +19,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.corecto.web.dao.PatientDAO;
 import com.corecto.web.dao.impl.DAOLocator;
+import com.corecto.web.model.dto.FilterDTO;
 import com.corecto.web.model.dto.PacienteDTO;
 import com.corecto.web.model.pojo.extra.CatOs;
 import com.corecto.web.model.pojo.extra.Paciente;
+import com.corecto.web.model.values.PacienteSexo;
 import com.corecto.web.service.PatientService;
 
 
@@ -64,6 +66,7 @@ public class PatientServiceImpl implements PatientService {
         paciente.setMail(pacienteDTO.getMail());
         paciente.setNombre(pacienteDTO.getNombre());
         paciente.setNroOs(pacienteDTO.getNroOs());
+        paciente.setDni(pacienteDTO.getDni());
         paciente.setSexo(pacienteDTO.getSexo());
         String[] numbers = pacienteDTO.getTelefono().split("@@");
         paciente.setTelefono(numbers[0]);
@@ -75,6 +78,13 @@ public class PatientServiceImpl implements PatientService {
 
     }
     
+    public Long alreadyHasConsultCreated(Long patientID) {
+
+        Long idConsulta =getPatientDAO().checkConsultByPatientId(patientID);
+
+        return idConsulta==null?-1l:idConsulta;
+
+    }
     
     public List<PacienteDTO> listPatients(String name, Long patientID, String direction, String fieldOrder, String order) {
         List<PacienteDTO> resultList = new ArrayList<PacienteDTO>();
@@ -89,18 +99,79 @@ public class PatientServiceImpl implements PatientService {
     }
     
     
+    public List<PacienteDTO> listPatientByName(String name, String fieldOrder, String order, int maxResult) {
+        List<PacienteDTO> resultList = new ArrayList<PacienteDTO>();
+        try {
+        	List<Paciente> pacientes = getPatientDAO().getPatientsByName(name, fieldOrder, order, maxResult);
+    	    SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
+        	for (Paciente paciente : pacientes) {
+
+        		PacienteDTO pacienteDTO = new PacienteDTO();
+        		pacienteDTO.setDomicilio(paciente.getDomicilio());
+        		if (paciente.getFechanac()!=null){
+        			pacienteDTO.setFechanac(dateFormatter.format(paciente.getFechanac()));
+        		}
+        		pacienteDTO.setIdos(paciente.getCatOs().getIdos());
+        		pacienteDTO.setIdpaciente(paciente.getIdpaciente());
+        		pacienteDTO.setMail(paciente.getMail());
+        		pacienteDTO.setNombre(paciente.getNombre());
+        		pacienteDTO.setDni(paciente.getDni());
+        		pacienteDTO.setSexo(PacienteSexo.getPacienteByName(paciente.getSexo()).getValue());
+        		pacienteDTO.setTelefono(paciente.getTelefono());
+        		pacienteDTO.setNotas(paciente.getNotas());
+        		
+        		resultList.add(pacienteDTO);
+			}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return resultList;
+
+    }
+
+	public List<PacienteDTO> listPatientByFilter(FilterDTO filterDTO) {
+        List<PacienteDTO> resultList = new ArrayList<PacienteDTO>();
+
+		  try {
+	        	List<Paciente> pacientes = getPatientDAO().getPatientsByFilter(filterDTO);
+	    	    SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
+	        	for (Paciente paciente : pacientes) {
+
+	        		PacienteDTO pacienteDTO = new PacienteDTO();
+	        		pacienteDTO.setDomicilio(paciente.getDomicilio());
+	        		if (paciente.getFechanac()!=null){
+	        			pacienteDTO.setFechanac(dateFormatter.format(paciente.getFechanac()));
+	        		}
+	        		pacienteDTO.setIdos(paciente.getCatOs().getIdos());
+	        		pacienteDTO.setIdpaciente(paciente.getIdpaciente());
+	        		pacienteDTO.setMail(paciente.getMail());
+	        		pacienteDTO.setDni(paciente.getDni());
+	        		pacienteDTO.setNombre(paciente.getNombre());
+	        		pacienteDTO.setSexo(PacienteSexo.getPacienteByName(paciente.getSexo()).getValue());
+	        		pacienteDTO.setTelefono(paciente.getTelefono());
+	        		pacienteDTO.setNotas(paciente.getNotas());
+	        		
+	        		resultList.add(pacienteDTO);
+				}
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+
+	        return resultList;
+
+	}
+    
+    
+    public void deletePatientById(Long patientId) {
+        Paciente paciente = new Paciente();
+        paciente.setIdpaciente(patientId);
+        getPatientDAO().deletePatient(paciente);
+
+    }
     
     
 	/*
-
-	@Autowired
-	@Qualifier("clientTransformer")
-	Transformer<Cliente, ClienteDTO> clientTransformer;
-
-	@Autowired
-	HistorialService historialService;
-	
-
 
    
     public void saveorUpdateClient(ClienteDTO clientDTO) {
@@ -150,13 +221,7 @@ public class PatientServiceImpl implements PatientService {
     
  
     
-    
-    public void deleteClientById(Integer clientId) {
-        Cliente cliente = new Cliente();
-        cliente.setIdcliente(clientId);
-        getClientDAO().deleteClient(cliente);
 
-    }
     
     
     public ClienteDTO loadClientById(Integer clientId) {
@@ -230,4 +295,6 @@ public class PatientServiceImpl implements PatientService {
         return mapElements;
 
 	}
+
+
 }

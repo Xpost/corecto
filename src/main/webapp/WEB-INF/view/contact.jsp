@@ -95,28 +95,6 @@
             <li class="divider-vertical"></li>
             <sec:authorize ifAnyGranted="ROLE_USER,ROLE_ADMIN">
               <li class=""><a href="login.htm">Inicio</a></li>
-              <li class="dropdown active">
-               <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Paciente <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li class="nav-header">Operaciones</li>
-                  <li class="divider"></li>
-                  <li><a href="agregarPaciente.htm">Agregar paciente</a></li>
-                  <li class="divider"></li>
-                  <li class=""><a href="buscarPaciente.htm">Buscar paciente</a></li>                  
-                </ul>
-               </li>
-               <li class="dropdown">
-               <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Consulta <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li class="nav-header">Operaciones</li>
-                  <li class="divider"></li>
-                  <li><a href="addClient.htm">Agregar Pre consulta</a></li>
-                  <li class="divider"></li>
-                  <li class=""><a href="listClient.htm">Agregar Consulta</a></li>
-                  <li class="divider"></li>
-                  <li class=""><a href="assignClientAbono.htm">Buscar Consulta</a></li>
-                </ul>
-               </li>
                </sec:authorize>
               <li><a href="contacto.htm">Contacto</a></li>
             </ul>
@@ -127,7 +105,7 @@
               <button type="submit" onclick="jQuery(this).button('loading')" class="btn btn-primary" data-loading-text="Iniciando...">Iniciar sesión</button>
             </form>
             </div>
-             <div lang="alreadyLoggued" class="pull-right" style="" id="templatemo_main">
+             <div lang="alreadyLoggued" class="pull-right" style="display: none" id="templatemo_main">
 					<p class="navbar-text pull-left">
              		 Logueado como 
              		 	 <sec:authorize ifAnyGranted="ROLE_USER,ROLE_ADMIN">
@@ -137,7 +115,7 @@
            			 <button type="button" onclick="javascript:window.location.href='logout'" style="margin-left: 10px;" class="btn btn-primary pull-right">
 						 Salir<i style="margin-left:5px" class="icon-share"></i>
 			         </button>
-				</div>		        
+				</div>		 
 	       </div><!--/.nav-collapse -->
           </div>
         </div>
@@ -162,7 +140,7 @@
 					<legend><fmt:message key="message.ns.contactData"/></legend> 
 					<p><fmt:message key="message.ns.info"/></p>
 					<p><fmt:message key="message.ns.info2"/></p>
-					<p><fmt:message key="message.ns.info3"/></p>
+<%-- 					<p><fmt:message key="message.ns.info3"/></p> --%>
 					<p><fmt:message key="message.ns.info4"/></p>
 					</fieldset>
 						<div id="settings-template">
@@ -177,6 +155,23 @@
         <p class="muted credit">Creada por <a href="#">[Matias Iseas]</a>.</p>
       </div>
     </div>
+    
+<script type="text/javascript" src="js/jquery-1.7.min.js"></script>
+<script type="text/javascript">
+jQuery(function() {
+
+<sec:authorize ifAnyGranted="ROLE_USER,ROLE_ADMIN">
+	jQuery("div[lang='loginDivData']").hide();
+	jQuery("div[lang='alreadyLoggued']").show();
+</sec:authorize>
+<sec:authorize ifNotGranted="ROLE_USER">
+jQuery("div[lang='loginDivData']").show();
+jQuery("#j_username").focus();
+</sec:authorize>
+
+});
+</script> 
+
 </body>
 
 </html>

@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.corecto.web.model.dto.FilterDTO;
 import com.corecto.web.model.dto.PacienteDTO;
 import com.corecto.web.model.dto.PageResult;
 import com.corecto.web.service.PatientService;
@@ -45,13 +46,32 @@ import fr.xebia.audit.Audited;
  * @version 1.0
  */
 @Controller
-public class ClientController {
+public class PatientController {
 
-	Logger LOG = LoggerFactory.getLogger(ClientController.class);
+	Logger LOG = LoggerFactory.getLogger(PatientController.class);
 
 	 @Autowired
 	 PatientService patientService;
 	 
+	 
+	    @RequestMapping(value = "/findPatientFilter", method = RequestMethod.POST)
+	    public @ResponseBody
+	    List<PacienteDTO> findPatientFilter(@RequestBody FilterDTO filterDTO) {
+	    	LOG.info("ClientController.findPatientFilter()");
+	    	List<PacienteDTO> resultList = new ArrayList<PacienteDTO>();
+	        PageResult pageResult = new PageResult();
+	        try {
+	        	resultList = patientService.listPatientByFilter(filterDTO);
+	        	   pageResult.setPage("1");
+		           pageResult.setRecords(resultList.size() + "");
+		           pageResult.setRows(resultList);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+
+	        return resultList;
+	    }
+
 	 
 	  @Audited(message = "Accion: Agregar Paciente")
 	    @RequestMapping(value = "/addNewPatient", method = RequestMethod.POST)
@@ -82,7 +102,6 @@ public class ClientController {
 	        try {
 	            listPatients = patientService.listPatients("", null, domicilio, "", "");
 	            pageResult.setPage("1");
-	            pageResult.setTotal("2");
 	            pageResult.setRecords(listPatients.size() + "");
 	            pageResult.setRows(listPatients);
 	        } catch (Exception e) {
@@ -96,14 +115,16 @@ public class ClientController {
 	    @Audited(message = "Accion: Seleccionar Paciente")
 	    @RequestMapping(value = "/selectPatient", method = RequestMethod.GET)
 	    public @ResponseBody
-	    boolean seleccionarPaciente(@RequestParam(value = "idPatient", required = false, defaultValue = "") long idPatient,
+	    Long seleccionarPaciente(@RequestParam(value = "idPatient", required = false, defaultValue = "") long idPatient,
 	    		@RequestParam(value = "paName", required = false, defaultValue = "") String paName,
 	    		@RequestParam(value = "op", required = false, defaultValue = "") boolean operation, HttpServletRequest request, HttpServletResponse response) {
-	    	LOG.info("ClientController.seleccionarPaciente()");
+	    	LOG.info("PatientController.seleccionarPaciente()");
+	    	Long idConsult = -2l;
 	        try {
 	        	if(operation){ 
-	            request.getSession().setAttribute("PACIENTE_ID", idPatient);
-	            request.getSession().setAttribute("PACIENTE_NOMBRE",  WordUtils.capitalize(paName));
+	        	 idConsult = patientService.alreadyHasConsultCreated(idPatient);
+	        	 request.getSession().setAttribute("PACIENTE_ID", idPatient);
+	        	 request.getSession().setAttribute("PACIENTE_NOMBRE",  WordUtils.capitalize(paName));
 	        	}
 	        	else{
 		            request.getSession().removeAttribute("PACIENTE_ID");
@@ -112,30 +133,44 @@ public class ClientController {
 	        	
 	        } catch (Exception e) {
 	            e.printStackTrace();
+	            return idConsult;
+	        }
+
+	        return idConsult;
+	    }
+	   
+	    
+	    @RequestMapping(value = "/searchPatientByName", method = RequestMethod.POST)
+	    public @ResponseBody
+	    Object[] searchPatientByName(@RequestParam(value = "nameStartWith", required = false, defaultValue = "") String name,
+	            @RequestParam(value = "maxRows", required = false, defaultValue = "5") int maxRows) {
+	        List<PacienteDTO> listClients = new ArrayList<PacienteDTO>();
+	        try {
+	            listClients = patientService.listPatientByName(name,"","", maxRows);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+
+	        return listClients.toArray();
+	    }
+	    
+	    @Audited(message = "Accion: Eliminar Paciente")
+	    @RequestMapping(value = "/delPatient", method = RequestMethod.GET)
+	    public @ResponseBody
+	    boolean deletePatient(@RequestParam(value = "idPaciente", required = false, defaultValue = "") Long idPatient) {
+	    	LOG.info("PatientController.deletePatient()");
+	        try {
+	        	patientService.deletePatientById(idPatient);
+	        } catch (Exception e) {
+	            e.printStackTrace();
 	            return false;
 	        }
 
 	        return true;
 	    }
-	   
+	    
 /*   
-//    @Autowired
-//    EmailSenderService emailSenderService;
 
-    @Audited(message = "Accion: Busqueda inical de Clientes")
-    @RequestMapping(value = "/searchClientByName", method = RequestMethod.POST)
-    public @ResponseBody
-    Object[] searchClientByName(@RequestParam(value = "nameStartWith", required = false, defaultValue = "") String name,
-            @RequestParam(value = "maxRows", required = false, defaultValue = "5") int maxRows) {
-        List<ClienteDTO> listClients = new ArrayList<ClienteDTO>();
-        try {
-            listClients = clientService.listClientsByName(name,"","", maxRows);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return listClients.toArray();
-    }
     
     
   

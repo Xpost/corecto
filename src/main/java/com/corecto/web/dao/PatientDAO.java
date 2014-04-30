@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.dao.DataAccessException;
 
+import com.corecto.web.model.dto.FilterDTO;
 import com.corecto.web.model.dto.PacienteDTO;
 import com.corecto.web.model.pojo.extra.CatOs;
 import com.corecto.web.model.pojo.extra.Consulta;
@@ -14,12 +15,6 @@ import com.corecto.web.model.pojo.extra.Paciente;
 
 public interface PatientDAO extends DAO {
 
-//    Integer saveClient(Cliente cliente) throws DataAccessException;
-//    
-//    Integer saveNewClient(Cliente cliente) throws DataAccessException;
-//
-//    List<Cliente> getClientsByName(final String name, final String fieldSort, final String sort, final int maxResult) throws DataAccessException;
-//
 //    Cliente loadClientByName(final String name) throws DataAccessException;
 //    
 //    void deleteClient(Cliente cliente) throws DataAccessException;
@@ -41,6 +36,8 @@ public interface PatientDAO extends DAO {
 //
 //    String loadLastClientNum() throws DataAccessException ;
 	
+  List<Paciente> getPatientsByName(final String name, final String fieldSort, final String sort, final int maxResult) throws DataAccessException;
+	
   long saveNewConsulta(Consulta  consulta) throws DataAccessException ;
 
   long saveNewPatient(Paciente  paciente) throws DataAccessException;
@@ -50,6 +47,11 @@ public interface PatientDAO extends DAO {
   List<PacienteDTO> getPatientsByParameters(final Date initialDate, final Long patientID, final String direction, final String fieldSort, final String sort) throws DataAccessException;
 
   Consulta loadConsultaByIdClient(long idPaciente) throws DataAccessException;
-	
-	
+
+  Long checkConsultByPatientId(Long  patientId) throws DataAccessException;
+
+  void deletePatient(Paciente paciente) throws DataAccessException;	
+  
+  List<Paciente> getPatientsByFilter(final FilterDTO filter) throws DataAccessException;
+
 }

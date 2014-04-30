@@ -10,7 +10,7 @@ public class ConductaPostNeoDTO {
 	private String urgencia;
 	private String urgenciaFecha;
 	private String cirujano;
-	private String WS;
+	private String waitAndSee;
 	private String fechaInicio;
 	
 	
@@ -56,11 +56,12 @@ public class ConductaPostNeoDTO {
 	public void setCirujano(String cirujano) {
 		this.cirujano = cirujano;
 	}
-	public String getWS() {
-		return WS;
+
+	public String getWaitAndSee() {
+		return waitAndSee;
 	}
-	public void setWS(String wS) {
-		WS = wS;
+	public void setWaitAndSee(String waitAndSee) {
+		this.waitAndSee = waitAndSee;
 	}
 	public String getFechaInicio() {
 		return fechaInicio;

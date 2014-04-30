@@ -34,6 +34,7 @@ import com.corecto.web.model.dto.AnatomiaPatologicaPostDTO;
 import com.corecto.web.model.dto.AnotomiaPatologicaDTO;
 import com.corecto.web.model.dto.AntecedentesDTO;
 import com.corecto.web.model.dto.ConductaPostNeoDTO;
+import com.corecto.web.model.dto.ConsultaDTO;
 import com.corecto.web.model.dto.DescTrataNeoDTO;
 import com.corecto.web.model.dto.EstadificacionDTO;
 import com.corecto.web.model.dto.EvaClinicaDTO;
@@ -98,7 +99,26 @@ public class ConsultaServiceImpl implements ConsultaService {
 			consulta.setFecha(Calendar.getInstance().getTime());
 			patientDAO.saveNewConsulta(consulta);
 		}		
-		
+		else{
+			ConsultaDTO consultaDTO = new ConsultaDTO();
+			consultaDTO.setIdconsulta(consulta.getIdconsulta());
+			consultaDTO.setIdpaciente(idPaciente);
+//			consultaDTO.setAnatomiaPatologicaPosts(anatomiaPatologicaPosts);
+//			consultaDTO.setAnotomiaPatologica(anotomiaPatologica);
+//			consultaDTO.setAntecedenteses(antecedenteses);
+//			consultaDTO.setConductaPostNeos(conductaPostNeos);
+//			consultaDTO.setDescTrataNeos(descTrataNeos);
+//			consultaDTO.setEstadificacions(estadificacions);
+//			consultaDTO.setEvaClinicas(evaClinicas);
+//			consultaDTO.setExaProctos(exaProctos);
+//			consultaDTO.setFecha(fecha);
+//
+//			consultaDTO.setMotivos(motivos);
+//			consultaDTO.setPreconsultas(preconsultas);
+//			consultaDTO.setRespuestaTrataNeos(respuestaTrataNeos);
+//			consultaDTO.setTratamientoAdyu(tratamientoAdyu);
+//			consultaDTO.setTratamientos(tratamientos);
+		}
 		return consulta.getIdconsulta();
 	}
 
@@ -220,9 +240,10 @@ public class ConsultaServiceImpl implements ConsultaService {
 		estadificacion.setGangliosLate(estadificacionDTO.getGangliosLate());
 		estadificacion.setInfiltraEsfinter(estadificacionDTO.getInfiltraEsfinter());
 		try {
-			 estadificacion.setMarTumFecha(dateFormatter.parse(estadificacionDTO.getMarTumFecha()));
+			estadificacion.setMarTumFecha(dateFormatter.parse(estadificacionDTO.getMarTumFecha()));
 			estadificacion.setRmFecha(dateFormatter.parse(estadificacionDTO.getRmFecha()));
-					
+			estadificacion.setRevRmFecha(dateFormatter.parse(estadificacionDTO.getRevRmFecha()));
+
 		} catch (ParseException e) {
 			LOG.error(e.getMessage());
 			e.printStackTrace();
@@ -234,6 +255,12 @@ public class ConsultaServiceImpl implements ConsultaService {
 		estadificacion.setPetCt(estadificacionDTO.getPetCt());
 		estadificacion.setRevAltura(estadificacionDTO.getRevAltura());
 		estadificacion.setRevCrm(estadificacionDTO.getCrm());
+		estadificacion.setRevEmvi(estadificacionDTO.getRevEmvi());
+		estadificacion.setRevEstadifTumores(estadificacionDTO.getRevEstadifTumores());
+		estadificacion.setRevGanIngui(estadificacionDTO.getRevGanIngui());
+		estadificacion.setRevGanLateral(estadificacionDTO.getRevGanLateral());
+		estadificacion.setRevInfiltraEsf(estadificacionDTO.getRevInfiltraEsf());
+		estadificacion.setRevTumor(estadificacionDTO.getRevTumor());
 		estadificacion.setRevDistanAnal(estadificacionDTO.getRevDistanAnal());
 		estadificacion.setRevDistanEsfinter(estadificacionDTO.getRevDistanEsfinter());
 		
@@ -354,9 +381,13 @@ public class ConsultaServiceImpl implements ConsultaService {
 		respuestaTrataNeov.setDepSatelites(respuestaTrataNeoDTO.getDepSatelites());
 		respuestaTrataNeov.setEe(respuestaTrataNeoDTO.getEe());
 		try {
+			if(!respuestaTrataNeoDTO.getEeFecha().isEmpty())
 			respuestaTrataNeov.setEeFecha(dateFormatter.parse(respuestaTrataNeoDTO.getEeFecha()));
+			if(!respuestaTrataNeoDTO.getRmFecha().isEmpty())
 			respuestaTrataNeov.setRmFecha(dateFormatter.parse(respuestaTrataNeoDTO.getRmFecha()));
+			if(!respuestaTrataNeoDTO.getRscFecha().isEmpty())
 			respuestaTrataNeov.setRscFecha(dateFormatter.parse(respuestaTrataNeoDTO.getRscFecha()));
+			if(!respuestaTrataNeoDTO.getVccFecha().isEmpty())
 			respuestaTrataNeov.setVccFecha(dateFormatter.parse(respuestaTrataNeoDTO.getVccFecha()));
 		} catch (ParseException e) {
 			LOG.error(e.getMessage());
@@ -379,7 +410,6 @@ public class ConsultaServiceImpl implements ConsultaService {
 		respuestaTrataNeov.setRmTumor(respuestaTrataNeoDTO.getRmTumor());
 		respuestaTrataNeov.setRsc(respuestaTrataNeoDTO.getRsc());
 		respuestaTrataNeov.setRscAltura(respuestaTrataNeoDTO.getRscAltura());
-		
 		respuestaTrataNeov.setTactoRectal(respuestaTrataNeoDTO.getTactoRectal());
 		respuestaTrataNeov.setVcc(respuestaTrataNeoDTO.getVcc());
 		respuestaTrataNeov.setVccAltura(respuestaTrataNeoDTO.getVccAltura());
@@ -402,15 +432,15 @@ public class ConsultaServiceImpl implements ConsultaService {
 			conductaPostNeo.setUrgenciaFecha(dateFormatter.parse(conductaPostNeoDTO.getUrgenciaFecha()));	
 		} catch (ParseException e) {
 			LOG.error(e.getMessage());
-			e.printStackTrace();
+			e.printStackTrace(); 
 		}
 		conductaPostNeo.setMilesCilindrico(conductaPostNeoDTO.getMilesCilindrico());
 		conductaPostNeo.setUrgencia(conductaPostNeoDTO.getUrgencia());
-		conductaPostNeo.setWS(conductaPostNeoDTO.getWS());
+		conductaPostNeo.setWS(conductaPostNeoDTO.getWaitAndSee());
 		
 		ConductaPostNeoDAO conductaPostNeoDAO  = DAOLocator.getInstance().lookup(ConductaPostNeoDAO.class.getName());	
 		return conductaPostNeoDAO.saveNewConductaPostNeo(conductaPostNeo);
-		
+		 
 	}
 
 

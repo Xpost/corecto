@@ -59,8 +59,8 @@
 	    border: 2px solid #DDDDDD;
 	    border-radius: 4px 0 4px 0;
 	    color: #FFFFFF; 
-	    content: "Editar Cliente";
-	    font-size: 15px;
+ 		content: "Editar Paciente";
+ 	    font-size: 15px;
 	    font-weight: bold;
 	    left: -1px;
 	    padding: 3px 7px;
@@ -80,6 +80,11 @@
 		border-radius: 10px 10px 10px 10px;
 		margin-top: 8px;
 	}
+	 .ui-pg-selbox{
+  	 width: 50px !important;
+  	 padding: 0 !important;
+  	 }
+  	 
 	.ui-autocomplete-loading { background: white url('css/images/ui-anim_basic_16x16.gif') right center no-repeat; }
 	.ui-loadingBar { background: transparent url('css/images/load.gif') center / 260px no-repeat;  }
 	.ui-pg-input { width: 10px !important;  }
@@ -125,18 +130,18 @@
                 <ul class="dropdown-menu">
                   <li class="nav-header">Operaciones</li>
                   <li class="divider"></li>
-                  <li><a href="agregarPaciente.htm" >Agregar</a></li>
+                  <li><a href="agregarPaciente.htm"><i class="icon-plus"></i> Agregar</a></li>
                   <li class="divider"></li>
-                  <li class=""><a href="buscarPaciente.htm">Buscar</a></li>
+                  <li class=""><a href="buscarPaciente.htm"><i class="icon-search"></i> Buscar</a></li>
                 </ul>
                </li>
            <li class="dropdown">
                <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Consulta <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li class="nav-header">Operaciones</li>
-                  <li class=""><a href="agregarConsulta.htm">Agregar Consulta</a></li>
+                  <li class=""><a href="agregarConsulta.htm"><i class="icon-plus"></i> Agregar</a></li>
                   <li class="divider"></li>
-                  <li class=""><a href="assignClientAbono.htm">Buscar Consulta</a></li>
+                  <li class="disabled"><a href="#">Buscar Consulta</a></li>
                 </ul>
                </li>
                </sec:authorize>
@@ -164,7 +169,8 @@
             				<input type="hidden" value="" id="idPacienteSelected">
             				</li>
             			</ul>	
-            			<button type="button" class="close" style="color: white;opacity:0.8">×</button>
+            			<button type="button" class="close"  id="closeSelected"  style="color: white;opacity:0.8;margin-left:10px;">×</button>
+            			<button class="btn btn-primary pull-right" type="button" id="seeConsultBtn" style="font-size: 12px;margin-top: 1px; opacity: 0.8; padding: 0 3px; display: none">Ver consulta</button>
           			</div>
              </div>  
       </div>
@@ -192,10 +198,103 @@
 						<input type="text" class="" id="nombreSearch" name="nombreSearch" />
 				</div>
 				<div class="span3">    
-					<label for="cuitSearch"><strong>Documento</strong></label>
+					<label for="cuitSearch"><strong>Número Documento</strong></label>
 						<input type="text" class="" id="cuitSearch" name="cuitSearch" />
 				</div>
+				<div class="span6">
+				  	<label for="tipoComprobanteCaja"><strong>Sexo</strong></label>
+				   <label class="radio inline">
+						    <input type="radio" name="sexo" id="masSex" value="M" >
+							M
+						</label>
+					    <label class="radio inline">
+						    <input type="radio" name="sexo" id="femSex" value="F" >
+							F
+						</label>
+				  </div>	
 			</div>		
+			<div class="row-fluid">
+				<fieldset>
+				<legend style="margin-bottom: 0px !important;border-bottom: 1px solid #9B9B9E !important;">Examen Proctologico <button div="exaProctoTab" style="float: right; margin-top: 5px" class="colapsableBtn btn btn-primary" ><i class="icon-plus"></i></button> </legend>
+				<div id="exaProctoTab" style="padding: 5px;border-bottom: 1px solid #9B9B9E;border-left: 1px solid #9B9B9E; border-right: 1px solid #9B9B9E;border-radius:0 0 4px 4px;display: none">
+					<div class="row-fluid">				
+						 <label for="tipoComprobanteCaja"><strong>Tacto rectal</strong></label>
+								<div class="span2" style="padding-bottom:1.1em;">	
+								<label for="movilRectal"><strong>Movil</strong></label>
+								    <label class="radio inline">
+									    <input type="radio" name="movilRectal" id="opcion1" value="0">
+										No
+									</label>
+								    <label class="radio inline">
+									    <input type="radio" name="movilRectal" id="opcion2" value="1">
+										Si
+									</label>
+								</div>	
+							<div class="span2" style="padding-bottom:1.1em;">	
+								<label for="fijoRectal"><strong>Fijo</strong></label>
+								    <label class="radio inline">
+									    <input type="radio" name="fijoRectal" id="opcion1" value="0" >
+										No
+									</label>
+								    <label class="radio inline">
+									    <input type="radio" name="fijoRectal" id="opcion2" value="1">
+										Si
+									</label>
+								</div>	
+								<div class="span5" style="padding-bottom:1.1em;">	
+								<label for="esfinterRectal"><strong>Infiltra esfinter</strong></label>
+								    <label class="radio inline">
+									    <input type="radio" name="esfinterRectal" id="opcion1" value="0" >
+										No
+									</label>
+								    <label class="radio inline">
+									    <input type="radio" name="esfinterRectal" id="opcion2" value="1">
+										Si
+									</label>
+								    <label class="radio inline">
+									    <input type="radio" name="esfinterRectal" id="opcion3" value="2">
+										Esfinter interno
+									</label>
+								    <label class="radio inline">
+									    <input type="radio" name="esfinterRectal" id="opcion4" value="3">
+										Esfinter externo
+									</label>
+									<label class="radio inline">
+									    <input type="radio" name="esfinterRectal" id="opcion5" value="4">
+										Poco móvil
+									</label>					
+								</div>				
+		   			</div>
+				</div>
+				</fieldset>
+			</div>
+			<div class="row-fluid">
+				<fieldset>
+				<legend style="margin-bottom: 0px !important;border-bottom: 1px solid #9B9B9E !important;">Tratamiento <button div="tratamientoTab" style="float: right; margin-top: 5px" class="colapsableBtn btn btn-primary" ><i class="icon-plus"></i></button> </legend>
+				<div id="tratamientoTab" style="padding: 5px;border-bottom: 1px solid #9B9B9E;border-left: 1px solid #9B9B9E; border-right: 1px solid #9B9B9E;border-radius:0 0 4px 4px;display: none">
+					<div class="row-fluid">				
+						<div class="span10">	  	
+						 <label><strong>Udaondo</strong></label>
+						<label class="radio inline">
+							 <input type="radio" name="udaOndoRadio" id="opcion1" value="0" >
+									Si
+						</label>
+						<label class="radio inline">
+							   <input type="radio" name="udaOndoRadio" id="opcion2" value="1">
+									No
+					    </label>	    
+					    <label class="radio inline">
+							   <input type="radio" name="udaOndoRadio" id="opcion2" value="2" style="margin-top:9px">
+									Otro:
+								<input type="text" class="" name="udaOndoOtro" id="udaOndoOtro" style="margin-bottom: 0px;">
+						    </label>
+						</div>
+		   			</div>
+				</div>
+				</fieldset>
+			</div>  
+			  
+			  <br>
 				<div class="row-fluid">	 
 				<div class="pull-right">			
 		               <button type="button" class="btn btn-primary"  id="searchButton" name="searchButton">Buscar</button>
@@ -211,69 +310,85 @@
      <div class="span12 thumbnail">
 		  <div class="row-fluid">
 <!-- 		  Tabla -->
-		     		<div style="" align="center">
+		     		<div style="width: 100%" align="center" >
 			    		<div style="height: 1px" ></div>
-	  						 <table style="text-align: center;font-size: 18px" align="center" id="listClientTable">
+	  						 <table style="text-align: center;font-size: 18px" align="center" width="100%" id="listClientTable">
 	             			 </table>	
 	             		<div id="listClientTableGrid"></div>
               		</div>
 		  </div>
-     <div class="editClientDiv" style="display: none;">
-     <div class="row-fluid">
-			<br>
-			<div class="bs-docs-example">
- 	  		 <form id="editClientForm" action="" method="post">
- 	  		 <input type="hidden" class="" id="idClientEdit" name="idClientEdit" /> 
+
+      </div>
+      </div>
+      <hr>
+<!-- edit patient -->
+     <div class="row-fluid editClientDiv" style="display: none">
+    <div class="bs-docs-example"> 
+     <div class="">
+		  <div class="row-fluid">
+ 	  		 <form id="addClientForm" action="" method="post">
 	         <div class="row-fluid">
 	        	<div class="span4">    
 					<label for="nombreC"><strong>Nombre</strong></label>
-						<input type="text" class="" id="nombreC" name="nombreC" />
+						<input type="text" class="span12" id="nombreC" name="nombreC" />
 					<label for="direccionC"><strong>Dirección</strong></label>
 						<input type="text" class="span12" id="direccionC" name="direccionC" />
-					<div id="phone-container">
-					<div class="" id="phone-form" >
-					<label for="telC"><strong>Teléfono</strong></label>
-						<div class="form-search input-prepend">
-						<span class="add-on">#</span>
-						<input type="text" class="" id="telC-1" name="telC" /><button type="button" style="display: none" id="removeBtn" class="btn btn-mini btn-danger"><i class="icon-remove icon-white"></i></button>
-						</div>   
-						<span id="helpB" class="help-block"><a id="addNumberBtn" class="btn btn-mini btn-info" ><i class="icon-plus icon-white"></i> Agregar otro Nro de Teléfono</a></span>
-					</div>
-					</div> 
-				</div>
-				<div class="span4">    
 					<label for="localidadC"><strong>Localidad</strong></label>
 					<div class="input-prepend">
-						<span class="add-on"><i class="icon-map-marker"></i></span>
-<!-- 						<input type="text" class="" id="localidadC" name="localidadC" /> -->
-						<select id="localidadC" name="localidadC">
-						</select>
-					</div>
+						<span class="add-on"><i class="icon-map-marker icon-large"></i></span>		
+						<input type="text" class="span12" id="localidadC" name="localidadC" />											
+					</div>	
+				</div>
+				<div class="span4">    
+						<div class="row-fluid">
+					<div class="span6">	
+					<label for="dateStart"><strong>Fecha de nacimiento</strong></label>
+				   <input type="text" class="span8" id="dateStart" alt="dateP" name="dateStart" placeHolder="dd/MM/yyyy" />			  	
+				  	</div>
+				  	<div class="span6">
+				  	<label for="tipoComprobanteCaja"><strong>Sexo</strong></label>
+				   <label class="radio inline">
+						    <input type="radio" name="sexo" id="masSexEdit" value="M" checked="checked">
+							M
+						</label>
+					    <label class="radio inline">
+						    <input type="radio" name="sexo" id="femSexEdit" value="F">
+							F
+						</label>
+				  </div>		
+				</div>		
 					<label for="emailC"><strong>Correo electrónico</strong></label>
 					 <div class="input-prepend">
-					 <span class="add-on"><i class="icon-envelope"></i></span>
+						 <span class="add-on"><i class="icon-envelope icon-large"></i></span>
 						<input type="text" class="" id="emailC" name="emailC" />
-						</div>
-				   <div class="row-fluid">
+					 </div>
+					<div class="row-fluid">
 				     <div class="span4">
-				     <label for="typeId"><strong>Tipo ID</strong></label>
+				     <label for="typeId"><strong>Obra social</strong></label>
 						<select id="typeId" name="typeId" class="span10">
 						</select>
 					</div>	
 				    <div class="span5">
+					<label for="cuitC"><strong>Número Obra Social</strong></label>
+						<input type="text" class="" id="numOS" name="numOS" />
+					</div>	
+					</div>	 
+				</div>		
+				<div class="span4">    
 					<label for="cuitC"><strong>Número Documento</strong></label>
 						<input type="text" class="" id="cuitC" name="cuitC" />
-					</div>	
-					</div>			
-				</div>	
-				<div class="span4">		 
-					<label for="clientState"><strong>Estado</strong></label>
-						<select id="clientState"  name="clientState">
-						</select>
-		            <label for="clientNum"><strong>Número Cliente</strong></label>
-						<input type="text" class="" id="clientNum" name="clientNum" />
-				</div>	
+					<div id="phone-container">
+						<div class="" id="phone-form" >
+						<label for="telC"><strong>Teléfono</strong></label>
+							<div class="form-search input-prepend">
+							<span class="add-on">#</span>
+							<input type="text" class="" id="telC-1" name="telC" /><button type="button" style="display: none" id="removeBtn" class="btn btn-mini btn-danger"><i class="icon-remove icon-white icon-large"></i></button>
+							</div>   
+							<span id="helpB" class="help-block"><a id="addNumberBtn" class="btn btn-mini btn-info" ><i class="icon-plus icon-white"></i> Agregar otro Nro de Teléfono</a></span>
+						</div>
+					</div> 
 				</div>		
+			</div>	
 				<div class="row-fluid">	 
 					<div class="span7">							 
 						<label for="comentC"><strong>Comentario</strong></label>
@@ -282,19 +397,17 @@
 				</div>
 				<div class="row-fluid">	 
 				<div class="pull-right">			
-		               <button type="button" onclick="jQuery('#editClientForm').submit()" class="btn btn-primary">Guardar</button>
+		               <button type="button" onclick="jQuery('#addClientForm').submit();" class="btn btn-primary">Guardar</button>
 		               <button type="button" onclick="cancelEdit();" class="btn" >Cancelar</button>	
 				</div>
 				</div>
 
         </form>
-        </div>
 		  </div>
-	</div>	
       </div>
-      </div>
-      <hr>
-
+      	</div>
+      </div><!--/row-->
+      
     </div><!--/.fluid-container-->
   <div id="footer" >
       <div class="container">
@@ -330,98 +443,58 @@
 jQuery(function() {
 cleanScreenSearch();
 
-// jQuery.ajax({
-//     url: '<c:url value="/loadAllCatAddClient.htm" />',
-//     type: "GET",
-//     dataType: "json",
-//     contentType: "application/json",
-//     data:"", 
-//     success: function(resp){                                       
-//      var options = $("#localidadCSearch");
-//      $.each(resp.localidades, function() {
-//     	     options.append($("<option />").val(this.idlocalidad).text(this.descripcion));
-//      });   	 
-//      var options = $("#localidadC");
-//    	 $.each(resp.localidades, function() {
-//    	     options.append($("<option />").val(this.idlocalidad).text(this.descripcion));
-//    	 });
-//    	 var options = $("#typeId");
-//    	 $.each(resp.typeID, function() {
-//    	     options.append($("<option />").val(this.iddnitipo).text(this.descripcion));
-//    	 });
+jQuery.ajax({
+    url: '<c:url value="/loadAllCat.htm" />',
+    type: "GET",
+    dataType: "json",
+    contentType: "application/json",
+    data:"", 
+    success: function(resp){                                       
+   	 var options = $("#typeId");
+   	 $.each(resp.obraSociales, function() {
+   	     options.append($("<option />").val(this.idos).text(this.nombre));
+   	 });
 //    	 var options = $("#clientState");
 //    	 $.each(resp.estadoCli, function() {
 //    	     options.append($("<option />").val(this.idestadocli).text(this.descripcion));
 //    	 });
-//     }
-//   });
+    }
+  });
   
-jQuery("#editClientForm").validate({
-		focusInvalid:false,
-	    rules: {
-	    	nombreC:{required: true},
-			emailC:{email:true},
-			cuitC:{digits:true}
-        },
-	    messages: {
-	    	nombreC: {required: "campo obligatorio"},
-	    	emailC:{email:"email incorrecto"},
-	    	cuitC:{digits:"campo numerico"}
-	    },
-  	submitHandler: function() { 	  	
-  		var nombreNew = jQuery("#nombreC").val();
-  		var direccionNew = jQuery("#direccionC").val();
-  		var localidadNew = jQuery("#localidadC").val();
-  		var emailNew = jQuery("#emailC").val();
-  		var telNew = jQuery("#telC-1").val();
-  		var telNew2 =" ";
- 		if (jQuery("#telC-2").length>0){
-  			telNew2 = jQuery("#telC-2").val();
-  		}
-  		var telNew3 =" ";
-  		if (jQuery("#telC-3").length>0){
-  				telNew3 = jQuery("#telC-3").val();
-  		}
-  		var cuitNew = jQuery("#cuitC").val();
-  		var puntuaNew = 1;
-  		var comentNew = jQuery("#comentC").val();
-  		var clientStateID = jQuery("#clientState").val();
-  		var idClient = jQuery("#idClientEdit").val();
-  		var clientNum = jQuery("#clientNum").val();
-  		var typeId = jQuery("#typeId").val();
-
-  		var newClient = {'idcliente':idClient,'nombre':nombreNew,'direccion':direccionNew,"iddnitipo":typeId,
-  					    'localidadId':localidadNew,'email':emailNew,'telefono':telNew+"@@"+telNew2+"@@"+telNew3,
-  						'notas':comentNew,'estadoCliId':clientStateID,'puntuacion':puntuaNew, 'cuit':cuitNew,'numerocli':clientNum};		  		 
-  		 
-        jQuery.ajax({
-             url: '<c:url value="/editClient.htm" />',
-             type: "POST",
-             dataType: "json",
-             contentType: "application/json",
-             data: JSON.stringify( newClient ), 
-             success: function(resp){                                       
-              	 if(resp!=-1){ 
-              		jQuery("#dialogSuccessOperation").dialog( "option", "title", "Editar cliente" );
-            		 jQuery("#dialogSuccessOperation").dialog("open");
-            		 cancelEdit();
-         	 	}
-         	 	else{
-           		 jQuery("#dialogErrorOperation").dialog("open");
-         	 	}     
-             }
-           });
-  		
-  	}
-	         
-});
+  
 
 jQuery("#searchButton").click(function(){
 	 var name = jQuery("#nombreSearch").val();
-	 var cuit = jQuery("#cuitSearch").val();
-	 var score = "";
-	 // jQuery('#listClientTable').jqGrid('setGridParam',{loadonce:'false'});	
-      jQuery("#listClientTable").jqGrid('setGridParam',{url:"<c:url value="/loadListClientsByParameter.htm" />?name="+name+"&cuit="+cuit+"&score="+score,page:1}).trigger('reloadGrid');
+	 var dni = jQuery("#cuitSearch").val();
+	 var sexoSelected = jQuery("input[name=sexo]:checked").val();
+	 var movilRectal = jQuery("input[name=movilRectal]:checked").val();
+	 var fijoRectal = jQuery("input[name=fijoRectal]:checked").val();
+	 var esfinterRectal = jQuery("input[name=esfinterRectal]:checked").val();
+	 var udaOndoRadio = jQuery("input[name=udaOndoRadio]:checked").val();
+
+	 var filterObject = {"nombre":name,"dni":dni,"sexo":sexoSelected,"movilRectal":movilRectal,"fijoRectal":fijoRectal,
+			 "esfinterRectal":esfinterRectal,"udaOndoRadio":udaOndoRadio};
+	 
+	  jQuery.ajax({
+          url: '<c:url value="/findPatientFilter.htm" />',
+          type: "POST",
+          dataType: "json",
+          contentType: "application/json",
+          data: JSON.stringify( filterObject ), 
+          success: function(resp){     
+			     	 if(resp){
+				  		 jQuery("#listClientTable").jqGrid("clearGridData");	
+				  		 $.each(resp,function(index,ob){
+				  			jQuery("#listClientTable").addRowData(index,ob);
+				  		 });
+			          	 }
+			     	 else{
+			     		 jQuery("#dialogErrorOperation").dialog("open");
+			     		 }
+     	 }
+       });	 
+	  
+      //jQuery("#listClientTable").jqGrid('setGridParam',{url:"<c:url value="/findPatient.htm" />?name="+name+"&cuit="+cuit+"&score="+score,page:1}).trigger('reloadGrid');
 });
 
 jQuery("#clearSearchButton").click(function(){
@@ -431,14 +504,13 @@ jQuery("#clearSearchButton").click(function(){
 
 
 
-
 jQuery("#listClientTable").jqGrid({
 	 url: '<c:url value="/loadlistPatients.htm"/>',
 	 datatype: "json", 
-	 width : 1158,
+	 autowidth : true,
 	 height : 200,
-	 colNames : ['Operación','','','<fmt:message key="message.cli.nombre"/>',
-	             'Fecha Nac.', 'Domicilio','Teléfono','' ],
+	 colNames : ['Operación','','','Nombre','Sexo','DNI',  
+	             'Fecha Nac.', 'Domicilio','Teléfono','','','','',''],
 		colModel : [ 
 		        	{name: 'myac',
 						 width:77, 
@@ -473,11 +545,23 @@ jQuery("#listClientTable").jqGrid({
 			align: 'center',
 			width : 250
 		},
+		{
+			name : 'sexo',
+			index : 'sexo',
+			align: 'center',
+			width : 80
+		},
+		 {
+			name : 'dni',
+			index : 'dni',
+			align: 'center',
+			width : 100
+		},
 		 {
 			name : 'fechanac',
 			index : 'fechanac',
 			align: 'center',
-			width : 200
+			width : 100
 		}, {
 			name : 'domicilio',
 			index : 'domicilio',
@@ -491,6 +575,36 @@ jQuery("#listClientTable").jqGrid({
 			hidden:true
 		},
 		{
+			name : 'nroOs',
+			index : 'nroOs',
+			align: 'center',
+			width : 1,
+			hidden:true
+		},
+		{
+			name : 'idos',
+			index : 'idos',
+			align: 'center',
+			width : 1,
+			hidden:true
+		},
+		{
+			name : 'mail',
+			index : 'mail',
+			align: 'center',
+			width : 1,
+			hidden:true,
+			editable:true
+		},
+		{
+			name : 'notas',
+			index : 'notas',
+			align: 'center',
+			width : 1,
+			hidden:true,
+			editable:true
+		},
+		{
 			name : 'dummy',
 			index : 'dummy',
 			align: 'center',
@@ -500,14 +614,14 @@ jQuery("#listClientTable").jqGrid({
 		}],
 		ondblClickRow: function(id ){},
 	  rowNum:25, 
-	  rowList:[],
+	  rowList: [10,50,100],
 	  multiselect: true,
 	  sortable: true,
 	  pager: '#listClientTableGrid',
 	  pgbuttons: true,
-	  pginput:true,
+	  pginput:false,
 	  rownumbers : true,
-	  //loadonce:true,
+	  loadonce:true,
 	  jsonReader : {
          root: "rows",
          page: "page",
@@ -518,26 +632,27 @@ jQuery("#listClientTable").jqGrid({
      },				
      beforeSelectRow: function(rowid, e) {
 			 var iCol = jQuery.jgrid.getCellIndex(e.target);
-			 if(iCol == 2){
+			 if(iCol == 2 && e.target.attributes.op!=null){
 
 			 	if(e.target.attributes.op.value=="edit"){		 		
 					 var row = jQuery('#listClientTable').jqGrid('getRowData',rowid);										 
-					 updateClient(row);		
+					 updatePatient(row);		
 		             return false;
 		            }
 			 	if(e.target.attributes.op.value=="delete"){
-			 		 var idCliente = jQuery('#listClientTable').jqGrid('getCell',rowid,"idcliente");
-			 		 jQuery.data(document.body,"clientData",{"idcliente":idCliente});
+			 		 var idPatient = jQuery('#listClientTable').jqGrid('getCell',rowid,"idpaciente");
+			 		 jQuery.data(document.body,"PacienteData",{"idPatient":idPatient});
 			 		 jQuery("#dialogDeleteClient" ).dialog("open");
-			 		 //delClient(idCliente);
+			 		//delPatient(idCliente);
 			 		return false;
 		            }
+				 if(e.target.attributes.op.value=="select"){		 		
+					 var row = jQuery('#listClientTable').jqGrid('getRowData',rowid);										 
+					 selectPatient(row);		
+		             return false;
+		            }
 			 	}
-			 if(e.target.attributes.op.value=="select"){		 		
-				 var row = jQuery('#listClientTable').jqGrid('getRowData',rowid);										 
-				 selectPatient(row);		
-	             return false;
-	            }
+		
 			 
 		       //return true;    // allow select the row
             //  return false;   // not allow select the row
@@ -555,7 +670,21 @@ jQuery("#listClientTable").jqGrid({
 
 $("#gview_listClientTable").css("font-size","14px");
 
-
+$(".colapsableBtn").click(function(event){
+	event.preventDefault();
+	var button = $(this);
+	var divTab =button.attr("div");
+	
+	$("#"+divTab).slideToggle("normal", function(){
+		var iconButton =button.find("i");
+		if (iconButton.hasClass("icon-minus")){
+			iconButton.removeClass("icon-minus").addClass("icon-plus");
+		}
+		else{
+			iconButton.removeClass("icon-plus").addClass("icon-minus");
+		}
+	});
+});	
 
 jQuery("#dialogDeleteClient").dialog({
 	autoOpen: false,
@@ -563,7 +692,7 @@ jQuery("#dialogDeleteClient").dialog({
 	modal:true,
 	buttons: {
 		"Ok": function() {
-			delClient();
+			delPatient();
 			jQuery( this ).dialog( "close" );
 		},
 		"Cancelar": function() {
@@ -610,7 +739,7 @@ jQuery("#dialogSuccessOperation").dialog({
 jQuery("#nombreSearch" ).autocomplete({
 	source: function( request, response ) {
 		$.ajax({
-			url: '<c:url value="/searchClientByName.htm" />',
+			url: '<c:url value="/searchPatientByName.htm" />',
 			dataType: "json",
 			type: "POST",
 			data: {
@@ -692,6 +821,15 @@ $("#removeBtn").click(function(){
 	$("#phone-form-"+(counter-2)).find("#removeBtn").show();
 });
 
+$("#closeSelected").click(function(){
+	$("#selectedPatientDiv").hide();
+});
+
+jQuery("#seeConsultBtn").click(function(){
+	window.location.href = "<%=request.getContextPath()%>/agregarConsulta.htm";
+});
+
+
 });
 //Other functions
 
@@ -705,9 +843,15 @@ function selectPatient(row){
 	          contentType: "application/json",
 	          data: {idPatient:row.idpaciente,paName:row.nombre,op:true}, 
 	          success: function(resp){     
-         	 if(resp){
+         	 if(resp!="-2"){ // se encontro paciente
          		jQuery("#selectedPatientDiv").show();
-	          	 }
+         		if (resp!="-1"){  //Aun no existe consulta
+         			jQuery("#seeConsultBtn").show();
+         		}
+         		else{
+         			jQuery("#seeConsultBtn").hide();
+         		}
+         	 }
          	 else{
          		 jQuery("#dialogErrorOperation").dialog("open");
          		 }
@@ -715,45 +859,54 @@ function selectPatient(row){
 	        });	 
 	}
 	
-function updateClient(row){
+function updatePatient(row){
 	jQuery('#listClientTable').jqGrid('setGridState','hidden');	
 	
 	jQuery("#nombreC").val(capitaliseFirstLetter(row.nombre));
-	jQuery("#direccionC").val(row.direccion);
+	jQuery("#direccionC").val(row.domicilio);
 	jQuery("#localidadC").val(row.localidadId);
-	jQuery("#emailC").val(row.email);
+	jQuery("#emailC").val(row.mail);
 	jQuery("#telC-1").val(row.telefono);
-	if(row.telefono2.length>1){
-		jQuery("#addNumberBtn").trigger("click");
-		jQuery("#telC-2").val(row.telefono2);
-	}
-	if(row.telefono3.length>1){
-		jQuery("#addNumberBtn").trigger("click");
-		jQuery("#telC-3").val(row.telefono3);
-	}
-	jQuery("#comentC").val(row.notas);
-	jQuery("#ccC").val(row.ccNro);
-	jQuery("#cuitC").val(row.cuit);
 	
+	if(row.sexo=="Masculino"){
+		jQuery("#masSexEdit").attr("checked","checked");
+	}
+	else{
+		jQuery("#femSexEdit").attr("checked","checked");
+	}
+// 	if(row.telefono2.length>1){
+// 		jQuery("#addNumberBtn").trigger("click");
+// 		jQuery("#telC-2").val(row.telefono2);
+// 	}
+// 	if(row.telefono3.length>1){
+// 		jQuery("#addNumberBtn").trigger("click");
+// 		jQuery("#telC-3").val(row.telefono3);
+// 	}
+	
+	jQuery("#cuitC").val(row.dni);
+	jQuery("#comentC").val(row.notas);
+	jQuery("#typeId").val(row.idos);
+	jQuery("#numOS").val(row.nroOs);    
+	jQuery("#dateStart").val(row.fechanac);
 	jQuery("#clientState").val(row.estadoCliId);
-	jQuery("#typeId").val(row.iddnitipo);
 	jQuery("#clientNum").val(row.numerocli);
 
 	jQuery("#idClientEdit").val(row.idcliente);
 	jQuery(".editClientDiv").show();
 		
 	}
-function delClient(){
-	      var clientObj = jQuery.data(document.body,"clientData");
+	
+function delPatient(){
+	      var clientObj = jQuery.data(document.body,"PacienteData");
 		   jQuery.ajax({
-		          url: '<c:url value="/delClient.htm" />',
+		          url: '<c:url value="/delPatient.htm" />',
 		          type: "GET",
 		          dataType: "json",
 		          contentType: "application/json",
-		          data: {idClient:clientObj.idcliente}, 
+		          data: {idPaciente:clientObj.idPatient}, 
 		          success: function(resp){     
 	            	 if(resp){
-	               		jQuery("#dialogSuccessOperation").dialog( "option", "title", "Eliminar cliente" );
+	               		jQuery("#dialogSuccessOperation").dialog( "option", "title", "Eliminar paciente" );
 	            		 jQuery("#dialogSuccessOperation").dialog("open");
 
 		          	  }
@@ -786,12 +939,17 @@ function cleanScreenEdit(){
 	 jQuery("#listClientTable").trigger('reloadGrid');
 
 }
+
 function cancelEdit(){
 	jQuery("div .ui-inline-cancel").trigger("click");
 	jQuery(".editClientDiv").hide();
+	jQuery("#telC-1").val("");
+  	jQuery("#phone-form-1").remove();
+  	jQuery("#phone-form-2").remove();
 	jQuery('#listClientTable').jqGrid('setGridState','visible');	
 	cleanScreenEdit();
 }	
+
 
 function capitaliseFirstLetter(string)
 {

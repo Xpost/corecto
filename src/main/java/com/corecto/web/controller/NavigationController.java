@@ -49,8 +49,9 @@ public class NavigationController {
     }
     
     @RequestMapping(value = "/buscarPaciente")
-    public ModelAndView loadlistClientPage() {
+    public ModelAndView loadlistClientPage(HttpServletRequest request, HttpServletResponse response ) {
         ModelAndView model = new ModelAndView();
+        request.getSession().removeAttribute("PACIENTE_ID"); 
         model.setViewName("buscarPaciente");
         return model;
     }

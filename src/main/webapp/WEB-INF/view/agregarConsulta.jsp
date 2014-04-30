@@ -63,6 +63,7 @@
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/validate.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" media="screen"	href="css/jquery-ui-1.8.16.custom.css" />
+	<link rel="stylesheet" href="css/loading.css" type="text/css"/>
 
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -90,41 +91,33 @@
             <span class="icon-bar"></span>
           </button>
           <a class="brand" href="#">Co-Recto BD</a>
-          <div class="nav-collapse collapse">
+            <div class="nav-collapse collapse">
             <ul class="nav">
             <li class="divider-vertical"></li>
             <sec:authorize ifAnyGranted="ROLE_USER,ROLE_ADMIN">
-              <li class=""><a href="login.htm">Inicio</a></li>
-              <li class="dropdown">
-               <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Paciente <b class="caret"></b></a>
+              <li ><a href="login.htm">Inicio</a></li>
+              <li class=" dropdown">
+               <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Pacientes <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li class="nav-header">Operaciones</li>
                   <li class="divider"></li>
-                  <li><a href="agregarPaciente.htm">Agregar paciente</a></li>
+                  <li><a href="agregarPaciente.htm"><i class="icon-plus"></i> Agregar</a></li>
                   <li class="divider"></li>
-                  <li class=""><a href="buscarPaciente.htm">Buscar paciente</a></li>                  
-                </ul> 
+                  <li class=""><a href="buscarPaciente.htm"><i class="icon-search"></i> Buscar</a></li>
+                </ul>
                </li>
-               <li class="dropdown active">
+           <li class=" active dropdown">
                <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Consulta <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li class="nav-header">Operaciones</li>
+                  <li class=""><a href="agregarConsulta.htm"><i class="icon-plus"></i> Agregar</a></li>
                   <li class="divider"></li>
-                  <li class=""><a href="agregarConsulta.htm">Agregar Consulta</a></li>
-                  <li class="divider"></li>
-                  <li class=""><a href="assignClientAbono.htm">Buscar Consulta</a></li>
+                  <li class="disabled"><a href="#">Buscar Consulta</a></li>
                 </ul>
                </li>
                </sec:authorize>
               <li><a href="contacto.htm">Contacto</a></li>
             </ul>
-           <div lang="loginDivData" style="display: none" >
-            <form class="navbar-form pull-right" action="j_spring_security_check" method="post">
-              <input class="span2" type="text" id="j_username" name="j_username" placeholder="Usuario">
-              <input class="span2" type="password" id="j_password" name="j_password" placeholder="Password">
-              <button type="submit" onclick="jQuery(this).button('loading')" class="btn btn-primary" data-loading-text="Iniciando...">Iniciar sesión</button>
-            </form>
-            </div>
              <div lang="alreadyLoggued" class="pull-right" style="" id="templatemo_main">
 					<p class="navbar-text pull-left">
              		 Logueado como 
@@ -139,7 +132,7 @@
 	       </div><!--/.nav-collapse -->
           </div>
         </div>
-             <div class="navbar-inner container" id="selectedPatientDiv" style="min-height:20px;">
+             <div class="navbar-inner container" id="selectedPatientDiv" style="min-height:20px;display: none">
                     <div class="nav-collapse collapse" style="min-height:20px" >
                        <ul class="nav" style="min-height:20px">
             				<li class="divider-vertical" style="min-height: 20px; height: 25px;">
@@ -152,6 +145,28 @@
              </div>      
       </div>
 
+	<div id="dialogLoading" style="display: none" align="center" title="Cargando consulta..." >
+	<div id="floatingCirclesG">
+		<div class="f_circleG" id="frotateG_01">
+		</div>
+		<div class="f_circleG" id="frotateG_02">
+		</div>
+		<div class="f_circleG" id="frotateG_03">
+		</div>
+		<div class="f_circleG" id="frotateG_04">
+		</div>
+		<div class="f_circleG" id="frotateG_05">
+		</div>
+		<div class="f_circleG" id="frotateG_06">
+		</div>
+		<div class="f_circleG" id="frotateG_07">
+		</div>
+		<div class="f_circleG" id="frotateG_08">
+		</div>
+	</div>
+<!-- 	<p>(Cerrar cuando aparesca la opcion de guardar/abrir el reporte)</p> -->
+	</div>
+	
     <div class="container">
     <br>
      <div class="row-fluid">
@@ -600,7 +615,7 @@
 									<label for="rscAltura">Altura</label>
 										<input type="text" class="input-mini" id="rscAltura" >
 									<label for="esfinterRectal">Fecha</label>
-										<input type="text" class="span2" alt="dateP" id="rscFecha" >
+										<input type="text" class="span2" alt="dateP"  placeholder="dd/MM/yyyy" id="rscFecha" >
 								</div>		
 								</div>	
 					  </div> 					  
@@ -656,7 +671,7 @@
 									<label for="esfinterRectal">Altura</label>
 										<input type="text" class="input-mini"  id="vccAltura" >
 									<label for="esfinterRectal">Fecha</label>
-										<input type="text" class="span2" alt="dateP" id="vccFecha"  >
+										<input type="text" class="span2" alt="dateP"  placeholder="dd/MM/yyyy" id="vccFecha"  >
 								</div>		
 								</div>	
 					  </div> 					  
@@ -740,7 +755,7 @@
 									</label>		
 									<div class="form-inline" style="display: inline;margin-left:20px">			
 										<label for="esfinterRectal">Fecha</label>
-											<input type="text" class="span2" alt="dateP" id="eeFecha" >
+											<input type="text" class="span2" alt="dateP"  placeholder="dd/MM/yyyy" id="eeFecha" >
 									</div>		
 								</div>	
 							</div>	
@@ -763,7 +778,7 @@
 								   <label for="centroRM">Centro</label>
 									<input type="text" class="span2" id="centroRM" >
 								   <label for="fechaRM">Fecha</label>
-									<input type="text" class="span2" alt="dateP"  id="fechaRM">
+									<input type="text" class="span2" alt="dateP"  placeholder="dd/MM/yyyy" id="fechaRM">
 									  <label for="distanciaSupRM" style="margin-left:25px">Distancia a la porción superior del esfínter</label>
 									<input type="text" class="span2"  id="distanciaSupRM" >
 								</div>	
@@ -832,23 +847,23 @@
 										4b
 									</label>	
 									 <label class="radio inline" style="margin-left:50px">
-									    <input type="radio" name="numTNRadio" id="opcion2" value="1">
+									    <input type="radio" name="numTNRadio" id="opcion2" value="0">
 										N0
 									</label>
 								   <label class="radio inline">
-									    <input type="radio" name="numTNRadio" id="opcion2" value="2">
+									    <input type="radio" name="numTNRadio" id="opcion2" value="1">
 										N1a
 									</label>
 									  <label class="radio inline">
-									    <input type="radio" name="numTNRadio" id="opcion2" value="3">
+									    <input type="radio" name="numTNRadio" id="opcion2" value="2">
 										N1b
 									</label>
 									 <label class="radio inline">
-									    <input type="radio" name="numTNRadio" id="opcion2" value="4">
+									    <input type="radio" name="numTNRadio" id="opcion2" value="3">
 										N2a
 									</label>	
 									 <label class="radio inline">
-									    <input type="radio" name="numTNRadio" id="opcion2" value="5">
+									    <input type="radio" name="numTNRadio" id="opcion2" value="4">
 										N2b
 									</label>																																		
 								</div>	
@@ -1037,7 +1052,7 @@
 							  <label for=""><strong>Marcadores tumorales</strong></label>
 								<div class="span3 form-inline" style="padding-bottom:1.1em;">	
 								   <label for="marcaTuFecha">Fecha</label>
-									<input type="text" class="span5" alt="dateP" id="marcaTuFecha" >
+									<input type="text" class="span5" alt="dateP"  placeholder="dd/MM/yyyy" id="marcaTuFecha" >
 								</div>
 								<div class="span2" style="padding-bottom:1.1em;">		
 								<label for="ceaAument"><strong>CEA aumentado</strong></label>
@@ -1141,7 +1156,7 @@
 						<div class="row-fluid">
 							<div class="span2">	  	 
 							  	<label for="revisionRMFecha">Fecha</label>
-								 <input type="text" class="span8" alt="dateP" id="revisionRMFecha">
+								 <input type="text" class="span8" alt="dateP"  placeholder="dd/MM/yyyy" id="revisionRMFecha">
 							</div>	 
 							<div class="span3">	  	 
 								   	<label for="revisionRMDistan">Distancia a la porción superior del esfínter</label>
@@ -1288,19 +1303,19 @@
 						 	<div class="span7" style="padding-bottom:1.1em;">	
 								<label for="rsc"><strong>Estadificación tumores de recto inferior</strong></label>		
 								   <label class="radio inline">
-									    <input type="radio" name="revisionEstaTu" id="opcion2" value="1">
+									    <input type="radio" name="revisionEstaTu" id="opcion2" value="0">
 										1
 									</label>
 									  <label class="radio inline">
-									    <input type="radio" name="revisionEstaTu" id="opcion2" value="2">
+									    <input type="radio" name="revisionEstaTu" id="opcion2" value="1">
 										2
 									</label>
 									 <label class="radio inline">
-									    <input type="radio" name="revisionEstaTu" id="opcion2" value="3">
+									    <input type="radio" name="revisionEstaTu" id="opcion2" value="2">
 										3
 									</label>	
 									 <label class="radio inline">
-									    <input type="radio" name="revisionEstaTu" id="opcion2" value="4">
+									    <input type="radio" name="revisionEstaTu" id="opcion2" value="3">
 										4
 									</label>																																			
 								</div>	
@@ -1632,11 +1647,11 @@
 				    </label>
 				    <label class="radio inline">
 					  Fecha inicio:
-						<input type="text" class="span5" alt="dateP" id="fechaInicioRadioTer" >
+						<input type="text" class="span5" alt="dateP"  placeholder="dd/MM/yyyy" id="fechaInicioRadioTer" >
 					</label>	 
 					 <label class="radio inline">
 					  Fecha final:
-						<input type="text" class="span5" alt="dateP" id="fechaFinRadioTer"  >
+						<input type="text" class="span5" alt="dateP"  placeholder="dd/MM/yyyy" id="fechaFinRadioTer"  >
 					</label>
 					<label><strong>Suspendio</strong></label>
 					<label class="radio inline">
@@ -1691,11 +1706,11 @@
 					</label>
 				    <label class="radio inline">
 					  Fecha inicio:
-						<input type="text" class="span5" alt="dateP" id="fechaInicioQuimio" >
+						<input type="text" class="span5" alt="dateP"  placeholder="dd/MM/yyyy" id="fechaInicioQuimio" >
 					</label>	 						 
 					 <label class="radio inline">
 					  Fecha finalización:
-						<input type="text" class="span5" alt="dateP" id="fechaFinQuimio"  >
+						<input type="text" class="span5" alt="dateP"  placeholder="dd/MM/yyyy" id="fechaFinQuimio"  >
 					</label>
 				   </div> 
 				  </div> 
@@ -1733,7 +1748,7 @@
 								   <label for="esfinterRectal">Centro</label>
 									<input type="text" class="span2" id="centroPostTrata" >
 								   <label for="esfinterRectal">Fecha</label>
-									<input type="text" class="span2" alt="dateP" id="fechaPostTrata" >
+									<input type="text" class="span2" alt="dateP"   placeholder="dd/MM/yyyy" id="fechaPostTrata" >
 									  <label for="esfinterRectal" style="margin-left:25px">Distancia a la porción superior del esfínter</label>
 									<input type="text" class="span2" id="distanciaPostTrata"  >
 								</div>	
@@ -1802,23 +1817,23 @@
 										4b
 									</label>	
 									 <label class="radio inline" style="margin-left:50px">
-									    <input type="radio" name="tumorPostTrataNRadio" id="opcion2" value="1">
+									    <input type="radio" name="tumorPostTrataNRadio" id="opcion2" value="0">
 										N0
 									</label>
 								   <label class="radio inline">
-									    <input type="radio" name="tumorPostTrataNRadio" id="opcion2" value="2">
+									    <input type="radio" name="tumorPostTrataNRadio" id="opcion2" value="1">
 										N1a
 									</label>
 									  <label class="radio inline">
-									    <input type="radio" name="tumorPostTrataNRadio" id="opcion2" value="3">
+									    <input type="radio" name="tumorPostTrataNRadio" id="opcion2" value="2">
 										N1b
 									</label>
 									 <label class="radio inline">
-									    <input type="radio" name="tumorPostTrataNRadio" id="opcion2" value="4">
+									    <input type="radio" name="tumorPostTrataNRadio" id="opcion2" value="3">
 										N2a
 									</label>	
 									 <label class="radio inline">
-									    <input type="radio" name="tumorPostTrataNRadio" id="opcion2" value="5">
+									    <input type="radio" name="tumorPostTrataNRadio" id="opcion2" value="4">
 										N2b
 									</label>																																		
 								</div>	
@@ -2070,7 +2085,7 @@
 										Si
 									</label>
 								</div>	
-								<div class="span8" style="padding-bottom:1.1em;display: none" id="divRSC">	
+								<div class="span8" style="padding-bottom:1.1em;display: none" id="divRSCPost">	
 								<label for="rscesfinterRectalRadio"><strong>Medida</strong></label>
 								    <label class="radio inline">
 									    <input type="radio" name="rscesfinterRectalRadio" id="opcion1" value="0" checked="checked">
@@ -2092,7 +2107,7 @@
 									<label for="esfinterRectal">Altura</label>
 										<input type="text" class="input-mini" id="alturaRSC">
 									<label for="esfinterRectal">Fecha</label>
-										<input type="text" class="span2" alt="dateP" id="fechaRSC">
+										<input type="text" class="span2" alt="dateP"  placeholder="dd/MM/yyyy" id="fechaRSC">
 								</div>		
 								</div>	
 						  </div> 					  
@@ -2111,7 +2126,7 @@
 										Si
 									</label>
 								</div>	
-									<div class="span4" style="padding-bottom:1.1em;display: none" id="divVCC">	
+									<div class="span4" style="padding-bottom:1.1em;display: none" id="divVCCPost">	
 								<label for="tipoVCCRadio"><strong>Tipo</strong></label>
 								    <label class="radio inline">
 									    <input type="radio" name="tipoVCCRadio" id="opcion1" value="0" checked="checked">
@@ -2126,7 +2141,7 @@
 										T.infranqueable
 									</label>
 									</div>
-								<div class="span8" style="padding-bottom:1.1em;display: none" id="divVCC1">	
+								<div class="span8" style="padding-bottom:1.1em;display: none" id="divVCCPost1">	
 								<label for="vccMedidaRadio"><strong>Medida</strong></label>
 								    <label class="radio inline">
 									    <input type="radio" name="vccMedidaRadio" id="opcion1" value="0" checked="checked">
@@ -2148,7 +2163,7 @@
 									<label for="esfinterRectal">Altura</label>
 										<input type="text" class="input-mini" id="vccAlturaPost">
 									<label for="esfinterRectal">Fecha</label>
-										<input type="text" class="span2" alt="dateP" id="vccFechaPost" >
+										<input type="text" class="span2" alt="dateP"  placeholder="dd/MM/yyyy" id="vccFechaPost" >
 								</div>		
 								</div>	
 					  </div> 					  
@@ -2168,7 +2183,7 @@
 										Si
 									</label>
 								</div>	
-									<div class="span4" style="padding-bottom:1.1em;display: none" id="divEE">	
+									<div class="span4" style="padding-bottom:1.1em;display: none" id="divEEPost">	
 								<label for="eeTumorRadio"><strong>Tumor</strong></label>
 								    <label class="radio inline">
 									    <input type="radio" name="eeTumorRadio" id="opcion1" value="0" checked="checked">
@@ -2201,7 +2216,7 @@
 									</div>
 								</div>	
 								<div class="row-fluid">	
-								<div class="span2" style="padding-bottom:1.1em;display: none;margin-left:2.5641%" id="divEE1">	
+								<div class="span2" style="padding-bottom:1.1em;display: none;margin-left:2.5641%" id="divEEPost1">	
 								 <label for="eeesfinterRadio"><strong>Infiltra esfinter</strong></label>
 								    <label class="radio inline">
 									    <input type="radio" name="eeesfinterRadio" id="opcion1" value="0" checked="checked">
@@ -2232,7 +2247,7 @@
 									</label>		
 									<div class="form-inline" style="display: inline;margin-left:20px">			
 										<label for="eePostFecha">Fecha</label>
-											<input type="text" class="span2" alt="dateP" id="eePostFecha" >
+											<input type="text" class="span2" alt="dateP"  placeholder="dd/MM/yyyy" id="eePostFecha" >
 									</div>		
 								</div>	
 							</div>	
@@ -2300,7 +2315,7 @@
 									</label>
 									<div class="form-inline" style="display: inline;margin-left:20px">			
 										<label for="esfinterRectal">Fecha</label>
-											<input type="text" class="input-small" alt="dateP" id="urgenciaFecha">
+											<input type="text" class="input-small" alt="dateP"  placeholder="dd/MM/yyyy" id="urgenciaFecha">
 									</div>		
 							</div>			
 						</div>
@@ -2327,7 +2342,7 @@
 										</label>
 										<div class="form-inline" style="display: inline;margin-left:20px">			
 										<label for="esfinterRectal">Fecha inicio</label>
-											<input type="text" class="input-small" alt="dateP" id="fechaInicioConducta" >
+											<input type="text" class="input-small" alt="dateP"  placeholder="dd/MM/yyyy" id="fechaInicioConducta" >
 									</div>	
 									</div>
 								 </div>	
@@ -2354,7 +2369,7 @@
 			</div>
 			<div class="span3">
 					<label for="esfinterRectal"><strong>Fecha AP</strong></label>
-					<input type="text" class="span5" alt="dateP"  id="fechaBiopsiaPost" >		
+					<input type="text" class="span5" alt="dateP"   placeholder="dd/MM/yyyy" id="fechaBiopsiaPost" >		
 			</div>
 			<div class="row-fluid">		
 				<div class="span10">
@@ -2413,15 +2428,15 @@
 										4b
 									</label>									
 									<label class="radio inline" style="margin-left: 30px ">
-									    <input type="radio" name="tumorAnatPostNRadio" id="opcion4" value="1">
+									    <input type="radio" name="tumorAnatPostNRadio" id="opcion4" value="0">
 										N0
 									</label>
 										<label class="radio inline">
-									    <input type="radio" name="tumorAnatPostNRadio" id="opcion4" value="2">
+									    <input type="radio" name="tumorAnatPostNRadio" id="opcion4" value="1">
 										N1
 									</label>
 										<label class="radio inline">
-									    <input type="radio" name="tumorAnatPostNRadio" id="opcion4" value="3">
+									    <input type="radio" name="tumorAnatPostNRadio" id="opcion4" value="2">
 										N2
 									</label>
 					</div>	  
@@ -2658,11 +2673,11 @@
 									</div>
 									<div class="span2">
 											<label for=""><strong>Fecha Inicio</strong></label>
-											<input type="text" class="span7" alt="dateP" id="dosisTRataFechaInicio" >		
+											<input type="text" class="span7" alt="dateP"  placeholder="dd/MM/yyyy" id="dosisTRataFechaInicio" >		
 									</div>
 									<div class="span2">
 											<label for=""><strong>Fecha Finalización</strong></label>
-											<input type="text" class="span7" alt="dateP"  id="dosisTRataFechaFin"  >		
+											<input type="text" class="span7" alt="dateP"  placeholder="dd/MM/yyyy"  id="dosisTRataFechaFin"  >		
 									</div>	
 									<div class="span2">
 										<label for=""><strong>Suspendio</strong></label>
@@ -2705,14 +2720,14 @@
         <p class="muted credit">Creada por <a href="#">[Matias Iseas]</a>.</p>
       </div>
     </div>
-    <div id="dialogErrorOperation" class="" style="display: none" align="" title=""Guardar cliente" >
+    <div id="dialogErrorOperation" class="" style="display: none" align="" title="Error al guardar" >
 	<p style="margin:0px;"><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Se ha producido un error al realizar la operacion! </p>
+	</div> 
+	<div id="dialogErrorPaciente" class="" style="display: none" align="" title="Error de agregar consulta" >
+	<p style="margin:0px;"><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Debe seleccionar un paciente primero! </p>
 	</div> 
 	<div id="dialogSuccessOperation"  style="display: none" align="" title="Guardar cliente" >
 	<p style="margin:0px;"><span class="ui-icon ui-icon-circle-check" style="float: left; margin: 0 7px 20px 0;"></span>Operacion realizada exitosamente!</p>
-	</div> 
-	<div id="dialogErrorOperationMap" class="" style="display: none" align="" title="" >
-	<p style="margin:0px;"><i class="icon-warning-sign icon-large" style="float: left; margin: 12px 12px 27px 0;"></i>Para usar esta opción, antes debes escribir la dirección y la localidad</p>
 	</div> 
     <!-- Le javascript
     ================================================== -->
@@ -2742,10 +2757,22 @@ jQuery(function() {
     	
     });
         
-// 	$('#myTab a:last').tab('show');
-	
-	cleanScreenAdd();
-	$("#nombreC").focus();
+    jQuery("#dialogLoading" ).dialog({
+		autoOpen: false,
+		width: 250,
+		modal:true,
+		buttons: {
+		},
+		resizable: false,
+		draggable: false,
+		close: function() {
+		},
+		open: function(){
+			$(".ui-dialog-titlebar-close").remove();
+		}
+	});
+    
+	jQuery("#dialogLoading").dialog("open");
 	
 	jQuery.ajax({
 	     url: '<c:url value="/loadConsultaId.htm" />',
@@ -2753,9 +2780,14 @@ jQuery(function() {
 	     dataType: "json",
 	     contentType: "application/json",
 	     data: {}, 
-	     success: function(resp){                                       
-	          if(resp!=null){
+	     success: function(resp){       
+	    	 jQuery("#dialogLoading").dialog("close");
+	          if(resp!=-1){
 	        	  CONSULTA_ID=resp;
+	        	  $("#selectedPatientDiv").show();
+	          }
+	          else{
+	        	  jQuery("#dialogErrorPaciente").dialog("open");
 	          }
 	     }
 	   });  		
@@ -2809,6 +2841,15 @@ jQuery(function() {
 			$("#divRSC").hide();
 		}
 	});
+	
+	$("input[name=rscPostPresenteRadio]").click(function(){
+		if($(this).attr('id')=="opcion2"){
+			$("#divRSCPost").show();
+		}
+		else{
+			$("#divRSCPost").hide();
+		}
+	});
 
 	$("input[name=vccPresente]").click(function(){
 		if($(this).attr('id')=="opcion2"){
@@ -2819,6 +2860,25 @@ jQuery(function() {
 		}
 	});
 
+	$("input[name=vccPresentePostRadio]").click(function(){
+		if($(this).attr('id')=="opcion2"){
+			$("#divVCCPost,#divVCCPost1").show();
+		}
+		else{
+			$("#divVCCPost,#divVCCPost1").hide();
+		}
+	});
+	
+	
+	$("input[name=eePresenteRadio]").click(function(){
+		if($(this).attr('id')=="opcion2"){
+			$("#divEEPost,#divEEPost1").show();
+		}
+		else{
+			$("#divEEPost,#divEEPost1").hide();
+		}
+	});
+	
 	$("input[name=eePresente]").click(function(){
 		if($(this).attr('id')=="opcion2"){
 			$("#divEE,#divEE1").show();
@@ -2827,6 +2887,7 @@ jQuery(function() {
 			$("#divEE,#divEE1").hide();
 		}
 	});
+	
 	$("input[name=eeesfinter]").click(function(){
 		if($(this).attr('id')=="opcion2"){
 			$("#divEEesfinter").show();
@@ -3285,7 +3346,7 @@ jQuery("#addExaProctoForm").validate({
          data: JSON.stringify( exaProcto ), 
          success: function(resp){                                       
         	 if(resp!=-1){ 
-        		 jQuery("#dialogSuccessOperation").dialog("option","title","Agregar Evaluación Clinica");
+        		 jQuery("#dialogSuccessOperation").dialog("option","title","Agregar Examen proctológico");
         		 jQuery("#dialogSuccessOperation").dialog("open");
      	 	}
      	 	else{
@@ -3491,7 +3552,7 @@ jQuery("#addtratamientoForm").validate({
          data: JSON.stringify( tratamiento ), 
          success: function(resp){                                       
         	 if(resp!=-1){ 
-        		 jQuery("#dialogSuccessOperation").dialog("option","title","Agregar Anatomia Patológica");
+        		 jQuery("#dialogSuccessOperation").dialog("option","title","Agregar Tratamiento");
         		 jQuery("#dialogSuccessOperation").dialog("open");
      	 	}
      	 	else{
@@ -3541,8 +3602,9 @@ jQuery("#addTratamientoNeoAdForm").validate({
          data: JSON.stringify( descTrataNeoadyuante ), 
          success: function(resp){                                       
         	 if(resp!=-1){ 
-        		 jQuery("#dialogSuccessOperation").dialog("option","title","Agregar Anatomia Patológica");
+        		 jQuery("#dialogSuccessOperation").dialog("option","title","Agregar Tratamiento Neoadyuante");
         		 jQuery("#dialogSuccessOperation").dialog("open");
+        		 addRespuestaNeoadyuante();
      	 	}
      	 	else{
        		 jQuery("#dialogErrorOperation").dialog("open");
@@ -3554,15 +3616,7 @@ jQuery("#addTratamientoNeoAdForm").validate({
 });  
 
 
-jQuery("#addRespuestaNeoadyuante").validate({
-	focusInvalid:false,
-    rules: {
-//	    	nombreC:{required: true},
-    },
-    messages: {
-//	    	nombreC: {required: "Campo obligatorio"},
-    },
-	submitHandler: function() { 	
+function addRespuestaNeoadyuante() { 	
 			
 		var centroPostTrata = jQuery("#centroPostTrata").val();	
 		var fechaPostTrata = jQuery("#fechaPostTrata").val();
@@ -3619,29 +3673,21 @@ jQuery("#addRespuestaNeoadyuante").validate({
          data: JSON.stringify( respuestaNeoadyuante ), 
          success: function(resp){                                       
         	 if(resp!=-1){ 
-        		 jQuery("#dialogSuccessOperation").dialog("option","title","Agregar Anatomia Patológica");
+        		 jQuery("#dialogSuccessOperation").dialog("option","title","Agregar Respuesta NeoAdyuante");
         		 jQuery("#dialogSuccessOperation").dialog("open");
+        		 addConductaPostNeo();
      	 	}
      	 	else{
        		 jQuery("#dialogErrorOperation").dialog("open");
      	 	}           
          }
        });  		
-	}
-         
-});  
+}
+       
 
 
 
-jQuery("#addConductaPostNeo").validate({
-	focusInvalid:false,
-    rules: {
-//	    	nombreC:{required: true},
-    },
-    messages: {
-//	    	nombreC: {required: "Campo obligatorio"},
-    },
-	submitHandler: function() { 	
+ function addConductaPostNeo() { 	
 			
 		var ciruNeoRadio = jQuery("input[name=ciruNeoRadio]:checked").val();
 		var prodCiruRadio = jQuery("input[name=prodCiruRadio]:checked").val();
@@ -3656,7 +3702,7 @@ jQuery("#addConductaPostNeo").validate({
 	
 
 		var conductaPostNeo = {'idConsulta':CONSULTA_ID,'cirugia':ciruNeoRadio+"//"+prodCiruRadio,'milesCilindrico':milesCiliRadio+"//"+milesCiliOtro,'urgencia':urgenciaRadio,
-							 'urgenciaFecha':urgenciaFecha,'cirujano':cirujaName, "WS":waitSeeRadio,
+							 'urgenciaFecha':urgenciaFecha,'cirujano':cirujaName, "waitAndSee":waitSeeRadio,
 							 'fechaInicio':fechaInicioConducta};		  		 
 		 
     jQuery.ajax({
@@ -3676,56 +3722,10 @@ jQuery("#addConductaPostNeo").validate({
          }
        });  		
 	}
-         
-});  
 
 
-jQuery("#addTrataAdyuForm").validate({
-	focusInvalid:false,
-    rules: {
-//	    	nombreC:{required: true},
-    },
-    messages: {
-//	    	nombreC: {required: "Campo obligatorio"},
-    },
-	submitHandler: function() { 	
-			
-		var trataAdyuYesRadio = jQuery("input[name=trataAdyuYesRadio]:checked").val();
-		var quimiotrataRadio = jQuery("input[name=quimiotrataRadio]:checked").val();
-		var quimiotrataOtro = jQuery("#quimiotrataOtro").val();
-		var nroCiclosTrata = jQuery("#nroCiclosTrata").val();	
-		var radioTeRadio = jQuery("input[name=radioTeRadio]:checked").val();
 
-		var dosisTotalTrata = jQuery("#dosisTotalTrata").val();
-		var dosisTRataFechaInicio = jQuery("#dosisTRataFechaInicio").val();
-		var dosisTRataFechaFin = jQuery("#dosisTRataFechaFin").val();	
-		var suspendioYesRadio = jQuery("input[name=suspendioYesRadio]:checked").val();
-		var suspenTrataDias = jQuery("#suspenTrataDias").val();
-		var comentCTrataAdyu = jQuery("#comentCTrataAdyu").val();
-		
-		var tratamientoAdyu = {'idConsulta':CONSULTA_ID,'quimioterapia':trataAdyuYesRadio+"//"+quimiotrataRadio+"//"+quimiotrataOtro,'quimioNroCiclos':nroCiclosTrata,'radioterapia':radioTeRadio,
-							 'radioDosis':dosisTotalTrata,'radioFechaInicio':dosisTRataFechaInicio, "radioFechaFinal":dosisTRataFechaFin,
-							 'suspendio':suspendioYesRadio+"//"+suspenTrataDias,'notas':comentCTrataAdyu};		  		 
-		 
-    jQuery.ajax({
-         url: '<c:url value="/addNewTrataAdyuvante.htm" />',
-         type: "POST",
-         dataType: "json",
-         contentType: "application/json",
-         data: JSON.stringify( tratamientoAdyu ), 
-         success: function(resp){                                       
-        	 if(resp!=-1){ 
-        		 jQuery("#dialogSuccessOperation").dialog("option","title","Agregar Anatomia Patológica");
-        		 jQuery("#dialogSuccessOperation").dialog("open");
-     	 	}
-     	 	else{
-       		 jQuery("#dialogErrorOperation").dialog("open");
-     	 	}           
-         }
-       });  		
-	}
-         
-});  
+
 
 
 jQuery("#addAnatomiaPostForm").validate({
@@ -3785,7 +3785,54 @@ jQuery("#addAnatomiaPostForm").validate({
 });  
 
 
-	jQuery("#dialogErrorOperation,#dialogErrorOperationMap").dialog({
+jQuery("#addTrataAdyuForm").validate({
+	focusInvalid:false,
+    rules: {
+//	    	nombreC:{required: true},
+    },
+    messages: {
+//	    	nombreC: {required: "Campo obligatorio"},
+    },
+	submitHandler: function() { 	
+			
+		var trataAdyuYesRadio = jQuery("input[name=trataAdyuYesRadio]:checked").val();
+		var quimiotrataRadio = jQuery("input[name=quimiotrataRadio]:checked").val();
+		var quimiotrataOtro = jQuery("#quimiotrataOtro").val();
+		var nroCiclosTrata = jQuery("#nroCiclosTrata").val();	
+		var radioTeRadio = jQuery("input[name=radioTeRadio]:checked").val();
+
+		var dosisTotalTrata = jQuery("#dosisTotalTrata").val();
+		var dosisTRataFechaInicio = jQuery("#dosisTRataFechaInicio").val();
+		var dosisTRataFechaFin = jQuery("#dosisTRataFechaFin").val();	
+		var suspendioYesRadio = jQuery("input[name=suspendioYesRadio]:checked").val();
+		var suspenTrataDias = jQuery("#suspenTrataDias").val();
+		var comentCTrataAdyu = jQuery("#comentCTrataAdyu").val();
+		
+		var tratamientoAdyu = {'idConsulta':CONSULTA_ID,'quimioterapia':trataAdyuYesRadio+"//"+quimiotrataRadio+"//"+quimiotrataOtro,'quimioNroCiclos':nroCiclosTrata,'radioterapia':radioTeRadio,
+							 'radioDosis':dosisTotalTrata,'radioFechaInicio':dosisTRataFechaInicio, "radioFechaFinal":dosisTRataFechaFin,
+							 'suspendio':suspendioYesRadio+"//"+suspenTrataDias,'notas':comentCTrataAdyu};		  		 
+		 
+    jQuery.ajax({
+         url: '<c:url value="/addNewTrataAdyuvante.htm" />',
+         type: "POST",
+         dataType: "json",
+         contentType: "application/json",
+         data: JSON.stringify( tratamientoAdyu ), 
+         success: function(resp){                                       
+        	 if(resp!=-1){ 
+        		 jQuery("#dialogSuccessOperation").dialog("option","title","Agregar tratamiento Adyuvante");
+        		 jQuery("#dialogSuccessOperation").dialog("open");
+     	 	}
+     	 	else{
+       		 jQuery("#dialogErrorOperation").dialog("open");
+     	 	}           
+         }
+       });  		
+	}
+         
+});  
+
+	jQuery("#dialogErrorOperation").dialog({
 		autoOpen: false,
 		height: 180,
 		modal:true,
@@ -3800,6 +3847,23 @@ jQuery("#addAnatomiaPostForm").validate({
 		}
 	});	 	
 
+	jQuery("#dialogErrorPaciente").dialog({
+		autoOpen: false,
+		height: 180,
+		modal:true,
+		buttons: {
+			"Ok": function() {
+				jQuery( this ).dialog( "close" );
+	              window.location.href = "<%=request.getContextPath()%>/buscarPaciente.htm";
+			}
+		},
+		resizable: false,
+		draggable: false,
+		close: function() {
+		}
+	});	 
+	
+	
 	jQuery("#dialogSuccessOperation").dialog({
 		autoOpen: false,
 		height: 170,
@@ -3822,25 +3886,11 @@ jQuery("#addAnatomiaPostForm").validate({
         var chr = String.fromCharCode(event.charCode == undefined ? event.keyCode : event.charCode);
         return event.ctrlKey || (chr < ' ' || !chars || chars.indexOf(chr) > -1);
     });
-
+   
+    
 });
 //Other functions
-function cleanScreenAdd(){
-     jQuery("#nombreC").val("");
-	 jQuery("#direccionC").val("");
-	 jQuery("#localidadC").val("");
-     jQuery("#clientState").val(0);
-  	 jQuery("#typeId").val(0);
-	 jQuery("#emailC").val("");
-	 jQuery("#telC-1").val("");
-	 jQuery("#phone-form-1").remove();
-	 jQuery("#phone-form-2").remove();
-	 jQuery("#cuitC").val("");
-	 jQuery("#comentC").val("");
-	 jQuery("#dateStart").val("");
-	 jQuery("#numOS").val("");
-	 jQuery("#nombreC").focus();
-}
+
 
 </script> 
 

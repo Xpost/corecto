@@ -90,41 +90,33 @@
             <span class="icon-bar"></span>
           </button>
           <a class="brand" href="#">Co-Recto BD</a>
-          <div class="nav-collapse collapse">
+              <div class="nav-collapse collapse">
             <ul class="nav">
             <li class="divider-vertical"></li>
             <sec:authorize ifAnyGranted="ROLE_USER,ROLE_ADMIN">
-              <li class=""><a href="login.htm">Inicio</a></li>
-              <li class="dropdown active">
-               <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Paciente <b class="caret"></b></a>
+              <li ><a href="login.htm">Inicio</a></li>
+              <li class=" active dropdown">
+               <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Pacientes <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li class="nav-header">Operaciones</li>
                   <li class="divider"></li>
-                  <li><a href="agregarPaciente.htm">Agregar paciente</a></li>
+                  <li><a href="agregarPaciente.htm"><i class="icon-plus"></i> Agregar</a></li>
                   <li class="divider"></li>
-                  <li class=""><a href="buscarPaciente.htm">Buscar paciente</a></li>                  
+                  <li class=""><a href="buscarPaciente.htm"><i class="icon-search"></i> Buscar</a></li>
                 </ul>
                </li>
-               <li class="dropdown">
+           <li class="dropdown">
                <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Consulta <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li class="nav-header">Operaciones</li>
+                  <li class=""><a href="agregarConsulta.htm"><i class="icon-plus"></i> Agregar</a></li>
                   <li class="divider"></li>
-                  <li class=""><a href="agregarConsulta.htm">Agregar Consulta</a></li>
-                  <li class="divider"></li>
-                  <li class=""><a href="assignClientAbono.htm">Buscar Consulta</a></li>
+                  <li class="disabled"><a href="#">Buscar Consulta</a></li>
                 </ul>
                </li>
                </sec:authorize>
               <li><a href="contacto.htm">Contacto</a></li>
             </ul>
-           <div lang="loginDivData" style="display: none" >
-            <form class="navbar-form pull-right" action="j_spring_security_check" method="post">
-              <input class="span2" type="text" id="j_username" name="j_username" placeholder="Usuario">
-              <input class="span2" type="password" id="j_password" name="j_password" placeholder="Password">
-              <button type="submit" onclick="jQuery(this).button('loading')" class="btn btn-primary" data-loading-text="Iniciando...">Iniciar sesión</button>
-            </form>
-            </div>
              <div lang="alreadyLoggued" class="pull-right" style="" id="templatemo_main">
 					<p class="navbar-text pull-left">
              		 Logueado como 

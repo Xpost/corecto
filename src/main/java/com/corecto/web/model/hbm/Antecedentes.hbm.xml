@@ -6,7 +6,7 @@
     <class name="com.corecto.web.model.pojo.extra.Antecedentes" table="ANTECEDENTES" schema="DBCORECTO" >
         <id name="idantecedente" type="long">
             <column name="IDANTECEDENTE" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <many-to-one name="consulta" class="com.corecto.web.model.pojo.extra.Consulta" fetch="select">
             <column name="IDCONSULTA" />

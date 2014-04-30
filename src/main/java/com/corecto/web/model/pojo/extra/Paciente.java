@@ -21,6 +21,7 @@ public class Paciente implements java.io.Serializable {
 	private String mail;
 	private String nroOs;
 	private String notas;
+	private String dni;
 	private Set<Consulta> consultas = new HashSet<Consulta>(0);
 
 	public Paciente() {
@@ -131,6 +132,14 @@ public class Paciente implements java.io.Serializable {
 
 	public void setConsultas(Set<Consulta> consultas) {
 		this.consultas = consultas;
+	}
+
+	public String getDni() {
+		return dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
 	}
 
 	

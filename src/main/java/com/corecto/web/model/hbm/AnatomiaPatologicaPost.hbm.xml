@@ -6,7 +6,7 @@
     <class name="com.corecto.web.model.pojo.extra.AnatomiaPatologicaPost" table="ANATOMIA_PATOLOGICA_POST" schema="DBCORECTO" >
         <id name="idanatomiapatopost" type="long">
             <column name="IDANATOMIAPATOPOST" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <many-to-one name="consulta" class="com.corecto.web.model.pojo.extra.Consulta" fetch="select">
             <column name="IDCONSULTA" />

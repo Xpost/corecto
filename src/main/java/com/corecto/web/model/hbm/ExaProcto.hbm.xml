@@ -6,7 +6,7 @@
     <class name="com.corecto.web.model.pojo.extra.ExaProcto" table="EXA_PROCTO" schema="DBCORECTO" >
         <id name="idexaprocto" type="long">
             <column name="IDEXAPROCTO" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <many-to-one name="consulta" class="com.corecto.web.model.pojo.extra.Consulta" fetch="select">
             <column name="IDCONSULTA" />

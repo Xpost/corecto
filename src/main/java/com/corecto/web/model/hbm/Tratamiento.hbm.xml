@@ -6,7 +6,7 @@
     <class name="com.corecto.web.model.pojo.extra.Tratamiento" table="TRATAMIENTO" schema="DBCORECTO" >
         <id name="idtratamiento" type="long">
             <column name="IDTRATAMIENTO" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <many-to-one name="consulta" class="com.corecto.web.model.pojo.extra.Consulta" fetch="select">
             <column name="IDCONSULTA" />
@@ -30,7 +30,7 @@
             <column name="QUIMIOTERAPIA_INTER" length="100" />
         </property>
         <property name="quimioteInterNroCiclos" type="string">
-            <column name="QUIMIOTE_INTER_NRO_CICLOS" length="25" />
+            <column name="QUIMIOTE_INTER_NRO_CIC" length="25" />
         </property>
     </class>
 </hibernate-mapping>
