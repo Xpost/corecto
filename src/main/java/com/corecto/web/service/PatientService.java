@@ -22,6 +22,8 @@ public interface PatientService {
     List<PacienteDTO> listPatientByFilter(FilterDTO filterDTO);
     Long alreadyHasConsultCreated(Long patientID);
     void deletePatientById(Long patientId);
+    void updatePatient(PacienteDTO pacienteDTO);
+
 //
 //	ReportData loadCPForReport(Integer ocId);
 //	

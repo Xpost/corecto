@@ -77,7 +77,7 @@ public class PatientController {
 	    @RequestMapping(value = "/addNewPatient", method = RequestMethod.POST)
 	    public @ResponseBody
 	    long saveNewPaciente(@RequestBody PacienteDTO pacienteDTO ) {
-	    	LOG.info("ClientController.saveNewPaciente()");
+	    	LOG.info("PatientController.saveNewPaciente()");
 	        long returnNewId = -1;
 	        try {
 	        	returnNewId = patientService.savePatient(pacienteDTO);
@@ -89,6 +89,20 @@ public class PatientController {
 	        return 	returnNewId;
 	    }
 	 
+	    @RequestMapping(value = "/editPatient", method = RequestMethod.POST)
+	    public @ResponseBody
+	    boolean editPatient(@RequestBody PacienteDTO pacienteDTO) {
+	    	LOG.info("PatientController.editPatient()");
+	        try {
+	        	patientService.updatePatient(pacienteDTO);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            return false;
+	        }
+
+	        return true;
+	    }
+	    
 	   @Audited(message = "Accion: Busqueda inical de pacientes en Listado")
 	    @RequestMapping(value = "/loadlistPatients", method = RequestMethod.GET)
 	    public @ResponseBody
@@ -176,19 +190,7 @@ public class PatientController {
   
 
     
-    @RequestMapping(value = "/editClient", method = RequestMethod.POST)
-    public @ResponseBody
-    boolean editClient(@RequestBody ClienteDTO newCliente) {
-    	LOG.info("ClientController.editClient()");
-        try {
-            clientService.saveorUpdateClient(newCliente);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
 
-        return true;
-    }
 
     
  

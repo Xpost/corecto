@@ -1,6 +1,7 @@
 package com.corecto.web.model.dto;
 
 import java.util.List;
+import java.util.Map;
 
 public class PageResult {
 
@@ -24,6 +25,12 @@ public class PageResult {
      */
     private List<?> rows;
 
+    /**
+     * UserDataMap
+     */
+    private Map<String,String> userdata;
+    
+    
     public PageResult() {
     }
 
@@ -58,5 +65,15 @@ public class PageResult {
     public void setRows(List<?> rows) {
         this.rows = rows;
     }
+
+	public Map<String, String> getUserdata() {
+		return userdata;
+	}
+
+	public void setUserdata(Map<String, String> userdata) {
+		this.userdata = userdata;
+	}
+    
+    
 
 }

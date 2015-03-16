@@ -16,12 +16,17 @@ public class Paciente implements java.io.Serializable {
 	private String nombre;
 	private String sexo;
 	private Date fechanac;
-	private String domicilio;
+	private String direccion;
+	private String localidad;
 	private String telefono;
 	private String mail;
 	private String nroOs;
 	private String notas;
 	private String dni;
+	private Date fechaAgregado;
+	private String agregadoPor;
+	private Date fechaModificado;
+	private String modificadoPor;
 	private Set<Consulta> consultas = new HashSet<Consulta>(0);
 
 	public Paciente() {
@@ -29,21 +34,6 @@ public class Paciente implements java.io.Serializable {
 
 	public Paciente(long idpaciente) {
 		this.idpaciente = idpaciente;
-	}
-
-	public Paciente(long idpaciente, CatOs catOs, String nombre, String sexo,
-			Date fechanac, String domicilio, String telefono, String mail,
-			String nroOs, String notas) {
-		this.idpaciente = idpaciente;
-		this.catOs = catOs;
-		this.nombre = nombre;
-		this.sexo = sexo;
-		this.fechanac = fechanac;
-		this.domicilio = domicilio;
-		this.telefono = telefono;
-		this.mail = mail;
-		this.nroOs = nroOs;
-		this.notas = notas;
 	}
 
 	public long getIdpaciente() {
@@ -86,12 +76,20 @@ public class Paciente implements java.io.Serializable {
 		this.fechanac = fechanac;
 	}
 
-	public String getDomicilio() {
-		return this.domicilio;
+	public String getDireccion() {
+		return direccion;
 	}
 
-	public void setDomicilio(String domicilio) {
-		this.domicilio = domicilio;
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public String getLocalidad() {
+		return localidad;
+	}
+
+	public void setLocalidad(String localidad) {
+		this.localidad = localidad;
 	}
 
 	public String getTelefono() {
@@ -142,5 +140,36 @@ public class Paciente implements java.io.Serializable {
 		this.dni = dni;
 	}
 
-	
+	public Date getFechaAgregado() {
+		return fechaAgregado;
+	}
+
+	public void setFechaAgregado(Date fechaAgregado) {
+		this.fechaAgregado = fechaAgregado;
+	}
+
+	public String getAgregadoPor() {
+		return agregadoPor;
+	}
+
+	public void setAgregadoPor(String agregadoPor) {
+		this.agregadoPor = agregadoPor;
+	}
+
+	public Date getFechaModificado() {
+		return fechaModificado;
+	}
+
+	public void setFechaModificado(Date fechaModificado) {
+		this.fechaModificado = fechaModificado;
+	}
+
+	public String getModificadoPor() {
+		return modificadoPor;
+	}
+
+	public void setModificadoPor(String modificadoPor) {
+		this.modificadoPor = modificadoPor;
+	}
+
 }

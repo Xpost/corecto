@@ -6,13 +6,12 @@ import com.corecto.web.model.pojo.extra.Preconsulta;
 
 public interface PreconsultaDAO extends DAO {
 
-	public  long saveNewPreconsulta(Preconsulta preconsulta)
-			throws DataAccessException;
+	long saveNewPreconsulta(Preconsulta preconsulta) throws DataAccessException;
 
-	public  Preconsulta loadPreconsultaById(final Long idpreconsulta)
-			throws DataAccessException;
+	long updatePreconsulta(Preconsulta preconsulta) throws DataAccessException;
 
-	public  Preconsulta loadPreconsultaByConsulta(final Long idConsulta)
-			throws DataAccessException;
+	Preconsulta loadPreconsultaById(final Long idpreconsulta) throws DataAccessException;
+
+	Preconsulta loadPreconsultaByConsulta(final Long idConsulta) throws DataAccessException;
 
 }

@@ -57,11 +57,21 @@ public class NavigationController {
     }
 
     @RequestMapping(value = "/agregarConsulta")
-    public ModelAndView loadAddConsultPage( HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView loadAddNewConsultPage( HttpServletRequest request, HttpServletResponse response) {
         ModelAndView model = new ModelAndView();
         model.setViewName("agregarConsulta");
         model.addObject("PACIENTE_ID",request.getSession().getAttribute("PACIENTE_ID"));
         model.addObject("PACIENTE_NOMBRE",request.getSession().getAttribute("PACIENTE_NOMBRE"));
+        return model;
+    }
+    
+    @RequestMapping(value = "/cargarConsulta")
+    public ModelAndView loadConsultPage( Long id, HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("agregarConsulta");
+        model.addObject("PACIENTE_ID",request.getSession().getAttribute("PACIENTE_ID"));
+        model.addObject("PACIENTE_NOMBRE",request.getSession().getAttribute("PACIENTE_NOMBRE"));
+        model.addObject("ID_CONSULTA",id);
         return model;
     }
     

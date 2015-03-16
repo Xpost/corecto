@@ -15,7 +15,8 @@ public class PacienteDTO {
 	private String nombre;
 	private String sexo;
 	private String fechanac;
-	private String domicilio;
+	private String direccion;
+	private String localidad;
 	private String telefono;
 	private String telefono2;
 	private String telefono3;
@@ -47,7 +48,8 @@ public class PacienteDTO {
 	
 	
 	public PacienteDTO(long idpaciente, int idos, String nombreOs,
-			String nombre, String sexo, Date fechanac, String domicilio,
+			String nombre, String sexo, Date fechanac, String direccion,
+			String localidad,
 			String telefono, String mail,
 			String nroOs, String notas, String dni) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");		
@@ -58,7 +60,8 @@ public class PacienteDTO {
 		this.sexo = PacienteSexo.getPacienteByName(sexo).getValue();
 		if (fechanac!=null)
 		this.fechanac = dateFormat.format(fechanac);
-		this.domicilio = domicilio;
+		this.direccion = direccion;
+		this.localidad = localidad;
 		this.telefono = telefono;
 		this.mail = mail;
 		this.nroOs = nroOs;
@@ -83,7 +86,7 @@ public class PacienteDTO {
 		this.nombre = nombre;
 		this.sexo = sexo;
 		this.fechanac = fechanac;
-		this.domicilio = domicilio;
+		this.direccion = domicilio;
 		this.telefono = telefono;
 		this.telefono2 = telefono2;
 		this.telefono3 = telefono3;
@@ -144,12 +147,27 @@ public class PacienteDTO {
 	public void setFechanac(String fechanac) {
 		this.fechanac = fechanac;
 	}
-	public String getDomicilio() {
-		return domicilio;
+
+	public String getDireccion() {
+		return direccion;
 	}
-	public void setDomicilio(String domicilio) {
-		this.domicilio = domicilio;
+
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
+
+
+	public String getLocalidad() {
+		return localidad;
+	}
+
+
+	public void setLocalidad(String localidad) {
+		this.localidad = localidad;
+	}
+
+
 	public String getTelefono() {
 		return telefono;
 	}

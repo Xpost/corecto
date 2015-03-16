@@ -54,4 +54,8 @@ public interface PatientDAO extends DAO {
   
   List<Paciente> getPatientsByFilter(final FilterDTO filter) throws DataAccessException;
 
+  Paciente loadPatientById(Long idPatient) throws DataAccessException;
+  
+  long updatePatient(Paciente  paciente) throws DataAccessException;
+
 }

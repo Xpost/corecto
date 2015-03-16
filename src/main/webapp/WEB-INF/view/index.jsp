@@ -57,19 +57,18 @@
     
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
 	<link href="css/font-awesome.min.css" rel="stylesheet">
-
+	<link href="js/c3-0.4.9/c3.css" rel="stylesheet" type="text/css">
+	<style type="text/css">
+	.c3-ygrids line {
+		opacity:0.7
+	} 
+	</style>
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="../assets/js/html5shiv.js"></script>
     <![endif]-->
-
-    <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-     <link rel="shortcut icon" href="../assets/ico/favicon.png">
-                  
+    
+             
   </head>
 
   <body>
@@ -79,35 +78,37 @@
 		</jsp:include>
 
     <div class="container">
-        <div class="hero-unit">
+        <div class="hero-unit" style="padding: 20px 60px 90px">
       		<sec:authorize ifNotGranted="ROLE_USER,ROLE_ADMIN">        
-	            <h1>Logueo de usuario</h1>
+	            <h1>Logueo de usuario </h1>
 	            <p>Se deberá loguear para poder acceder a las diferentes opciones del menú</p>
-	            <p><a href="#" id="helpLoginButton" class="btn btn-primary btn-large">Ayuda &raquo;</a></p>
+	            <div><a href="#" id="helpLoginButton" class="btn btn-primary btn-large">Ayuda &raquo;</a></div>
             </sec:authorize>
             <sec:authorize ifAnyGranted="ROLE_USER,ROLE_ADMIN">          
 	            	<h1>Bienvenido!</h1>
-	            	<div class="alert alert-success">
-	                <p>Se encuentra logueado con el usuario:
+	            	<div class="span7 alert alert-success" style="margin-left: 0px">
+	                <p style="margin-bottom: 0px">Se encuentra logueado con el usuario:
 	                		 <sec:authorize ifAnyGranted="ROLE_USER,ROLE_ADMIN">
 							 <strong><sec:authentication property="principal.username"/></strong>
-							 </sec:authorize>
-						. Si lo desea puede <span class="label label-info" style="font-size: 14px">Salir</span> y loguearse con otro usuario</p>
-					</div>	
-	                
+							 </sec:authorize>.
+					</p>		 
+				    <p style="margin-bottom: 0px"> Si lo desea puede <span class="label label-info" style="font-size: 14px">Salir</span> y loguearse con otro usuario</p>
+					</div>	        
 	               	<c:url value="/logout" var="logoutUrl"/>	  
-	          	 <p><a class="btn btn-primary btn-large" href="${logoutUrl}" style="font-size: 20px;" >Salir <i style="margin-left:5px" class="icon-share"></i></a></p>                 
+	             <div class="span2" style="margin-left: 0px">
+	          	 <p><a class="btn btn-primary btn-large" href="${logoutUrl}" style="font-size: 20px;" >Salir <i style="margin-left:5px" class="icon-share"></i></a></p>
+	          	 </div>                 
 	         </sec:authorize>
           </div>
       <div class="row-fluid">
-            <div class="span3 show-grid">
-              <h2>Ultimos clientes agregados</h2>
-              <p>Puede mostrarse info acerca de los ultimos cientes agregados, sus estados, incidencias, algun otro dato de rapido acceso</p>
+            <div class="span6 show-grid">
+              <h2>Últimos pacientes agregados</h2>
+					<div id="chart"></div>
+					<p><a class="btn" href="#">Mas detalles &raquo;</a></p>
             </div><!--/span-->
-            <div class="span3 show-grid">
-              <h2>Otra info</h2>
-              <p>Cualquier otra informacion que valga la pena mostrar en la pantalla principal y sin necesitar logueo...o si</p>
-              <p><a class="btn" href="#">Mas detalles &raquo;</a></p>
+            <div class="span6 show-grid">
+              <h2 class="text-center">Tratamiento Udaondo</h2>
+              <div id="chartPie" align="center"></div>
             </div><!--/span-->
           </div><!--/row-->
 
@@ -124,6 +125,12 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script type="text/javascript" src="js/jquery-1.7.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src=js/d3/d3.min.js></script>
+	<!-- decidir cual de los dos usar! -->	
+	<script src="js/c3-0.4.9/c3.js"></script>
+
+
+
 <script type="text/javascript">
 jQuery(function() {
 
@@ -132,15 +139,115 @@ jQuery(function() {
 	jQuery("div[lang='alreadyLoggued']").show();
 </sec:authorize>
 <sec:authorize ifNotGranted="ROLE_USER">
+jQuery("div[lang='alreadyLoggued']").hide();
 jQuery("div[lang='loginDivData']").show();
 jQuery("#j_username").focus();
 </sec:authorize>
 
 $('#helpLoginButton').popover({html:true,content:"Debe acceder con un <strong>usuario/password</strong> en la barra de menú de arriba"});
 
-
+createC3Chart();
+createPieChart();
 });
+
+function createC3Chart(){
+	
+var chart = c3.generate({
+	    bindto: '#chart',
+	    data: {
+	    	   types: {
+	    		   Pacientes: 'bar' // ADD
+	   	      }, // the same as
+			  //type: 'bar',
+			  labels:  true, //{format: function (v, id, i, j) { return "$"+v; }},
+		      columns: [
+		        ['Pacientes', 67, 90, 120, 60, 100]
+		      ],
+		      axes: {
+		    	  Pacientes: 'y'
+		       }
+	    },
+	    bar: {
+	        width: {
+	            ratio: 0.7 // this makes bar width 50% of length between ticks
+	        }
+	        // or
+	        //width: 100 // this makes bar width 100px
+	    },
+	    grid: {
+	        y: {
+	            show: true
+	        }
+	    },
+	    axis: {
+	        x: {
+	            type: 'category',
+	            categories: ['2010', '2011', '2012', '2013', '2014'],
+	            label: {
+                    text: 'Años',
+                    position: 'outer-middle'
+                    // inner-top : default
+      			},
+      			tick: {
+                    // format: function (x) { return "Año "+x; }
+                   //format: '%Y' // format string is also available for timeseries data
+                 }
+	        },
+	        y : {
+	        	label: {
+	                      text: 'Cantidad pacientes',
+	                      position: 'outer-middle'
+	                      // inner-top : default
+	        	}         
+// 	        	tick: {
+//                 format: d3.format("$")  
+//             	}
+// 	        	,max:130, 
+// 	        	min:-20
+	        }
+	    }
+	    ,tooltip: {
+	        format: {
+	            title: function (v) { 
+	            	return "Año " + chart.internal.config.axis_x_categories[v];
+	            	},
+	        }
+	    }
+	});
+};
+
+function createPieChart(){
+	var chart = c3.generate({
+		bindto: '#chartPie',
+	    data: {
+	        // iris data from R
+	        columns: [
+	            ['Si', 120],
+	            ['No', 70],
+	            ['Otro', 10]
+	        ],
+	        names:{'Si':'Si  (120)','No':'No  (70)','Otro':'Otro  (10)'},
+	        type : 'pie',
+	        onclick: function (d, i) { console.log("onclick", d, i); },
+	        labels: {format: function (v, id, i, j) { return "esaaaaa"; }}, 
+	        //,onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+	        //onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+	    },
+	    pie: {
+	        label: {
+// 	            format: function (value, ratio, id) {
+// 	                return (value); 
+// 	            }
+	        },
+	        expand: true //animacion expansion
+	    },
+	    legend: {
+	        position: 'right'
+	    }
+	});
+}
 </script> 
+   
 
   </body>
 </html>

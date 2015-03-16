@@ -13,7 +13,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Le styles -->
-    <link href="css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
 			body {
 			    padding-bottom: 10px;
@@ -58,80 +57,18 @@
 		margin-top: 8px;
 		}
     </style>
-    
+
+ 	<jsp:include flush="true" page="header.jsp">
+		<jsp:param name="left" value="1" />
+	</jsp:include>
+                  
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/validate.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" media="screen"	href="css/jquery-ui-1.8.16.custom.css" />
-
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="../assets/js/html5shiv.js"></script>
-    <![endif]-->
-
-    <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-     <link rel="shortcut icon" href="../assets/ico/favicon.png">
                   
   </head>
 
   <body>
 
-	    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="#">Co-Recto BD</a>
-              <div class="nav-collapse collapse">
-            <ul class="nav">
-            <li class="divider-vertical"></li>
-            <sec:authorize ifAnyGranted="ROLE_USER,ROLE_ADMIN">
-              <li ><a href="login.htm">Inicio</a></li>
-              <li class=" active dropdown">
-               <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Pacientes <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li class="nav-header">Operaciones</li>
-                  <li class="divider"></li>
-                  <li><a href="agregarPaciente.htm"><i class="icon-plus"></i> Agregar</a></li>
-                  <li class="divider"></li>
-                  <li class=""><a href="buscarPaciente.htm"><i class="icon-search"></i> Buscar</a></li>
-                </ul>
-               </li>
-           <li class="dropdown">
-               <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Consulta <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li class="nav-header">Operaciones</li>
-                  <li class=""><a href="agregarConsulta.htm"><i class="icon-plus"></i> Agregar</a></li>
-                  <li class="divider"></li>
-                  <li class="disabled"><a href="#">Buscar Consulta</a></li>
-                </ul>
-               </li>
-               </sec:authorize>
-              <li><a href="contacto.htm">Contacto</a></li>
-            </ul>
-             <div lang="alreadyLoggued" class="pull-right" style="" id="templatemo_main">
-					<p class="navbar-text pull-left">
-             		 Logueado como 
-             		 	 <sec:authorize ifAnyGranted="ROLE_USER,ROLE_ADMIN">
-						 <strong><sec:authentication property="principal.username"/></strong>
-						 </sec:authorize>
-           			 </p>
-           			 <button type="button" onclick="javascript:window.location.href='logout'" style="margin-left: 10px;" class="btn btn-primary pull-right">
-						 Salir<i style="margin-left:5px" class="icon-share"></i>
-			         </button>
-				</div>		        
-	       </div><!--/.nav-collapse -->
-          </div>
-        </div>
-      </div>
 
     <div class="container">
      <div class="row-fluid">
@@ -298,6 +235,8 @@ locationInfoWMessage = "Esta bien esta ubicación?<br>Sino es asi, <strong>arras
 
 	 jQuery("input[alt=dateP]").datepicker({
 		 showButtonPanel: true,
+		 changeYear: true,
+		 yearRange: "-80:+0",
 		 dateFormat: "dd/mm/yy",
 		 showOn: "button",
 		 buttonImage: "css/images/calendar.gif",
@@ -339,15 +278,14 @@ locationInfoWMessage = "Esta bien esta ubicación?<br>Sino es asi, <strong>arras
   				telNew3 = jQuery("#telC-3").val();
   		}
   		var cuitNew = jQuery("#cuitC").val();
-  		var puntuaNew = 1;
   		var comentNew = jQuery("#comentC").val();
   		var typeId = jQuery("#typeId").val();
   		var numOS = jQuery("#numOS").val();
 	    var sexoSelected = jQuery("input[name=sexo]:checked").val();
 
   		
-  		var patient = {'idos':typeId,'nombre':nombreNew,'domicilio':localidadNew,'mail':emailNew,'telefono':telNew+"@@"+telNew2+"@@"+telNew3,
-  						'notas':comentNew,'fechanac':fechaNac,'nroOs':numOS,"sexo":sexoSelected};		  		 
+  		var patient = {'idos':typeId,'nombre':nombreNew,'direccion':direccionNew,'localidad':localidadNew, 'mail':emailNew,'telefono':telNew+"@@"+telNew2+"@@"+telNew3,
+  						'notas':comentNew,'fechanac':fechaNac,'nroOs':numOS,"sexo":sexoSelected, "dni":cuitNew};		  		 
   		 
         jQuery.ajax({
              url: '<c:url value="/addNewPatient.htm" />',

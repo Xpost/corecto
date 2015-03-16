@@ -14,7 +14,7 @@
     <meta name="author" content="">
     <!-- Le styles -->
     <link href="css/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
+    <style type="text/css">		
 			body {
 			    padding-bottom: 10px;
 			    padding-top: 60px;
@@ -89,91 +89,17 @@
 	.ui-loadingBar { background: transparent url('css/images/load.gif') center / 260px no-repeat;  }
 	.ui-pg-input { width: 10px !important;  }
     </style>
+    
+    <jsp:include flush="true" page="header.jsp">
+		<jsp:param name="left" value="1" />
+	</jsp:include>
+
+	<link rel="stylesheet" type="text/css" media="screen" href="css/ui.jqgrid.css" />                  
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/validate.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" media="screen"	href="css/jquery-ui-1.8.16.custom.css" />
-<link rel="stylesheet" type="text/css" media="screen" href="css/ui.jqgrid.css" />
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="../assets/js/html5shiv.js"></script>
-    <![endif]-->
-
-    <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-     <link rel="shortcut icon" href="../assets/ico/favicon.png">
-                  
+    <link href="css/validate.css" rel="stylesheet">    
   </head>
 
   <body>
-
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="#">Co-Recto BD</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-            <li class="divider-vertical"></li>
-            <sec:authorize ifAnyGranted="ROLE_USER,ROLE_ADMIN">
-              <li ><a href="login.htm">Inicio</a></li>
-              <li class=" active dropdown">
-               <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Pacientes <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li class="nav-header">Operaciones</li>
-                  <li class="divider"></li>
-                  <li><a href="agregarPaciente.htm"><i class="icon-plus"></i> Agregar</a></li>
-                  <li class="divider"></li>
-                  <li class=""><a href="buscarPaciente.htm"><i class="icon-search"></i> Buscar</a></li>
-                </ul>
-               </li>
-           <li class="dropdown">
-               <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Consulta <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li class="nav-header">Operaciones</li>
-                  <li class=""><a href="agregarConsulta.htm"><i class="icon-plus"></i> Agregar</a></li>
-                  <li class="divider"></li>
-                  <li class="disabled"><a href="#">Buscar Consulta</a></li>
-                </ul>
-               </li>
-               </sec:authorize>
-              <li><a href="contacto.htm">Contacto</a></li>
-            </ul>
-             <div lang="alreadyLoggued" class="pull-right" style="" id="templatemo_main">
-					<p class="navbar-text pull-left">
-             		 Logueado como 
-             		 	 <sec:authorize ifAnyGranted="ROLE_USER,ROLE_ADMIN">
-						 <strong><sec:authentication property="principal.username"/></strong>
-						 </sec:authorize>
-           			 </p>
-           			 <button type="button" onclick="javascript:window.location.href='logout'" style="margin-left: 10px;" class="btn btn-primary pull-right">
-						 Salir<i style="margin-left:5px" class="icon-share"></i>
-			         </button>
-				</div>		        
-	       </div><!--/.nav-collapse -->
-          </div>
-        </div>
-             <div class="navbar-inner container" id="selectedPatientDiv" style="min-height:20px;display: none;">
-                    <div class="nav-collapse collapse" style="min-height:20px" >
-                       <ul class="nav" style="min-height:20px">
-            				<li class="divider-vertical" style="min-height: 20px; height: 25px;">
-            				<a href="#" style="padding: 2px 0"><strong>Paciente seleccionado:</strong><span id="selectedPatientName"></span> </a>
-            				<input type="hidden" value="" id="idPacienteSelected">
-            				</li>
-            			</ul>	
-            			<button type="button" class="close"  id="closeSelected"  style="color: white;opacity:0.8;margin-left:10px;">×</button>
-            			<button class="btn btn-primary pull-right" type="button" id="seeConsultBtn" style="font-size: 12px;margin-top: 1px; opacity: 0.8; padding: 0 3px; display: none">Ver consulta</button>
-          			</div>
-             </div>  
-      </div>
 
     <div class="container">
      <div class="row-fluid">
@@ -203,16 +129,69 @@
 				</div>
 				<div class="span6">
 				  	<label for="tipoComprobanteCaja"><strong>Sexo</strong></label>
+				  	<label class="radio inline">
+						    <input type="radio" name="sexo" id="both" value="" checked="checked" >
+							Ambos
+						</label>
 				   <label class="radio inline">
 						    <input type="radio" name="sexo" id="masSex" value="M" >
 							M
 						</label>
-					    <label class="radio inline">
+				   <label class="radio inline">
 						    <input type="radio" name="sexo" id="femSex" value="F" >
 							F
 						</label>
 				  </div>	
-			</div>		
+			</div>	
+						<div class="row-fluid">
+				<fieldset>
+				<legend style="margin-bottom: 0px !important;border-bottom: 1px solid #9B9B9E !important;">Preconsulta<button div="preconsultaTab" style="float: right; margin-top: 5px" class="colapsableBtn btn btn-primary" ><i class="icon-plus"></i></button> </legend>
+				<div id="preconsultaTab" style="padding: 5px;border-bottom: 1px solid #9B9B9E;border-left: 1px solid #9B9B9E; border-right: 1px solid #9B9B9E;border-radius:0 0 4px 4px;display: none">
+					<div class="row-fluid">				
+				        	<div class="span3">     
+								<label for="nombreC"><strong>Peso</strong></label>
+								<div class="input-append">		
+									<input type="text" class="span6 onlyNumbers" id="pesoPre" name="pesoPre" />
+									<span class="add-on">kg</span>											
+								</div>	
+							</div>
+							<div class="span3">	
+								<label for="direccionC"><strong>Talla</strong></label>
+										<div class="input-append">		
+									<input type="text" class="span6 onlyNumbers" id="tallePre" name="tallePre" />
+									<span class="add-on">cm</span>											
+								</div>
+							</div>
+							<div class="span3">		
+								<label for="localidadC"><strong>Superficie corporal</strong></label>
+								<div class="input-append">		
+									<input type="text" class="span6 onlyNumbers" id="superPre" name="superPre" />
+									<span class="add-on">m&#178;</span>											
+								</div>	
+							</div>	
+						<div class="span3">
+						  <label for="tipoComprobanteCaja"><strong>Performance Status</strong></label>
+						   <label class="radio inline">
+								 <input type="radio" name="performanceRadio" id="performanceRadio" value="0" >0
+							</label>
+							<label class="radio inline">
+								 <input type="radio" name="performanceRadio" id="performanceRadio" value="1" >1
+							</label>
+							<label class="radio inline">
+								 <input type="radio" name="performanceRadio" id="performanceRadio" value="2" >2
+							</label>
+							<label class="radio inline">
+								 <input type="radio" name="performanceRadio" id="performanceRadio" value="3" >3
+							</label>
+							<label class="radio inline">
+								 <input type="radio" name="performanceRadio" id="performanceRadio" value="4" >4
+							</label>
+					
+				  		</div>	
+		   			</div>
+				</div>
+				</fieldset>
+			</div>	
 			<div class="row-fluid">
 				<fieldset>
 				<legend style="margin-bottom: 0px !important;border-bottom: 1px solid #9B9B9E !important;">Examen Proctologico <button div="exaProctoTab" style="float: right; margin-top: 5px" class="colapsableBtn btn btn-primary" ><i class="icon-plus"></i></button> </legend>
@@ -221,48 +200,27 @@
 						 <label for="tipoComprobanteCaja"><strong>Tacto rectal</strong></label>
 								<div class="span2" style="padding-bottom:1.1em;">	
 								<label for="movilRectal"><strong>Movil</strong></label>
-								    <label class="radio inline">
-									    <input type="radio" name="movilRectal" id="opcion1" value="0">
-										No
-									</label>
-								    <label class="radio inline">
-									    <input type="radio" name="movilRectal" id="opcion2" value="1">
-										Si
-									</label>
+								    <div class="btn-group" data-toggle="buttons-radio">
+									    <button type="button" name="movilRectal" id="opcion1" value="0" class="btn btn-primary">No</button>
+									    <button type="button" name="movilRectal" id="opcion2" value="1" class="btn btn-primary">Si</button>
+									 </div>
 								</div>	
 							<div class="span2" style="padding-bottom:1.1em;">	
 								<label for="fijoRectal"><strong>Fijo</strong></label>
-								    <label class="radio inline">
-									    <input type="radio" name="fijoRectal" id="opcion1" value="0" >
-										No
-									</label>
-								    <label class="radio inline">
-									    <input type="radio" name="fijoRectal" id="opcion2" value="1">
-										Si
-									</label>
+								  <div class="btn-group" data-toggle="buttons-radio">
+									    <button type="button" name="fijoRectal" id="opcion1" value="0" class="btn btn-primary">No</button>
+									    <button type="button" name="fijoRectal" id="opcion2" value="1" class="btn btn-primary">Si</button>
+								  </div>
 								</div>	
 								<div class="span5" style="padding-bottom:1.1em;">	
 								<label for="esfinterRectal"><strong>Infiltra esfinter</strong></label>
-								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion1" value="0" >
-										No
-									</label>
-								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion2" value="1">
-										Si
-									</label>
-								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion3" value="2">
-										Esfinter interno
-									</label>
-								    <label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion4" value="3">
-										Esfinter externo
-									</label>
-									<label class="radio inline">
-									    <input type="radio" name="esfinterRectal" id="opcion5" value="4">
-										Poco móvil
-									</label>					
+									  <div class="btn-group" data-toggle="buttons-radio">
+									    <button type="button" name="esfinterRectal" id="opcion1" value="0" class="btn btn-primary">No</button>
+									    <button type="button" name="esfinterRectal" id="opcion2" value="1" class="btn btn-primary">Si</button>
+									    <button type="button" name="esfinterRectal" id="opcion3" value="2" class="btn btn-primary">Esfinter interno</button>
+									    <button type="button" name="esfinterRectal" id="opcion4" value="3" class="btn btn-primary">Esfinter externo</button>
+									    <button type="button" name="esfinterRectal" id="opcion5" value="4" class="btn btn-primary">Poco móvil</button>
+								    </div>				
 								</div>				
 		   			</div>
 				</div>
@@ -275,19 +233,13 @@
 					<div class="row-fluid">				
 						<div class="span10">	  	
 						 <label><strong>Udaondo</strong></label>
-						<label class="radio inline">
-							 <input type="radio" name="udaOndoRadio" id="opcion1" value="0" >
-									Si
-						</label>
-						<label class="radio inline">
-							   <input type="radio" name="udaOndoRadio" id="opcion2" value="1">
-									No
-					    </label>	    
-					    <label class="radio inline">
-							   <input type="radio" name="udaOndoRadio" id="opcion2" value="2" style="margin-top:9px">
-									Otro:
-								<input type="text" class="" name="udaOndoOtro" id="udaOndoOtro" style="margin-bottom: 0px;">
-						    </label>
+						 		  <div class="btn-group" data-toggle="buttons-radio">
+									    <button type="button" name="udaOndoRadio"  onclick="$('#udaOndoOtro').val('');" value="0" class="btn btn-primary">Si</button>
+									    <button type="button" name="udaOndoRadio"  onclick="$('#udaOndoOtro').val('');" value="1" class="btn btn-primary">No</button>
+									    <button type="button" name="udaOndoRadio" onclick="$('#udaOndoOtro').focus()" value="2" class="btn btn-primary">Otro</button>
+									    
+									 <input type="text" class="" name="udaOndoOtro" id="udaOndoOtro" style="margin-bottom: 0px; margin-left:2px">
+								    </div>
 						</div>
 		   			</div>
 				</div>
@@ -326,7 +278,8 @@
     <div class="bs-docs-example"> 
      <div class="">
 		  <div class="row-fluid">
- 	  		 <form id="addClientForm" action="" method="post">
+ 	  		 <form id="editPatientForm" action="" method="post">
+ 	  		 	        <input type="hidden" class="" id="idPatientEdit" name="idPatientEdit" />
 	         <div class="row-fluid">
 	        	<div class="span4">    
 					<label for="nombreC"><strong>Nombre</strong></label>
@@ -342,8 +295,8 @@
 				<div class="span4">    
 						<div class="row-fluid">
 					<div class="span6">	
-					<label for="dateStart"><strong>Fecha de nacimiento</strong></label>
-				   <input type="text" class="span8" id="dateStart" alt="dateP" name="dateStart" placeHolder="dd/MM/yyyy" />			  	
+					<label for="dateBirth"><strong>Fecha de nacimiento</strong></label>
+				   <input type="text" class="span8" id="dateBirth" alt="dateP" name="dateBirth" placeHolder="dd/MM/yyyy" />			  	
 				  	</div>
 				  	<div class="span6">
 				  	<label for="tipoComprobanteCaja"><strong>Sexo</strong></label>
@@ -384,7 +337,7 @@
 							<span class="add-on">#</span>
 							<input type="text" class="" id="telC-1" name="telC" /><button type="button" style="display: none" id="removeBtn" class="btn btn-mini btn-danger"><i class="icon-remove icon-white icon-large"></i></button>
 							</div>   
-							<span id="helpB" class="help-block"><a id="addNumberBtn" class="btn btn-mini btn-info" ><i class="icon-plus icon-white"></i> Agregar otro Nro de Teléfono</a></span>
+<!-- 							<span id="helpB" class="help-block"><a id="addNumberBtn" class="btn btn-mini btn-info" ><i class="icon-plus icon-white"></i> Agregar otro Nro de Teléfono</a></span> -->
 						</div>
 					</div> 
 				</div>		
@@ -397,7 +350,7 @@
 				</div>
 				<div class="row-fluid">	 
 				<div class="pull-right">			
-		               <button type="button" onclick="jQuery('#addClientForm').submit();" class="btn btn-primary">Guardar</button>
+		               <button type="button" onclick="jQuery('#editPatientForm').submit();" class="btn btn-primary">Guardar</button>
 		               <button type="button" onclick="cancelEdit();" class="btn" >Cancelar</button>	
 				</div>
 				</div>
@@ -464,16 +417,30 @@ jQuery.ajax({
   
 
 jQuery("#searchButton").click(function(){
+	 //var filterObject = {};
 	 var name = jQuery("#nombreSearch").val();
 	 var dni = jQuery("#cuitSearch").val();
 	 var sexoSelected = jQuery("input[name=sexo]:checked").val();
-	 var movilRectal = jQuery("input[name=movilRectal]:checked").val();
-	 var fijoRectal = jQuery("input[name=fijoRectal]:checked").val();
-	 var esfinterRectal = jQuery("input[name=esfinterRectal]:checked").val();
-	 var udaOndoRadio = jQuery("input[name=udaOndoRadio]:checked").val();
-
+	 //preconsulta
+	 if(jQuery("#preconsultaTab").css('display') !== 'none'){
+		 var peso = jQuery("#pesoPre").val();
+		 var talla = jQuery("#tallePre").val();
+		 var superficie = jQuery("#superPre").val();  		
+	     var performance = jQuery("input[name=performanceRadio]:checked").val();
+	 }
+	 //examen proctologico
+	 if(jQuery("#exaProctoTab").css('display') !== 'none'){
+		 var movilRectal = jQuery("button[name=movilRectal].active").val();
+		 var fijoRectal = jQuery("button[name=fijoRectal].active").val();
+		 var esfinterRectal = jQuery("button[name=esfinterRectal].active").val();
+	 }
+	 //tratamiento
+	 if(jQuery("#tratamientoTab").css('display') !== 'none'){
+		 var udaOndoRadio = jQuery("button[name=udaOndoRadio].active").val();
+		 var udaOndoOtro =  jQuery("#udaOndoOtro").val();
+	 }
 	 var filterObject = {"nombre":name,"dni":dni,"sexo":sexoSelected,"movilRectal":movilRectal,"fijoRectal":fijoRectal,
-			 "esfinterRectal":esfinterRectal,"udaOndoRadio":udaOndoRadio};
+			 "esfinterRectal":esfinterRectal,"udaOndoRadio":udaOndoRadio, "udaOndoOtro":udaOndoOtro, "peso":peso,"talla":talla,"superficie":superficie,"performance":performance};
 	 
 	  jQuery.ajax({
           url: '<c:url value="/findPatientFilter.htm" />',
@@ -510,7 +477,7 @@ jQuery("#listClientTable").jqGrid({
 	 autowidth : true,
 	 height : 200,
 	 colNames : ['Operación','','','Nombre','Sexo','DNI',  
-	             'Fecha Nac.', 'Domicilio','Teléfono','','','','',''],
+	             'Fecha Nac.', 'Localidad','Teléfono','','','','','',''],
 		colModel : [ 
 		        	{name: 'myac',
 						 width:77, 
@@ -563,11 +530,17 @@ jQuery("#listClientTable").jqGrid({
 			align: 'center',
 			width : 100
 		}, {
-			name : 'domicilio',
-			index : 'domicilio',
+			name : 'localidad',
+			index : 'localidad',
 			align: 'center',
 			width : 100
 		}, {
+			name : 'direccion',
+			index : 'direccion',
+			align: 'center',
+			width : 1,
+			hidden:true
+		},{
 			name : 'telefono',
 			index : 'telefono',
 			align: 'center',
@@ -615,13 +588,13 @@ jQuery("#listClientTable").jqGrid({
 		ondblClickRow: function(id ){},
 	  rowNum:25, 
 	  rowList: [10,50,100],
-	  multiselect: true,
+	  //multiselect: true,
 	  sortable: true,
 	  pager: '#listClientTableGrid',
 	  pgbuttons: true,
 	  pginput:false,
 	  rownumbers : true,
-	  loadonce:true,
+	  //loadonce:true,
 	  jsonReader : {
          root: "rows",
          page: "page",
@@ -632,7 +605,7 @@ jQuery("#listClientTable").jqGrid({
      },				
      beforeSelectRow: function(rowid, e) {
 			 var iCol = jQuery.jgrid.getCellIndex(e.target);
-			 if(iCol == 2 && e.target.attributes.op!=null){
+			 if(iCol == 1 && e.target.attributes.op!=null){
 
 			 	if(e.target.attributes.op.value=="edit"){		 		
 					 var row = jQuery('#listClientTable').jqGrid('getRowData',rowid);										 
@@ -657,7 +630,7 @@ jQuery("#listClientTable").jqGrid({
 		       //return true;    // allow select the row
             //  return false;   // not allow select the row
 			 // prevent row selection if one click on the button
-			 return (iCol != 2)? true: false;
+			 return (iCol != 1)? true: false;
          
      },
 	  onSelectRow:function(){//alert("asdasd")
@@ -764,34 +737,67 @@ jQuery("#nombreSearch" ).autocomplete({
 	}
 });
 
-// jQuery("#apellidoSearch" ).autocomplete({
-// 	source: function( request, response ) {
-// 		$.ajax({
-// 			url: '<c:url value="/searchClientByName.htm" />',
-// 			dataType: "json",
-// 			type: "POST",
-// 			data: {
-// 				featureClass: "P",
-// 				style: "full",
-// 				maxRows: 12,
-// 				nameStartWith: request.term
-// 			},
-// 			success: function( data ) {
-// 				response( jQuery.map( data, function (elementOfArray, indexInArray){							
-// 					return  { value:capitaliseFirstLetter(elementOfArray.apellido)};											
-// 				}));						
-// 			}
-// 		});
-// 	},
-// 	minLength: 1,
-// 	select: function(event, ui){
-// 	},
-// 	open: function() {
-// 	},
-// 	close: function() {
-// 	}
-// });
 
+jQuery("input[alt=dateP]").datepicker({
+	 showButtonPanel: true,
+	 dateFormat: "dd/mm/yy",
+	 showOn: "button",
+	 buttonImage: "css/images/calendar.gif",
+	 buttonImageOnly: true,
+	 dayNames: [ "Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado" ],
+	 dayNamesMin: [ "Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa" ],
+	 monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ], 
+	 altField: "#actualDate" ,
+	 closeText: "Cerrar", 
+	 currentText: "Hoy"
+	 });
+	 
+
+jQuery("#editPatientForm").validate({
+			focusInvalid:false,
+		    rules: {
+		    	nombreC:{required: true}
+	        },
+		    messages: {
+		    	nombreC: {required: "campo obligatorio"}
+		    },
+	  	submitHandler: function() { 	  	
+	  		var nombreEdit = jQuery("#nombreC").val();
+	  		var direccionEdit = jQuery("#direccionC").val();
+	  		var localidadEdit = jQuery("#localidadC").val();
+	  		var emailEdit = jQuery("#emailC").val();
+	  		var telNew = jQuery("#telC-1").val();
+	  		var cuitEdit = jQuery("#cuitC").val();
+	  		var comentEdit = jQuery("#comentC").val();
+	  		var typeId = jQuery("#typeId").val();
+	  		var numOS = jQuery("#numOS").val();
+	  		var idPatient = jQuery("#idPatientEdit").val();
+	  		var sexoSelected = jQuery("input[name=sexo]:checked").val();
+	  		var dateB = jQuery("#dateBirth").val();
+	  		
+	  		var editPaciente = {'idpaciente':idPatient,'nombre':nombreEdit,'direccion':direccionEdit, 'idos':typeId,'nroOs':numOS,
+	  					    'localidad':localidadEdit,'mail':emailEdit,'telefono':telNew, //+"@@"+telNew2+"@@"+telNew3,
+	  						'notas':comentEdit, "dni":cuitEdit,"sexo":sexoSelected, "fechanac":dateB};		  		 
+	  		 
+            jQuery.ajax({
+                 url: '<c:url value="/editPatient.htm" />',
+                 type: "POST",
+                 dataType: "json",
+                 contentType: "application/json",
+                 data: JSON.stringify( editPaciente ), 
+                 success: function(resp){                                       
+            		 		jQuery("#dialogSuccessOperation").dialog("option","title","Editar paciente");
+            		 		jQuery("#dialogSuccessOperation").dialog("open");
+                			jQuery('#listClientTable').jqGrid('setGridState','visible');
+                			jQuery("#listClientTable").trigger('reloadGrid');
+                			cleanScreenEdit();
+
+                 }
+               });
+	  		
+	  	}      
+	});
+		
 
 $("#addNumberBtn").click(function(){
 	var idLastNum = jQuery('#phone-container input').last().attr("id");
@@ -826,12 +832,27 @@ $("#closeSelected").click(function(){
 });
 
 jQuery("#seeConsultBtn").click(function(){
-	window.location.href = "<%=request.getContextPath()%>/agregarConsulta.htm";
+	// var idConsult = $(this).attr("idConsult");	
+	window.location.href = "<%=request.getContextPath()%>/cargarConsulta.htm"; //?id=" + idConsult;
 });
 
 
 });
 //Other functions
+
+function cleanScreenSearch(){
+	 	 jQuery("#nombreSearch").val("");
+		 jQuery("#cuitSearch").val("");		 
+		 jQuery("#localidadSearch").val("");
+		 jQuery("#both").attr("checked","checked");
+		 jQuery("#nombreSearch").focus();
+		 //preconsulta
+		 jQuery("#pesoPre").val("");
+		 jQuery("#tallePre").val("");
+		 jQuery("#superPre").val("");  		
+	     jQuery("input[name=performanceRadio]:checked").attr("checked",false);
+}
+
 
 function selectPatient(row){
 	jQuery("#selectedPatientName").html(" "+(capitaliseFirstLetter(row.nombre)));
@@ -846,7 +867,7 @@ function selectPatient(row){
          	 if(resp!="-2"){ // se encontro paciente
          		jQuery("#selectedPatientDiv").show();
          		if (resp!="-1"){  //Aun no existe consulta
-         			jQuery("#seeConsultBtn").show();
+         			jQuery("#seeConsultBtn").show().attr("idConsult",resp);
          		}
          		else{
          			jQuery("#seeConsultBtn").hide();
@@ -863,8 +884,8 @@ function updatePatient(row){
 	jQuery('#listClientTable').jqGrid('setGridState','hidden');	
 	
 	jQuery("#nombreC").val(capitaliseFirstLetter(row.nombre));
-	jQuery("#direccionC").val(row.domicilio);
-	jQuery("#localidadC").val(row.localidadId);
+	jQuery("#direccionC").val(row.direccion);
+	jQuery("#localidadC").val(row.localidad);
 	jQuery("#emailC").val(row.mail);
 	jQuery("#telC-1").val(row.telefono);
 	
@@ -887,16 +908,16 @@ function updatePatient(row){
 	jQuery("#comentC").val(row.notas);
 	jQuery("#typeId").val(row.idos);
 	jQuery("#numOS").val(row.nroOs);    
-	jQuery("#dateStart").val(row.fechanac);
+	jQuery("#dateBirth").val(row.fechanac);
 	jQuery("#clientState").val(row.estadoCliId);
 	jQuery("#clientNum").val(row.numerocli);
 
-	jQuery("#idClientEdit").val(row.idcliente);
+	jQuery("#idPatientEdit").val(row.idpaciente);
 	jQuery(".editClientDiv").show();
 		
 	}
 	
-function delPatient(){
+function delPatient(){  
 	      var clientObj = jQuery.data(document.body,"PacienteData");
 		   jQuery.ajax({
 		          url: '<c:url value="/delPatient.htm" />',
@@ -908,7 +929,7 @@ function delPatient(){
 	            	 if(resp){
 	               		jQuery("#dialogSuccessOperation").dialog( "option", "title", "Eliminar paciente" );
 	            		 jQuery("#dialogSuccessOperation").dialog("open");
-
+	            		 jQuery("#listClientTable").trigger('reloadGrid');
 		          	  }
 	            	 else{
 	            		 jQuery("#dialogErrorOperation").dialog("open");
@@ -918,12 +939,6 @@ function delPatient(){
 
 }
 
-function cleanScreenSearch(){
-	 jQuery("#nombreSearch").val("");
-		 jQuery("#cuitSearch").val("");		 
-		 jQuery("#localidadSearch").val("");
-		 jQuery("#nombreSearch").focus();
-}
 function cleanScreenEdit(){
 	 jQuery(".editClientDiv").hide();			 
      jQuery("#nombreC").val("");
@@ -936,6 +951,7 @@ function cleanScreenEdit(){
 	 jQuery("#cuitC").val("");
 	 jQuery("#comentC").val("");
 	 jQuery("#nombreC").focus();
+	 jQuery("#dateBirth").val("");
 	 jQuery("#listClientTable").trigger('reloadGrid');
 
 }

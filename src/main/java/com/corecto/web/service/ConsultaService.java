@@ -14,36 +14,40 @@ import com.corecto.web.model.dto.RespuestaTrataNeoDTO;
 import com.corecto.web.model.dto.TratamientoAdyuDTO;
 import com.corecto.web.model.dto.TratamientoDTO;
 
-
-
 public interface ConsultaService {
 
-   Long loadConsulta(long idPaciente); 
-	
-   Long savePreconsulta(PreconsultaDTO preconsultaDTO);
+	Long loadConsulta(long idPaciente);
 
-   Long saveMotivo(MotivoDTO motivoDTO);
-   
-   Long saveAntecedentes(AntecedentesDTO antecedentesDTO);
+	Long savePreconsulta(PreconsultaDTO preconsultaDTO);
 
-   Long saveEvaClinica(EvaClinicaDTO evaClinicaDTO);
+	PreconsultaDTO loadPreconsulta(Long idConsulta);
 
-   Long saveExaProctologico(ExaProctoDTO exaProctoDTO);
+	Long saveMotivo(MotivoDTO motivoDTO);
 
-   Long saveEstadificacion(EstadificacionDTO estadificacionDTO);
-   
-   Long saveAnaPatologica(AnotomiaPatologicaDTO anotomiaPatologicaDTO);
-   
-   Long saveTratamiento(TratamientoDTO tratamientoDTO);
-   
-   Long saveDescTrataNeoadyuante(DescTrataNeoDTO descTrataNeoDTO);
-   
-   Long saveRespuestaTrataNeoadyuante(RespuestaTrataNeoDTO respuestaTrataNeoDTO);
-   
-   Long saveConducataPostNeoAdyuante(ConductaPostNeoDTO conductaPostNeoDTO);
+	MotivoDTO loadMotivo(Long idConsulta);
 
-   Long saveTratamientoAdyuvante(TratamientoAdyuDTO tratamientoAdyuDTO);
+	Long saveAntecedentes(AntecedentesDTO antecedentesDTO);
 
-   Long saveAnatomiaPatologicaPost(AnatomiaPatologicaPostDTO anatomiaPatologicaPostDTO);
+	AntecedentesDTO loadAntecedente(Long idConsulta);
+
+	Long saveEvaClinica(EvaClinicaDTO evaClinicaDTO);
+
+	Long saveExaProctologico(ExaProctoDTO exaProctoDTO);
+
+	Long saveEstadificacion(EstadificacionDTO estadificacionDTO);
+
+	Long saveAnaPatologica(AnotomiaPatologicaDTO anotomiaPatologicaDTO);
+
+	Long saveTratamiento(TratamientoDTO tratamientoDTO);
+
+	Long saveDescTrataNeoadyuante(DescTrataNeoDTO descTrataNeoDTO);
+
+	Long saveRespuestaTrataNeoadyuante(RespuestaTrataNeoDTO respuestaTrataNeoDTO);
+
+	Long saveConducataPostNeoAdyuante(ConductaPostNeoDTO conductaPostNeoDTO);
+
+	Long saveTratamientoAdyuvante(TratamientoAdyuDTO tratamientoAdyuDTO);
+
+	Long saveAnatomiaPatologicaPost(AnatomiaPatologicaPostDTO anatomiaPatologicaPostDTO);
 
 }

@@ -58,92 +58,18 @@
 		margin-top: 8px;
 		}
     </style>
-    
+
+    <jsp:include flush="true" page="header.jsp">
+		<jsp:param name="left" value="1" />
+	</jsp:include>
+
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/validate.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" media="screen"	href="css/jquery-ui-1.8.16.custom.css" />
 	<link rel="stylesheet" href="css/loading.css" type="text/css"/>
-
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="../assets/js/html5shiv.js"></script>
-    <![endif]-->
-
-    <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-     <link rel="shortcut icon" href="../assets/ico/favicon.png">
                   
   </head>
 
   <body>
-
-	    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="#">Co-Recto BD</a>
-            <div class="nav-collapse collapse">
-            <ul class="nav">
-            <li class="divider-vertical"></li>
-            <sec:authorize ifAnyGranted="ROLE_USER,ROLE_ADMIN">
-              <li ><a href="login.htm">Inicio</a></li>
-              <li class=" dropdown">
-               <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Pacientes <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li class="nav-header">Operaciones</li>
-                  <li class="divider"></li>
-                  <li><a href="agregarPaciente.htm"><i class="icon-plus"></i> Agregar</a></li>
-                  <li class="divider"></li>
-                  <li class=""><a href="buscarPaciente.htm"><i class="icon-search"></i> Buscar</a></li>
-                </ul>
-               </li>
-           <li class=" active dropdown">
-               <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Consulta <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li class="nav-header">Operaciones</li>
-                  <li class=""><a href="agregarConsulta.htm"><i class="icon-plus"></i> Agregar</a></li>
-                  <li class="divider"></li>
-                  <li class="disabled"><a href="#">Buscar Consulta</a></li>
-                </ul>
-               </li>
-               </sec:authorize>
-              <li><a href="contacto.htm">Contacto</a></li>
-            </ul>
-             <div lang="alreadyLoggued" class="pull-right" style="" id="templatemo_main">
-					<p class="navbar-text pull-left">
-             		 Logueado como 
-             		 	 <sec:authorize ifAnyGranted="ROLE_USER,ROLE_ADMIN">
-						 <strong><sec:authentication property="principal.username"/></strong>
-						 </sec:authorize>
-           			 </p>
-           			 <button type="button" onclick="javascript:window.location.href='logout'" style="margin-left: 10px;" class="btn btn-primary pull-right">
-						 Salir<i style="margin-left:5px" class="icon-share"></i>
-			         </button>
-				</div>		        
-	       </div><!--/.nav-collapse -->
-          </div>
-        </div>
-             <div class="navbar-inner container" id="selectedPatientDiv" style="min-height:20px;display: none">
-                    <div class="nav-collapse collapse" style="min-height:20px" >
-                       <ul class="nav" style="min-height:20px">
-            				<li class="divider-vertical" style="min-height: 20px; height: 25px;">
-            				<a href="#" style="padding: 2px 0"><strong>Paciente seleccionado:</strong><span id="selectedPatientName"> ${PACIENTE_NOMBRE}</span> </a>
-            				<input type="hidden" value="${PACIENTE_ID}" id="idPacienteSelected">
-            				</li>
-            			</ul>	
-            			<button type="button" class="close" style="color: white;opacity:0.8">×</button>
-          			</div>
-             </div>      
-      </div>
 
 	<div id="dialogLoading" style="display: none" align="center" title="Cargando consulta..." >
 	<div id="floatingCirclesG">
@@ -284,7 +210,7 @@
 					 <div class="span3 ">	
 					<label for="dateStart"><strong>Fecha de inicio de sintomas</strong></label>
 				   	<input type="text" class="span5" id="dateStartMotivo" alt="dateP" name="dateStartMotivo" placeHolder="dd/MM/yyyy" />			  		
-					<label for="dateStart"><strong>Tiempo de evolucion en meses</strong></label>
+					<label for="dateStart"><strong>Tiempo de evolución en meses</strong></label>
 				    <input type="text" class="span3 onlyNumbers" id="mesesMotivo"  name="mesesMotivo"  />			  	
 				  	</div>
 				  </div>	
@@ -2720,13 +2646,13 @@
         <p class="muted credit">Creada por <a href="#">[Matias Iseas]</a>.</p>
       </div>
     </div>
-    <div id="dialogErrorOperation" class="" style="display: none" align="" title="Error al guardar" >
+    <div id="dialogErrorOperation" class="" style="display: none"  title="Error al guardar" >
 	<p style="margin:0px;"><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Se ha producido un error al realizar la operacion! </p>
 	</div> 
-	<div id="dialogErrorPaciente" class="" style="display: none" align="" title="Error de agregar consulta" >
+	<div id="dialogErrorPaciente" class="" style="display: none"  title="Error de agregar consulta" >
 	<p style="margin:0px;"><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Debe seleccionar un paciente primero! </p>
 	</div> 
-	<div id="dialogSuccessOperation"  style="display: none" align="" title="Guardar cliente" >
+	<div id="dialogSuccessOperation"  style="display: none"  title="Guardar cliente" >
 	<p style="margin:0px;"><span class="ui-icon ui-icon-circle-check" style="float: left; margin: 0 7px 20px 0;"></span>Operacion realizada exitosamente!</p>
 	</div> 
     <!-- Le javascript
@@ -2739,8 +2665,15 @@
 <script type="text/javascript" src="js/jquery.validate.js" ></script> 
 <script type="text/javascript" src="js/googleMapInfo.js" charset="UTF-8"  ></script> 
 <script type="text/javascript">
-var CONSULTA_ID="-1";
+var CONSULTA_ID = -1;
+var PRECONSULTA_ID = -1;
+var MOTIVO_ID = -1;
+var ANTECEDENTES_ID = -1;
 jQuery(function() {
+	$('#menuNav').find("li").removeClass("active");
+	$('#menuItemConsulta').addClass("active");
+	
+	//var idConsiltalert("${ID_CONSULTA}");
 	
     $('#myTab a').click(function (e) {
         e.preventDefault();
@@ -2785,6 +2718,9 @@ jQuery(function() {
 	          if(resp!=-1){
 	        	  CONSULTA_ID=resp;
 	        	  $("#selectedPatientDiv").show();
+	        	  loadPreconsulta(CONSULTA_ID);
+	        	  loadMotivo(CONSULTA_ID);
+	        	  loadAntecedentes(CONSULTA_ID);
 	          }
 	          else{
 	        	  jQuery("#dialogErrorPaciente").dialog("open");
@@ -2969,6 +2905,8 @@ jQuery(function() {
 
 	 jQuery("input[alt=dateP]").datepicker({
 		 showButtonPanel: true,
+		 changeYear: true,
+		 yearRange: "-80:+0",
 		 dateFormat: "dd/mm/yy",
 		 showOn: "button",
 		 buttonImage: "css/images/calendar.gif",
@@ -2981,9 +2919,28 @@ jQuery(function() {
 		 currentText: "Hoy"
 		 });
 	 
-	 
 
-  
+function loadPreconsulta(consultaId){
+	jQuery("#dialogLoading").dialog("open");
+	jQuery.ajax({
+	     url: '<c:url value="/loadPreconsulta.htm" />',
+	     type: "GET",
+	     dataType: "json",
+	     contentType: "application/json",
+	     data: {'idConsulta':consultaId}, 
+	     success: function(preconsulta){   	    
+	    	if(preconsulta!=null){
+		 		jQuery("#pesoPre").val(preconsulta.peso);
+				jQuery("#tallePre").val(preconsulta.talla);
+				jQuery("#superPre").val(preconsulta.supcorporal);  		
+		        jQuery("input[name=performanceRadio][value="+preconsulta.performanceStatus+"]").click().attr('checked', true);	        
+		        jQuery("#comentPreconsulta").val(preconsulta.comentario);		
+		        PRECONSULTA_ID = preconsulta.idpreconsulta;
+	    	}
+	        jQuery("#dialogLoading").dialog("close");	        
+	     }
+	   }); 
+}
   
 jQuery("#addPreconsultaForm").validate({
 	focusInvalid:false,
@@ -3001,7 +2958,7 @@ jQuery("#addPreconsultaForm").validate({
         var performance = jQuery("input[name=performanceRadio]:checked").val();
         var comentario = jQuery("#comentPreconsulta").val();
 	
-		var preConsulta = {'idConsulta':CONSULTA_ID,'peso':peso,'talla':talla,'supcorporal':superficie,'performanceStatus':performance,'comentario':comentario};		  		 
+		var preConsulta = {'idConsulta':CONSULTA_ID,'idpreconsulta':PRECONSULTA_ID, 'peso':peso,'talla':talla,'supcorporal':superficie,'performanceStatus':performance,'comentario':comentario};		  		 
 		 
     jQuery.ajax({
          url: '<c:url value="/addNewPreconsulta.htm" />',
@@ -3022,6 +2979,32 @@ jQuery("#addPreconsultaForm").validate({
 	}
          
 });  
+
+function loadMotivo(consultaId){
+	//jQuery("#dialogLoading").dialog("open");
+	jQuery.ajax({
+	     url: '<c:url value="/loadMotivo.htm" />',
+	     type: "GET",
+	     dataType: "json",
+	     contentType: "application/json",
+	     data: {'idConsulta':consultaId}, 
+	     success: function(motivo){   	    
+	    	if(motivo!=null){
+	    		jQuery("#motivoOtro").val(motivo.motivoOtro);
+	    		jQuery("#dateStartMotivo").val(motivo.fechaInicio);  		
+	      	    jQuery("#mesesMotivo").val(motivo.evoMeses);
+	      	  	var motivos = motivo.motivo.split("-");//arranca en 1
+	      	  	for(var i = 1; i < motivos.length; i++){
+	      	  		$("#"+motivos[i]).attr("checked",true);
+	      	  	}
+	      	    	      	    
+		        MOTIVO_ID = motivo.idmotivo;
+	    	}
+	       // jQuery("#dialogLoading").dialog("close");	        
+	     }
+	   }); 
+}
+  
   
 jQuery("#addMotivoAntecedentesForm").validate({
 	focusInvalid:false,
@@ -3061,9 +3044,9 @@ jQuery("#addMotivoAntecedentesForm").validate({
 		  		
 		var otroMotivo = jQuery("#motivoOtro").val();
 		var fechaMotivo = jQuery("#dateStartMotivo").val();  		
-    var mesesMotivo = jQuery("#mesesMotivo").val();
+  	    var mesesMotivo = jQuery("#mesesMotivo").val();
 	
-		var motivo = {'idConsulta':CONSULTA_ID,'motivo':motivosX,'motivoOtro':otroMotivo,'fechaInicio':fechaMotivo,'evoMeses':mesesMotivo};		  		 
+		var motivo = {'idConsulta':CONSULTA_ID,'idmotivo':MOTIVO_ID, 'motivo':motivosX,'motivoOtro':otroMotivo,'fechaInicio':fechaMotivo,'evoMeses':mesesMotivo};		  		 
 		 
     jQuery.ajax({
          url: '<c:url value="/addNewMotivo.htm" />',
@@ -3086,15 +3069,53 @@ jQuery("#addMotivoAntecedentesForm").validate({
          
 });	
 
-// jQuery("#addAntecedentes").validate({
-// 	focusInvalid:false,
-//     rules: {
-// 	    	nombreC:{required: true},
-//     },
-//     messages: {
-// 	    	nombreC: {required: "Campo obligatorio"},
-//     },
-// 	submitHandler: function() { 	
+
+function loadAntecedentes(consultaId){
+	//jQuery("#dialogLoading").dialog("open");
+	jQuery.ajax({
+	     url: '<c:url value="/loadAntecedentes.htm" />',
+	     type: "GET",
+	     dataType: "json",
+	     contentType: "application/json",
+	     data: {'idConsulta':consultaId}, 
+	     success: function(antecedentes){   	    
+	    	if(antecedentes!=null){
+	      	  	var personales = antecedentes.personales.split("//");
+	      	    var personalesCheck = personales[0].split("-"); //arranca en 1
+	      	  	for(var i = 1; i < personalesCheck.length; i++){
+	      	  		$("#"+personalesCheck[i]).attr("check",true)[0].click();
+	      	  	}
+	      	  	jQuery("#otroAPersonal").val(personales[1]);
+	      	  
+	     	    var personalesPatCheck = antecedentes.personalesPatologicos.split("-"); //arranca en 1
+	      	  	for(var i = 1; i < personalesPatCheck.length; i++){
+	      	  		$("#"+personalesPatCheck[i]).attr("check",true)[0].click();
+	      	  	}
+	      	    jQuery("#neoPlasiaText").val(antecedentes.neoplasia);
+	      	    var familiarCancer = antecedentes.familiarCancer.split("-"); //arranca en 1
+	      	  	for(var i = 1; i < familiarCancer.length; i++){
+	      	  		var dataArray = familiarCancer[i].split("*");
+	      	  		$("#"+dataArray[0]).attr("check",true)[0].click();
+	      	  		if(dataArray.length == 2){
+	      	  			$("#"+dataArray[0].replace("check","")).val(dataArray[1]);
+	      	  		}
+	      	  	}	      	    
+	      	   var antecedentesCcrh = antecedentes.antecedentesCcrh.split("//"); //arranca en 1
+	      	   jQuery("input[name=anteSindrome][value="+antecedentesCcrh[0]+"]").attr("check",true)[0].click();
+		       if(antecedentesCcrh.length == 2){
+		    	   var antCcrhs = antecedentesCcrh[1].split("-"); //arranca en 1
+		      	  	for(var i = 1; i < antCcrhs.length; i++){
+		      		$("#"+antCcrhs[i].replace("-","")).attr("checked",true);		      	  		
+		      	  	}
+		       }
+		       ANTECEDENTES_ID = antecedentes.idantecedente;
+	    	}
+	       // jQuery("#dialogLoading").dialog("close");	        
+	     }
+	   }); 
+}
+  
+  
 function submitAntecedentes(){	
 		var apersonal = "";
 		
@@ -3176,7 +3197,7 @@ function submitAntecedentes(){
 			siSindrome =  siSindrome+"-"+$("#checkMYH").attr("id");
 		}
 
-		var antecedentes = {'idConsulta':CONSULTA_ID,'personales':apersonal+"//"+otroAPersonal,'personalesPatologicos':apersonalPat,'neoplasia':neoPlasiaText,
+		var antecedentes = {'idConsulta':CONSULTA_ID, 'idantecedente':ANTECEDENTES_ID, 'personales':apersonal+"//"+otroAPersonal,'personalesPatologicos':apersonalPat,'neoplasia':neoPlasiaText,
 				'familiarCancer':famCancer,'antecedentesCcrh':anteSindrome+"//"+siSindrome};		  		 
 		 
     jQuery.ajax({
