@@ -2669,6 +2669,9 @@ var CONSULTA_ID = -1;
 var PRECONSULTA_ID = -1;
 var MOTIVO_ID = -1;
 var ANTECEDENTES_ID = -1;
+var EVACLINICA_ID = -1;
+var EXAPROCTOLOGICO_ID = -1;
+var ESTADIFICACION_ID = -1;
 jQuery(function() {
 	$('#menuNav').find("li").removeClass("active");
 	$('#menuItemConsulta').addClass("active");
@@ -2721,6 +2724,9 @@ jQuery(function() {
 	        	  loadPreconsulta(CONSULTA_ID);
 	        	  loadMotivo(CONSULTA_ID);
 	        	  loadAntecedentes(CONSULTA_ID);
+	        	  loadEvaClinica(CONSULTA_ID);
+	        	  loadExaProctoForm(CONSULTA_ID);
+	        	  loadEstadificacion(CONSULTA_ID);
 	          }
 	          else{
 	        	  jQuery("#dialogErrorPaciente").dialog("open");
@@ -3216,9 +3222,43 @@ function submitAntecedentes(){
      	 	}           
          }
        });  		
-	}
+};
          
- 
+
+function loadEvaClinica(consultaId){
+	//jQuery("#dialogLoading").dialog("open");
+	jQuery.ajax({
+	     url: '<c:url value="/loadEvaClinica.htm" />',
+	     type: "GET",
+	     dataType: "json",
+	     contentType: "application/json",
+	     data: {'idConsulta':consultaId}, 
+	     success: function(evaClinica){   	    
+	    	if(evaClinica != null){
+	      	    var abdomenCheck = evaClinica.abdomen.split("-"); //arranca en 1
+	      	  	for(var i = 1; i < abdomenCheck.length; i++){
+	      	  		$("#"+abdomenCheck[i]).attr("check",true)[0].click();
+	      	  	}
+	     	    var colonCheck = evaClinica.colon.split("-"); //arranca en 1
+	      	  	for(var i = 1; i < colonCheck.length; i++){
+	      	  		$("#"+colonCheck[i]).attr("check",true)[0].click();
+	      	  	}
+	     	    var rectoCheck = evaClinica.recto.split("-"); //arranca en 1
+	      	  	for(var i = 1; i < rectoCheck.length; i++){
+	      	  		$("#"+rectoCheck[i]).attr("check",true)[0].click();
+	      	  	}
+	      		var adenopatiasCheck = evaClinica.adenopatias.split("-"); //arranca en 1
+	      	  	for(var i = 1; i < adenopatiasCheck.length; i++){
+	      	  		$("#"+adenopatiasCheck[i]).attr("check",true)[0].click();
+	      	  	}  
+	      	    jQuery("#notasEvaCli").val(evaClinica.notas);
+    
+	  	        EVACLINICA_ID = evaClinica.idevaclinica;
+	    	}
+	       // jQuery("#dialogLoading").dialog("close");	        
+	     }
+	   }); 
+};
 
 
 
@@ -3298,9 +3338,9 @@ jQuery("#addEvaClinicaForm").validate({
 			evaAdenopatia =  evaAdenopatia+"-"+$("#haAdenopatia4").attr("id");
 		}	
 
-		var notasEvaCli = jQuery("#notasEvaCli").val();
+		var notasEvaCli = jQuery("#notasEvaCli").val(); 
 		
-		var evaClinica = {'idConsulta':CONSULTA_ID,'abdomen':evaAbdomen,'colon':evaColon,'recto':evaRecto,'adenopatias':evaAdenopatia,'notas':notasEvaCli};		  		 
+		var evaClinica = {'idConsulta':CONSULTA_ID,'idevaclinica':EVACLINICA_ID, 'abdomen':evaAbdomen,'colon':evaColon,'recto':evaRecto,'adenopatias':evaAdenopatia,'notas':notasEvaCli};		  		 
 		 
     jQuery.ajax({
          url: '<c:url value="/addNewEvaClinica.htm" />',
@@ -3322,6 +3362,52 @@ jQuery("#addEvaClinicaForm").validate({
          
 });  
 
+
+function loadExaProctoForm(consultaId){
+	//jQuery("#dialogLoading").dialog("open");
+	jQuery.ajax({
+	     url: '<c:url value="/loadExaProctologico.htm" />',
+	     type: "GET",
+	     dataType: "json",
+	     contentType: "application/json",
+	     data: {'idConsulta':consultaId}, 
+	     success: function(exaProctologico){   	    
+	    	if(exaProctologico!=null){
+	      	  	var tactoRectalRadio = exaProctologico.tactoRectal.split("//");
+
+	      	  	jQuery("input[name=movilRectal][value="+tactoRectalRadio[0]+"]").click().attr('checked', true);	
+	      	    jQuery("input[name=fijoRectal][value="+tactoRectalRadio[1]+"]").click().attr('checked', true);
+	      	    jQuery("input[name=esfinterRectal][value="+exaProctologico.tactoRectalInfiltra+"]").click().attr('checked', true);
+	      	    
+	      	    var rscRadio = exaProctologico.rsc.split("//");
+	      	    jQuery("input[name=rscPresente][value="+rscRadio[0]+"]").click().attr('checked', true);
+	      	  	jQuery("input[name=rscMedida][value="+rscRadio[1]+"]").attr('checked', true);
+	  			jQuery("#rscAltura").val(exaProctologico.rscAltura);
+	  			jQuery("#rscFecha").val(exaProctologico.rscFecha);
+	  		
+	  			var vccRadio = exaProctologico.vcc.split("//");
+		      	jQuery("input[name=vccPresente][value="+vccRadio[0]+"]").click().attr('checked', true);
+		      	jQuery("input[name=vccTipo][value="+vccRadio[1]+"]").attr('checked', true);
+		      	jQuery("input[name=vccMedida][value="+vccRadio[2]+"]").attr('checked', true);
+		  		jQuery("#vccAltura").val(exaProctologico.vccAltura);
+		  		jQuery("#vccFecha").val(exaProctologico.vccFecha);
+		  		
+		  		var eeRadio = exaProctologico.ee.split("//");
+		      	jQuery("input[name=eePresente][value="+eeRadio[0]+"]").click().attr('checked', true);
+		      	jQuery("input[name=eeTipo][value="+eeRadio[1]+"]").attr('checked', true);
+		      	jQuery("input[name=eeTipoN][value="+eeRadio[2]+"]").attr('checked', true);
+		      	
+		      	var eeInfiltraRadio = exaProctologico.eeInfiltra.split("//");
+		      	jQuery("input[name=eeesfinter][value="+eeInfiltraRadio[0]+"]").click().attr('checked', true);
+		      	jQuery("input[name=eeMedida][value="+eeInfiltraRadio[1]+"]").attr('checked', true);
+		  		jQuery("#eeFecha").val(exaProctologico.eeFecha);
+		       
+		       EXAPROCTOLOGICO_ID = exaProctologico.idexaprocto;
+	    	}
+	       // jQuery("#dialogLoading").dialog("close");	        
+	     }
+	   }); 
+}
 
 jQuery("#addExaProctoForm").validate({
 	focusInvalid:false,
@@ -3356,7 +3442,7 @@ jQuery("#addExaProctoForm").validate({
 		var eeMedida = jQuery("input[name=eeMedida]:checked").val();
 		var eeFecha = jQuery("#eeFecha").val();
 		
-		var exaProcto = {'idConsulta':CONSULTA_ID,'tactoRectal':movilRectal+"//"+fijoRectal,'tactoRectalInfiltra':esfinterRectal,'rsc':rscPresente+"//"+rscMedida,'rscAltura':rscAltura,'rscFecha':rscFecha,
+		var exaProcto = {'idConsulta':CONSULTA_ID, 'idexaprocto':EXAPROCTOLOGICO_ID, 'tactoRectal':movilRectal+"//"+fijoRectal,'tactoRectalInfiltra':esfinterRectal,'rsc':rscPresente+"//"+rscMedida,'rscAltura':rscAltura,'rscFecha':rscFecha,
 						 'vcc':vccPresente+"//"+vccTipo+"//"+vccMedida,'vccAltura':vccAltura,'vccFecha':vccFecha,'ee':eePresente+"//"+eeTipo+"//"+eeTipoN,'eeInfiltra':eeesfinter+"//"+eeMedida,'eeFecha':eeFecha};		  		 
 		 
     jQuery.ajax({
@@ -3379,6 +3465,54 @@ jQuery("#addExaProctoForm").validate({
          
 });  
 
+
+function loadEstadificacion(consultaId){
+	//jQuery("#dialogLoading").dialog("open");
+	jQuery.ajax({
+	     url: '<c:url value="/loadEstadificacion.htm" />',
+	     type: "GET",
+	     dataType: "json",
+	     contentType: "application/json",
+	     data: {'idConsulta':consultaId}, 
+	     success: function(estadificacion){   	    
+	    	if(estadificacion!=null){
+	    		
+	    		
+// 	      	  	var tactoRectalRadio = exaProctologico.tactoRectal.split("//");
+
+// 	      	  	jQuery("input[name=movilRectal][value="+tactoRectalRadio[0]+"]").click().attr('checked', true);	
+// 	      	    jQuery("input[name=fijoRectal][value="+tactoRectalRadio[1]+"]").click().attr('checked', true);
+// 	      	    jQuery("input[name=esfinterRectal][value="+exaProctologico.tactoRectalInfiltra+"]").click().attr('checked', true);
+	      	    
+// 	      	    var rscRadio = exaProctologico.rsc.split("//");
+// 	      	    jQuery("input[name=rscPresente][value="+rscRadio[0]+"]").click().attr('checked', true);
+// 	      	  	jQuery("input[name=rscMedida][value="+rscRadio[1]+"]").attr('checked', true);
+// 	  			jQuery("#rscAltura").val(exaProctologico.rscAltura);
+// 	  			jQuery("#rscFecha").val(exaProctologico.rscFecha);
+	  		
+// 	  			var vccRadio = exaProctologico.vcc.split("//");
+// 		      	jQuery("input[name=vccPresente][value="+vccRadio[0]+"]").click().attr('checked', true);
+// 		      	jQuery("input[name=vccTipo][value="+vccRadio[1]+"]").attr('checked', true);
+// 		      	jQuery("input[name=vccMedida][value="+vccRadio[2]+"]").attr('checked', true);
+// 		  		jQuery("#vccAltura").val(exaProctologico.vccAltura);
+// 		  		jQuery("#vccFecha").val(exaProctologico.vccFecha);
+		  		
+// 		  		var eeRadio = exaProctologico.ee.split("//");
+// 		      	jQuery("input[name=eePresente][value="+eeRadio[0]+"]").click().attr('checked', true);
+// 		      	jQuery("input[name=eeTipo][value="+eeRadio[1]+"]").attr('checked', true);
+// 		      	jQuery("input[name=eeTipoN][value="+eeRadio[2]+"]").attr('checked', true);
+		      	
+// 		      	var eeInfiltraRadio = exaProctologico.eeInfiltra.split("//");
+// 		      	jQuery("input[name=eeesfinter][value="+eeInfiltraRadio[0]+"]").click().attr('checked', true);
+// 		      	jQuery("input[name=eeMedida][value="+eeInfiltraRadio[1]+"]").attr('checked', true);
+// 		  		jQuery("#eeFecha").val(exaProctologico.eeFecha);
+		       
+		  		ESTADIFICACION_ID = estadificacion.idestadificacion;
+	    	}
+	       // jQuery("#dialogLoading").dialog("close");	        
+	     }
+	   }); 
+}
 
 
 jQuery("#addEstadificacionForm").validate({

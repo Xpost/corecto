@@ -238,6 +238,24 @@ public class ConsultaServiceImpl implements ConsultaService {
 		}
 	}
 
+	public EvaClinicaDTO loadEvaClinica(Long idConsulta) {
+
+		EvaClinicaDAO evaClinicaDAO = DAOLocator.getInstance().lookup(EvaClinicaDAO.class.getName());
+		EvaClinica evaClinica = evaClinicaDAO.loadEvaClinicaByConsulta(idConsulta);
+		EvaClinicaDTO evaClinicaDTO = null;
+		if (evaClinica != null) {
+			evaClinicaDTO = new EvaClinicaDTO();
+			evaClinicaDTO.setAbdomen(evaClinica.getAbdomen());
+			evaClinicaDTO.setAdenopatias(evaClinica.getAdenopatias());
+			evaClinicaDTO.setColon(evaClinica.getColon());
+			evaClinicaDTO.setIdConsulta(idConsulta);
+			evaClinicaDTO.setIdevaclinica(evaClinica.getIdevaclinica());
+			evaClinicaDTO.setNotas(evaClinica.getNotas());
+			evaClinicaDTO.setRecto(evaClinica.getRecto());
+		}
+		return evaClinicaDTO;
+	}
+
 	public Long saveEvaClinica(EvaClinicaDTO evaClinicaDTO) {
 		EvaClinica evaClinica = new EvaClinica();
 		Consulta consulta = new Consulta();
@@ -250,7 +268,41 @@ public class ConsultaServiceImpl implements ConsultaService {
 		evaClinica.setRecto(evaClinicaDTO.getRecto());
 
 		EvaClinicaDAO evaClinicaDAO = DAOLocator.getInstance().lookup(EvaClinicaDAO.class.getName());
-		return evaClinicaDAO.saveNewEvaClinica(evaClinica);
+		if (evaClinicaDTO.getIdevaclinica() != -1L) {
+			evaClinica.setIdevaclinica(evaClinicaDTO.getIdevaclinica());
+			return evaClinicaDAO.updateEvaClinica(evaClinica);
+		} else {
+			return evaClinicaDAO.saveNewEvaClinica(evaClinica);
+		}
+	}
+
+	public ExaProctoDTO loadExaProctologico(Long idConsulta) {
+		ExaProctoDAO exaProctoDAO = DAOLocator.getInstance().lookup(ExaProctoDAO.class.getName());
+		ExaProcto exaProcto = exaProctoDAO.loadExaProctoByConsulta(idConsulta);
+		ExaProctoDTO exaProctoDTO = null;
+		if (exaProcto != null) {
+			exaProctoDTO = new ExaProctoDTO();
+			exaProctoDTO.setEe(exaProcto.getEe());
+			if (exaProcto.getEeFecha() != null) {
+				exaProctoDTO.setEeFecha(dateFormatter.format(exaProcto.getEeFecha()));
+			}
+			exaProctoDTO.setEeInfiltra(exaProcto.getEeInfiltra());
+			exaProctoDTO.setIdConsulta(idConsulta);
+			exaProctoDTO.setIdexaprocto(exaProcto.getIdexaprocto());
+			exaProctoDTO.setRsc(exaProcto.getRsc());
+			exaProctoDTO.setRscAltura(exaProcto.getRscAltura());
+			if (exaProcto.getRscFecha() != null) {
+				exaProctoDTO.setRscFecha(dateFormatter.format(exaProcto.getRscFecha()));
+			}
+			exaProctoDTO.setTactoRectal(exaProcto.getTactoRectal());
+			exaProctoDTO.setTactoRectalInfiltra(exaProcto.getTactoRectalInfiltra());
+			exaProctoDTO.setVcc(exaProcto.getVcc());
+			exaProctoDTO.setVccAltura(exaProcto.getVccAltura());
+			if (exaProcto.getVccFecha() != null) {
+				exaProctoDTO.setVccFecha(dateFormatter.format(exaProcto.getVccFecha()));
+			}
+		}
+		return exaProctoDTO;
 	}
 
 	public Long saveExaProctologico(ExaProctoDTO exaProctoDTO) {
@@ -278,8 +330,73 @@ public class ConsultaServiceImpl implements ConsultaService {
 		exaProcto.setVccAltura(exaProctoDTO.getVccAltura());
 
 		ExaProctoDAO exaProctoDAO = DAOLocator.getInstance().lookup(ExaProctoDAO.class.getName());
-		return exaProctoDAO.saveNewExaProcto(exaProcto);
 
+		if (exaProctoDTO.getIdexaprocto() != -1L) {
+			exaProcto.setIdexaprocto(exaProctoDTO.getIdexaprocto());
+			return exaProctoDAO.updateExaProcto(exaProcto);
+		} else {
+			return exaProctoDAO.saveNewExaProcto(exaProcto);
+		}
+	}
+
+	public EstadificacionDTO loadEstadificacion(Long idConsulta) {
+		EstadificacionDAO estadificacionDAO = DAOLocator.getInstance().lookup(
+				EstadificacionDAO.class.getName());
+		Estadificacion estadificacion = estadificacionDAO.loadEstadificacionByConsulta(idConsulta);
+		EstadificacionDTO estadificacionDTO = null;
+		if (estadificacion != null) {
+			estadificacionDTO = new EstadificacionDTO();
+			estadificacionDTO.setCa19(estadificacion.getCa19());
+			estadificacionDTO.setCeaAumentado(estadificacion.getCeaAumentado());
+			estadificacionDTO.setCrm(estadificacion.getCrm());
+			estadificacionDTO.setDepSatelites(estadificacion.getDepSatelites());
+			estadificacionDTO.setEmvi(estadificacion.getEmvi());
+			estadificacionDTO.setGanglios(estadificacion.getGanglios());
+			estadificacionDTO.setGangliosLate(estadificacion.getGangliosLate());
+			estadificacionDTO.setIdConsulta(idConsulta);
+			estadificacionDTO.setIdestadificacion(estadificacion.getIdestadificacion());
+			estadificacionDTO.setInfiltraEsfinter(estadificacion.getInfiltraEsfinter());
+			if (estadificacion.getMarTumFecha() != null) {
+				estadificacionDTO.setMarTumFecha(dateFormatter.format(estadificacion.getMarTumFecha()));
+			}
+			estadificacionDTO.setMetastasis(estadificacion.getMetastasis());
+			estadificacionDTO.setMetastasisOtra(estadificacion.getMetastasisOtra());
+			estadificacionDTO.setMts(estadificacion.getMts());
+			estadificacionDTO.setPetCt(estadificacion.getPetCt());
+			estadificacionDTO.setRevAltura(estadificacion.getRevAltura());
+			estadificacionDTO.setRevCrm(estadificacion.getRevCrm());
+			estadificacionDTO.setRevDistanAnal(estadificacion.getRevDistanAnal());
+			estadificacionDTO.setRevDistanEsfinter(estadificacion.getRevDistanEsfinter());
+			estadificacionDTO.setRevEmvi(estadificacion.getRevEmvi());
+			estadificacionDTO.setRevEstadifTumores(estadificacion.getRevEstadifTumores());
+			estadificacionDTO.setRevGanIngui(estadificacion.getRevGanIngui());
+			estadificacionDTO.setRevGanLateral(estadificacion.getRevGanLateral());
+			estadificacionDTO.setRevInfiltraEsf(estadificacion.getRevInfiltraEsf());
+			if (estadificacion.getRevRmFecha() != null) {
+				estadificacionDTO.setRevRmFecha(dateFormatter.format(estadificacion.getRevRmFecha()));
+			}
+			estadificacionDTO.setRevTumor(estadificacion.getRevTumor());
+			estadificacionDTO.setRmAltura(estadificacion.getRmAltura());
+			estadificacionDTO.setRmCentro(estadificacion.getRmCentro());
+			estadificacionDTO.setRmDistAnal(estadificacion.getRmDistAnal());
+			estadificacionDTO.setRmDistEsfinter(estadificacion.getRmDistEsfinter());
+			if (estadificacion.getRmFecha() != null) {
+				estadificacionDTO.setRmFecha(dateFormatter.format(estadificacion.getRmFecha()));
+			}
+			estadificacionDTO.setRmTumor(estadificacion.getRmTumor());
+			estadificacionDTO.setSuv(estadificacion.getSuv());
+			estadificacionDTO.setTcAbd(estadificacion.getTcAbd());
+			estadificacionDTO.setTcTorax(estadificacion.getTcTorax());
+			estadificacionDTO.setTnmM(estadificacion.getTnmM());
+			estadificacionDTO.setTnmN(estadificacion.getTnmN());
+			estadificacionDTO.setTnmPm(estadificacion.getTnmPm());
+			estadificacionDTO.setTnmPn(estadificacion.getTnmPn());
+			estadificacionDTO.setTnmPt(estadificacion.getTnmPt());
+			estadificacionDTO.setTnmT(estadificacion.getTnmT());
+			estadificacionDTO.setTumoRectoInferior(estadificacion.getTumoRectoInferior());
+
+		}
+		return estadificacionDTO;
 	}
 
 	public Long saveEstadificacion(EstadificacionDTO estadificacionDTO) {
@@ -299,7 +416,6 @@ public class ConsultaServiceImpl implements ConsultaService {
 			estadificacion.setMarTumFecha(dateFormatter.parse(estadificacionDTO.getMarTumFecha()));
 			estadificacion.setRmFecha(dateFormatter.parse(estadificacionDTO.getRmFecha()));
 			estadificacion.setRevRmFecha(dateFormatter.parse(estadificacionDTO.getRevRmFecha()));
-
 		} catch (ParseException e) {
 			LOG.error(e.getMessage());
 			e.printStackTrace();

@@ -173,6 +173,23 @@ public class ConsultaController {
 		return returnNewId;
 	}
 
+	@Audited(message = "Accion: Cargar Evaluación clinica")
+	@RequestMapping(value = "/loadEvaClinica", method = RequestMethod.GET)
+	public @ResponseBody
+	EvaClinicaDTO loadEvaClinica(
+			@RequestParam(value = "idConsulta", required = false, defaultValue = "") Long idConsulta,
+			HttpServletRequest request, HttpServletResponse response) {
+		LOG.info("ConsultaController.loadEvaClinica()");
+		EvaClinicaDTO evaClinicaDTO = null;
+		try {
+			evaClinicaDTO = consultaService.loadEvaClinica(idConsulta);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return evaClinicaDTO;
+	}
+
 	@Audited(message = "Accion: Agregar Evaluacion clinica")
 	@RequestMapping(value = "/addNewEvaClinica", method = RequestMethod.POST)
 	public @ResponseBody
@@ -189,7 +206,24 @@ public class ConsultaController {
 		return returnNewId;
 	}
 
-	@Audited(message = "Accion: Agregar Antecedente")
+	@Audited(message = "Accion: Cargar Examen proctológico")
+	@RequestMapping(value = "/loadExaProctologico", method = RequestMethod.GET)
+	public @ResponseBody
+	ExaProctoDTO loadExaProctologico(
+			@RequestParam(value = "idConsulta", required = false, defaultValue = "") Long idConsulta,
+			HttpServletRequest request, HttpServletResponse response) {
+		LOG.info("ConsultaController.loadExaProctologico()");
+		ExaProctoDTO exaProctoDTO = null;
+		try {
+			exaProctoDTO = consultaService.loadExaProctologico(idConsulta);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return exaProctoDTO;
+	}
+
+	@Audited(message = "Accion: Agregar examen proctológico")
 	@RequestMapping(value = "/addNewExaProcto", method = RequestMethod.POST)
 	public @ResponseBody
 	long saveNewExaProctologico(@RequestBody ExaProctoDTO exaProctoDTO) {
@@ -203,6 +237,23 @@ public class ConsultaController {
 		}
 
 		return returnNewId;
+	}
+
+	@Audited(message = "Accion: Cargar Estadificación")
+	@RequestMapping(value = "/loadEstadificacion", method = RequestMethod.GET)
+	public @ResponseBody
+	EstadificacionDTO loadEstadificacion(
+			@RequestParam(value = "idConsulta", required = false, defaultValue = "") Long idConsulta,
+			HttpServletRequest request, HttpServletResponse response) {
+		LOG.info("ConsultaController.loadEstadificacion()");
+		EstadificacionDTO estadificacionDTO = null;
+		try {
+			estadificacionDTO = consultaService.loadEstadificacion(idConsulta);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return estadificacionDTO;
 	}
 
 	@Audited(message = "Accion: Agregar Estadificacion")

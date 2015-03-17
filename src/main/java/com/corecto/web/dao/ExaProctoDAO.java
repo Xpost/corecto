@@ -6,13 +6,12 @@ import com.corecto.web.model.pojo.extra.ExaProcto;
 
 public interface ExaProctoDAO extends DAO {
 
-	public  long saveNewExaProcto(ExaProcto exaProcto)
-			throws DataAccessException;
+	long saveNewExaProcto(ExaProcto exaProcto) throws DataAccessException;
 
-	public  ExaProcto loadExaProctoById(final Long idExaProcto)
-			throws DataAccessException;
+	long updateExaProcto(ExaProcto exaProcto) throws DataAccessException;
 
-	public  ExaProcto loadExaProctoByConsulta(final Long idConsulta)
-			throws DataAccessException;
+	ExaProcto loadExaProctoById(final Long idExaProcto) throws DataAccessException;
+
+	ExaProcto loadExaProctoByConsulta(final Long idConsulta) throws DataAccessException;
 
 }

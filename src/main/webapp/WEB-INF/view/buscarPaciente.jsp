@@ -88,6 +88,11 @@
 	.ui-autocomplete-loading { background: white url('css/images/ui-anim_basic_16x16.gif') right center no-repeat; }
 	.ui-loadingBar { background: transparent url('css/images/load.gif') center / 260px no-repeat;  }
 	.ui-pg-input { width: 10px !important;  }
+	
+	#formFilter fieldset legend {
+		font-size: 18px;
+		line-height: 36px; 
+	}
     </style>
     
     <jsp:include flush="true" page="header.jsp">
@@ -101,7 +106,7 @@
 
   <body>
 
-    <div class="container">
+    <div class="container" style="margin-top: -15px"> <!-- Agregado a mano! -->
      <div class="row-fluid">
         <div class="span12">
 			<ul class="nav nav-pills">
@@ -117,7 +122,7 @@
      <div class="row-fluid">
      <div class="span12 thumbnail">
 		  <div class="row-fluid">
- 	  		 <form id="" action="" class="">
+ 	  		 <form id="formFilter" action="" class="">
 	         <div class="row-fluid">
 	        	<div class="span3">    
 					<label for="nombreSearch"><strong>Nombre</strong></label>
@@ -301,11 +306,11 @@
 				  	<div class="span6">
 				  	<label for="tipoComprobanteCaja"><strong>Sexo</strong></label>
 				   <label class="radio inline">
-						    <input type="radio" name="sexo" id="masSexEdit" value="M" checked="checked">
+						    <input type="radio" name="sexoEdit" id="masSexEdit" value="M" checked="checked">
 							M
 						</label>
 					    <label class="radio inline">
-						    <input type="radio" name="sexo" id="femSexEdit" value="F">
+						    <input type="radio" name="sexoEdit" id="femSexEdit" value="F">
 							F
 						</label>
 				  </div>		
@@ -392,6 +397,8 @@
 <script src="js/jquery.jqGrid.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/jquery.bt.min.js" ></script>  
 <script type="text/javascript" src="js/jquery.validate.js" ></script>  
+<script type="text/javascript" src="js/jquery.scrollTo-min.js" ></script>  
+
 <script type="text/javascript">
 jQuery(function() {
 cleanScreenSearch();
@@ -740,6 +747,8 @@ jQuery("#nombreSearch" ).autocomplete({
 
 jQuery("input[alt=dateP]").datepicker({
 	 showButtonPanel: true,
+	 changeYear: true,
+	 yearRange: "-80:+0",
 	 dateFormat: "dd/mm/yy",
 	 showOn: "button",
 	 buttonImage: "css/images/calendar.gif",
@@ -772,7 +781,7 @@ jQuery("#editPatientForm").validate({
 	  		var typeId = jQuery("#typeId").val();
 	  		var numOS = jQuery("#numOS").val();
 	  		var idPatient = jQuery("#idPatientEdit").val();
-	  		var sexoSelected = jQuery("input[name=sexo]:checked").val();
+	  		var sexoSelected = jQuery("input[name=sexoEdit]:checked").val();
 	  		var dateB = jQuery("#dateBirth").val();
 	  		
 	  		var editPaciente = {'idpaciente':idPatient,'nombre':nombreEdit,'direccion':direccionEdit, 'idos':typeId,'nroOs':numOS,
@@ -914,7 +923,7 @@ function updatePatient(row){
 
 	jQuery("#idPatientEdit").val(row.idpaciente);
 	jQuery(".editClientDiv").show();
-		
+	jQuery(document).scrollTo( $('.editClientDiv'), 700 );
 	}
 	
 function delPatient(){  

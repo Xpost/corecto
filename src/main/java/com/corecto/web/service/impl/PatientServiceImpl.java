@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.text.WordUtils;
 import org.joda.time.LocalDateTime;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -180,7 +181,7 @@ public class PatientServiceImpl implements PatientService {
 				pacienteDTO.setIdpaciente(paciente.getIdpaciente());
 				pacienteDTO.setMail(paciente.getMail());
 				pacienteDTO.setDni(paciente.getDni());
-				pacienteDTO.setNombre(paciente.getNombre());
+				pacienteDTO.setNombre(WordUtils.capitalize(paciente.getNombre()));
 				pacienteDTO.setSexo(PacienteSexo.getPacienteByName(paciente.getSexo()).getValue());
 				pacienteDTO.setTelefono(paciente.getTelefono());
 				pacienteDTO.setNotas(paciente.getNotas());

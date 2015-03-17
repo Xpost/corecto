@@ -32,9 +32,15 @@ public interface ConsultaService {
 
 	Long saveEvaClinica(EvaClinicaDTO evaClinicaDTO);
 
+	EvaClinicaDTO loadEvaClinica(Long idConsulta);
+
 	Long saveExaProctologico(ExaProctoDTO exaProctoDTO);
 
+	ExaProctoDTO loadExaProctologico(Long idConsulta);
+
 	Long saveEstadificacion(EstadificacionDTO estadificacionDTO);
+
+	EstadificacionDTO loadEstadificacion(Long idConsulta);
 
 	Long saveAnaPatologica(AnotomiaPatologicaDTO anotomiaPatologicaDTO);
 

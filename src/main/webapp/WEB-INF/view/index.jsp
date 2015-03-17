@@ -102,7 +102,7 @@
           </div>
       <div class="row-fluid">
             <div class="span6 show-grid">
-              <h2>Últimos pacientes agregados</h2>
+              <h2>Pacientes agregados</h2>
 					<div id="chart"></div>
 					<p><a class="btn" href="#">Mas detalles &raquo;</a></p>
             </div><!--/span-->
