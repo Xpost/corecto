@@ -6,13 +6,15 @@ import com.corecto.web.model.pojo.extra.Estadificacion;
 
 public interface EstadificacionDAO extends DAO {
 
-	public  long saveNewEstadificacion(Estadificacion preconsulta)
+	  long saveNewEstadificacion(Estadificacion preconsulta)
+			throws DataAccessException;
+	
+	  long updateEstadificacion(Estadificacion estadificacion) throws DataAccessException;
+
+	  Estadificacion loadEstadificacionById(final Long idEstadificacion)
 			throws DataAccessException;
 
-	public  Estadificacion loadEstadificacionById(final Long idEstadificacion)
-			throws DataAccessException;
-
-	public  Estadificacion loadEstadificacionByConsulta(final Long idConsulta)
+	  Estadificacion loadEstadificacionByConsulta(final Long idConsulta)
 			throws DataAccessException;
 
 }

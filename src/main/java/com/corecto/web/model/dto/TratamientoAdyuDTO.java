@@ -3,7 +3,7 @@ package com.corecto.web.model.dto;
 
 public class TratamientoAdyuDTO {
 	
-	private String idtratamientoadyu;
+	private long idtratamientoadyu;
 	private long idConsulta;
 	private String quimioterapia;
 	private String quimioNroCiclos;
@@ -21,10 +21,10 @@ public class TratamientoAdyuDTO {
 	public void setIdConsulta(long idConsulta) {
 		this.idConsulta = idConsulta;
 	}
-	public String getIdtratamientoadyu() {
+	public long getIdtratamientoadyu() {
 		return idtratamientoadyu;
 	}
-	public void setIdtratamientoadyu(String idtratamientoadyu) {
+	public void setIdtratamientoadyu(long idtratamientoadyu) {
 		this.idtratamientoadyu = idtratamientoadyu;
 	}
 	public String getQuimioterapia() {

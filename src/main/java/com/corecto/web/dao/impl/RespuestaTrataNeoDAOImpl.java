@@ -46,7 +46,11 @@ public class RespuestaTrataNeoDAOImpl extends HibernateDaoSupport implements Res
         return respuestaTrataNeo.getIdrespuestatrataneo();
     }
     
-
+	public long updateRespuestaTrataNeo(RespuestaTrataNeo respuestaTrataNeo) throws DataAccessException {
+    	LOG.info("RespuestaTrataNeoDAOImpl.updateRespuestaTrataNeo()");
+        getHibernateTemplate().update(respuestaTrataNeo);
+        return respuestaTrataNeo.getIdrespuestatrataneo();
+    }
     
 	@SuppressWarnings("unchecked")
     public RespuestaTrataNeo loadRespuestaTrataNeoById(final Long idrespuestatrataneo) throws DataAccessException {

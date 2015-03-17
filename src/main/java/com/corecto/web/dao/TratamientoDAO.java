@@ -6,13 +6,15 @@ import com.corecto.web.model.pojo.extra.Tratamiento;
 
 public interface TratamientoDAO extends DAO {
 
-	public  long saveNewTratamiento(Tratamiento preconsulta)
+	long saveNewTratamiento(Tratamiento preconsulta)
+			throws DataAccessException;
+	
+	long updateTratamiento(Tratamiento  tratamiento) throws DataAccessException;
+
+	Tratamiento loadTratamientoById(final Long idTratamiento)
 			throws DataAccessException;
 
-	public  Tratamiento loadTratamientoById(final Long idTratamiento)
-			throws DataAccessException;
-
-	public  Tratamiento loadTratamientoByConsulta(final Long idConsulta)
+	Tratamiento loadTratamientoByConsulta(final Long idConsulta)
 			throws DataAccessException;
 
 }

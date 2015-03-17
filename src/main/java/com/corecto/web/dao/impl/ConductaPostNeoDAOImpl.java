@@ -46,7 +46,11 @@ public class ConductaPostNeoDAOImpl extends HibernateDaoSupport implements Condu
         return conductaPostNeo.getIdconductapostneo();
     }
     
-
+	public long updateConductaPostNeo(ConductaPostNeo  conductaPostNeo) throws DataAccessException {
+    	LOG.info("ConductaPostNeoDAOImpl.updateConductaPostNeo()");
+        getHibernateTemplate().update(conductaPostNeo);
+        return conductaPostNeo.getIdconductapostneo();
+    }
     
 	@SuppressWarnings("unchecked")
     public ConductaPostNeo loadConductaPostNeoById(final Long idconductapostneo) throws DataAccessException {

@@ -43,17 +43,30 @@ public interface ConsultaService {
 	EstadificacionDTO loadEstadificacion(Long idConsulta);
 
 	Long saveAnaPatologica(AnotomiaPatologicaDTO anotomiaPatologicaDTO);
+	
+	AnotomiaPatologicaDTO loadAnaPatologica(Long idConsulta);
 
 	Long saveTratamiento(TratamientoDTO tratamientoDTO);
+	
+	TratamientoDTO loadTratamiento(Long idConsulta);
 
 	Long saveDescTrataNeoadyuante(DescTrataNeoDTO descTrataNeoDTO);
+	
+	DescTrataNeoDTO loadDescTrataNeoadyuante(Long idConsulta);
 
 	Long saveRespuestaTrataNeoadyuante(RespuestaTrataNeoDTO respuestaTrataNeoDTO);
+	
+	RespuestaTrataNeoDTO loadRespuestaTrataNeoadyuante(Long idConsulta);
 
 	Long saveConducataPostNeoAdyuante(ConductaPostNeoDTO conductaPostNeoDTO);
+	
+	ConductaPostNeoDTO loadConducataPostNeoAdyuante(Long idConsulta);
 
 	Long saveTratamientoAdyuvante(TratamientoAdyuDTO tratamientoAdyuDTO);
-
+	
+	TratamientoAdyuDTO loadTratamientoAdyuvante(Long idConsulta);
+	
 	Long saveAnatomiaPatologicaPost(AnatomiaPatologicaPostDTO anatomiaPatologicaPostDTO);
 
+	AnatomiaPatologicaPostDTO loadAnatomiaPatologicaPost(Long idConsulta);
 }

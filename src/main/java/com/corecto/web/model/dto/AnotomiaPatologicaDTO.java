@@ -3,7 +3,7 @@ package com.corecto.web.model.dto;
 
 public class AnotomiaPatologicaDTO {
 	
-	private String idanotomia;
+	private long idanotomia;
 	private long idConsulta;
 	private String biopsia;
 	private String fechaDiag;
@@ -23,10 +23,10 @@ public class AnotomiaPatologicaDTO {
 	public void setIdConsulta(long idConsulta) {
 		this.idConsulta = idConsulta;
 	}
-	public String getIdanotomia() {
+	public long getIdanotomia() {
 		return idanotomia;
 	}
-	public void setIdanotomia(String idanotomia) {
+	public void setIdanotomia(long idanotomia) {
 		this.idanotomia = idanotomia;
 	}
 	public String getBiopsia() {

@@ -271,6 +271,23 @@ public class ConsultaController {
 
 		return returnNewId;
 	}
+	
+	
+	@Audited(message = "Accion: Cargar Anatomia Patalogica")
+	@RequestMapping(value = "/loadAnaPatologica", method = RequestMethod.GET)
+	public @ResponseBody
+	AnotomiaPatologicaDTO loadAnaPatologica(
+			@RequestParam(value = "idConsulta", required = false, defaultValue = "") Long idConsulta,
+			HttpServletRequest request, HttpServletResponse response) {
+		LOG.info("ConsultaController.loadAnaPatologica()");
+		AnotomiaPatologicaDTO anotomiaPatologicaDTO = null;
+		try {
+			anotomiaPatologicaDTO = consultaService.loadAnaPatologica(idConsulta);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return anotomiaPatologicaDTO;
+	}
 
 	@Audited(message = "Accion: Agregar Anatomia Patalogica")
 	@RequestMapping(value = "/addNewAnaPatologica", method = RequestMethod.POST)
@@ -288,6 +305,22 @@ public class ConsultaController {
 		return returnNewId;
 	}
 
+	@Audited(message = "Accion: Cargar Tratamiento")
+	@RequestMapping(value = "/loadTratamiento", method = RequestMethod.GET)
+	public @ResponseBody
+	TratamientoDTO loadTratamiento(
+			@RequestParam(value = "idConsulta", required = false, defaultValue = "") Long idConsulta,
+			HttpServletRequest request, HttpServletResponse response) {
+		LOG.info("ConsultaController.loadTratamiento()");
+		TratamientoDTO tratamientoDTO = null;
+		try {
+			tratamientoDTO = consultaService.loadTratamiento(idConsulta);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return tratamientoDTO;
+	}
+	
 	@Audited(message = "Accion: Agregar Tratamiento")
 	@RequestMapping(value = "/addTratamiento", method = RequestMethod.POST)
 	public @ResponseBody
@@ -302,6 +335,22 @@ public class ConsultaController {
 		}
 
 		return returnNewId;
+	}
+	
+	@Audited(message = "Accion: Cargar Desc Tratamiento NeoAdyuante")
+	@RequestMapping(value = "/loadDescTrataNeoadyuante", method = RequestMethod.GET)
+	public @ResponseBody
+	DescTrataNeoDTO loadDescTrataNeoadyuante(
+			@RequestParam(value = "idConsulta", required = false, defaultValue = "") Long idConsulta,
+			HttpServletRequest request, HttpServletResponse response) {
+		LOG.info("ConsultaController.loadTratamiento()");
+		DescTrataNeoDTO descTrataNeoDTO = null;
+		try {
+			descTrataNeoDTO = consultaService.loadDescTrataNeoadyuante(idConsulta);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return descTrataNeoDTO;
 	}
 
 	@Audited(message = "Accion: Agregar Desc Tratamiento NeoAdyuante")
@@ -320,6 +369,22 @@ public class ConsultaController {
 		return returnNewId;
 	}
 
+	@Audited(message = "Accion: Cargar Respuesta NeoAdyuante")
+	@RequestMapping(value = "/loadRespuestaNeoadyuante", method = RequestMethod.GET)
+	public @ResponseBody
+	RespuestaTrataNeoDTO loadRespuestaNeoadyuante(
+			@RequestParam(value = "idConsulta", required = false, defaultValue = "") Long idConsulta,
+			HttpServletRequest request, HttpServletResponse response) {
+		LOG.info("ConsultaController.loadRespuestaNeoadyuante()");
+		RespuestaTrataNeoDTO respuestaTrataNeoDTO = null;
+		try {
+			respuestaTrataNeoDTO = consultaService.loadRespuestaTrataNeoadyuante(idConsulta);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return respuestaTrataNeoDTO;
+	}
+	
 	@Audited(message = "Accion: Agregar Respuesta NeoAdyuante")
 	@RequestMapping(value = "/addNewRespuestaNeoadyuante", method = RequestMethod.POST)
 	public @ResponseBody
@@ -335,6 +400,23 @@ public class ConsultaController {
 
 		return returnNewId;
 	}
+	
+	@Audited(message = "Accion: Cargar Conducta post neoadyuante")
+	@RequestMapping(value = "/loadConductaPostNeoadyuante", method = RequestMethod.GET)
+	public @ResponseBody
+	ConductaPostNeoDTO loadConductaPostNeoadyuante(
+			@RequestParam(value = "idConsulta", required = false, defaultValue = "") Long idConsulta,
+			HttpServletRequest request, HttpServletResponse response) {
+		LOG.info("ConsultaController.loadConductaPostNeoadyuante()");
+		ConductaPostNeoDTO conductaPostNeoDTO = null;
+		try {
+			conductaPostNeoDTO = consultaService.loadConducataPostNeoAdyuante(idConsulta);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return conductaPostNeoDTO;
+	}
+	
 
 	@Audited(message = "Accion: Agregar Conducta post neoadyuante")
 	@RequestMapping(value = "/addNewConductaPostNeo", method = RequestMethod.POST)
@@ -352,6 +434,23 @@ public class ConsultaController {
 		return returnNewId;
 	}
 
+	@Audited(message = "Accion: Cargar Anatomia Patologica post")
+	@RequestMapping(value = "/loadAnaPatologicaPost", method = RequestMethod.GET)
+	public @ResponseBody
+	AnatomiaPatologicaPostDTO loadAnaPatologicaPost(
+			@RequestParam(value = "idConsulta", required = false, defaultValue = "") Long idConsulta,
+			HttpServletRequest request, HttpServletResponse response) {
+		LOG.info("ConsultaController.loadAnaPatologicaPost()");
+		AnatomiaPatologicaPostDTO patologicaPostDTO = null;
+		try {
+			patologicaPostDTO = consultaService.loadAnatomiaPatologicaPost(idConsulta);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return patologicaPostDTO;
+	}
+	
+	
 	@Audited(message = "Accion: Agregar Anatomia Patologica post")
 	@RequestMapping(value = "/addNewAnaPatoPost", method = RequestMethod.POST)
 	public @ResponseBody
@@ -367,7 +466,23 @@ public class ConsultaController {
 
 		return returnNewId;
 	}
-
+	
+	@Audited(message = "Accion: Cargar Tratamiento adyuvante")
+	@RequestMapping(value = "/loadTrataAdyuvante", method = RequestMethod.GET)
+	public @ResponseBody
+	TratamientoAdyuDTO loadTrataAdyuvante(
+			@RequestParam(value = "idConsulta", required = false, defaultValue = "") Long idConsulta,
+			HttpServletRequest request, HttpServletResponse response) {
+		LOG.info("ConsultaController.loadTrataAdyuvante()");
+		TratamientoAdyuDTO tratamientoAdyuDTO = null;
+		try {
+			tratamientoAdyuDTO = consultaService.loadTratamientoAdyuvante(idConsulta);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return tratamientoAdyuDTO;
+	}
+	
 	@Audited(message = "Accion: Agregar Tratamiento adyuvante")
 	@RequestMapping(value = "/addNewTrataAdyuvante", method = RequestMethod.POST)
 	public @ResponseBody
@@ -384,33 +499,7 @@ public class ConsultaController {
 		return returnNewId;
 	}
 
-	//
-	// @Audited(message = "Accion: Busqueda inical de pacientes en Listado")
-	// @RequestMapping(value = "/loadlistPatients", method = RequestMethod.GET)
-	// public @ResponseBody
-	// PageResult loadlistPatients(@RequestParam(value = "idpatient", required =
-	// false, defaultValue = "") String patientID,
-	// @RequestParam(value = "domic", required = false, defaultValue = "")
-	// String domicilio,
-	// @RequestParam(value = "sidx", required = false, defaultValue = "") String
-	// fieldName,
-	// @RequestParam(value = "sord", required = false, defaultValue = "") String
-	// order) {
-	// LOG.info("ClientController.loadlistPatients()");
-	// List<PacienteDTO> listPatients = new ArrayList<PacienteDTO>();
-	// PageResult pageResult = new PageResult();
-	// try {
-	// listPatients = patientService.listPatients("", null, domicilio, "", "");
-	// pageResult.setPage("1");
-	// pageResult.setTotal("2");
-	// pageResult.setRecords(listPatients.size() + "");
-	// pageResult.setRows(listPatients);
-	// } catch (Exception e) {
-	// e.printStackTrace();
-	// }
-	//
-	// return pageResult;
-	// }
+
 
 	/*
 	 * // @Autowired // EmailSenderService emailSenderService;

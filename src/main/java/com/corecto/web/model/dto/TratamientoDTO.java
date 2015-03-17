@@ -4,7 +4,7 @@ package com.corecto.web.model.dto;
 public class TratamientoDTO {
 	
 	
-	private String idtratamiento;
+	private long idtratamiento;
 	private long idConsulta;
 	private String udaondo;
 	private String cirugia;
@@ -21,10 +21,10 @@ public class TratamientoDTO {
 	public void setIdConsulta(long idConsulta) {
 		this.idConsulta = idConsulta;
 	}
-	public String getIdtratamiento() {
+	public long getIdtratamiento() {
 		return idtratamiento;
 	}
-	public void setIdtratamiento(String idtratamiento) {
+	public void setIdtratamiento(long idtratamiento) {
 		this.idtratamiento = idtratamiento;
 	}
 	public String getUdaondo() {

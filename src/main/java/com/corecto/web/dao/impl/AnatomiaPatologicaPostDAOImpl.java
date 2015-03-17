@@ -41,12 +41,16 @@ public class AnatomiaPatologicaPostDAOImpl extends HibernateDaoSupport implement
 
     
 	public long saveNewAnatomiaPatologicaPost(AnatomiaPatologicaPost anatomiaPatologicaPost) throws DataAccessException {
-    	LOG.info("AnatomiaPatologicaPostDAOImpl.saveNewPatient()");
+    	LOG.info("AnatomiaPatologicaPostDAOImpl.saveNewAnatomiaPatologicaPost()");
         getHibernateTemplate().save(anatomiaPatologicaPost);
         return anatomiaPatologicaPost.getIdanatomiapatopost();
     }
     
-
+	public long updateAnatomiaPatologicaPost(AnatomiaPatologicaPost anatomiaPatologicaPost) throws DataAccessException {
+    	LOG.info("AnatomiaPatologicaPostDAOImpl.updateAnatomiaPatologicaPost()");
+        getHibernateTemplate().update(anatomiaPatologicaPost);
+        return anatomiaPatologicaPost.getIdanatomiapatopost();
+    }
     
 	@SuppressWarnings("unchecked")
     public AnatomiaPatologicaPost loadAnatomiaPatologicaPostById(final Long idanatomiapatopost) throws DataAccessException {

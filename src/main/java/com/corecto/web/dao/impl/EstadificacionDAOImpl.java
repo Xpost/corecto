@@ -46,7 +46,11 @@ public class EstadificacionDAOImpl extends HibernateDaoSupport implements Estadi
         return estadificacion.getIdestadificacion();
     }
     
-
+	public long updateEstadificacion(Estadificacion estadificacion) throws DataAccessException {
+    	LOG.info("EstadificacionDAOImpl.updateEstadificacion()");
+        getHibernateTemplate().update(estadificacion);
+        return estadificacion.getIdestadificacion();
+    }
     
 	@SuppressWarnings("unchecked")
     public Estadificacion loadEstadificacionById(final Long idestadificacion) throws DataAccessException {

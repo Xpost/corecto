@@ -6,13 +6,15 @@ import com.corecto.web.model.pojo.extra.RespuestaTrataNeo;
 
 public interface RespuestaTrataNeoDAO extends DAO {
 
-	public  long saveNewRespuestaTrataNeo(RespuestaTrataNeo respuestaTrataNeo)
+	long saveNewRespuestaTrataNeo(RespuestaTrataNeo respuestaTrataNeo)
+			throws DataAccessException;
+	
+	long updateRespuestaTrataNeo(RespuestaTrataNeo respuestaTrataNeo) throws DataAccessException;		 
+	
+	RespuestaTrataNeo loadRespuestaTrataNeoById(final Long idRespuestaTrataNeo)
 			throws DataAccessException;
 
-	public  RespuestaTrataNeo loadRespuestaTrataNeoById(final Long idRespuestaTrataNeo)
-			throws DataAccessException;
-
-	public  RespuestaTrataNeo loadRespuestaTrataNeoByConsulta(final Long idConsulta)
+	RespuestaTrataNeo loadRespuestaTrataNeoByConsulta(final Long idConsulta)
 			throws DataAccessException;
 
 }

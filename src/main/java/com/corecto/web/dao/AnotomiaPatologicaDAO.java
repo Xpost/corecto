@@ -6,13 +6,16 @@ import com.corecto.web.model.pojo.extra.AnotomiaPatologica;
 
 public interface AnotomiaPatologicaDAO extends DAO {
 
-	public  long saveNewAnotomiaPatologica(AnotomiaPatologica anotomiaPatologica)
+	  long saveNewAnotomiaPatologica(AnotomiaPatologica anotomiaPatologica)
+			throws DataAccessException;
+	
+	  long updateAnotomiaPatologica(AnotomiaPatologica  anotomiaPatologica) throws DataAccessException;
+	
+
+	  AnotomiaPatologica loadAnotomiaPatologicaById(final Long idAnotomiaPatologica)
 			throws DataAccessException;
 
-	public  AnotomiaPatologica loadAnotomiaPatologicaById(final Long idAnotomiaPatologica)
-			throws DataAccessException;
-
-	public  AnotomiaPatologica loadAnotomiaPatologicaByConsulta(final Long idConsulta)
+	  AnotomiaPatologica loadAnotomiaPatologicaByConsulta(final Long idConsulta)
 			throws DataAccessException;
 
 }

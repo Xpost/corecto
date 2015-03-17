@@ -454,10 +454,40 @@ public class ConsultaServiceImpl implements ConsultaService {
 
 		EstadificacionDAO estadificacionDAO = DAOLocator.getInstance().lookup(
 				EstadificacionDAO.class.getName());
-		return estadificacionDAO.saveNewEstadificacion(estadificacion);
-
+		
+		if (estadificacionDTO.getIdestadificacion() != -1L) {
+			estadificacion.setIdestadificacion(estadificacionDTO.getIdestadificacion());
+			return estadificacionDAO.updateEstadificacion(estadificacion);
+		} else {
+			return  estadificacionDAO.saveNewEstadificacion(estadificacion);
+		}
+		
 	}
 
+	public AnotomiaPatologicaDTO loadAnaPatologica(Long idConsulta) {
+		AnotomiaPatologicaDAO anotomiaPatologicaDAO = DAOLocator.getInstance().lookup(AnotomiaPatologicaDAO.class.getName());
+		AnotomiaPatologica anotomiaPatologica = anotomiaPatologicaDAO.loadAnotomiaPatologicaByConsulta(idConsulta);
+		AnotomiaPatologicaDTO anotomiaPatologicaDTO = null;
+		if (anotomiaPatologica != null) {
+			anotomiaPatologicaDTO = new AnotomiaPatologicaDTO();
+			anotomiaPatologicaDTO.setApSugestiva(anotomiaPatologica.getApSugestiva());
+			anotomiaPatologicaDTO.setBaseDiag(anotomiaPatologica.getBaseDiag());
+			anotomiaPatologicaDTO.setBaseDiagCirugia(anotomiaPatologica.getBaseDiagCirugia());
+			anotomiaPatologicaDTO.setBiopsia(anotomiaPatologica.getBiopsia());
+			anotomiaPatologicaDTO.setDiagHistologico(anotomiaPatologica.getDiagHistologico());
+			anotomiaPatologicaDTO.setDiagnosticadoEn(anotomiaPatologica.getDiagnosticadoEn());
+			anotomiaPatologicaDTO.setExpresionConserv(anotomiaPatologica.getExpresionConserv());
+			if(anotomiaPatologica.getFechaDiag()!=null){
+				anotomiaPatologicaDTO.setFechaDiag(dateFormatter.format(anotomiaPatologica.getFechaDiag()));				
+			}
+			anotomiaPatologicaDTO.setGradoDif(anotomiaPatologica.getGradoDif());
+			anotomiaPatologicaDTO.setIdanotomia(anotomiaPatologica.getIdanotomia());
+			anotomiaPatologicaDTO.setIdConsulta(idConsulta); 
+			anotomiaPatologicaDTO.setIhq(anotomiaPatologica.getIhq()); 
+		}
+		return anotomiaPatologicaDTO;
+	}
+	
 	public Long saveAnaPatologica(AnotomiaPatologicaDTO anotomiaPatologicaDTO) {
 		AnotomiaPatologica anotomiaPatologica = new AnotomiaPatologica();
 		Consulta consulta = new Consulta();
@@ -483,10 +513,36 @@ public class ConsultaServiceImpl implements ConsultaService {
 
 		AnotomiaPatologicaDAO anotomiaPatologicaDAO = DAOLocator.getInstance().lookup(
 				AnotomiaPatologicaDAO.class.getName());
-		return anotomiaPatologicaDAO.saveNewAnotomiaPatologica(anotomiaPatologica);
-
+		
+		if (anotomiaPatologicaDTO.getIdanotomia() != -1L) {
+			anotomiaPatologica.setIdanotomia(anotomiaPatologicaDTO.getIdanotomia());
+			return anotomiaPatologicaDAO.updateAnotomiaPatologica(anotomiaPatologica);
+		} else {
+			return  anotomiaPatologicaDAO.saveNewAnotomiaPatologica(anotomiaPatologica);
+		}
+		
 	}
 
+	public TratamientoDTO loadTratamiento(Long idConsulta) {
+		TratamientoDAO tratamientoDAO = DAOLocator.getInstance().lookup(TratamientoDAO.class.getName());
+		Tratamiento tratamiento = tratamientoDAO.loadTratamientoByConsulta(idConsulta);
+		TratamientoDTO tratamientoDTO = null;
+		if (tratamiento != null) {
+			tratamientoDTO = new TratamientoDTO();
+			tratamientoDTO.setCirugia(tratamiento.getCirugia());
+			tratamientoDTO.setIdConsulta(idConsulta);
+			tratamientoDTO.setIdtratamiento(tratamiento.getIdtratamiento());
+			tratamientoDTO.setQuimioOtra(tratamiento.getQuimioOtra());
+			tratamientoDTO.setQuimioteInducNroCiclos(tratamiento.getQuimioteInducNroCiclos());
+			tratamientoDTO.setQuimioteInterNroCiclos(tratamiento.getQuimioteInterNroCiclos());
+			tratamientoDTO.setQuimioterapiaInduc(tratamiento.getQuimioterapiaInduc());
+			tratamientoDTO.setQuimioterapiaInter(tratamiento.getQuimioterapiaInter());
+			tratamientoDTO.setUdaondo(tratamiento.getUdaondo());
+		}
+		return tratamientoDTO;
+	}
+	
+	
 	public Long saveTratamiento(TratamientoDTO tratamientoDTO) {
 
 		Tratamiento tratamiento = new Tratamiento();
@@ -502,8 +558,44 @@ public class ConsultaServiceImpl implements ConsultaService {
 		tratamiento.setUdaondo(tratamientoDTO.getUdaondo());
 
 		TratamientoDAO tratamientoDAO = DAOLocator.getInstance().lookup(TratamientoDAO.class.getName());
-		return tratamientoDAO.saveNewTratamiento(tratamiento);
 
+		if (tratamientoDTO.getIdtratamiento() != -1L) {
+			tratamiento.setIdtratamiento(tratamientoDTO.getIdtratamiento());
+			return tratamientoDAO.updateTratamiento(tratamiento);
+		} else {
+			return  tratamientoDAO.saveNewTratamiento(tratamiento);
+		}
+	}
+	
+	public DescTrataNeoDTO loadDescTrataNeoadyuante(Long idConsulta) {
+		DescTrataNeoDAO descTrataNeoDAO = DAOLocator.getInstance().lookup(DescTrataNeoDAO.class.getName());
+		DescTrataNeo descTrataNeo = descTrataNeoDAO.loadDescTrataNeoByConsulta(idConsulta);
+		DescTrataNeoDTO descTrataNeoDTO = null;
+		if (descTrataNeo != null) {
+			descTrataNeoDTO = new DescTrataNeoDTO();
+			descTrataNeoDTO.setIdConsulta(idConsulta);
+			descTrataNeoDTO.setIddesctrataneo(descTrataNeo.getIddesctrataneo());
+			descTrataNeoDTO.setQuimioEsquema(descTrataNeo.getQuimioEsquema());
+			descTrataNeoDTO.setQuimioNroCiclos(descTrataNeo.getQuimioNroCiclos());
+			if(descTrataNeo.getQuimioFechaFinal()!=null){
+				descTrataNeoDTO.setQuimioFechaFinal(dateFormatter.format(descTrataNeo.getQuimioFechaFinal()));				
+			}
+			if(descTrataNeo.getQuimioFechaInicio()!=null){
+				descTrataNeoDTO.setQuimioFechaInicio(dateFormatter.format(descTrataNeo.getQuimioFechaInicio()));
+			}
+			if(descTrataNeo.getRadioFechaFinal()!=null){
+				descTrataNeoDTO.setRadioFechaFinal(dateFormatter.format(descTrataNeo.getRadioFechaFinal()));
+			}
+			if(descTrataNeo.getRadioFechaInicio()!=null){
+				descTrataNeoDTO.setRadioFechaInicio(dateFormatter.format(descTrataNeo.getRadioFechaInicio()));
+			}
+			descTrataNeoDTO.setRadioDosis(descTrataNeo.getRadioDosis());
+			descTrataNeoDTO.setRadioSuspendio(descTrataNeo.getRadioSuspendio());
+			descTrataNeoDTO.setRadioterapia(descTrataNeo.getRadioterapia());
+			descTrataNeoDTO.setToxGrado(descTrataNeo.getToxGrado());
+			descTrataNeoDTO.setToxicidad(descTrataNeo.getToxicidad());			
+		}
+		return descTrataNeoDTO;
 	}
 
 	public Long saveDescTrataNeoadyuante(DescTrataNeoDTO descTrataNeoDTO) {
@@ -533,9 +625,61 @@ public class ConsultaServiceImpl implements ConsultaService {
 		descTrataNeo.setToxicidad(descTrataNeoDTO.getToxicidad());
 
 		DescTrataNeoDAO descTrataNeoDAO = DAOLocator.getInstance().lookup(DescTrataNeoDAO.class.getName());
-		return descTrataNeoDAO.saveNewDescTrataNeo(descTrataNeo);
+		
+		if (descTrataNeoDTO.getIddesctrataneo() != -1L) {
+			descTrataNeo.setIddesctrataneo(descTrataNeoDTO.getIddesctrataneo());
+			return descTrataNeoDAO.updateDescTrataNeo(descTrataNeo);
+		} else {
+			return  descTrataNeoDAO.saveNewDescTrataNeo(descTrataNeo);
+		}		
 	}
 
+	public RespuestaTrataNeoDTO loadRespuestaTrataNeoadyuante(Long idConsulta) {
+		RespuestaTrataNeoDAO respuestaTrataNeoDAO = DAOLocator.getInstance().lookup(RespuestaTrataNeoDAO.class.getName());
+		RespuestaTrataNeo respuestaTrataNeo = respuestaTrataNeoDAO.loadRespuestaTrataNeoByConsulta(idConsulta);
+		RespuestaTrataNeoDTO respuestaTrataNeoDTO = null;
+		if (respuestaTrataNeo != null) {
+			respuestaTrataNeoDTO = new RespuestaTrataNeoDTO();
+			respuestaTrataNeoDTO.setCrm(respuestaTrataNeo.getCrm());
+			respuestaTrataNeoDTO.setDepSatelites(respuestaTrataNeo.getDepSatelites());
+			respuestaTrataNeoDTO.setEe(respuestaTrataNeo.getEe());
+			if(respuestaTrataNeo.getEeFecha() != null){
+				respuestaTrataNeoDTO.setEeFecha(dateFormatter.format(respuestaTrataNeo.getEeFecha()));
+			}
+			respuestaTrataNeoDTO.setEeInfiltraEsf(respuestaTrataNeo.getEeInfiltraEsf());
+			respuestaTrataNeoDTO.setEmvi(respuestaTrataNeo.getEmvi());
+			respuestaTrataNeoDTO.setEstadifTumor(respuestaTrataNeo.getEstadifTumor());
+			respuestaTrataNeoDTO.setEvaRespuesta(respuestaTrataNeo.getEvaRespuesta());
+			respuestaTrataNeoDTO.setExaInfiltraEsf(respuestaTrataNeo.getExaInfiltraEsf());
+			respuestaTrataNeoDTO.setGangliosImgui(respuestaTrataNeo.getGangliosImgui());
+			respuestaTrataNeoDTO.setGangliosLateral(respuestaTrataNeo.getGangliosLateral());
+			respuestaTrataNeoDTO.setGradoRegre(respuestaTrataNeo.getGradoRegre());
+			respuestaTrataNeoDTO.setIdConsulta(idConsulta);
+			respuestaTrataNeoDTO.setIdrespuestatrataneo(respuestaTrataNeo.getIdrespuestatrataneo());
+			respuestaTrataNeoDTO.setInfiltraEsf(respuestaTrataNeo.getInfiltraEsf());
+			respuestaTrataNeoDTO.setRmAltura(respuestaTrataNeo.getRmAltura());
+			respuestaTrataNeoDTO.setRmCentro(respuestaTrataNeo.getRmCentro());
+			respuestaTrataNeoDTO.setRmDistAnal(respuestaTrataNeo.getRmDistAnal());
+			respuestaTrataNeoDTO.setRmDistEsfinter(respuestaTrataNeo.getRmDistEsfinter());
+			respuestaTrataNeoDTO.setRmTumor(respuestaTrataNeo.getRmTumor());
+			respuestaTrataNeoDTO.setRsc(respuestaTrataNeo.getRsc());
+			respuestaTrataNeoDTO.setRscAltura(respuestaTrataNeo.getRscAltura());
+			if(respuestaTrataNeo.getRmFecha() != null){
+				respuestaTrataNeoDTO.setRmFecha(dateFormatter.format(respuestaTrataNeo.getRmFecha()));
+			}
+			if(respuestaTrataNeo.getRscFecha() != null){
+				respuestaTrataNeoDTO.setRscFecha(dateFormatter.format(respuestaTrataNeo.getRscFecha()));
+			}
+			if(respuestaTrataNeo.getVccFecha() != null){
+				respuestaTrataNeoDTO.setVccFecha(dateFormatter.format(respuestaTrataNeo.getVccFecha()));
+			}
+			respuestaTrataNeoDTO.setTactoRectal(respuestaTrataNeo.getTactoRectal());
+			respuestaTrataNeoDTO.setVcc(respuestaTrataNeo.getVcc());
+			respuestaTrataNeoDTO.setVccAltura(respuestaTrataNeo.getVccAltura());
+		}
+		return respuestaTrataNeoDTO;
+	}
+	
 	public Long saveRespuestaTrataNeoadyuante(RespuestaTrataNeoDTO respuestaTrataNeoDTO) {
 		RespuestaTrataNeo respuestaTrataNeov = new RespuestaTrataNeo();
 		Consulta consulta = new Consulta();
@@ -580,10 +724,38 @@ public class ConsultaServiceImpl implements ConsultaService {
 
 		RespuestaTrataNeoDAO respuestaTrataNeoDAO = DAOLocator.getInstance().lookup(
 				RespuestaTrataNeoDAO.class.getName());
-		return respuestaTrataNeoDAO.saveNewRespuestaTrataNeo(respuestaTrataNeov);
-
+		
+		if (respuestaTrataNeoDTO.getIdrespuestatrataneo() != -1L) {
+			respuestaTrataNeov.setIdrespuestatrataneo(respuestaTrataNeoDTO.getIdrespuestatrataneo());
+			return respuestaTrataNeoDAO.updateRespuestaTrataNeo(respuestaTrataNeov);
+		} else {
+			return  respuestaTrataNeoDAO.saveNewRespuestaTrataNeo(respuestaTrataNeov);
+		}		
 	}
 
+	public ConductaPostNeoDTO loadConducataPostNeoAdyuante(Long idConsulta) {
+		ConductaPostNeoDAO conductaPostNeoDAO = DAOLocator.getInstance().lookup(ConductaPostNeoDAO.class.getName());
+		ConductaPostNeo conductaPostNeo = conductaPostNeoDAO.loadConductaPostNeoByConsulta(idConsulta);
+		ConductaPostNeoDTO conductaPostNeoDTO = null;
+		if (conductaPostNeo != null) {
+			conductaPostNeoDTO = new ConductaPostNeoDTO();
+			conductaPostNeoDTO.setCirugia(conductaPostNeo.getCirugia());
+			conductaPostNeoDTO.setCirujano(conductaPostNeo.getCirujano());
+			if(conductaPostNeo.getFechaInicio() != null){
+				conductaPostNeoDTO.setFechaInicio(dateFormatter.format(conductaPostNeo.getFechaInicio()));				
+			}
+			conductaPostNeoDTO.setIdconductapostneo(conductaPostNeo.getIdconductapostneo());
+			conductaPostNeoDTO.setIdConsulta(idConsulta);
+			conductaPostNeoDTO.setMilesCilindrico(conductaPostNeo.getMilesCilindrico());
+			conductaPostNeoDTO.setUrgencia(conductaPostNeo.getUrgencia());
+			if(conductaPostNeo.getUrgenciaFecha() != null){
+				conductaPostNeoDTO.setUrgenciaFecha(dateFormatter.format(conductaPostNeo.getUrgenciaFecha()));
+			}
+			conductaPostNeoDTO.setWaitAndSee(conductaPostNeo.getWS());
+		}
+		return conductaPostNeoDTO;
+	}
+	
 	public Long saveConducataPostNeoAdyuante(ConductaPostNeoDTO conductaPostNeoDTO) {
 		ConductaPostNeo conductaPostNeo = new ConductaPostNeo();
 		Consulta consulta = new Consulta();
@@ -604,36 +776,46 @@ public class ConsultaServiceImpl implements ConsultaService {
 
 		ConductaPostNeoDAO conductaPostNeoDAO = DAOLocator.getInstance().lookup(
 				ConductaPostNeoDAO.class.getName());
-		return conductaPostNeoDAO.saveNewConductaPostNeo(conductaPostNeo);
-
+		
+		if (conductaPostNeoDTO.getIdconductapostneo() != -1L) {
+			conductaPostNeo.setIdconductapostneo(conductaPostNeoDTO.getIdconductapostneo());
+			return conductaPostNeoDAO.updateConductaPostNeo(conductaPostNeo);
+		} else {
+			return conductaPostNeoDAO.saveNewConductaPostNeo(conductaPostNeo);
+		}		
 	}
 
-	public Long saveTratamientoAdyuvante(TratamientoAdyuDTO tratamientoAdyuDTO) {
-		TratamientoAdyu tratamientoAdyu = new TratamientoAdyu();
-		Consulta consulta = new Consulta();
-		consulta.setIdconsulta(tratamientoAdyuDTO.getIdConsulta());
-		tratamientoAdyu.setConsulta(consulta);
-		tratamientoAdyu.setNotas(tratamientoAdyuDTO.getNotas());
-		tratamientoAdyu.setQuimioNroCiclos(tratamientoAdyuDTO.getQuimioNroCiclos());
-		tratamientoAdyu.setQuimioterapia(tratamientoAdyuDTO.getQuimioterapia());
-		tratamientoAdyu.setRadioDosis(tratamientoAdyuDTO.getRadioDosis());
-		try {
-			tratamientoAdyu.setRadioFechaFinal(dateFormatter.parse(tratamientoAdyuDTO.getRadioFechaFinal()));
-			tratamientoAdyu
-					.setRadioFechaInicio(dateFormatter.parse(tratamientoAdyuDTO.getRadioFechaInicio()));
-		} catch (ParseException e) {
-			LOG.error(e.getMessage());
-			e.printStackTrace();
+	public AnatomiaPatologicaPostDTO loadAnatomiaPatologicaPost(Long idConsulta) {
+		AnatomiaPatologicaPostDAO anatomiaPatologicaPostDAO = DAOLocator.getInstance().lookup(AnatomiaPatologicaPostDAO.class.getName());
+		AnatomiaPatologicaPost anatomiaPatologicaPost = anatomiaPatologicaPostDAO.loadAnatomiaPatologicaPostByConsulta(idConsulta);
+		AnatomiaPatologicaPostDTO anatomiaPatologicaPostDTO = null;
+		if (anatomiaPatologicaPost != null) {
+			anatomiaPatologicaPostDTO = new AnatomiaPatologicaPostDTO();
+			anatomiaPatologicaPostDTO.setBuddingTumoral(anatomiaPatologicaPost.getBuddingTumoral());
+			anatomiaPatologicaPostDTO.setCap(anatomiaPatologicaPost.getCap());
+			anatomiaPatologicaPostDTO.setDiagHisto(anatomiaPatologicaPost.getDiagHisto());
+			if(anatomiaPatologicaPost.getFechaAp() != null){
+				anatomiaPatologicaPostDTO.setFechaAp(dateFormatter.format(anatomiaPatologicaPost.getFechaAp()));				
+			}
+			anatomiaPatologicaPostDTO.setGanPositivos(anatomiaPatologicaPost.getGanPositivos());
+			anatomiaPatologicaPostDTO.setGanResecados(anatomiaPatologicaPost.getGanResecados());
+			anatomiaPatologicaPostDTO.setGradoDif(anatomiaPatologicaPost.getGradoDif());
+			anatomiaPatologicaPostDTO.setGradoRegresion(anatomiaPatologicaPost.getGradoRegresion());
+			anatomiaPatologicaPostDTO.setIdanatomiapatopost(anatomiaPatologicaPost.getIdanatomiapatopost());
+			anatomiaPatologicaPostDTO.setIdConsulta(idConsulta);
+			anatomiaPatologicaPostDTO.setIhq(anatomiaPatologicaPost.getIhq());
+			anatomiaPatologicaPostDTO.setInvPeri(anatomiaPatologicaPost.getInvPeri());
+			anatomiaPatologicaPostDTO.setInvVascular(anatomiaPatologicaPost.getInvVascular());
+			anatomiaPatologicaPostDTO.setKras(anatomiaPatologicaPost.getKras());
+			anatomiaPatologicaPostDTO.setLinfa(anatomiaPatologicaPost.getLinfa());
+			anatomiaPatologicaPostDTO.setNroBiopsia(anatomiaPatologicaPost.getNroBiopsia());
+			anatomiaPatologicaPostDTO.setPushingBorder(anatomiaPatologicaPost.getPushingBorder());
+			anatomiaPatologicaPostDTO.setRtaComPato(anatomiaPatologicaPost.getRtaComPato());
+			anatomiaPatologicaPostDTO.setTumor(anatomiaPatologicaPost.getTumor());
 		}
-
-		tratamientoAdyu.setRadioterapia(tratamientoAdyuDTO.getRadioterapia());
-		tratamientoAdyu.setSuspendio(tratamientoAdyuDTO.getSuspendio());
-
-		TratamientoAdyuDAO tratamientoAdyuDAO = DAOLocator.getInstance().lookup(
-				TratamientoAdyuDAO.class.getName());
-		return tratamientoAdyuDAO.saveNewTratamientoAdyu(tratamientoAdyu);
+		return anatomiaPatologicaPostDTO;
 	}
-
+	
 	public Long saveAnatomiaPatologicaPost(AnatomiaPatologicaPostDTO anatomiaPatologicaPostDTO) {
 		AnatomiaPatologicaPost anatomiaPatologicaPost = new AnatomiaPatologicaPost();
 		Consulta consulta = new Consulta();
@@ -665,6 +847,69 @@ public class ConsultaServiceImpl implements ConsultaService {
 
 		AnatomiaPatologicaPostDAO anatomiaPatologicaPostDAO = DAOLocator.getInstance().lookup(
 				AnatomiaPatologicaPostDAO.class.getName());
-		return anatomiaPatologicaPostDAO.saveNewAnatomiaPatologicaPost(anatomiaPatologicaPost);
+		
+		if (anatomiaPatologicaPostDTO.getIdanatomiapatopost() != -1L) {
+			anatomiaPatologicaPost.setIdanatomiapatopost(anatomiaPatologicaPostDTO.getIdanatomiapatopost());
+			return anatomiaPatologicaPostDAO.updateAnatomiaPatologicaPost(anatomiaPatologicaPost);
+		} else {
+			return anatomiaPatologicaPostDAO.saveNewAnatomiaPatologicaPost(anatomiaPatologicaPost);
+		}		
+		
+	}
+	
+	public TratamientoAdyuDTO loadTratamientoAdyuvante(Long idConsulta) {
+		TratamientoAdyuDAO tratamientoAdyuDAO = DAOLocator.getInstance().lookup(TratamientoAdyuDAO.class.getName());
+		TratamientoAdyu tratamientoAdyu = tratamientoAdyuDAO.loadTratamientoAdyuByConsulta(idConsulta);
+		TratamientoAdyuDTO tratamientoAdyuDTO = null;
+		if (tratamientoAdyu != null) {
+			tratamientoAdyuDTO = new TratamientoAdyuDTO();
+			tratamientoAdyuDTO.setIdConsulta(idConsulta);
+			tratamientoAdyuDTO.setIdtratamientoadyu(tratamientoAdyu.getIdtratamientoadyu());
+			tratamientoAdyuDTO.setNotas(tratamientoAdyu.getNotas());
+			tratamientoAdyuDTO.setQuimioNroCiclos(tratamientoAdyu.getQuimioNroCiclos());
+			tratamientoAdyuDTO.setQuimioterapia(tratamientoAdyu.getQuimioterapia());
+			tratamientoAdyuDTO.setRadioDosis(tratamientoAdyu.getRadioDosis());
+			if(tratamientoAdyu.getRadioFechaFinal() != null){
+				tratamientoAdyuDTO.setRadioFechaFinal(dateFormatter.format(tratamientoAdyu.getRadioFechaFinal()));
+			}
+			if(tratamientoAdyu.getRadioFechaInicio() != null){
+				tratamientoAdyuDTO.setRadioFechaInicio(dateFormatter.format(tratamientoAdyu.getRadioFechaInicio()));
+			}
+			tratamientoAdyuDTO.setRadioterapia(tratamientoAdyu.getRadioterapia());
+			tratamientoAdyuDTO.setSuspendio(tratamientoAdyu.getSuspendio());
+			
+		}
+		return tratamientoAdyuDTO;
+	}
+	
+	public Long saveTratamientoAdyuvante(TratamientoAdyuDTO tratamientoAdyuDTO) {
+		TratamientoAdyu tratamientoAdyu = new TratamientoAdyu();
+		Consulta consulta = new Consulta();
+		consulta.setIdconsulta(tratamientoAdyuDTO.getIdConsulta());
+		tratamientoAdyu.setConsulta(consulta);
+		tratamientoAdyu.setNotas(tratamientoAdyuDTO.getNotas());
+		tratamientoAdyu.setQuimioNroCiclos(tratamientoAdyuDTO.getQuimioNroCiclos());
+		tratamientoAdyu.setQuimioterapia(tratamientoAdyuDTO.getQuimioterapia());
+		tratamientoAdyu.setRadioDosis(tratamientoAdyuDTO.getRadioDosis());
+		try {
+			tratamientoAdyu.setRadioFechaFinal(dateFormatter.parse(tratamientoAdyuDTO.getRadioFechaFinal()));
+			tratamientoAdyu
+					.setRadioFechaInicio(dateFormatter.parse(tratamientoAdyuDTO.getRadioFechaInicio()));
+		} catch (ParseException e) {
+			LOG.error(e.getMessage());
+			e.printStackTrace();
+		}
+
+		tratamientoAdyu.setRadioterapia(tratamientoAdyuDTO.getRadioterapia());
+		tratamientoAdyu.setSuspendio(tratamientoAdyuDTO.getSuspendio());
+
+		TratamientoAdyuDAO tratamientoAdyuDAO = DAOLocator.getInstance().lookup(
+				TratamientoAdyuDAO.class.getName());
+		if (tratamientoAdyuDTO.getIdtratamientoadyu() != -1L) {
+			tratamientoAdyu.setIdtratamientoadyu(tratamientoAdyuDTO.getIdtratamientoadyu());
+			return tratamientoAdyuDAO.updateratamientoAdyu(tratamientoAdyu);
+		} else {
+			return tratamientoAdyuDAO.saveNewTratamientoAdyu(tratamientoAdyu);
+		}	
 	}
 }

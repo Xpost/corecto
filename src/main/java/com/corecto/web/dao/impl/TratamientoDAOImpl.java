@@ -46,7 +46,11 @@ public class TratamientoDAOImpl extends HibernateDaoSupport implements Tratamien
         return tratamiento.getIdtratamiento();
     }
     
-
+	public long updateTratamiento(Tratamiento  tratamiento) throws DataAccessException {
+    	LOG.info("TratamientoDAOImpl.updateTratamiento()");
+        getHibernateTemplate().update(tratamiento);
+        return tratamiento.getIdtratamiento();
+    }
     
 	@SuppressWarnings("unchecked")
     public Tratamiento loadTratamientoById(final Long idtratamiento) throws DataAccessException {

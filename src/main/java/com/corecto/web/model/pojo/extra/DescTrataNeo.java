@@ -11,7 +11,6 @@ public class DescTrataNeo implements java.io.Serializable {
 
 	private Consulta consulta;
 	private Long iddesctrataneo;
-	private Long idconsulta;
 	private String radioterapia;
 	private String radioDosis;
 	private Date radioFechaInicio;
@@ -27,13 +26,12 @@ public class DescTrataNeo implements java.io.Serializable {
 	public DescTrataNeo() {
 	}
 
-	public DescTrataNeo(Long iddesctrataneo, Long idconsulta,
+	public DescTrataNeo(Long iddesctrataneo, 
 			String radioterapia, String radioDosis, Date radioFechaInicio,
 			Date radioFechaFinal, String radioSuspendio, String quimioEsquema,
 			String quimioNroCiclos, Date quimioFechaInicio,
 			Date quimioFechaFinal, String toxicidad, String toxGrado) {
 		this.iddesctrataneo = iddesctrataneo;
-		this.idconsulta = idconsulta;
 		this.radioterapia = radioterapia;
 		this.radioDosis = radioDosis;
 		this.radioFechaInicio = radioFechaInicio;
@@ -53,14 +51,6 @@ public class DescTrataNeo implements java.io.Serializable {
 
 	public void setIddesctrataneo(Long iddesctrataneo) {
 		this.iddesctrataneo = iddesctrataneo;
-	}
-
-	public Long getIdconsulta() {
-		return this.idconsulta;
-	}
-
-	public void setIdconsulta(Long idconsulta) {
-		this.idconsulta = idconsulta;
 	}
 
 	public String getRadioterapia() {

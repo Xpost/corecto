@@ -45,7 +45,11 @@ public class DescTrataNeoDAOImpl extends HibernateDaoSupport implements DescTrat
         return descTrataNeo.getIddesctrataneo();
     }
     
-
+    public long updateDescTrataNeo(DescTrataNeo  descTrataNeo) throws DataAccessException {
+    	LOG.info("DescTrataNeoDAOImpl.updateDescTrataNeo()");
+        getHibernateTemplate().update(descTrataNeo);
+        return descTrataNeo.getIddesctrataneo();
+    }
     
 	@SuppressWarnings("unchecked")
     public DescTrataNeo loadDescTrataNeoById(final Long iddesctrataneo) throws DataAccessException {

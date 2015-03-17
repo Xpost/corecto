@@ -6,13 +6,15 @@ import com.corecto.web.model.pojo.extra.DescTrataNeo;
 
 public interface DescTrataNeoDAO extends DAO {
 
-	public  long saveNewDescTrataNeo(DescTrataNeo descTrataNeo)
+	long saveNewDescTrataNeo(DescTrataNeo descTrataNeo)
+			throws DataAccessException;
+	
+	long updateDescTrataNeo(DescTrataNeo  descTrataNeo) throws DataAccessException;
+
+	DescTrataNeo loadDescTrataNeoById(final Long idDescTrataNeo)
 			throws DataAccessException;
 
-	public  DescTrataNeo loadDescTrataNeoById(final Long idDescTrataNeo)
-			throws DataAccessException;
-
-	public  DescTrataNeo loadDescTrataNeoByConsulta(final Long idConsulta)
+	DescTrataNeo loadDescTrataNeoByConsulta(final Long idConsulta)
 			throws DataAccessException;
 
 }

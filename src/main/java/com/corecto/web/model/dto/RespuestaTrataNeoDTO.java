@@ -3,7 +3,7 @@ package com.corecto.web.model.dto;
 
 public class RespuestaTrataNeoDTO {
 	
-	private String idrespuestatrataneo;
+	private long idrespuestatrataneo;
 	private long idConsulta;
 	private String rmFecha;
 	private String rmCentro;
@@ -39,10 +39,10 @@ public class RespuestaTrataNeoDTO {
 	public void setIdConsulta(long idConsulta) {
 		this.idConsulta = idConsulta;
 	}
-	public String getIdrespuestatrataneo() {
+	public long getIdrespuestatrataneo() {
 		return idrespuestatrataneo;
 	}
-	public void setIdrespuestatrataneo(String idrespuestatrataneo) {
+	public void setIdrespuestatrataneo(long idrespuestatrataneo) {
 		this.idrespuestatrataneo = idrespuestatrataneo;
 	}
 	public String getRmFecha() {

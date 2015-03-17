@@ -3,9 +3,8 @@ package com.corecto.web.model.dto;
 
 public class DescTrataNeoDTO {
 	
-	private String iddesctrataneo;
+	private long iddesctrataneo;
 	private long idConsulta;
-	private String idconsulta;
 	private String radioterapia;
 	private String radioDosis;
 	private String radioFechaInicio;
@@ -25,17 +24,11 @@ public class DescTrataNeoDTO {
 	public void setIdConsulta(long idConsulta) {
 		this.idConsulta = idConsulta;
 	}
-	public String getIddesctrataneo() {
+	public long getIddesctrataneo() {
 		return iddesctrataneo;
 	}
-	public void setIddesctrataneo(String iddesctrataneo) {
+	public void setIddesctrataneo(long iddesctrataneo) {
 		this.iddesctrataneo = iddesctrataneo;
-	}
-	public String getIdconsulta() {
-		return idconsulta;
-	}
-	public void setIdconsulta(String idconsulta) {
-		this.idconsulta = idconsulta;
 	}
 	public String getRadioterapia() {
 		return radioterapia;

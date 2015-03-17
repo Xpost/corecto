@@ -6,13 +6,15 @@ import com.corecto.web.model.pojo.extra.ConductaPostNeo;
 
 public interface ConductaPostNeoDAO extends DAO {
 
-	public  long saveNewConductaPostNeo(ConductaPostNeo preconsulta)
+	long saveNewConductaPostNeo(ConductaPostNeo preconsulta)
+			throws DataAccessException;
+	
+	long updateConductaPostNeo(ConductaPostNeo  conductaPostNeo) throws DataAccessException;
+
+	ConductaPostNeo loadConductaPostNeoById(final Long idConductaPostNeo)
 			throws DataAccessException;
 
-	public  ConductaPostNeo loadConductaPostNeoById(final Long idConductaPostNeo)
-			throws DataAccessException;
-
-	public  ConductaPostNeo loadConductaPostNeoByConsulta(final Long idConsulta)
+	ConductaPostNeo loadConductaPostNeoByConsulta(final Long idConsulta)
 			throws DataAccessException;
 
 }

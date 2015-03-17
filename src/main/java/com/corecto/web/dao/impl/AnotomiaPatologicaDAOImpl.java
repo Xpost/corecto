@@ -46,7 +46,11 @@ public class AnotomiaPatologicaDAOImpl extends HibernateDaoSupport implements An
         return anotomiaPatologica.getIdanotomia();
     }
     
-
+	public long updateAnotomiaPatologica(AnotomiaPatologica  anotomiaPatologica) throws DataAccessException {
+    	LOG.info("AnotomiaPatologicaDAOImpl.updateAnotomiaPatologica()");
+        getHibernateTemplate().update(anotomiaPatologica);
+        return anotomiaPatologica.getIdanotomia();
+    }
     
 	@SuppressWarnings("unchecked")
     public AnotomiaPatologica loadAnotomiaPatologicaById(final Long idanotomia) throws DataAccessException {

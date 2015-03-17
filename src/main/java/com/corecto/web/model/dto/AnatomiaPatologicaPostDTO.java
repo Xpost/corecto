@@ -4,7 +4,7 @@ package com.corecto.web.model.dto;
 public class AnatomiaPatologicaPostDTO {
 
 	
-	private String idanatomiapatopost;
+	private long idanatomiapatopost;
 	private long idConsulta;
 	private String nroBiopsia;
 	private String fechaAp;
@@ -31,10 +31,10 @@ public class AnatomiaPatologicaPostDTO {
 	public void setIdConsulta(long idConsulta) {
 		this.idConsulta = idConsulta;
 	}
-	public String getIdanatomiapatopost() {
+	public long getIdanatomiapatopost() {
 		return idanatomiapatopost;
 	}
-	public void setIdanatomiapatopost(String idanatomiapatopost) {
+	public void setIdanatomiapatopost(long idanatomiapatopost) {
 		this.idanatomiapatopost = idanatomiapatopost;
 	}
 	public String getNroBiopsia() {
