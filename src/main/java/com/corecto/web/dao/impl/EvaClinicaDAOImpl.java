@@ -78,6 +78,9 @@ public class EvaClinicaDAOImpl extends HibernateDaoSupport implements EvaClinica
 
 		listResult = (List<EvaClinica>) this.getHibernateTemplate().execute(callback);
 		LOG.info("Cantidad:" + listResult.size());
+		if(listResult.isEmpty()){
+			return null;
+		}
 		return listResult.get(0);
 	}
 

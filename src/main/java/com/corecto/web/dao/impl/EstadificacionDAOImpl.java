@@ -87,6 +87,9 @@ public class EstadificacionDAOImpl extends HibernateDaoSupport implements Estadi
 
         listResult = (List<Estadificacion>) this.getHibernateTemplate().execute(callback);
         LOG.info("Cantidad:"+listResult.size());
+    	if(listResult.isEmpty()){
+			return null;
+		}
         return listResult.get(0);
     }
     

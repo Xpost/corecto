@@ -78,6 +78,9 @@ public class MotivoDAOImpl extends HibernateDaoSupport implements MotivoDAO {
 
 		listResult = (List<Motivo>) this.getHibernateTemplate().execute(callback);
 		LOG.info("Cantidad:" + listResult.size());
+		if(listResult.isEmpty()){
+			return null;
+		}
 		return listResult.get(0);
 	}
 
