@@ -2672,6 +2672,7 @@ var ANTECEDENTES_ID = -1;
 var EVACLINICA_ID = -1;
 var EXAPROCTOLOGICO_ID = -1;
 var ESTADIFICACION_ID = -1;
+var ANATOMIAPATALOGIA_ID = -1;
 jQuery(function() {
 	$('#menuNav').find("li").removeClass("active");
 	$('#menuItemConsulta').addClass("active");
@@ -2727,6 +2728,7 @@ jQuery(function() {
 	        	  loadEvaClinica(CONSULTA_ID);
 	        	  loadExaProctoForm(CONSULTA_ID);
 	        	  loadEstadificacion(CONSULTA_ID);
+	        	  loadAnatomiaPatalogiaForm(CONSULTA_ID);
 	          }
 	          else{
 	        	  jQuery("#dialogErrorPaciente").dialog("open");
@@ -3407,7 +3409,7 @@ function loadExaProctoForm(consultaId){
 	       // jQuery("#dialogLoading").dialog("close");	        
 	     }
 	   }); 
-}
+};
 
 jQuery("#addExaProctoForm").validate({
 	focusInvalid:false,
@@ -3475,38 +3477,68 @@ function loadEstadificacion(consultaId){
 	     contentType: "application/json",
 	     data: {'idConsulta':consultaId}, 
 	     success: function(estadificacion){   	    
-	    	if(estadificacion!=null){
+	    	if(estadificacion != null){
 	    		
+	    		jQuery("#centroRM").val(estadificacion.rmCentro);
+	    		jQuery("#fechaRM").val(estadificacion.rmFecha);
+	    		jQuery("#distanciaSupRM").val(estadificacion.rmDistEsfinter);
+	    		jQuery("input[name=distanciaMarARadio][value="+estadificacion.rmDistAnal+"]").click().attr('checked', true);
+	    		jQuery("#alturaRM").val(estadificacion.rmAltura);
 	    		
-// 	      	  	var tactoRectalRadio = exaProctologico.tactoRectal.split("//");
-
-// 	      	  	jQuery("input[name=movilRectal][value="+tactoRectalRadio[0]+"]").click().attr('checked', true);	
-// 	      	    jQuery("input[name=fijoRectal][value="+tactoRectalRadio[1]+"]").click().attr('checked', true);
-// 	      	    jQuery("input[name=esfinterRectal][value="+exaProctologico.tactoRectalInfiltra+"]").click().attr('checked', true);
-	      	    
-// 	      	    var rscRadio = exaProctologico.rsc.split("//");
-// 	      	    jQuery("input[name=rscPresente][value="+rscRadio[0]+"]").click().attr('checked', true);
-// 	      	  	jQuery("input[name=rscMedida][value="+rscRadio[1]+"]").attr('checked', true);
-// 	  			jQuery("#rscAltura").val(exaProctologico.rscAltura);
-// 	  			jQuery("#rscFecha").val(exaProctologico.rscFecha);
-	  		
-// 	  			var vccRadio = exaProctologico.vcc.split("//");
-// 		      	jQuery("input[name=vccPresente][value="+vccRadio[0]+"]").click().attr('checked', true);
-// 		      	jQuery("input[name=vccTipo][value="+vccRadio[1]+"]").attr('checked', true);
-// 		      	jQuery("input[name=vccMedida][value="+vccRadio[2]+"]").attr('checked', true);
-// 		  		jQuery("#vccAltura").val(exaProctologico.vccAltura);
-// 		  		jQuery("#vccFecha").val(exaProctologico.vccFecha);
-		  		
-// 		  		var eeRadio = exaProctologico.ee.split("//");
-// 		      	jQuery("input[name=eePresente][value="+eeRadio[0]+"]").click().attr('checked', true);
-// 		      	jQuery("input[name=eeTipo][value="+eeRadio[1]+"]").attr('checked', true);
-// 		      	jQuery("input[name=eeTipoN][value="+eeRadio[2]+"]").attr('checked', true);
-		      	
-// 		      	var eeInfiltraRadio = exaProctologico.eeInfiltra.split("//");
-// 		      	jQuery("input[name=eeesfinter][value="+eeInfiltraRadio[0]+"]").click().attr('checked', true);
-// 		      	jQuery("input[name=eeMedida][value="+eeInfiltraRadio[1]+"]").attr('checked', true);
-// 		  		jQuery("#eeFecha").val(exaProctologico.eeFecha);
-		       
+	    		var rmTumorRadio = estadificacion.rmTumor.split("//");
+	    		jQuery("input[name=numTRadio][value="+rmTumorRadio[0]+"]").click().attr('checked', true);
+	    		jQuery("input[name=numTNRadio][value="+rmTumorRadio[1]+"]").click().attr('checked', true);
+	    		
+	    		jQuery("input[name=crmPresente][value="+estadificacion.crm+"]").click().attr('checked', true);
+	    		jQuery("input[name=emviPresente][value="+estadificacion.emvi+"]").click().attr('checked', true);
+	    		
+	    		jQuery("input[name=depoSati][value="+estadificacion.depSatelites+"]").click().attr('checked', true);
+	    		jQuery("input[name=estaRInterior][value="+estadificacion.tumoRectoInferior+"]").click().attr('checked', true);
+	    		
+	    		jQuery("input[name=inguinales][value="+estadificacion.ganglios+"]").click().attr('checked', true);
+	    		jQuery("input[name=gaLate][value="+estadificacion.gangliosLate+"]").click().attr('checked', true);
+	    		jQuery("input[name=esfinterRM][value="+estadificacion.infiltraEsfinter+"]").click().attr('checked', true);
+	
+	    		jQuery("input[name=tcTorax][value="+estadificacion.tcTorax+"]").click().attr('checked', true);
+	    		jQuery("input[name=tcAbdomen][value="+estadificacion.tcAbd+"]").click().attr('checked', true);
+	    		jQuery("input[name=petTC][value="+estadificacion.petCt+"]").click().attr('checked', true);
+	    		jQuery("input[name=mtsRadio][value="+estadificacion.mts+"]").click().attr('checked', true);
+				jQuery("#suvEstati").val(estadificacion.suv);
+	    		
+				jQuery("#marcaTuFecha").val(estadificacion.marTumFecha);
+				jQuery("input[name=ceaAument][value="+estadificacion.ceaAumentado+"]").click().attr('checked', true);
+				jQuery("input[name=caAument][value="+estadificacion.ca19+"]").click().attr('checked', true);
+				
+				jQuery("#tnmValT").val(estadificacion.tnmT);
+				jQuery("#tnmValN").val(estadificacion.tnmN);
+				jQuery("#tnmValM").val(estadificacion.tnmM);
+				jQuery("#ptnmValT").val(estadificacion.tnmPt);
+				jQuery("#ptnmValN").val(estadificacion.tnmPn);
+				jQuery("#ptnmValM").val(estadificacion.tnmPm);
+				
+			    var metastasisCheck = estadificacion.metastasis.split("-"); //arranca en 1
+	      	  	for(var i = 1; i < metastasisCheck.length; i++){
+	      	  		$("#"+metastasisCheck[i]).attr("check",true)[0].click();
+	      	  	}
+	      	    jQuery("#metastaDistOtras").val(estadificacion.metastasisOtra);
+	      	  
+			    jQuery("#revisionRMFecha").val(estadificacion.revRmFecha);
+			    jQuery("#revisionRMDistan").val(estadificacion.revDistanEsfinter); 
+			    jQuery("input[name=revisionRMMargen][value="+estadificacion.revDistanAnal+"]").click().attr('checked', true);
+			    
+			    jQuery("#revisionAlturaRM").val(estadificacion.revAltura);
+			    
+			    var revTumorRadio = estadificacion.revTumor.split("//");
+			    jQuery("input[name=tRevision][value="+revTumorRadio[0]+"]").click().attr('checked', true);
+			    jQuery("input[name=tRevision2][value="+revTumorRadio[1]+"]").click().attr('checked', true);
+			    
+			    jQuery("input[name=revisionCRMPresente][value="+estadificacion.revCrm+"]").click().attr('checked', true);
+			    jQuery("input[name=revisionemviPresente][value="+estadificacion.revEmvi+"]").click().attr('checked', true);
+			    jQuery("input[name=revisionEstaTu][value="+estadificacion.revEstadifTumores+"]").click().attr('checked', true);
+			    jQuery("input[name=revisioninguinales][value="+estadificacion.revGanIngui+"]").click().attr('checked', true);
+			    jQuery("input[name=revisiongaLate][value="+estadificacion.revGanLateral+"]").click().attr('checked', true);
+			    jQuery("input[name=revisionesfinter][value="+estadificacion.revInfiltraEsf+"]").click().attr('checked', true);
+			    
 		  		ESTADIFICACION_ID = estadificacion.idestadificacion;
 	    	}
 	       // jQuery("#dialogLoading").dialog("close");	        
@@ -3595,7 +3627,7 @@ jQuery("#addEstadificacionForm").validate({
 		var revisiongaLate = jQuery("input[name=revisiongaLate]:checked").val();
 		var revisionesfinter = jQuery("input[name=revisionesfinter]:checked").val();
 		
-		var estadificacion = {'idConsulta':CONSULTA_ID,'rmCentro':centroRM,'rmFecha':fechaRM,'rmDistEsfinter':distanciaSupRM,'rmDistAnal':distanciaMarARadio,'rmAltura':alturaRM,
+		var estadificacion = {'idConsulta':CONSULTA_ID,'idestadificacion':ESTADIFICACION_ID, 'rmCentro':centroRM,'rmFecha':fechaRM,'rmDistEsfinter':distanciaSupRM,'rmDistAnal':distanciaMarARadio,'rmAltura':alturaRM,
 						 	  'rmTumor':numTRadio+"//"+numTNRadio,'crm':crmPresente,'emvi':emviPresente,'depSatelites':depoSati,'tumoRectoInferior':estaRInterior,'ganglios':inguinales,
 						 	 'gangliosLate':gaLate, 'infiltraEsfinter':esfinterRM,'tcTorax':tcTorax,'tcAbd':tcAbdomen,'petCt':petTC,'mts':mtsRadio,'suv':suvEstati,
 						 	  'marTumFecha':marcaTuFecha,'ceaAumentado':ceaAument,'ca19':caAument,'tnmT':tnmValT,'tnmN':tnmValN,'tnmM':tnmValM,
@@ -3624,6 +3656,40 @@ jQuery("#addEstadificacionForm").validate({
 });  
 
 
+function loadAnatomiaPatalogiaForm(consultaId){
+	//jQuery("#dialogLoading").dialog("open");
+	jQuery.ajax({
+	     url: '<c:url value="/loadAnaPatologica.htm" />',
+	     type: "GET",
+	     dataType: "json",
+	     contentType: "application/json",
+	     data: {'idConsulta':consultaId}, 
+	     success: function(anatomiaPatalogia){   	    
+	    	if(anatomiaPatalogia!=null){
+	    		
+	    		jQuery("#nroBiopsia").val(anatomiaPatalogia.biopsia);
+	    		jQuery("input[name=sugesIMS][value="+anatomiaPatalogia.apSugestiva+"]").click().attr('checked', true);	
+	 			jQuery("#fechaBiopsia").val(anatomiaPatalogia.fechaDiag);
+	 			jQuery("input[name=ihqBiopsiaRadio][value="+anatomiaPatalogia.ihq+"]").click().attr('checked', true);	
+	    		jQuery("#diagHisto").val(anatomiaPatalogia.diagHistologico);
+	    		
+	    		var expresionConserv = anatomiaPatalogia.expresionConserv.split("//");
+	    		jQuery("input[name=expConservadaRadio][value="+expresionConserv[0]+"]").click().attr('checked', true);
+	    		jQuery("#notaExpConservada").val(expresionConserv[1]); 		
+	    		jQuery("#diagnostiWhere").val(anatomiaPatalogia.diagnosticadoEn);
+	    		
+	    		jQuery("#diagnostiWhere").val(anatomiaPatalogia.diagnosticadoEn);
+	    		jQuery("input[name=gradoDiferRadio][value="+anatomiaPatalogia.gradoDif+"]").click().attr('checked', true);
+	    		jQuery("input[name=cirugiaHayRadio][value="+anatomiaPatalogia.baseDiagCirugia+"]").click().attr('checked', true);
+	    		jQuery("#otroBaseDiag").val(anatomiaPatalogia.baseDiag);
+	    		
+		  		ANATOMIAPATALOGIA_ID = anatomiaPatalogia.idanotomia;
+	    	}
+	       // jQuery("#dialogLoading").dialog("close");	        
+	     }
+	   }); 
+}
+
 
 jQuery("#addAnatomiaPatalogiaForm").validate({
 	focusInvalid:false,
@@ -3646,8 +3712,8 @@ jQuery("#addAnatomiaPatalogiaForm").validate({
 		var gradoDiferRadio = jQuery("input[name=gradoDiferRadio]:checked").val();
 		var cirugiaHayRadio = jQuery("input[name=cirugiaHayRadio]:checked").val();
 		var otroBaseDiag = jQuery("#otroBaseDiag").val();
-		
-		var anaPatologica = {'idConsulta':CONSULTA_ID,'biopsia':nroBiopsia,'fechaDiag':fechaBiopsia,'diagHistologico':diagHisto,'apSugestiva':sugesIMS,'ihq':ihqBiopsiaRadio,
+				
+		var anaPatologica = {'idConsulta':CONSULTA_ID,'idanotomia':ANATOMIAPATALOGIA_ID,'biopsia':nroBiopsia,'fechaDiag':fechaBiopsia,'diagHistologico':diagHisto,'apSugestiva':sugesIMS,'ihq':ihqBiopsiaRadio,
 						 	  'expresionConserv':expConservadaRadio+"//"+notaExpConservada,'diagnosticadoEn':diagnostiWhere,'gradoDif':gradoDiferRadio,
 						 	  'baseDiagCirugia':cirugiaHayRadio,'baseDiag':otroBaseDiag};		  		 
 		 
