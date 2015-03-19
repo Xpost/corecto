@@ -2673,6 +2673,8 @@ var EVACLINICA_ID = -1;
 var EXAPROCTOLOGICO_ID = -1;
 var ESTADIFICACION_ID = -1;
 var ANATOMIAPATALOGIA_ID = -1;
+var TRATAMIENTO_ID = -1;
+var TRATAMIENTO_NEO_ID = -1;
 jQuery(function() {
 	$('#menuNav').find("li").removeClass("active");
 	$('#menuItemConsulta').addClass("active");
@@ -2729,6 +2731,8 @@ jQuery(function() {
 	        	  loadExaProctoForm(CONSULTA_ID);
 	        	  loadEstadificacion(CONSULTA_ID);
 	        	  loadAnatomiaPatalogiaForm(CONSULTA_ID);
+	        	  loadTratamientoForm(CONSULTA_ID);
+	        	  loadTratamientoNeoAdForm(CONSULTA_ID);
 	          }
 	          else{
 	        	  jQuery("#dialogErrorPaciente").dialog("open");
@@ -3733,9 +3737,48 @@ jQuery("#addAnatomiaPatalogiaForm").validate({
      	 	}           
          }
        });  		
-	}
-         
+	}    
 });  
+
+function loadTratamientoForm(consultaId){
+	//jQuery("#dialogLoading").dialog("open");
+	jQuery.ajax({
+	     url: '<c:url value="/loadTratamiento.htm" />',
+	     type: "GET",
+	     dataType: "json",
+	     contentType: "application/json",
+	     data: {'idConsulta':consultaId}, 
+	     success: function(tratamiento){   	    
+	    	if(tratamiento != null){
+	    		
+	    		var udaondoRadio = tratamiento.udaondo.split("//");
+	    		jQuery("input[name=udaOndoRadio][value="+udaondoRadio[0]+"]").click().attr('checked', true);	
+	    		jQuery("#udaOndoOtro").val(udaondoRadio[1]);
+	    		
+	    		jQuery("input[name=cirugiaTrataRadio][value="+tratamiento.cirugia+"]").click().attr('checked', true);	
+	    		
+	    		var quimioterapiaInducRadio = tratamiento.quimioterapiaInduc.split("//");
+	    		jQuery("input[name=quimioInduccion][value="+quimioterapiaInducRadio[0]+"]").click().attr('checked', true);	
+	    		jQuery("#quimioInduccionOtro").val(quimioterapiaInducRadio[1]);
+ 				jQuery("#quimioInduccionCiclos").val(tratamiento.quimioteInducNroCiclos);
+ 				
+ 				
+ 				
+ 				var quimioOtraInduRadio = tratamiento.quimioOtra.split("//");
+	    		jQuery("input[name=quimioradioInduRadio][value="+quimioOtraInduRadio[0]+"]").click().attr('checked', true);	
+	    		jQuery("#quimioradioInduRadioOtro").val(quimioOtraInduRadio[1]);
+	    		
+				var quimioterapiaInterRadio = tratamiento.quimioterapiaInter.split("//");
+	    		jQuery("input[name=quimioIntervalRadio][value="+quimioterapiaInterRadio[0]+"]").click().attr('checked', true);	
+	    		jQuery("#quimioIntervalRadioOtro").val(quimioterapiaInterRadio[1]);
+				jQuery("#quimioIntervalCiclos").val(tratamiento.quimioteInterNroCiclos);	
+	    				
+	    		TRATAMIENTO_ID = tratamiento.idtratamiento;
+	    	}
+	       // jQuery("#dialogLoading").dialog("close");	        
+	     }
+	   }); 
+};
 
 jQuery("#addtratamientoForm").validate({
 	focusInvalid:false,
@@ -3760,8 +3803,8 @@ jQuery("#addtratamientoForm").validate({
 		var quimioIntervalRadioOtro = jQuery("#quimioIntervalRadioOtro").val();
 		var quimioIntervalCiclos = jQuery("#quimioIntervalCiclos").val();	
 		
-
-		var tratamiento = {'idConsulta':CONSULTA_ID,'udaondo':udaOndoRadio+"//"+udaOndoOtro,'cirugia':cirugiaTrataRadio,'quimioterapiaInduc':quimioInduccion+"//"+quimioInduccionOtro,
+		
+		var tratamiento = {'idConsulta':CONSULTA_ID,'idtratamiento':TRATAMIENTO_ID,'udaondo':udaOndoRadio+"//"+udaOndoOtro,'cirugia':cirugiaTrataRadio,'quimioterapiaInduc':quimioInduccion+"//"+quimioInduccionOtro,
 							 'quimioteInducNroCiclos':quimioInduccionCiclos,'quimioOtra':quimioradioInduRadio+"//"+quimioradioInduRadioOtro, 
 							 'quimioterapiaInter':quimioIntervalRadio+"//"+quimioIntervalRadioOtro,'quimioteInterNroCiclos':quimioIntervalCiclos};		  		 
 		 
@@ -3784,6 +3827,46 @@ jQuery("#addtratamientoForm").validate({
 	}
          
 });  
+
+function loadTratamientoNeoAdForm(consultaId){
+	//jQuery("#dialogLoading").dialog("open");
+	jQuery.ajax({
+	     url: '<c:url value="/loadDescTrataNeoadyuante.htm" />',
+	     type: "GET",
+	     dataType: "json",
+	     contentType: "application/json",
+	     data: {'idConsulta':consultaId}, 
+	     success: function(tratamientoNeo){   	    
+	    	if(tratamientoNeo != null){
+	    		
+// 	    		var udaondoRadio = tratamiento.udaondo.split("//");
+// 	    		jQuery("input[name=udaOndoRadio][value="+udaondoRadio[0]+"]").click().attr('checked', true);	
+// 	    		jQuery("#udaOndoOtro").val(udaondoRadio[1]);
+	    		
+// 	    		jQuery("input[name=cirugiaTrataRadio][value="+tratamiento.cirugia+"]").click().attr('checked', true);	
+	    		
+// 	    		var quimioterapiaInducRadio = tratamiento.quimioterapiaInduc.split("//");
+// 	    		jQuery("input[name=quimioInduccion][value="+quimioterapiaInducRadio[0]+"]").click().attr('checked', true);	
+// 	    		jQuery("#quimioInduccionOtro").val(quimioterapiaInducRadio[1]);
+//  				jQuery("#quimioInduccionCiclos").val(tratamiento.quimioteInducNroCiclos);
+ 				
+ 				
+ 				
+//  				var quimioOtraInduRadio = tratamiento.quimioOtra.split("//");
+// 	    		jQuery("input[name=quimioradioInduRadio][value="+quimioOtraInduRadio[0]+"]").click().attr('checked', true);	
+// 	    		jQuery("#quimioradioInduRadioOtro").val(quimioOtraInduRadio[1]);
+	    		
+// 				var quimioterapiaInterRadio = tratamiento.quimioterapiaInter.split("//");
+// 	    		jQuery("input[name=quimioIntervalRadio][value="+quimioterapiaInterRadio[0]+"]").click().attr('checked', true);	
+// 	    		jQuery("#quimioIntervalRadioOtro").val(quimioterapiaInterRadio[1]);
+// 				jQuery("#quimioIntervalCiclos").val(tratamiento.quimioteInterNroCiclos);	
+	    				
+	    		TRATAMIENTO_NEO_ID = tratamientoNeo.iddesctrataneo;
+	    	}
+	       // jQuery("#dialogLoading").dialog("close");	        
+	     }
+	   }); 
+};
 
 
 jQuery("#addTratamientoNeoAdForm").validate({
