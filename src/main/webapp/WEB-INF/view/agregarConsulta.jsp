@@ -2153,7 +2153,7 @@
 										Si
 									</label>
 								</div>
-								<div class="span8" style="padding-bottom:1.1em;display: none" id="divEEesfinter">									
+								<div class="span8" style="padding-bottom:1.1em;display: none" id="divEEesfinterPost">									
 								<label for="esfinterMedidaRadio"><strong>Medida</strong></label>
 								    <label class="radio inline">
 									    <input type="radio" name="esfinterMedidaRadio" id="opcion1" value="0" checked="checked">
@@ -2674,7 +2674,8 @@ var EXAPROCTOLOGICO_ID = -1;
 var ESTADIFICACION_ID = -1;
 var ANATOMIAPATALOGIA_ID = -1;
 var TRATAMIENTO_ID = -1;
-var TRATAMIENTO_NEO_ID = -1;
+var DESC_TRATAMIENTO_NEO_ID = -1;
+var RESP_TRATAMIENTO_NEO_ID = -1;
 jQuery(function() {
 	$('#menuNav').find("li").removeClass("active");
 	$('#menuItemConsulta').addClass("active");
@@ -2733,6 +2734,7 @@ jQuery(function() {
 	        	  loadAnatomiaPatalogiaForm(CONSULTA_ID);
 	        	  loadTratamientoForm(CONSULTA_ID);
 	        	  loadTratamientoNeoAdForm(CONSULTA_ID);
+	        	  loadRespuestaNeoadyuante(CONSULTA_ID);
 	          }
 	          else{
 	        	  jQuery("#dialogErrorPaciente").dialog("open");
@@ -2823,7 +2825,7 @@ jQuery(function() {
 			$("#divEEPost,#divEEPost1").show();
 		}
 		else{
-			$("#divEEPost,#divEEPost1").hide();
+			$("#divEEPost,#divEEPost1,#divEEesfinterPost").hide();
 		}
 	});
 	
@@ -2844,6 +2846,14 @@ jQuery(function() {
 			$("#divEEesfinter").hide();
 		}
 	});
+	$("input[name=eeesfinterRadio]").click(function(){
+		if($(this).attr('id')=="opcion2"){
+			$("#divEEesfinterPost").show();
+		}
+		else{
+			$("#divEEesfinterPost").hide();
+		}
+	});
 	$("input[name=radioTera]").click(function(){
 		if($(this).attr('id')=="opcion2"){
 			$("#divRadioTerapia").show();
@@ -2852,7 +2862,7 @@ jQuery(function() {
 			$("#divRadioTerapia").hide();
 		}
 	});	
-	$("input[name=suspenRadio]").click(function(){
+	$("input[name=suspenRadioTerRadio]").click(function(){
 		if($(this).attr('id')=="opcion2"){
 			$("#suspenDiv").show();
 		}
@@ -3836,32 +3846,30 @@ function loadTratamientoNeoAdForm(consultaId){
 	     dataType: "json",
 	     contentType: "application/json",
 	     data: {'idConsulta':consultaId}, 
-	     success: function(tratamientoNeo){   	    
-	    	if(tratamientoNeo != null){
+	     success: function(descTratamientoNeo){   	    
+	    	if(descTratamientoNeo != null){
 	    		
-// 	    		var udaondoRadio = tratamiento.udaondo.split("//");
-// 	    		jQuery("input[name=udaOndoRadio][value="+udaondoRadio[0]+"]").click().attr('checked', true);	
-// 	    		jQuery("#udaOndoOtro").val(udaondoRadio[1]);
 	    		
-// 	    		jQuery("input[name=cirugiaTrataRadio][value="+tratamiento.cirugia+"]").click().attr('checked', true);	
+	    		jQuery("input[name=radioTera][value="+descTratamientoNeo.radioterapia+"]").click().attr('checked', true);
+	    		jQuery("#dosisTotalRadioTer").val(descTratamientoNeo.radioDosis);
+	    		jQuery("#fechaInicioRadioTer").val(descTratamientoNeo.radioFechaInicio);
+	    		jQuery("#fechaFinRadioTer").val(descTratamientoNeo.radioFechaFinal);
 	    		
-// 	    		var quimioterapiaInducRadio = tratamiento.quimioterapiaInduc.split("//");
-// 	    		jQuery("input[name=quimioInduccion][value="+quimioterapiaInducRadio[0]+"]").click().attr('checked', true);	
-// 	    		jQuery("#quimioInduccionOtro").val(quimioterapiaInducRadio[1]);
-//  				jQuery("#quimioInduccionCiclos").val(tratamiento.quimioteInducNroCiclos);
- 				
- 				
- 				
-//  				var quimioOtraInduRadio = tratamiento.quimioOtra.split("//");
-// 	    		jQuery("input[name=quimioradioInduRadio][value="+quimioOtraInduRadio[0]+"]").click().attr('checked', true);	
-// 	    		jQuery("#quimioradioInduRadioOtro").val(quimioOtraInduRadio[1]);
+	    		var radioSuspendio = descTratamientoNeo.radioSuspendio.split("//");	    		
+	    		jQuery("input[name=suspenRadioTerRadio][value="+radioSuspendio[0]+"]").click().attr('checked', true);
+	    		jQuery("#diasSuspenRadioTer").val(radioSuspendio[1]);
 	    		
-// 				var quimioterapiaInterRadio = tratamiento.quimioterapiaInter.split("//");
-// 	    		jQuery("input[name=quimioIntervalRadio][value="+quimioterapiaInterRadio[0]+"]").click().attr('checked', true);	
-// 	    		jQuery("#quimioIntervalRadioOtro").val(quimioterapiaInterRadio[1]);
-// 				jQuery("#quimioIntervalCiclos").val(tratamiento.quimioteInterNroCiclos);	
-	    				
-	    		TRATAMIENTO_NEO_ID = tratamientoNeo.iddesctrataneo;
+	    		var quimioEsquemaRadio = descTratamientoNeo.quimioEsquema.split("//");	   
+	    		jQuery("input[name=quimioRadio][value="+quimioEsquemaRadio[0]+"]").click().attr('checked', true);
+	    		jQuery("#quimioEsquema").val(quimioEsquemaRadio[1]);
+	    		jQuery("#quimioNroCiclos").val(descTratamientoNeo.quimioNroCiclos);
+	    		jQuery("#fechaInicioQuimio").val(descTratamientoNeo.quimioFechaInicio);
+	    		jQuery("#fechaFinQuimio").val(descTratamientoNeo.quimioFechaFinal);
+	    		
+	    		jQuery("input[name=toxiRadio][value="+descTratamientoNeo.toxicidad+"]").click().attr('checked', true);
+	    		jQuery("input[name=gradoIII][value="+descTratamientoNeo.toxGrado+"]").click().attr('checked', true);
+	    		
+	    		DESC_TRATAMIENTO_NEO_ID = descTratamientoNeo.iddesctrataneo;
 	    	}
 	       // jQuery("#dialogLoading").dialog("close");	        
 	     }
@@ -3893,7 +3901,7 @@ jQuery("#addTratamientoNeoAdForm").validate({
 		var toxiRadio = jQuery("input[name=toxiRadio]:checked").val();
 		var gradoIII = jQuery("input[name=gradoIII]:checked").val();
 
-		var descTrataNeoadyuante = {'idConsulta':CONSULTA_ID,'radioterapia':radioTera,'radioDosis':dosisTotalRadioTer,'radioFechaInicio':fechaInicioRadioTer,
+		var descTrataNeoadyuante = {'idConsulta':CONSULTA_ID, 'iddesctrataneo':DESC_TRATAMIENTO_NEO_ID, 'radioterapia':radioTera,'radioDosis':dosisTotalRadioTer,'radioFechaInicio':fechaInicioRadioTer,
 							 'radioFechaFinal':fechaFinRadioTer,'radioSuspendio':suspenRadioTerRadio+"//"+diasSuspenRadioTer, 
 							 'quimioEsquema':quimioRadio+"//"+quimioEsquema,'quimioNroCiclos':quimioNroCiclos,'quimioNroCiclos':quimioNroCiclos,
 							 'quimioFechaInicio':fechaInicioQuimio,'quimioFechaFinal':fechaFinQuimio,'toxicidad':toxiRadio,'toxGrado':gradoIII};		  		 
@@ -3919,6 +3927,75 @@ jQuery("#addTratamientoNeoAdForm").validate({
          
 });  
 
+function loadRespuestaNeoadyuante(consultaId){
+	//jQuery("#dialogLoading").dialog("open");
+	jQuery.ajax({
+	     url: '<c:url value="/loadRespuestaNeoadyuante.htm" />',
+	     type: "GET",
+	     dataType: "json",
+	     contentType: "application/json",
+	     data: {'idConsulta':consultaId}, 
+	     success: function(respNeoadyuante){   	    
+	    	if(respNeoadyuante != null){
+	    		
+	    		jQuery("#centroPostTrata").val(respNeoadyuante.rmCentro);	
+	    		jQuery("#fechaPostTrata").val(respNeoadyuante.rmFecha);	    		
+	    		jQuery("#distanciaPostTrata").val(respNeoadyuante.rmDistEsfinter);	    		
+	    		jQuery("input[name=distMargenPostTrataRadio][value="+respNeoadyuante.rmDistAnal+"]").click().attr('checked', true);
+	    		jQuery("#alturaPostTrataRadio").val(respNeoadyuante.rmAltura);
+	    		
+	    		var rmTumorRadio = respNeoadyuante.rmTumor.split("//");
+	    		jQuery("input[name=tumorPostTrataRadio][value="+rmTumorRadio[0]+"]").click().attr('checked', true);
+	    		jQuery("input[name=tumorPostTrataNRadio][value="+rmTumorRadio[1]+"]").click().attr('checked', true);
+	    		
+	    		jQuery("input[name=crmPostTrataRadio][value="+respNeoadyuante.crm+"]").click().attr('checked', true);
+	    		jQuery("input[name=emviPostTrataRadio][value="+respNeoadyuante.emvi+"]").click().attr('checked', true);
+	    		
+	    		jQuery("input[name=depoSatiRadio][value="+respNeoadyuante.depSatelites+"]").click().attr('checked', true);	    		
+	    		jQuery("input[name=estaRInteriorRadio][value="+respNeoadyuante.estadifTumor+"]").click().attr('checked', true);	    		
+	    		jQuery("input[name=gradoRegresionRadio][value="+respNeoadyuante.gradoRegre+"]").click().attr('checked', true);
+	    		
+	    		jQuery("input[name=inguinalesRadio][value="+respNeoadyuante.gangliosImgui+"]").click().attr('checked', true);
+	    		jQuery("input[name=gaLateRadio][value="+respNeoadyuante.gangliosLateral+"]").click().attr('checked', true);
+	    		jQuery("input[name=infiltraEsPostRadio][value="+respNeoadyuante.infiltraEsf+"]").click().attr('checked', true);
+	    		
+	    		jQuery("input[name=evaPostRadio][value="+respNeoadyuante.evaRespuesta+"]").click().attr('checked', true);
+	    		
+	    		var tactoRectalRadio = respNeoadyuante.tactoRectal.split("//"); 
+	    		jQuery("input[name=movilRectalRadio][value="+tactoRectalRadio[0]+"]").click().attr('checked', true);
+	    		jQuery("input[name=fijoRectalRadio][value="+tactoRectalRadio[1]+"]").click().attr('checked', true);
+	    		jQuery("input[name=esfinterPostRectalRadio][value="+respNeoadyuante.exaInfiltraEsf+"]").click().attr('checked', true);
+	    		
+	    		var rscRadio = respNeoadyuante.rsc.split("//"); 
+	    		jQuery("input[name=rscPostPresenteRadio][value="+rscRadio[0]+"]").click().attr('checked', true);
+	    		jQuery("input[name=rscesfinterRectalRadio][value="+rscRadio[1]+"]").click().attr('checked', true);
+	    		jQuery("#alturaRSC").val(respNeoadyuante.rscAltura);
+	    		jQuery("#fechaRSC").val(respNeoadyuante.rscFecha);
+	    		
+	    		var vccRadio = respNeoadyuante.vcc.split("//"); 
+	    		jQuery("input[name=vccPresentePostRadio][value="+vccRadio[0]+"]").click().attr('checked', true);
+	    		jQuery("input[name=tipoVCCRadio][value="+vccRadio[1]+"]").click().attr('checked', true);
+	    		jQuery("input[name=vccMedidaRadio][value="+vccRadio[2]+"]").click().attr('checked', true);
+	    		jQuery("#vccAlturaPost").val(respNeoadyuante.vccAltura);
+	    		jQuery("#vccFechaPost").val(respNeoadyuante.vccFecha);
+	    		
+	    		var eeRadio = respNeoadyuante.ee.split("//"); 
+	    		jQuery("input[name=eePresenteRadio][value="+eeRadio[0]+"]").click().attr('checked', true);
+	    		jQuery("input[name=eeTumorRadio][value="+eeRadio[1]+"]").click().attr('checked', true);
+	    		jQuery("input[name=eeTumorNRadio][value="+eeRadio[2]+"]").click().attr('checked', true);	    		    		
+	    		
+	    		var eeInfiltraEsfRadio = respNeoadyuante.eeInfiltraEsf.split("//"); 
+	    		jQuery("input[name=eeesfinterRadio][value="+eeInfiltraEsfRadio[0]+"]").click().attr('checked', true);	    		
+	    		jQuery("input[name=esfinterMedidaRadio][value="+eeInfiltraEsfRadio[1]+"]").click().attr('checked', true);
+	    		jQuery("#eePostFecha").val(respNeoadyuante.eeFecha);
+	    		
+	    		
+	    		RESP_TRATAMIENTO_NEO_ID = respNeoadyuante.idrespuestatrataneo;
+	    	}
+	       // jQuery("#dialogLoading").dialog("close");	        
+	     }
+	   }); 
+};
 
 function addRespuestaNeoadyuante() { 	
 			
@@ -3949,18 +4026,17 @@ function addRespuestaNeoadyuante() {
 		var vccPresentePostRadio = jQuery("input[name=vccPresentePostRadio]:checked").val();
 		var tipoVCCRadio = jQuery("input[name=tipoVCCRadio]:checked").val();
 		var vccMedidaRadio = jQuery("input[name=vccMedidaRadio]:checked").val();
-		var vccAlturaPost = jQuery("input[name=vccAlturaPost]:checked").val();
-		var vccFechaPost = jQuery("input[name=vccFechaPost]:checked").val();
+		var vccAlturaPost = jQuery("#vccAlturaPost").val();
+		var vccFechaPost = jQuery("#vccFechaPost").val();
 		var eePresenteRadio = jQuery("input[name=eePresenteRadio]:checked").val();
 		
 		var eeTumorRadio = jQuery("input[name=eeTumorRadio]:checked").val();
 		var eeTumorNRadio = jQuery("input[name=eeTumorNRadio]:checked").val();
 		var eeesfinterRadio = jQuery("input[name=eeesfinterRadio]:checked").val();
 		var esfinterMedidaRadio = jQuery("input[name=esfinterMedidaRadio]:checked").val();
-		var eePostFecha = jQuery("#eePostFecha").val();
-	
-
-		var respuestaNeoadyuante = {'idConsulta':CONSULTA_ID,'rmFecha':fechaPostTrata,'rmCentro':centroPostTrata,'rmDistEsfinter':distanciaPostTrata,
+		var eePostFecha = jQuery("#eePostFecha").val();	
+		 
+		var respuestaNeoadyuante = {'idConsulta':CONSULTA_ID,'idrespuestatrataneo':RESP_TRATAMIENTO_NEO_ID,'rmFecha':fechaPostTrata,'rmCentro':centroPostTrata,'rmDistEsfinter':distanciaPostTrata,
 							 'rmDistAnal':distMargenPostTrataRadio,'rmAltura':alturaPostTrataRadio, "rmTumor":tumorPostTrataRadio+"//"+tumorPostTrataNRadio,
 							 'crm':crmPostTrataRadio,'emvi':emviPostTrataRadio,'depSatelites':depoSatiRadio,
 							 'gangliosImgui':inguinalesRadio,'gangliosLateral':gaLateRadio,'infiltraEsf':infiltraEsPostRadio,'estadifTumor':estaRInteriorRadio,
