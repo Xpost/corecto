@@ -87,6 +87,9 @@ public class TratamientoAdyuDAOImpl extends HibernateDaoSupport implements Trata
 
         listResult = (List<TratamientoAdyu>) this.getHibernateTemplate().execute(callback);
         LOG.info("Cantidad:"+listResult.size());
+		if(listResult.isEmpty()){
+			return null;
+		}
         return listResult.get(0);
     }
     

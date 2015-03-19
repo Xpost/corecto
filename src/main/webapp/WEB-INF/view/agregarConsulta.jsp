@@ -2606,9 +2606,13 @@
 											<input type="text" class="span7" alt="dateP"  placeholder="dd/MM/yyyy"  id="dosisTRataFechaFin"  >		
 									</div>	
 									<div class="span2">
-										<label for=""><strong>Suspendio</strong></label>
+										<label for=""><strong>Suspendio</strong></label>					
+								     	<label class="radio inline">
+				    			 		<input type="radio" name="suspendioYesRadio" id="opcion1" value="0" >
+											No
+										</label>	
 			 						   <label class="radio inline">
-									    <input type="checkbox" name="suspendioYesRadio" id="opcion2" value="1">
+									    <input type="radio" name="suspendioYesRadio" id="opcion2" value="1">
 										Si
 										</label>
 										<div id="suspendioYesRadioTeDiv" class="radio inline" style="padding-bottom:1.1em;display: none" >
@@ -2913,7 +2917,7 @@ jQuery(function() {
 	});	
 	
 	$("input[name=suspendioYesRadio]").click(function(){
-		if($(this).is(':checked')){
+		if($(this).attr('id')=="opcion2"){
 			$("#suspendioYesRadioTeDiv").show();
 		}
 		else{
@@ -4270,9 +4274,7 @@ function loadTrataAdyuForm(consultaId){
  	    		jQuery("#dosisTRataFechaFin").val(tratamientoAdyu.radioFechaFinal);
 
  	    		var suspendioRadio = tratamientoAdyu.suspendio.split("//");	
- 	    		if(suspendioRadio[0] !=0){
- 	    			jQuery("input[name=suspendioYesRadio][value="+suspendioRadio[0]+"]").attr("check",true)[0].click();
- 	    		}
+   				jQuery("input[name=suspendioYesRadio][value="+suspendioRadio[0]+"]").click().attr('checked', true); 	    		
 	    		jQuery("#suspenTrataDias").val(suspendioRadio[1]);
 	    		jQuery("#comentCTrataAdyu").val(tratamientoAdyu.notas);
 	    			    		
@@ -4303,7 +4305,6 @@ jQuery("#addTrataAdyuForm").validate({
 		var dosisTRataFechaInicio = jQuery("#dosisTRataFechaInicio").val();
 		var dosisTRataFechaFin = jQuery("#dosisTRataFechaFin").val();	
 		var suspendioYesRadio = jQuery("input[name=suspendioYesRadio]:checked").val();
-		suspendioYesRadio = suspendioYesRadio != null ? suspendioYesRadio : 0;
 		var suspenTrataDias = jQuery("#suspenTrataDias").val();			
 		if(suspendioYesRadio == 0){
 			suspenTrataDias="";
