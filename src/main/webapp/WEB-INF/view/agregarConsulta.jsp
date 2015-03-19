@@ -2608,7 +2608,7 @@
 									<div class="span2">
 										<label for=""><strong>Suspendio</strong></label>
 			 						   <label class="radio inline">
-									    <input type="radio" name="suspendioYesRadio" id="opcion2" value="1">
+									    <input type="checkbox" name="suspendioYesRadio" id="opcion2" value="1">
 										Si
 										</label>
 										<div id="suspendioYesRadioTeDiv" class="radio inline" style="padding-bottom:1.1em;display: none" >
@@ -2676,6 +2676,10 @@ var ANATOMIAPATALOGIA_ID = -1;
 var TRATAMIENTO_ID = -1;
 var DESC_TRATAMIENTO_NEO_ID = -1;
 var RESP_TRATAMIENTO_NEO_ID = -1;
+var CONDUCTAPOSTNEO_ID = -1;
+var ANATOMIAPOST_ID = -1;
+var TRATAADYU_ID = -1;
+
 jQuery(function() {
 	$('#menuNav').find("li").removeClass("active");
 	$('#menuItemConsulta').addClass("active");
@@ -2735,6 +2739,9 @@ jQuery(function() {
 	        	  loadTratamientoForm(CONSULTA_ID);
 	        	  loadTratamientoNeoAdForm(CONSULTA_ID);
 	        	  loadRespuestaNeoadyuante(CONSULTA_ID);
+	        	  loadConductaPostNeo(CONSULTA_ID);
+	        	  loadAnatomiaPostForm(CONSULTA_ID);
+	        	  loadTrataAdyuForm(CONSULTA_ID)
 	          }
 	          else{
 	        	  jQuery("#dialogErrorPaciente").dialog("open");
@@ -2906,7 +2913,7 @@ jQuery(function() {
 	});	
 	
 	$("input[name=suspendioYesRadio]").click(function(){
-		if($(this).attr('id')=="opcion2"){
+		if($(this).is(':checked')){
 			$("#suspendioYesRadioTeDiv").show();
 		}
 		else{
@@ -4065,6 +4072,37 @@ function addRespuestaNeoadyuante() {
 }
        
 
+function loadConductaPostNeo(consultaId){
+	//jQuery("#dialogLoading").dialog("open");
+	jQuery.ajax({
+	     url: '<c:url value="/loadConductaPostNeoadyuante.htm" />',
+	     type: "GET",
+	     dataType: "json",
+	     contentType: "application/json",
+	     data: {'idConsulta':consultaId}, 
+	     success: function(conductapostneo){   	    
+	    	if(conductapostneo != null){
+	    		
+	    		var cirugiaRadio = conductapostneo.cirugia.split("//");
+	    		jQuery("input[name=ciruNeoRadio][value="+cirugiaRadio[0]+"]").click().attr('checked', true);
+	    		jQuery("input[name=prodCiruRadio][value="+cirugiaRadio[1]+"]").click().attr('checked', true);
+	    		var milesCilindricoRadio = conductapostneo.milesCilindrico.split("//");
+	    		jQuery("input[name=milesCiliRadio][value="+milesCilindricoRadio[0]+"]").click().attr('checked', true);
+	    		jQuery("#milesCiliOtro").val(milesCilindricoRadio[1]);
+
+	    		jQuery("input[name=urgenciaRadio][value="+conductapostneo.urgencia+"]").click().attr('checked', true);
+	    		jQuery("#urgenciaFecha").val(conductapostneo.urgenciaFecha);
+	    		
+	    		jQuery("#cirujaName").val(conductapostneo.cirujano);
+	    		jQuery("input[name=waitSeeRadio][value="+conductapostneo.waitAndSee+"]").click().attr('checked', true);
+	    		jQuery("#fechaInicioConducta").val(conductapostneo.fechaInicio);	    	
+	    		
+	    		CONDUCTAPOSTNEO_ID = conductapostneo.idconductapostneo;
+	    	}
+	       // jQuery("#dialogLoading").dialog("close");	        
+	     }
+	   }); 
+};
 
 
  function addConductaPostNeo() { 	
@@ -4081,7 +4119,7 @@ function addRespuestaNeoadyuante() {
 	
 	
 
-		var conductaPostNeo = {'idConsulta':CONSULTA_ID,'cirugia':ciruNeoRadio+"//"+prodCiruRadio,'milesCilindrico':milesCiliRadio+"//"+milesCiliOtro,'urgencia':urgenciaRadio,
+		var conductaPostNeo = {'idConsulta':CONSULTA_ID,'idconductapostneo':CONDUCTAPOSTNEO_ID,'cirugia':ciruNeoRadio+"//"+prodCiruRadio,'milesCilindrico':milesCiliRadio+"//"+milesCiliOtro,'urgencia':urgenciaRadio,
 							 'urgenciaFecha':urgenciaFecha,'cirujano':cirujaName, "waitAndSee":waitSeeRadio,
 							 'fechaInicio':fechaInicioConducta};		  		 
 		 
@@ -4106,7 +4144,51 @@ function addRespuestaNeoadyuante() {
 
 
 
-
+ function loadAnatomiaPostForm(consultaId){
+		//jQuery("#dialogLoading").dialog("open");
+		jQuery.ajax({
+		     url: '<c:url value="/loadAnaPatologicaPost.htm" />',
+		     type: "GET",
+		     dataType: "json",
+		     contentType: "application/json",
+		     data: {'idConsulta':consultaId}, 
+		     success: function(anatomiaPost){   	    
+		    	if(anatomiaPost != null){
+		    		
+		    		jQuery("#nroBiopsiaPost").val(anatomiaPost.nroBiopsia);
+		    		jQuery("#fechaBiopsiaPost").val(anatomiaPost.fechaAp);
+		    		jQuery("#diagBiopsiaPost").val(anatomiaPost.diagHisto);		
+		    		
+		    		jQuery("input[name=gradoDiferPostRadio][value="+anatomiaPost.gradoDif+"]").click().attr('checked', true);
+		    		var tumorRadio = anatomiaPost.tumor.split("//");
+		    		jQuery("input[name=tumorAnatPostRadio][value="+tumorRadio[0]+"]").click().attr('checked', true);
+		    		jQuery("input[name=tumorAnatPostNRadio][value="+tumorRadio[1]+"]").click().attr('checked', true);
+		    		
+		    		jQuery("#gangliosResaPost").val(anatomiaPost.ganResecados);	
+		    		jQuery("#gangliosPosiPost").val(anatomiaPost.ganPositivos);	
+	
+		    		jQuery("input[name=invaVascularRadio][value="+anatomiaPost.invVascular+"]").click().attr('checked', true);
+		    		jQuery("input[name=invaPeriRadio][value="+anatomiaPost.invPeri+"]").click().attr('checked', true);
+		    		jQuery("input[name=linfaTicaRadio][value="+anatomiaPost.linfa+"]").click().attr('checked', true);
+		    		jQuery("input[name=buddTomoralRadio][value="+anatomiaPost.buddingTumoral+"]").click().attr('checked', true);
+		    		jQuery("input[name=pushBorderRadio][value="+anatomiaPost.pushingBorder+"]").click().attr('checked', true);
+		    		
+		 			jQuery("#gradoRegresionDvorak").val(anatomiaPost.gradoRegresion);
+					jQuery("#capVal").val(anatomiaPost.cap);
+					
+					jQuery("input[name=rtaCompletaRadio][value="+anatomiaPost.rtaComPato+"]").click().attr('checked', true);
+					jQuery("input[name=ihqRadio][value="+anatomiaPost.ihq+"]").click().attr('checked', true);
+					var krasRadio = anatomiaPost.kras.split("//");
+					jQuery("input[name=krasRadio][value="+krasRadio[0]+"]").click().attr('checked', true);
+					jQuery("input[name=tipoKrasRadio][value="+krasRadio[1]+"]").click().attr('checked', true);
+					
+		    		
+		    		ANATOMIAPOST_ID = anatomiaPost.idanatomiapatopost;
+		    	}
+		       // jQuery("#dialogLoading").dialog("close");	        
+		     }
+		   }); 
+	};
 
 jQuery("#addAnatomiaPostForm").validate({
 	focusInvalid:false,
@@ -4138,7 +4220,7 @@ jQuery("#addAnatomiaPostForm").validate({
 		var krasRadio = jQuery("input[name=krasRadio]:checked").val();
 		var tipoKrasRadio = jQuery("input[name=tipoKrasRadio]:checked").val();
 		
-		var anaPatologica = {'idConsulta':CONSULTA_ID,'nroBiopsia':nroBiopsiaPost,'fechaAp':fechaBiopsiaPost,'diagHisto':diagBiopsiaPost,
+		var anaPatologica = {'idConsulta':CONSULTA_ID,'idanatomiapatopost':ANATOMIAPOST_ID,'nroBiopsia':nroBiopsiaPost,'fechaAp':fechaBiopsiaPost,'diagHisto':diagBiopsiaPost,
 							 'gradoDif':gradoDiferPostRadio,'tumor':tumorAnatPostRadio+"//"+tumorAnatPostNRadio, "ganResecados":gangliosResaPost,'ganPositivos':gangliosPosiPost,
 							 'invVascular':invaVascularRadio,'invPeri':invaPeriRadio,'linfa':linfaTicaRadio,'buddingTumoral':buddTomoralRadio,
 							 'pushingBorder':pushBorderRadio,'gradoRegresion':gradoRegresionDvorak,'cap':capVal,'rtaComPato':rtaCompletaRadio,
@@ -4165,6 +4247,42 @@ jQuery("#addAnatomiaPostForm").validate({
 });  
 
 
+function loadTrataAdyuForm(consultaId){
+	//jQuery("#dialogLoading").dialog("open");
+	jQuery.ajax({
+	     url: '<c:url value="/loadTrataAdyuvante.htm" />',
+	     type: "GET",
+	     dataType: "json",
+	     contentType: "application/json",
+	     data: {'idConsulta':consultaId}, 
+	     success: function(tratamientoAdyu){   	    
+	    	if(tratamientoAdyu != null){	    		
+	    		var quimioterapiaRadio = tratamientoAdyu.quimioterapia.split("//");	    		
+	    		jQuery("input[name=trataAdyuYesRadio][value="+quimioterapiaRadio[0]+"]").click().attr('checked', true);
+	    		jQuery("input[name=quimiotrataRadio][value="+quimioterapiaRadio[1]+"]").click().attr('checked', true);
+ 				jQuery("#quimiotrataOtro").val(quimioterapiaRadio[2]);
+ 	    		jQuery("#nroCiclosTrata").val(tratamientoAdyu.quimioNroCiclos); 	    		
+ 	    		
+ 	    		jQuery("input[name=radioTeRadio][value="+tratamientoAdyu.radioterapia+"]").click().attr('checked', true);
+ 	    		
+ 	    		jQuery("#dosisTotalTrata").val(tratamientoAdyu.radioDosis);
+ 	    		jQuery("#dosisTRataFechaInicio").val(tratamientoAdyu.radioFechaInicio);
+ 	    		jQuery("#dosisTRataFechaFin").val(tratamientoAdyu.radioFechaFinal);
+
+ 	    		var suspendioRadio = tratamientoAdyu.suspendio.split("//");	
+ 	    		if(suspendioRadio[0] !=0){
+ 	    			jQuery("input[name=suspendioYesRadio][value="+suspendioRadio[0]+"]").attr("check",true)[0].click();
+ 	    		}
+	    		jQuery("#suspenTrataDias").val(suspendioRadio[1]);
+	    		jQuery("#comentCTrataAdyu").val(tratamientoAdyu.notas);
+	    			    		
+				TRATAADYU_ID = tratamientoAdyu.idtratamientoadyu;
+	    	}
+	       // jQuery("#dialogLoading").dialog("close");	        
+	     }
+	   }); 
+};
+
 jQuery("#addTrataAdyuForm").validate({
 	focusInvalid:false,
     rules: {
@@ -4185,10 +4303,14 @@ jQuery("#addTrataAdyuForm").validate({
 		var dosisTRataFechaInicio = jQuery("#dosisTRataFechaInicio").val();
 		var dosisTRataFechaFin = jQuery("#dosisTRataFechaFin").val();	
 		var suspendioYesRadio = jQuery("input[name=suspendioYesRadio]:checked").val();
-		var suspenTrataDias = jQuery("#suspenTrataDias").val();
+		suspendioYesRadio = suspendioYesRadio != null ? suspendioYesRadio : 0;
+		var suspenTrataDias = jQuery("#suspenTrataDias").val();			
+		if(suspendioYesRadio == 0){
+			suspenTrataDias="";
+		}
 		var comentCTrataAdyu = jQuery("#comentCTrataAdyu").val();
 		
-		var tratamientoAdyu = {'idConsulta':CONSULTA_ID,'quimioterapia':trataAdyuYesRadio+"//"+quimiotrataRadio+"//"+quimiotrataOtro,'quimioNroCiclos':nroCiclosTrata,'radioterapia':radioTeRadio,
+		var tratamientoAdyu = {'idConsulta':CONSULTA_ID,'idtratamientoadyu':TRATAADYU_ID,'quimioterapia':trataAdyuYesRadio+"//"+quimiotrataRadio+"//"+quimiotrataOtro,'quimioNroCiclos':nroCiclosTrata,'radioterapia':radioTeRadio,
 							 'radioDosis':dosisTotalTrata,'radioFechaInicio':dosisTRataFechaInicio, "radioFechaFinal":dosisTRataFechaFin,
 							 'suspendio':suspendioYesRadio+"//"+suspenTrataDias,'notas':comentCTrataAdyu};		  		 
 		 
@@ -4212,7 +4334,7 @@ jQuery("#addTrataAdyuForm").validate({
          
 });  
 
-	jQuery("#dialogErrorOperation").dialog({
+jQuery("#dialogErrorOperation").dialog({
 		autoOpen: false,
 		height: 180,
 		modal:true,

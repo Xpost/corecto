@@ -78,6 +78,9 @@ public class AntecedentesDAOImpl extends HibernateDaoSupport implements Antecede
 
 		listResult = (List<Antecedentes>) this.getHibernateTemplate().execute(callback);
 		LOG.info("Cantidad:" + listResult.size());
+		if(listResult.isEmpty()){
+			return null;
+		}
 		return listResult.get(0);
 	}
 

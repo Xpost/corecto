@@ -87,6 +87,9 @@ public class ConductaPostNeoDAOImpl extends HibernateDaoSupport implements Condu
 
         listResult = (List<ConductaPostNeo>) this.getHibernateTemplate().execute(callback);
         LOG.info("Cantidad:"+listResult.size());
+		if(listResult.isEmpty()){
+			return null;
+		}
         return listResult.get(0);
     }
     
