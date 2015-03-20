@@ -148,7 +148,7 @@
 						</label>
 				  </div>	
 			</div>	
-						<div class="row-fluid">
+			<div class="row-fluid">
 				<fieldset>
 				<legend style="margin-bottom: 0px !important;border-bottom: 1px solid #9B9B9E !important;">Preconsulta<button div="preconsultaTab" style="float: right; margin-top: 5px" class="colapsableBtn btn btn-primary" ><i class="icon-plus"></i></button> </legend>
 				<div id="preconsultaTab" style="padding: 5px;border-bottom: 1px solid #9B9B9E;border-left: 1px solid #9B9B9E; border-right: 1px solid #9B9B9E;border-radius:0 0 4px 4px;display: none">
@@ -176,27 +176,53 @@
 							</div>	
 						<div class="span3">
 						  <label for="tipoComprobanteCaja"><strong>Performance Status</strong></label>
-						   <label class="radio inline">
-								 <input type="radio" name="performanceRadio" id="performanceRadio" value="0" >0
-							</label>
-							<label class="radio inline">
-								 <input type="radio" name="performanceRadio" id="performanceRadio" value="1" >1
-							</label>
-							<label class="radio inline">
-								 <input type="radio" name="performanceRadio" id="performanceRadio" value="2" >2
-							</label>
-							<label class="radio inline">
-								 <input type="radio" name="performanceRadio" id="performanceRadio" value="3" >3
-							</label>
-							<label class="radio inline">
-								 <input type="radio" name="performanceRadio" id="performanceRadio" value="4" >4
-							</label>
-					
+						  		  <div class="btn-group" data-toggle="buttons-radio">
+									    <button type="button" name="performanceRadio" id="performanceRadio" value="0" class="btn btn-primary">0</button>
+									    <button type="button" name="performanceRadio" id="performanceRadio" value="1" class="btn btn-primary">1</button>
+									    <button type="button" name="performanceRadio" id="performanceRadio" value="2" class="btn btn-primary">2</button>
+									    <button type="button" name="performanceRadio" id="performanceRadio" value="3" class="btn btn-primary">3</button>
+									    <button type="button" name="performanceRadio" id="performanceRadio" value="4" class="btn btn-primary">4</button>
+								    </div>		
 				  		</div>	
 		   			</div>
 				</div>
 				</fieldset>
 			</div>	
+			<div class="row-fluid">
+				<fieldset>
+				<legend style="margin-bottom: 0px !important;border-bottom: 1px solid #9B9B9E !important;">Motivo de la consulta<button div="motivoTab" style="float: right; margin-top: 5px" class="colapsableBtn btn btn-primary" ><i class="icon-plus"></i></button> </legend>
+				<div id="motivoTab" style="padding: 5px;border-bottom: 1px solid #9B9B9E;border-left: 1px solid #9B9B9E; border-right: 1px solid #9B9B9E;border-radius:0 0 4px 4px;display: none">
+					<div class="row-fluid">				
+				     	<div class="span3">
+						  <label for="tipoComprobanteCaja"><strong>Motivos</strong></label>
+						  		  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button"   class="btn btn-primary" name="motivoCbox" id="motivo1"> Dolor abodminal</button>
+									    <button type="button"   class="btn btn-primary" name="motivoCbox" id="motivo2"> Dolor pelviano</button>
+									    <button type="button"   class="btn btn-primary" name="motivoCbox" id="motivo3"> Enterorragia</button>
+									    <button type="button"   class="btn btn-primary" name="motivoCbox" id="motivo4"> Diarrea</button>
+									    <button type="button"   class="btn btn-primary" name="motivoCbox" id="motivo5"> Tumor palpable</button>
+									    <button type="button"   class="btn btn-primary" name="motivoCbox" id="motivo6"> Perdida de peso</button>
+									    <button type="button"   class="btn btn-primary" name="motivoCbox" id="motivo7"> Constipación</button>
+									    <button type="button"   class="btn btn-primary" name="motivoCbox" id="motivo8"> Adenopatías</button>
+									    <button type="button"   class="btn btn-primary" name="motivoCbox" id="motivoOtroCB"onclick="$('#motivoOtro').focus()"  >Otro</button>
+									 <input type="text"  name="motivoCbox" id="motivoOtro"  onclick="$('#motivoOtroCB').addClass('active');" style="margin-bottom: 0px; margin-left:2px; width:20%;">
+								    </div>		
+				  		</div>	
+				  	</div>
+				  	<br style="line-height:10px">
+				  	<div class="row-fluid">	
+							<div class="span3">	
+								<label for="direccionC"><strong>Fecha de inicio de sintomas</strong></label>
+								<input type="text" class="span5" id="dateStartMotivo" alt="dateP" name="dateStartMotivo" placeHolder="dd/MM/yyyy" />
+							</div>
+							<div class="span3">	
+								<label for="direccionC"><strong>Tiempo de evolución en meses</strong></label>
+								 <input type="text" class="span3 onlyNumbers" id="mesesMotivo"  name="mesesMotivo"  />
+							</div>
+				  	</div>	
+		   			</div>
+				</fieldset>
+			</div>				
 			<div class="row-fluid">
 				<fieldset>
 				<legend style="margin-bottom: 0px !important;border-bottom: 1px solid #9B9B9E !important;">Examen Proctologico <button div="exaProctoTab" style="float: right; margin-top: 5px" class="colapsableBtn btn btn-primary" ><i class="icon-plus"></i></button> </legend>
@@ -243,7 +269,7 @@
 									    <button type="button" name="udaOndoRadio"  onclick="$('#udaOndoOtro').val('');" value="1" class="btn btn-primary">No</button>
 									    <button type="button" name="udaOndoRadio" onclick="$('#udaOndoOtro').focus()" value="2" class="btn btn-primary">Otro</button>
 									    
-									 <input type="text" class="" name="udaOndoOtro" id="udaOndoOtro" style="margin-bottom: 0px; margin-left:2px">
+									 <input type="text" class="" name="udaOndoOtro" id="udaOndoOtro"  onclick="$('button[name=udaOndoRadio][value<2]').removeClass('active');$('button[name=udaOndoRadio][value=2]').addClass('active');" style="margin-bottom: 0px; margin-left:2px">
 								    </div>
 						</div>
 		   			</div>
@@ -255,7 +281,7 @@
 				<div class="row-fluid">	 
 				<div class="pull-right">			
 		               <button type="button" class="btn btn-primary"  id="searchButton" name="searchButton">Buscar</button>
-		               <button type="button" class="btn" id="clearSearchButton" name="clearSearchButton" >Resetear</button>	
+		               <button type="button" class="btn" id="clearSearchButton" name="clearSearchButton" >Remover filtros</button>	
 				</div>
 				</div>
         </form>
@@ -433,7 +459,22 @@ jQuery("#searchButton").click(function(){
 		 var peso = jQuery("#pesoPre").val();
 		 var talla = jQuery("#tallePre").val();
 		 var superficie = jQuery("#superPre").val();  		
-	     var performance = jQuery("input[name=performanceRadio]:checked").val();
+	     var performance = jQuery("button[name=performanceRadio].active").val();
+	 }
+	 //motivo de la consulta
+	 if(jQuery("#motivoTab").css('display') !== 'none'){
+		 var motivosConsulta = "";
+		 var motivoOtro = "";
+		 jQuery("button[name=motivoCbox].active").each(function(index,btn){
+			 if(btn.id == 'motivoOtroCB'){
+				 motivoOtro = jQuery("#motivoOtro").val();  
+			 }
+			 else{
+				 motivosConsulta+="-"+btn.id;
+			 }
+		 });
+		 var dateStartMotivo = dbFormatDate(jQuery("#dateStartMotivo").val());
+		 var mesesMotivo = jQuery("#mesesMotivo").val();
 	 }
 	 //examen proctologico
 	 if(jQuery("#exaProctoTab").css('display') !== 'none'){
@@ -447,7 +488,9 @@ jQuery("#searchButton").click(function(){
 		 var udaOndoOtro =  jQuery("#udaOndoOtro").val();
 	 }
 	 var filterObject = {"nombre":name,"dni":dni,"sexo":sexoSelected,"movilRectal":movilRectal,"fijoRectal":fijoRectal,
-			 "esfinterRectal":esfinterRectal,"udaOndoRadio":udaOndoRadio, "udaOndoOtro":udaOndoOtro, "peso":peso,"talla":talla,"superficie":superficie,"performance":performance};
+			 "consultaMotivos":motivosConsulta,"consultaMotivoOtro":motivoOtro,'fechaInSintoma':dateStartMotivo,'motivoEvoMeses':mesesMotivo,
+			 "esfinterRectal":esfinterRectal,"udaOndoRadio":udaOndoRadio, "udaOndoOtro":udaOndoOtro, "peso":peso,"talla":talla,
+			 "superficie":superficie,"performance":performance};
 	 
 	  jQuery.ajax({
           url: '<c:url value="/findPatientFilter.htm" />',
@@ -756,7 +799,6 @@ jQuery("input[alt=dateP]").datepicker({
 	 dayNames: [ "Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado" ],
 	 dayNamesMin: [ "Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa" ],
 	 monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ], 
-	 altField: "#actualDate" ,
 	 closeText: "Cerrar", 
 	 currentText: "Hoy"
 	 });
@@ -855,11 +897,23 @@ function cleanScreenSearch(){
 		 jQuery("#localidadSearch").val("");
 		 jQuery("#both").attr("checked","checked");
 		 jQuery("#nombreSearch").focus();
+		 //motivos
+		 jQuery("button[name=motivoCbox].active").removeClass("active");
+		 jQuery("#motivoOtro").val("");
+		 jQuery("#dateStartMotivo").val("");
+		 jQuery("#mesesMotivo").val("");
 		 //preconsulta
 		 jQuery("#pesoPre").val("");
 		 jQuery("#tallePre").val("");
 		 jQuery("#superPre").val("");  		
-	     jQuery("input[name=performanceRadio]:checked").attr("checked",false);
+	     jQuery("button[name=performanceRadio].active").removeClass("active");
+		 //examen proctologico
+		 jQuery("button[name=movilRectal].active").removeClass("active");
+		 jQuery("button[name=fijoRectal].active").removeClass("active");
+		 jQuery("button[name=esfinterRectal].active").removeClass("active");
+		 //tratamiento
+		 jQuery("button[name=udaOndoRadio].active").removeClass("active");
+		 jQuery("#udaOndoOtro").val("");
 }
 
 
@@ -973,8 +1027,15 @@ function cancelEdit(){
   	jQuery("#phone-form-2").remove();
 	jQuery('#listClientTable').jqGrid('setGridState','visible');	
 	cleanScreenEdit();
-}	
+};
 
+function dbFormatDate(unDate){
+	if(unDate == ""){
+		return "";
+	}
+	var params = unDate.split("/");
+	return params[2]+"-"+params[1]+"-"+params[0];
+};
 
 function capitaliseFirstLetter(string)
 {

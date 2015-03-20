@@ -5,7 +5,12 @@ public class FilterDTO {
 	private String nombre;
 	private String dni;
 	private String sexo;
-	// preconuslta
+	// motivos consulta
+	private String consultaMotivos;
+	private String consultaMotivoOtro;
+	private String fechaInSintoma;
+	private String motivoEvoMeses;
+	// preconsulta
 	private String peso;
 	private String talla;
 	private String superficie;
@@ -112,6 +117,38 @@ public class FilterDTO {
 
 	public void setPerformance(String performance) {
 		this.performance = performance;
+	}
+
+	public String getConsultaMotivos() {
+		return consultaMotivos;
+	}
+
+	public void setConsultaMotivos(String consultaMotivos) {
+		this.consultaMotivos = consultaMotivos;
+	}
+
+	public String getConsultaMotivoOtro() {
+		return consultaMotivoOtro;
+	}
+
+	public void setConsultaMotivoOtro(String consultaMotivoOtro) {
+		this.consultaMotivoOtro = consultaMotivoOtro;
+	}
+
+	public String getFechaInSintoma() {
+		return fechaInSintoma;
+	}
+
+	public void setFechaInSintoma(String fechaInSintoma) {
+		this.fechaInSintoma = fechaInSintoma;
+	}
+
+	public String getMotivoEvoMeses() {
+		return motivoEvoMeses;
+	}
+
+	public void setMotivoEvoMeses(String motivoEvoMeses) {
+		this.motivoEvoMeses = motivoEvoMeses;
 	}
 
 }

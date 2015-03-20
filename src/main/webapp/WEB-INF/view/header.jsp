@@ -16,7 +16,7 @@
 <script type="text/javascript" src="js/jquery-1.7.min.js"></script>
 <link rel="stylesheet" type="text/css" media="screen"	href="css/jquery-ui-1.8.16.custom.css" />
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/bootstrap_custom.css" rel="stylesheet">
+<!-- <link href="css/bootstrap_custom.css" rel="stylesheet"> -->
 <link href="css/font-awesome.min.css" rel="stylesheet">
 
 <script type="text/javascript" src="js/jquery-ui-1.8.16.custom.min.js"></script>	
@@ -57,6 +57,12 @@ jQuery("#dialogLostSession").dialog({
 	close: function() {
 	}
 });	
+
+jQuery(".onlyNumbers").bind("keypress",function(event) {
+    var chars = "0123456789.,";
+    var chr = String.fromCharCode(event.charCode == undefined ? event.keyCode : event.charCode);
+    return event.ctrlKey || (chr < ' ' || !chars || chars.indexOf(chr) > -1);
+});
 
 });
 

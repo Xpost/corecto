@@ -1387,7 +1387,7 @@
 						   <input type="radio" name="cirugiaHayRadio" id="opcion2" value="1">
 								No
 				    </label>	    
-				    <label class="radio inline">
+				    <label class="radio inline" onclick="jQuery('#otroBaseDiag').focus();">
 						   <input type="radio" name="cirugiaHayRadio" id="opcion2" value="2" style="margin-top:9px">
 								Otros:
 							<input type="text" name="otroBaseDiag" id="otroBaseDiag" style="margin-bottom: 0px;">
@@ -1426,7 +1426,7 @@
 						   <input type="radio" name="udaOndoRadio" id="opcion2" value="1">
 								No
 				    </label>	    
-				    <label class="radio inline">
+				    <label class="radio inline" onclick="jQuery('#udaOndoOtro').focus();" >
 						   <input type="radio" name="udaOndoRadio" id="opcion2" value="2" style="margin-top:9px">
 								Otro:
 							<input type="text" class="" name="udaOndoOtro" id="udaOndoOtro" style="margin-bottom: 0px;">
@@ -1467,7 +1467,7 @@
 						   <input type="radio" name="quimioInduccion" id="opcion2" value="3">
 								CAPECITABINA
 				    </label>
-				    <label class="radio inline">
+				    <label class="radio inline" onclick="jQuery('#quimioInduccionOtro').focus();" >
 						   <input type="radio" name="quimioInduccion" id="opcion2" value="4" style="margin-top:9px">
 								Otro:
 							<input type="text" class="" name="quimioInduccionOtro" id="quimioInduccionOtro" style="margin-bottom: 0px;">
@@ -1496,7 +1496,7 @@
 						 <input type="radio" name="quimioradioInduRadio" id="opcion1" value="0" >
 								Capecitabina
 					</label>
-				    <label class="radio inline">
+				    <label class="radio inline"  onclick="jQuery('#quimioradioInduRadioOtro').focus();">
 						   <input type="radio" name="quimioradioInduRadio" id="opcion2" value="1" style="margin-top:9px">
 								Otro:
 							<input type="text" class="" name="quimioradioInduRadioOtro" id="quimioradioInduRadioOtro" style="margin-bottom: 0px;">
@@ -1519,7 +1519,7 @@
 						 <input type="radio" name="quimioIntervalRadio" id="opcion1" value="2" >
 								Capecitabina
 					</label>									
-				    <label class="radio inline">
+				    <label class="radio inline" onclick="jQuery('#quimioIntervalRadioOtro').focus();">
 						   <input type="radio" name="quimioIntervalRadio" id="opcion2" value="3" style="margin-top:9px">
 								Otro:
 							<input type="text" class="" name="quimioIntervalRadioOtro" id="quimioIntervalRadioOtro" style="margin-bottom: 0px;">
@@ -4383,14 +4383,7 @@ jQuery("#dialogErrorOperation").dialog({
 		}
 	});	 	
 	
-
-    jQuery(".onlyNumbers").bind("keypress",function(event) {
-	    var chars = "0123456789.,";
-        var chr = String.fromCharCode(event.charCode == undefined ? event.keyCode : event.charCode);
-        return event.ctrlKey || (chr < ' ' || !chars || chars.indexOf(chr) > -1);
-    });
    
-    
 });
 //Other functions
 

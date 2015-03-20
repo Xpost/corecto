@@ -173,6 +173,30 @@ public class PatientDAOImpl extends HibernateDaoSupport implements PatientDAO {
 					String sexoQ = " and P.sexo = '" + filter.getSexo() + "'";
 					queryPatient.append(sexoQ);
 				}
+				// motivo
+				StringBuilder queryMotivos = new StringBuilder();
+				if (StringUtils.isNotBlank(filter.getConsultaMotivos())) {
+					String motivosQ = " and Mo.motivo like '%" + filter.getConsultaMotivos() + "%'";
+					queryMotivos.append(motivosQ);
+				}
+				if (StringUtils.isNotBlank(filter.getConsultaMotivoOtro())) {
+					String motivoOtroQ = " and Mo.motivoOtro like '%" + filter.getConsultaMotivoOtro() + "%'";
+					queryMotivos.append(motivoOtroQ);
+				}
+				if (StringUtils.isNotBlank(filter.getFechaInSintoma())) {
+					String fechaIniQ = " and Mo.fechaInicio = '" + filter.getFechaInSintoma() + "'";
+					queryMotivos.append(fechaIniQ);
+				}
+				if (StringUtils.isNotBlank(filter.getMotivoEvoMeses())) {
+					String evoMesesQ = " and Mo.evoMeses = '" + filter.getMotivoEvoMeses() + "'";
+					queryMotivos.append(evoMesesQ);
+				}
+				StringBuilder otherTables = new StringBuilder();
+				StringBuilder otherTablesJoin = new StringBuilder();
+				if (queryMotivos.length() > 0) {
+					otherTables.append(", Motivo Mo");
+					otherTablesJoin.append(" and Mo.consulta.idconsulta = C.idconsulta");
+				}
 				// preconsulta
 				StringBuilder queryPreconsulta = new StringBuilder();
 				if (StringUtils.isNotBlank(filter.getPeso())) {
@@ -191,8 +215,6 @@ public class PatientDAOImpl extends HibernateDaoSupport implements PatientDAO {
 					String performanceQ = " and Pe.performanceStatus =  '" + filter.getPerformance() + "'";
 					queryPreconsulta.append(performanceQ);
 				}
-				StringBuilder otherTables = new StringBuilder();
-				StringBuilder otherTablesJoin = new StringBuilder();
 				if (queryPreconsulta.length() > 0) {
 					otherTables.append(", Preconsulta Pe");
 					otherTablesJoin.append(" and Pe.consulta.idconsulta = C.idconsulta");
@@ -239,6 +261,7 @@ public class PatientDAOImpl extends HibernateDaoSupport implements PatientDAO {
 						+ " WHERE P.idpaciente is not null " 
 						+ otherTablesJoin.toString()
 						+ queryPatient.toString()
+						+ queryMotivos.toString()
 						+ queryPreconsulta.toString() 
 						+ queryExaProcto.toString() 
 						+ queryTratamiento.toString() 
