@@ -260,7 +260,7 @@
 							<input type="checkbox" id="apersonalPat3" > Adenoma Velloso
 							</label>
 							<label class="radio inline">
-							<input type="checkbox" id="apersonalPat4" > Enfermadad de CROHN
+							<input type="checkbox" id="apersonalPat4" > Enfermedad de CROHN
 							</label>
 							<label class="radio inline">
 							<input type="checkbox" id="neoplasia"  > Neoplasia maligna
@@ -3113,17 +3113,24 @@ function loadAntecedentes(consultaId){
 	     data: {'idConsulta':consultaId}, 
 	     success: function(antecedentes){   	    
 	    	if(antecedentes!=null){
-	      	  	var personales = antecedentes.personales.split("//");
-	      	    var personalesCheck = personales[0].split("-"); //arranca en 1
-	      	  	for(var i = 1; i < personalesCheck.length; i++){
-	      	  		$("#"+personalesCheck[i]).attr("check",true)[0].click();
-	      	  	}
-	      	  	jQuery("#otroAPersonal").val(personales[1]);
-	      	  
-	     	    var personalesPatCheck = antecedentes.personalesPatologicos.split("-"); //arranca en 1
-	      	  	for(var i = 1; i < personalesPatCheck.length; i++){
-	      	  		$("#"+personalesPatCheck[i]).attr("check",true)[0].click();
-	      	  	}
+	      	  	
+	    		$("#apersonal1").prop("checked",antecedentes.personalTabaquismo);
+	    		$("#apersonal2").prop("checked",antecedentes.personalCardio);
+	    		$("#apersonal3").prop("checked",antecedentes.personalAlcohol);
+	    		$("#apersonal4").prop("checked",antecedentes.personalDbt);
+	    		$("#apersonal5").prop("checked",antecedentes.personalNinguno);
+			    
+	      	  	jQuery("#otroAPersonal").val(antecedentes.personalOtro);
+			    
+			    $("#apersonalPat1").prop("checked",antecedentes.patologicoNinguno);
+	      	  	$("#apersonalPat2").prop("checked",antecedentes.patologicoColitis);
+	      		$("#apersonalPat3").prop("checked",antecedentes.patologicoAdenoma);
+	      		$("#apersonalPat4").prop("checked",antecedentes.patologicoCrohn);
+	      		$("#apersonalPat5").prop("checked",antecedentes.patologicoHiv);
+	      		if(antecedentes.patologicoNeoplasia){ 
+	      			$("#neoplasia")[0].click();
+	      		}
+	      		
 	      	    jQuery("#neoPlasiaText").val(antecedentes.neoplasia);
 	      	    var familiarCancer = antecedentes.familiarCancer.split("-"); //arranca en 1
 	      	  	for(var i = 1; i < familiarCancer.length; i++){
@@ -3150,48 +3157,52 @@ function loadAntecedentes(consultaId){
   
   
 function submitAntecedentes(){	
-		var apersonal = "";
-		
+		var apersonal1 = false;
+		var apersonal2 = false;
+		var apersonal3 = false;
+		var apersonal4 = false;
+		var apersonal5 = false;
 		if($("#apersonal1").is(':checked')) {  
-			apersonal =  apersonal+"-"+$("#apersonal1").attr("id");
+			apersonal1 =  true;
 		}
 		if($("#apersonal2").is(':checked')) {  
-			apersonal =  apersonal+"-"+$("#apersonal2").attr("id");
+			apersonal2 =  true;
 		}
 		if($("#apersonal3").is(':checked')) {  
-			apersonal =  apersonal+"-"+$("#apersonal3").attr("id");
+			apersonal3 =  true;
 		}		
 		if($("#apersonal4").is(':checked')) {  
-			apersonal =  apersonal+"-"+$("#apersonal4").attr("id");
+			apersonal4 =  true;
 		}
 		if($("#apersonal5").is(':checked')) {  
-			apersonal =  apersonal+"-"+$("#apersonal5").attr("id");
-		}
-			
+			apersonal5 =  true;
+		}			
 		var otroAPersonal = jQuery("#otroAPersonal").val();
 		
-		var apersonalPat = "";
+		var apersonalPat1 = false;
+		var apersonalPat2 = false;
+		var apersonalPat3 = false;
+		var apersonalPat4 = false;
+		var apersonalPat5 = false;
+		var neoplasia = false;
 		
 		if($("#apersonalPat1").is(':checked')) {  
-			apersonalPat =  apersonalPat+"-"+$("#apersonalPat1").attr("id");
+			apersonalPat1 =  true;
 		}
 		if($("#apersonalPat2").is(':checked')) {  
-			apersonalPat =  apersonalPat+"-"+$("#apersonalPat2").attr("id");
+			apersonalPat2 =  true;
 		}
 		if($("#apersonalPat3").is(':checked')) {  
-			apersonalPat =  apersonalPat+"-"+$("#apersonalPat3").attr("id");
+			apersonalPat3 =  true;
 		}
 		if($("#apersonalPat4").is(':checked')) {  
-			apersonalPat =  apersonalPat+"-"+$("#apersonalPat4").attr("id");
+			apersonalPat4 =  true;
 		}
 		if($("#apersonalPat5").is(':checked')) {  
-			apersonalPat =  apersonalPat+"-"+$("#apersonalPat5").attr("id");
+			apersonalPat5 =  true;
 		}
-		if($("#apersonalPat4").is(':checked')) {  
-			apersonalPat =  apersonalPat+"-"+$("#apersonalPat4").attr("id");
-		}		
 		if($("#neoplasia").is(':checked')) {  
-			apersonalPat =  apersonalPat+"-"+$("#neoplasia").attr("id");
+			neoplasia =  true;
 		}				
 		var neoPlasiaText = jQuery("#neoPlasiaText").val();
 		
@@ -3229,8 +3240,21 @@ function submitAntecedentes(){
 		if($("#checkMYH").is(':checked')) {  
 			siSindrome =  siSindrome+"-"+$("#checkMYH").attr("id");
 		}
-
-		var antecedentes = {'idConsulta':CONSULTA_ID, 'idantecedente':ANTECEDENTES_ID, 'personales':apersonal+"//"+otroAPersonal,'personalesPatologicos':apersonalPat,'neoplasia':neoPlasiaText,
+ 
+		var antecedentes = {'idConsulta':CONSULTA_ID, 'idantecedente':ANTECEDENTES_ID,
+			'personalTabaquismo': apersonal1,
+		    'personalCardio': apersonal2,
+		    'personalAlcohol':apersonal3,
+		    'personalDbt':apersonal4,
+		    'personalNinguno': apersonal5,
+		    'personalOtro': otroAPersonal,
+		    'patologicoNinguno': apersonalPat1,
+		    'patologicoColitis': apersonalPat2,
+		    'patologicoAdenoma': apersonalPat3,
+		    'patologicoCrohn': apersonalPat4,
+		    'patologicoHiv': apersonalPat5,			
+		    'patologicoNeoplasia': neoplasia,
+				'neoplasia':neoPlasiaText,
 				'familiarCancer':famCancer,'antecedentesCcrh':anteSindrome+"//"+siSindrome};		  		 
 		 
     jQuery.ajax({

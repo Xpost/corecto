@@ -4,8 +4,18 @@ public class AntecedentesDTO {
 
 	private long idantecedente;
 	private long idConsulta;
-	private String personales;
-	private String personalesPatologicos;
+	private Boolean personalTabaquismo;
+	private Boolean personalCardio;
+	private Boolean personalAlcohol;
+	private Boolean personalDbt;
+	private Boolean personalNinguno;
+	private String personalOtro;
+	private Boolean patologicoNinguno;
+	private Boolean patologicoColitis;
+	private Boolean patologicoAdenoma;
+	private Boolean patologicoCrohn;
+	private Boolean patologicoNeoplasia;
+	private Boolean patologicoHiv;
 	private String neoplasia;
 	private String familiarCancer;
 	private String antecedentesCcrh;
@@ -26,20 +36,100 @@ public class AntecedentesDTO {
 		this.idantecedente = idantecedente;
 	}
 
-	public String getPersonales() {
-		return personales;
+	public Boolean getPersonalTabaquismo() {
+		return personalTabaquismo;
 	}
 
-	public void setPersonales(String personales) {
-		this.personales = personales;
+	public void setPersonalTabaquismo(Boolean personalTabaquismo) {
+		this.personalTabaquismo = personalTabaquismo;
 	}
 
-	public String getPersonalesPatologicos() {
-		return personalesPatologicos;
+	public Boolean getPersonalCardio() {
+		return personalCardio;
 	}
 
-	public void setPersonalesPatologicos(String personalesPatologicos) {
-		this.personalesPatologicos = personalesPatologicos;
+	public void setPersonalCardio(Boolean personalCardio) {
+		this.personalCardio = personalCardio;
+	}
+
+	public Boolean getPersonalAlcohol() {
+		return personalAlcohol;
+	}
+
+	public void setPersonalAlcohol(Boolean personalAlcohol) {
+		this.personalAlcohol = personalAlcohol;
+	}
+
+	public Boolean getPersonalDbt() {
+		return personalDbt;
+	}
+
+	public void setPersonalDbt(Boolean personalDbt) {
+		this.personalDbt = personalDbt;
+	}
+
+	public Boolean getPersonalNinguno() {
+		return personalNinguno;
+	}
+
+	public void setPersonalNinguno(Boolean personalNinguno) {
+		this.personalNinguno = personalNinguno;
+	}
+
+	public String getPersonalOtro() {
+		return personalOtro;
+	}
+
+	public void setPersonalOtro(String personalOtro) {
+		this.personalOtro = personalOtro;
+	}
+
+	public Boolean getPatologicoNinguno() {
+		return patologicoNinguno;
+	}
+
+	public void setPatologicoNinguno(Boolean patologicoNinguno) {
+		this.patologicoNinguno = patologicoNinguno;
+	}
+
+	public Boolean getPatologicoColitis() {
+		return patologicoColitis;
+	}
+
+	public void setPatologicoColitis(Boolean patologicoColitis) {
+		this.patologicoColitis = patologicoColitis;
+	}
+
+	public Boolean getPatologicoAdenoma() {
+		return patologicoAdenoma;
+	}
+
+	public void setPatologicoAdenoma(Boolean patologicoAdenoma) {
+		this.patologicoAdenoma = patologicoAdenoma;
+	}
+
+	public Boolean getPatologicoCrohn() {
+		return patologicoCrohn;
+	}
+
+	public void setPatologicoCrohn(Boolean patologicoCrohn) {
+		this.patologicoCrohn = patologicoCrohn;
+	}
+
+	public Boolean getPatologicoNeoplasia() {
+		return patologicoNeoplasia;
+	}
+
+	public void setPatologicoNeoplasia(Boolean patologicoNeoplasia) {
+		this.patologicoNeoplasia = patologicoNeoplasia;
+	}
+
+	public Boolean getPatologicoHiv() {
+		return patologicoHiv;
+	}
+
+	public void setPatologicoHiv(Boolean patologicoHiv) {
+		this.patologicoHiv = patologicoHiv;
 	}
 
 	public String getNeoplasia() {

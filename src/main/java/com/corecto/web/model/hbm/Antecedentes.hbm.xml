@@ -11,12 +11,42 @@
         <many-to-one name="consulta" class="com.corecto.web.model.pojo.extra.Consulta" fetch="select">
             <column name="IDCONSULTA" />
         </many-to-one>
-        <property name="personales" type="string">
-            <column name="PERSONALES" length="100" />
+        <property name="personalTabaquismo" type="java.lang.Boolean">
+            <column name="PERSONAL_TABAQUISMO" />
         </property>
-        <property name="personalesPatologicos" type="string">
-            <column name="PERSONALES_PATOLOGICOS" length="25" />
+        <property name="personalCardio" type="java.lang.Boolean" >
+            <column name="PERSONAL_CARDIO"  />
         </property>
+        <property name="personalAlcohol" type="java.lang.Boolean">
+            <column name="PERSONAL_ALCOHOL" />
+        </property>
+        <property name="personalDbt" type="java.lang.Boolean" >
+            <column name="PERSONAL_DBT"  />
+        </property>
+        <property name="personalNinguno" type="java.lang.Boolean">
+            <column name="PERSONAL_NINGUNO"  />
+        </property>
+        <property name="personalOtro" type="string">
+            <column name="PERSONAL_OTRO" length="100" />
+        </property>                                        
+        <property name="patologicoNinguno" type="java.lang.Boolean" >
+            <column name="PATOLOGICO_NINGUNO"  />
+        </property>
+        <property name="patologicoColitis" type="java.lang.Boolean" >
+            <column name="PATOLOGICO_COLITIS"  />
+        </property>
+        <property name="patologicoAdenoma" type="java.lang.Boolean" >
+            <column name="PATOLOGICO_ADENOMA"  />
+        </property>
+        <property name="patologicoCrohn" type="java.lang.Boolean" >
+            <column name="PATOLOGICO_CROHN" />
+        </property>
+        <property name="patologicoNeoplasia" type="java.lang.Boolean" >
+            <column name="PATOLOGICO_NEOPLASIA"  />
+        </property>
+        <property name="patologicoHiv" type="java.lang.Boolean" >
+            <column name="PATOLOGICO_HIV"  />
+        </property>                                                       
         <property name="neoplasia" type="string">
             <column name="NEOPLASIA" length="300" />
         </property>

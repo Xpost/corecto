@@ -9,8 +9,18 @@ public class Antecedentes implements java.io.Serializable {
 
 	private long idantecedente;
 	private Consulta consulta;
-	private String personales;
-	private String personalesPatologicos;
+	private Boolean personalTabaquismo;
+	private Boolean personalCardio;
+	private Boolean personalAlcohol;
+	private Boolean personalDbt;
+	private Boolean personalNinguno;
+	private String personalOtro;
+	private Boolean patologicoNinguno;
+	private Boolean patologicoColitis;
+	private Boolean patologicoAdenoma;
+	private Boolean patologicoCrohn;
+	private Boolean patologicoNeoplasia;
+	private Boolean patologicoHiv;
 	private String neoplasia;
 	private String familiarCancer;
 	private String antecedentesCcrh;
@@ -18,24 +28,33 @@ public class Antecedentes implements java.io.Serializable {
 	public Antecedentes() {
 	}
 
-	public Antecedentes(long idantecedente) {
-		this.idantecedente = idantecedente;
-	}
-
-	public Antecedentes(long idantecedente, Consulta consulta,
-			String personales, String personalesPatologicos, String neoplasia,
-			String familiarCancer, String antecedentesCcrh) {
+	public Antecedentes(long idantecedente, Consulta consulta, Boolean personalTabaquismo,
+			Boolean personalCardio, Boolean personalAlcohol, Boolean personalDbt, Boolean personalNinguno,
+			String personalOtro, Boolean patologicoNinguno, Boolean patologicoColitis,
+			Boolean patologicoAdenoma, Boolean patologicoCrohn, Boolean patologicoNeoplasia,
+			Boolean patologicoHiv, String neoplasia, String familiarCancer, String antecedentesCcrh) {
+		super();
 		this.idantecedente = idantecedente;
 		this.consulta = consulta;
-		this.personales = personales;
-		this.personalesPatologicos = personalesPatologicos;
+		this.personalTabaquismo = personalTabaquismo;
+		this.personalCardio = personalCardio;
+		this.personalAlcohol = personalAlcohol;
+		this.personalDbt = personalDbt;
+		this.personalNinguno = personalNinguno;
+		this.personalOtro = personalOtro;
+		this.patologicoNinguno = patologicoNinguno;
+		this.patologicoColitis = patologicoColitis;
+		this.patologicoAdenoma = patologicoAdenoma;
+		this.patologicoCrohn = patologicoCrohn;
+		this.patologicoNeoplasia = patologicoNeoplasia;
+		this.patologicoHiv = patologicoHiv;
 		this.neoplasia = neoplasia;
 		this.familiarCancer = familiarCancer;
 		this.antecedentesCcrh = antecedentesCcrh;
 	}
 
 	public long getIdantecedente() {
-		return this.idantecedente;
+		return idantecedente;
 	}
 
 	public void setIdantecedente(long idantecedente) {
@@ -43,31 +62,111 @@ public class Antecedentes implements java.io.Serializable {
 	}
 
 	public Consulta getConsulta() {
-		return this.consulta;
+		return consulta;
 	}
 
 	public void setConsulta(Consulta consulta) {
 		this.consulta = consulta;
 	}
 
-	public String getPersonales() {
-		return this.personales;
+	public Boolean getPersonalTabaquismo() {
+		return personalTabaquismo;
 	}
 
-	public void setPersonales(String personales) {
-		this.personales = personales;
+	public void setPersonalTabaquismo(Boolean personalTabaquismo) {
+		this.personalTabaquismo = personalTabaquismo;
 	}
 
-	public String getPersonalesPatologicos() {
-		return this.personalesPatologicos;
+	public Boolean getPersonalCardio() {
+		return personalCardio;
 	}
 
-	public void setPersonalesPatologicos(String personalesPatologicos) {
-		this.personalesPatologicos = personalesPatologicos;
+	public void setPersonalCardio(Boolean personalCardio) {
+		this.personalCardio = personalCardio;
+	}
+
+	public Boolean getPersonalAlcohol() {
+		return personalAlcohol;
+	}
+
+	public void setPersonalAlcohol(Boolean personalAlcohol) {
+		this.personalAlcohol = personalAlcohol;
+	}
+
+	public Boolean getPersonalDbt() {
+		return personalDbt;
+	}
+
+	public void setPersonalDbt(Boolean personalDbt) {
+		this.personalDbt = personalDbt;
+	}
+
+	public Boolean getPersonalNinguno() {
+		return personalNinguno;
+	}
+
+	public void setPersonalNinguno(Boolean personalNinguno) {
+		this.personalNinguno = personalNinguno;
+	}
+
+	public String getPersonalOtro() {
+		return personalOtro;
+	}
+
+	public void setPersonalOtro(String personalOtro) {
+		this.personalOtro = personalOtro;
+	}
+
+	public Boolean getPatologicoNinguno() {
+		return patologicoNinguno;
+	}
+
+	public void setPatologicoNinguno(Boolean patologicoNinguno) {
+		this.patologicoNinguno = patologicoNinguno;
+	}
+
+	public Boolean getPatologicoColitis() {
+		return patologicoColitis;
+	}
+
+	public void setPatologicoColitis(Boolean patologicoColitis) {
+		this.patologicoColitis = patologicoColitis;
+	}
+
+	public Boolean getPatologicoAdenoma() {
+		return patologicoAdenoma;
+	}
+
+	public void setPatologicoAdenoma(Boolean patologicoAdenoma) {
+		this.patologicoAdenoma = patologicoAdenoma;
+	}
+
+	public Boolean getPatologicoCrohn() {
+		return patologicoCrohn;
+	}
+
+	public void setPatologicoCrohn(Boolean patologicoCrohn) {
+		this.patologicoCrohn = patologicoCrohn;
+	}
+
+	public Boolean getPatologicoNeoplasia() {
+		return patologicoNeoplasia;
+	}
+
+	public void setPatologicoNeoplasia(Boolean patologicoNeoplasia) {
+		this.patologicoNeoplasia = patologicoNeoplasia;
+	}
+
+	public Boolean getPatologicoHiv() {
+		return patologicoHiv;
+	}
+
+	public void setPatologicoHiv(Boolean patologicoHiv) {
+		this.patologicoHiv = patologicoHiv;
 	}
 
 	public String getNeoplasia() {
-		return this.neoplasia;
+		return neoplasia;
 	}
 
 	public void setNeoplasia(String neoplasia) {
@@ -75,7 +174,7 @@ public class Antecedentes implements java.io.Serializable {
 	}
 
 	public String getFamiliarCancer() {
-		return this.familiarCancer;
+		return familiarCancer;
 	}
 
 	public void setFamiliarCancer(String familiarCancer) {
@@ -83,7 +182,7 @@ public class Antecedentes implements java.io.Serializable {
 	}
 
 	public String getAntecedentesCcrh() {
-		return this.antecedentesCcrh;
+		return antecedentesCcrh;
 	}
 
 	public void setAntecedentesCcrh(String antecedentesCcrh) {

@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Le styles -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+<!--     <link href="css/bootstrap.css" rel="stylesheet"> -->
     <style type="text/css">		
 			body {
 			    padding-bottom: 10px;
@@ -222,7 +222,98 @@
 				  	</div>	
 		   			</div>
 				</fieldset>
-			</div>				
+			</div>
+			<div class="row-fluid">
+				<fieldset> 
+				<legend style="margin-bottom: 0px !important;border-bottom: 1px solid #9B9B9E !important;">Antecedentes<button div="antecedentesTab" style="float: right; margin-top: 5px" class="colapsableBtn btn btn-primary" ><i class="icon-plus"></i></button> </legend>
+				<div id="antecedentesTab" style="padding: 5px;border-bottom: 1px solid #9B9B9E;border-left: 1px solid #9B9B9E; border-right: 1px solid #9B9B9E;border-radius:0 0 4px 4px;display: none">
+					<div class="row-fluid">				
+				     	<div class="span8">
+						  <label for="tipoComprobanteCaja"><strong>Personales patológicos</strong></label>
+						  		  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button"   class="btn btn-primary" name="anPersonal" id="apersonalPat1"> Ninguno</button>
+									    <button type="button"   class="btn btn-primary" name="anPersonal" id="apersonalPat2"> Colitis ulcerativa</button>
+									    <button type="button"   class="btn btn-primary" name="anPersonal" id="apersonalPat3"> Adenoma Velloso</button>
+									    <button type="button"   class="btn btn-primary" name="anPersonal" id="apersonalPat4"> Enfermedad de CROHN</button>
+									    <button type="button"   class="btn btn-primary" name="anPersonal" id="apersonalPat5"> HIV</button>
+									    <button type="button"   class="btn btn-primary" name="anPersonal" id="neoplasia"> Neoplasia maligna</button>
+								    </div>		
+				  		</div>
+				  		<div class="span3 form-inline" style="margin-top: 25px">	
+								<label for="direccionC"><strong>Cual neoplasia:</strong></label>
+								 <input type="text" class="span3 onlyNumbers" id="neoplasiaText"  name="neoplasiaText"  />
+						</div>	
+				  	</div>			  	
+				  	<br style="line-height:10px">
+				  <div class="row-fluid">
+						<div class="span12">
+						  <label for="tipoComprobanteCaja"><strong>Familiares de cáncer de colon o recto</strong></label>
+						   <div class="span5">
+						   <label class="radio">
+							<input type="checkbox" id="checkfamMenorNin" > Ninguno
+							</label>
+							</div>
+							<div class="span3">
+							<label class="radio" style="display: inline;">
+							<input type="checkbox" id="checkfamMenor60"> Familiar de 1º grado < 60 años
+							</label>
+							</div>
+							<div class="span2">
+							<div id="divfamMenor60" class="form-inline" style="display: none; margin-left: 20px">
+							<label>Nro: </label>
+							<input type="text" class="input-mini" id="famMenor60">
+							</div>
+							</div>
+					   </div>
+					 </div>
+					 <div class="row-fluid">	
+					  <div class="span12">	
+							<div class="span3" style="margin-left: 29px">
+							<label class="radio" style="display: inline;">
+							<input type="checkbox" id="checkfamMayor60"> Familiar de 1º grado > 60 años
+							</label>
+							</div>
+							<div class="span2">
+							<div id="divfamMayor60" class="form-inline" style="display: none; margin-left: 20px">
+							<label>Nro: </label>
+							<input type="text" class="input-mini" id="famMayor60">
+							</div>
+							</div>
+							<div class="span3" style="margin-left: 30px">
+							<label class="radio" style="display: inline;">
+							<input type="checkbox" id="checkfamSegundoGrado"> Familiar de 2º grado
+							</label>
+							</div>
+							<div class="span2">
+							<div id="divfamSegundoGrado" class="form-inline" style="display: none; margin-left: 20px">
+							<label>Nro: </label>
+							<input type="text" class="input-mini" id="famSegundoGrado">
+							</div>				
+							</div>	
+				  		</div>			
+				  	</div>	  	
+				  	<br style="line-height:10px">
+				  	<div class="row-fluid">				
+				     	<div class="span3">
+						  <label for="antecedemtesSindrome"><strong>Antecedente de Síndrome CCRH</strong></label>
+						  		  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button"   class="btn btn-primary" name="anteSindrome" id="anteSindrome1"> No</button>
+									    <button type="button"   class="btn btn-primary" name="anteSindrome" id="anteSindrome2"> No sabe</button>
+									    <button type="button"   class="btn btn-primary" name="anteSindrome" id="anteSindrome3"> En estudio</button>
+									    <button type="button"   class="btn btn-primary" name="anteSindrome" id="anteSindrome4"> Si</button>									    
+								    </div>		
+				  		</div>
+				  		<div class="span3" style="margin-top: 25px; display: none;" id="anteSindrome4Div" >	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button"   class="btn" name="anPersonal" id="apersonalPat1"> PAF</button>
+									    <button type="button"   class="btn" name="anPersonal" id="apersonalPat2"> LYNCH</button>
+									    <button type="button"   class="btn" name="anPersonal" id="apersonalPat3"> MYH</button>
+								    </div>	
+						</div>	
+				  	</div>			  	
+				  </div>
+				</fieldset>
+			</div>								
 			<div class="row-fluid">
 				<fieldset>
 				<legend style="margin-bottom: 0px !important;border-bottom: 1px solid #9B9B9E !important;">Examen Proctologico <button div="exaProctoTab" style="float: right; margin-top: 5px" class="colapsableBtn btn btn-primary" ><i class="icon-plus"></i></button> </legend>
@@ -887,6 +978,46 @@ jQuery("#seeConsultBtn").click(function(){
 	window.location.href = "<%=request.getContextPath()%>/cargarConsulta.htm"; //?id=" + idConsult;
 });
 
+$("#checkfamMenor60").click(function(){
+	if($(this).is(':checked')){
+		$("#divfamMenor60").css("display","inline-block");
+		$("#famMenor60").focus();
+	}
+	else{
+		$("#divfamMenor60").hide();	
+	}
+});
+
+$("#checkfamMayor60").click(function(){
+	if($(this).is(':checked')){
+		$("#divfamMayor60").css("display","inline-block");
+		$("#famMayor60").focus();
+	}
+	else{
+		$("#divfamMayor60").hide();	
+	}
+});
+
+$("#checkfamSegundoGrado").click(function(){
+	if($(this).is(':checked')){
+		$("#divfamSegundoGrado").css("display","inline-block");
+		$("#famSegundoGrado").focus();
+	}
+	else{
+		$("#divfamSegundoGrado").hide();
+	}
+	
+});
+
+$("#anteSindrome4").click(function(){
+	if($("#anteSindrome4").hasClass('active')){
+		$("#anteSindrome4Div").hide();
+	}
+	else{
+		$("#anteSindrome4Div").css("display","inline-block");
+	}
+	
+});
 
 });
 //Other functions
@@ -897,16 +1028,25 @@ function cleanScreenSearch(){
 		 jQuery("#localidadSearch").val("");
 		 jQuery("#both").attr("checked","checked");
 		 jQuery("#nombreSearch").focus();
-		 //motivos
-		 jQuery("button[name=motivoCbox].active").removeClass("active");
-		 jQuery("#motivoOtro").val("");
-		 jQuery("#dateStartMotivo").val("");
-		 jQuery("#mesesMotivo").val("");
 		 //preconsulta
 		 jQuery("#pesoPre").val("");
 		 jQuery("#tallePre").val("");
 		 jQuery("#superPre").val("");  		
 	     jQuery("button[name=performanceRadio].active").removeClass("active");
+		 //motivos
+		 jQuery("button[name=motivoCbox].active").removeClass("active");
+		 jQuery("#motivoOtro").val("");
+		 jQuery("#dateStartMotivo").val("");
+		 jQuery("#mesesMotivo").val("");
+		 //Antecedentes
+		 jQuery("button[name=anPersonal].active").removeClass("active");
+		 jQuery("#neoplasiaText").val("");
+		 jQuery("#checkfamMenorNin").prop('checked', false); 
+		 jQuery("#checkfamMenor60").prop('checked', false); 
+		 jQuery("#checkfamMayor60").prop('checked', false); 
+		 jQuery("#checkfamSegundoGrado").prop('checked', false);
+		 jQuery("button[name=anteSindrome].active").removeClass("active");
+		 jQuery("#anteSindrome4Div").hide();
 		 //examen proctologico
 		 jQuery("button[name=movilRectal].active").removeClass("active");
 		 jQuery("button[name=fijoRectal].active").removeClass("active");
