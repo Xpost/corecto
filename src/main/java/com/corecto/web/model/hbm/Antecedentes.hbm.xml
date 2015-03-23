@@ -53,6 +53,9 @@
         <property name="familiarCancer" type="string">
             <column name="FAMILIAR_CANCER" length="25" />
         </property>
+        <property name="tipoCcrh" type="java.lang.Integer">
+            <column name="TIPO_CCRH" length="25" />
+        </property>        
         <property name="antecedentesCcrh" type="string">
             <column name="ANTECEDENTES_CCRH" length="25" />
         </property>

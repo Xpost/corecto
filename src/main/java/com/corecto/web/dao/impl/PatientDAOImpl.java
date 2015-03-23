@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.util.CollectionUtils;
 
 import com.corecto.web.dao.PatientDAO;
 import com.corecto.web.model.dto.FilterDTO;
@@ -26,6 +27,7 @@ import com.corecto.web.model.dto.PacienteDTO;
 import com.corecto.web.model.pojo.extra.CatOs;
 import com.corecto.web.model.pojo.extra.Consulta;
 import com.corecto.web.model.pojo.extra.Paciente;
+import com.google.common.base.Joiner;
 
 /**
  * TODO comment<br>
@@ -197,6 +199,75 @@ public class PatientDAOImpl extends HibernateDaoSupport implements PatientDAO {
 					otherTables.append(", Motivo Mo");
 					otherTablesJoin.append(" and Mo.consulta.idconsulta = C.idconsulta");
 				}
+				// antecedentes
+				StringBuilder queryAntecedentes = new StringBuilder();
+				// private String patologicoNinguno;
+				// private String patologicoColitis;
+				// private String patologicoAdenoma;
+				// private String patologicoCrohn;
+				// private String patologicoHiv;
+				// private String patologicoNeoplasia;
+				// private String neoplasia;
+				// private String familiarCancer;
+				// private String antecedentesCcrh;
+				if (StringUtils.isNotBlank(filter.getPatologicoNinguno())) {
+					String patologicoNingunoQ = " and An.patologicoNinguno = "
+							+ filter.getPatologicoNinguno();
+					queryAntecedentes.append(patologicoNingunoQ);
+				}
+				if (StringUtils.isNotBlank(filter.getPatologicoAdenoma())) {
+					String patologicoNingunoQ = " and An.patologicoAdenoma = "
+							+ filter.getPatologicoAdenoma();
+					queryAntecedentes.append(patologicoNingunoQ);
+				}
+				if (StringUtils.isNotBlank(filter.getPatologicoColitis())) {
+					String patologicoNingunoQ = " and An.patologicoColitis = "
+							+ filter.getPatologicoColitis();
+					queryAntecedentes.append(patologicoNingunoQ);
+				}
+				if (StringUtils.isNotBlank(filter.getPatologicoCrohn())) {
+					String patologicoNingunoQ = " and An.patologicoCrohn = " + filter.getPatologicoCrohn();
+					queryAntecedentes.append(patologicoNingunoQ);
+				}
+				if (StringUtils.isNotBlank(filter.getPatologicoHiv())) {
+					String patologicoNingunoQ = " and An.patologicoHiv = " + filter.getPatologicoHiv();
+					queryAntecedentes.append(patologicoNingunoQ);
+				}
+				if (StringUtils.isNotBlank(filter.getPatologicoNeoplasia())) {
+					String patologicoNingunoQ = " and An.patologicoNeoplasia = "
+							+ filter.getPatologicoNeoplasia();
+					queryAntecedentes.append(patologicoNingunoQ);
+				}
+				if (StringUtils.isNotBlank(filter.getNeoplasia())) {
+					String neoplasiaQ = " and An.neoplasia like '" + filter.getNeoplasia() + "%'";
+					queryAntecedentes.append(neoplasiaQ);
+				}
+				if (StringUtils.isNotBlank(filter.getFamiliarCancer())) {
+					String familarAQ = "";
+					String[] familiaCancerTypes = filter.getFamiliarCancer().split("-");
+					for (int i = 1; i < familiaCancerTypes.length; i++) {
+						familarAQ += "-" + familiaCancerTypes[i];
+						// String[] familyCancerArrayData =
+						// familiaCancerTypes[i].split("*");
+						// familarAQ+="-"+familyCancerArrayData[0]+"*"+familyCancerArrayData[1];
+					}
+					familarAQ = " and An.familiarCancer like '%" + familarAQ + "%'";
+					queryAntecedentes.append(familarAQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getTipoCcrh())) {
+					String antCcrhQ = " and An.tipoCcrh in (" + Joiner.on(",").join(filter.getTipoCcrh())
+							+ ")";
+					queryAntecedentes.append(antCcrhQ);
+				}
+				if (StringUtils.isNotBlank(filter.getAntecedentesCcrh())) {
+					String antecedentesCcrh = " and An.antecedentesCcrh like '%"
+							+ filter.getAntecedentesCcrh() + "%'";
+					queryAntecedentes.append(antecedentesCcrh);
+				}
+				if (queryAntecedentes.length() > 0) {
+					otherTables.append(", Antecedentes An");
+					otherTablesJoin.append(" and An.consulta.idconsulta = C.idconsulta");
+				}
 				// preconsulta
 				StringBuilder queryPreconsulta = new StringBuilder();
 				if (StringUtils.isNotBlank(filter.getPeso())) {
@@ -262,6 +333,7 @@ public class PatientDAOImpl extends HibernateDaoSupport implements PatientDAO {
 						+ otherTablesJoin.toString()
 						+ queryPatient.toString()
 						+ queryMotivos.toString()
+						+ queryAntecedentes.toString()
 						+ queryPreconsulta.toString() 
 						+ queryExaProcto.toString() 
 						+ queryTratamiento.toString() 

@@ -23,6 +23,7 @@ public class Antecedentes implements java.io.Serializable {
 	private Boolean patologicoHiv;
 	private String neoplasia;
 	private String familiarCancer;
+	private Integer tipoCcrh;
 	private String antecedentesCcrh;
 
 	public Antecedentes() {
@@ -187,6 +188,14 @@ public class Antecedentes implements java.io.Serializable {
 
 	public void setAntecedentesCcrh(String antecedentesCcrh) {
 		this.antecedentesCcrh = antecedentesCcrh;
+	}
+
+	public Integer getTipoCcrh() {
+		return tipoCcrh;
+	}
+
+	public void setTipoCcrh(Integer tipoCcrh) {
+		this.tipoCcrh = tipoCcrh;
 	}
 
 }

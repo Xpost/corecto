@@ -19,6 +19,7 @@ public class AntecedentesDTO {
 	private String neoplasia;
 	private String familiarCancer;
 	private String antecedentesCcrh;
+	private Integer tipoCcrh;
 
 	public long getIdConsulta() {
 		return idConsulta;
@@ -154,6 +155,14 @@ public class AntecedentesDTO {
 
 	public void setAntecedentesCcrh(String antecedentesCcrh) {
 		this.antecedentesCcrh = antecedentesCcrh;
+	}
+
+	public Integer getTipoCcrh() {
+		return tipoCcrh;
+	}
+
+	public void setTipoCcrh(Integer tipoCcrh) {
+		this.tipoCcrh = tipoCcrh;
 	}
 
 }

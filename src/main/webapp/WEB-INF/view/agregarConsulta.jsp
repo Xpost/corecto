@@ -3140,14 +3140,12 @@ function loadAntecedentes(consultaId){
 	      	  			$("#"+dataArray[0].replace("check","")).val(dataArray[1]);
 	      	  		}
 	      	  	}	      	    
-	      	   var antecedentesCcrh = antecedentes.antecedentesCcrh.split("//"); //arranca en 1
-	      	   jQuery("input[name=anteSindrome][value="+antecedentesCcrh[0]+"]").attr("check",true)[0].click();
-		       if(antecedentesCcrh.length == 2){
-		    	   var antCcrhs = antecedentesCcrh[1].split("-"); //arranca en 1
+	      	    jQuery("input[name=anteSindrome][value="+antecedentes.tipoCcrh+"]").attr("check",true)[0].click();
+		        var antCcrhs = antecedentes.antecedentesCcrh.split("-"); //arranca en 1
 		      	  	for(var i = 1; i < antCcrhs.length; i++){
 		      		$("#"+antCcrhs[i].replace("-","")).attr("checked",true);		      	  		
 		      	  	}
-		       }
+		       
 		       ANTECEDENTES_ID = antecedentes.idantecedente;
 	    	}
 	       // jQuery("#dialogLoading").dialog("close");	        
@@ -3231,16 +3229,18 @@ function submitAntecedentes(){
 		
 		var siSindrome = "";
 		
-		if($("#checkPAF").is(':checked')) {  
-			siSindrome =  siSindrome+"-"+$("#checkPAF").attr("id");
+		if(jQuery("#divCCRHSI").css('display') !== 'none'){
+			if($("#checkPAF").is(':checked')) {  
+				siSindrome =  siSindrome+"-"+$("#checkPAF").attr("id");
+			}
+			if($("#checkLYNCH").is(':checked')) {  
+				siSindrome =  siSindrome+"-"+$("#checkLYNCH").attr("id");
+			}
+			if($("#checkMYH").is(':checked')) {  
+				siSindrome =  siSindrome+"-"+$("#checkMYH").attr("id");
+			}
 		}
-		if($("#checkLYNCH").is(':checked')) {  
-			siSindrome =  siSindrome+"-"+$("#checkLYNCH").attr("id");
-		}
-		if($("#checkMYH").is(':checked')) {  
-			siSindrome =  siSindrome+"-"+$("#checkMYH").attr("id");
-		}
- 
+		
 		var antecedentes = {'idConsulta':CONSULTA_ID, 'idantecedente':ANTECEDENTES_ID,
 			'personalTabaquismo': apersonal1,
 		    'personalCardio': apersonal2,
@@ -3254,8 +3254,8 @@ function submitAntecedentes(){
 		    'patologicoCrohn': apersonalPat4,
 		    'patologicoHiv': apersonalPat5,			
 		    'patologicoNeoplasia': neoplasia,
-				'neoplasia':neoPlasiaText,
-				'familiarCancer':famCancer,'antecedentesCcrh':anteSindrome+"//"+siSindrome};		  		 
+			'neoplasia':neoPlasiaText,
+			'familiarCancer':famCancer, 'tipoCcrh':anteSindrome,'antecedentesCcrh':siSindrome};		  		 
 		 
     jQuery.ajax({
          url: '<c:url value="/addNewAntecedente.htm" />',

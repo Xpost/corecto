@@ -1,0 +1,36 @@
+Antecedentes:
+Personales patológicos
+Familiares de cáncer de colon o recto
+Antecedente de Síndrome CCRH
+
+Hallazgos clínicos:
+Recto
+
+Examen proctologico:
+RSC
+EE
+
+Estadificación: TODO 
+Revisión RM en Correcto PRIMERO
+
+
+Anatomia patológica:
+Grado de diferenciación
+
+Tratamiento:TODO
+
+Tratamiento Neoadyuante:
+Radioterapia SI/NO
+Respuesta al tratamiento neoadyuante TODO
+Examen proctologico NO
+Conducta post neoadyuvancia TODO
+
+Anatomia patológica:
+Desde Tumor a Rta completa patológica
+
+Tratamiento adyuvante:
+Quimioterapia
+
+
+Agregar a ka tabla
+edad, estadio

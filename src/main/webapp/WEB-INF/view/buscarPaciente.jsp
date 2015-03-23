@@ -241,7 +241,7 @@
 				  		</div>
 				  		<div class="span3 form-inline" style="margin-top: 25px">	
 								<label for="direccionC"><strong>Cual neoplasia:</strong></label>
-								 <input type="text" class="span3 onlyNumbers" id="neoplasiaText"  name="neoplasiaText"  />
+								 <input type="text" class="span3" id="neoplasiaText"  name="neoplasiaText"  />
 						</div>	
 				  	</div>			  	
 				  	<br style="line-height:10px">
@@ -297,17 +297,17 @@
 				     	<div class="span3">
 						  <label for="antecedemtesSindrome"><strong>Antecedente de Síndrome CCRH</strong></label>
 						  		  <div class="btn-group" data-toggle="buttons-checkbox">
-									    <button type="button"   class="btn btn-primary" name="anteSindrome" id="anteSindrome1"> No</button>
-									    <button type="button"   class="btn btn-primary" name="anteSindrome" id="anteSindrome2"> No sabe</button>
-									    <button type="button"   class="btn btn-primary" name="anteSindrome" id="anteSindrome3"> En estudio</button>
-									    <button type="button"   class="btn btn-primary" name="anteSindrome" id="anteSindrome4"> Si</button>									    
+									    <button type="button"   class="btn btn-primary" name="anteSindrome" id="anteSindrome1"  value="1"> No</button>
+									    <button type="button"   class="btn btn-primary" name="anteSindrome" id="anteSindrome2"  value="2"> No sabe</button>
+									    <button type="button"   class="btn btn-primary" name="anteSindrome" id="anteSindrome3"  value="3"> En estudio</button>
+									    <button type="button"   class="btn btn-primary" name="anteSindrome" id="anteSindrome4"  value="4"> Si</button>									    
 								    </div>		
 				  		</div>
 				  		<div class="span3" style="margin-top: 25px; display: none;" id="anteSindrome4Div" >	
 									  <div class="btn-group" data-toggle="buttons-checkbox">
-									    <button type="button"   class="btn" name="anPersonal" id="apersonalPat1"> PAF</button>
-									    <button type="button"   class="btn" name="anPersonal" id="apersonalPat2"> LYNCH</button>
-									    <button type="button"   class="btn" name="anPersonal" id="apersonalPat3"> MYH</button>
+									    <button type="button"   class="btn" name="anPersonal" id="checkPAF"> PAF</button>
+									    <button type="button"   class="btn" name="anPersonal" id="checkLYNCH"> LYNCH</button>
+									    <button type="button"   class="btn" name="anPersonal" id="checkMYH"> MYH</button>
 								    </div>	
 						</div>	
 				  	</div>			  	
@@ -567,6 +567,54 @@ jQuery("#searchButton").click(function(){
 		 var dateStartMotivo = dbFormatDate(jQuery("#dateStartMotivo").val());
 		 var mesesMotivo = jQuery("#mesesMotivo").val();
 	 }
+	 //Antecedentes
+	 if(jQuery("#antecedentesTab").css('display') !== 'none'){
+			var apersonalPat1 = $("#apersonalPat1").hasClass('active')?true:'';
+			var apersonalPat2 = $("#apersonalPat2").hasClass('active')?true:'';
+			var apersonalPat3 = $("#apersonalPat3").hasClass('active')?true:'';
+			var apersonalPat4 = $("#apersonalPat4").hasClass('active')?true:'';
+			var apersonalPat5 = $("#apersonalPat5").hasClass('active')?true:'';
+			var neoplasiaVal = $("#neoplasia").hasClass('active')?true:'';
+			var neoPlasiaText = $("#neoplasiaText").val();
+			
+			var famCancer = "";
+			
+			if($("#checkfamMenorNin").is(':checked')) {  
+				famCancer =  famCancer+"-"+$("#checkfamMenorNin").attr("id");
+			}
+			if($("#checkfamMenor60").is(':checked')) {  
+				famCancer =  famCancer+"-"+$("#checkfamMenor60").attr("id");
+				var famMenor60Nro = jQuery("#famMenor60").val();	
+				famCancer =  famCancer+"*"+famMenor60Nro;
+			}
+			if($("#checkfamMayor60").is(':checked')) {  
+				famCancer =  famCancer+"-"+$("#checkfamMayor60").attr("id");
+				var famMayor60Nro = jQuery("#famMayor60").val();
+				famCancer =  famCancer+"*"+famMayor60Nro;
+			}
+			if($("#checkfamSegundoGrado").is(':checked')) {  
+				famCancer =  famCancer+"-"+$("#checkfamSegundoGrado").attr("id");
+				var famSegundoGradoNro = jQuery("#famSegundoGrado").val();
+				famCancer =  famCancer+"*"+famSegundoGradoNro;
+			}			
+			
+			var anteSindrome = []; 
+			jQuery("button[name=anteSindrome].active").each(function(index, val){	
+				anteSindrome.push(val.value);
+			});
+			
+			var siSindrome = "";
+			if($("#checkPAF").hasClass('active')) {  
+				siSindrome =  siSindrome+"-"+$("#checkPAF").attr("id");
+			}
+			if($("#checkLYNCH").hasClass('active')) {  
+				siSindrome =  siSindrome+"-"+$("#checkLYNCH").attr("id");
+			}
+			if($("#checkMYH").hasClass('active')) {  
+				siSindrome =  siSindrome+"-"+$("#checkMYH").attr("id");
+			}
+			
+	 }
 	 //examen proctologico
 	 if(jQuery("#exaProctoTab").css('display') !== 'none'){
 		 var movilRectal = jQuery("button[name=movilRectal].active").val();
@@ -578,7 +626,11 @@ jQuery("#searchButton").click(function(){
 		 var udaOndoRadio = jQuery("button[name=udaOndoRadio].active").val();
 		 var udaOndoOtro =  jQuery("#udaOndoOtro").val();
 	 }
+	 
 	 var filterObject = {"nombre":name,"dni":dni,"sexo":sexoSelected,"movilRectal":movilRectal,"fijoRectal":fijoRectal,
+			  'patologicoNinguno': apersonalPat1, 'patologicoColitis': apersonalPat2, 'patologicoAdenoma': apersonalPat3,
+			  'patologicoCrohn': apersonalPat4, 'patologicoHiv': apersonalPat5, 'patologicoNeoplasia': neoplasiaVal,
+			  'neoplasia':neoPlasiaText, 'familiarCancer':famCancer, 'tipoCcrh':anteSindrome, 'antecedentesCcrh':siSindrome,
 			 "consultaMotivos":motivosConsulta,"consultaMotivoOtro":motivoOtro,'fechaInSintoma':dateStartMotivo,'motivoEvoMeses':mesesMotivo,
 			 "esfinterRectal":esfinterRectal,"udaOndoRadio":udaOndoRadio, "udaOndoOtro":udaOndoOtro, "peso":peso,"talla":talla,
 			 "superficie":superficie,"performance":performance};
@@ -1045,6 +1097,12 @@ function cleanScreenSearch(){
 		 jQuery("#checkfamMenor60").prop('checked', false); 
 		 jQuery("#checkfamMayor60").prop('checked', false); 
 		 jQuery("#checkfamSegundoGrado").prop('checked', false);
+		 jQuery("#divfamMenor60").hide();
+		 jQuery("#divfamMayor60").hide();
+		 jQuery("#divfamSegundoGrado").hide();
+		 jQuery("#famMenor60").val("");
+		 jQuery("#famMayor60").val("");
+		 jQuery("#famSegundoGrado").val("");
 		 jQuery("button[name=anteSindrome].active").removeClass("active");
 		 jQuery("#anteSindrome4Div").hide();
 		 //examen proctologico

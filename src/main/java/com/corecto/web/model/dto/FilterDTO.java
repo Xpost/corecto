@@ -1,5 +1,7 @@
 package com.corecto.web.model.dto;
 
+import java.util.List;
+
 public class FilterDTO {
 
 	private String nombre;
@@ -10,6 +12,17 @@ public class FilterDTO {
 	private String consultaMotivoOtro;
 	private String fechaInSintoma;
 	private String motivoEvoMeses;
+	// antecedentes
+	private String patologicoNinguno;
+	private String patologicoColitis;
+	private String patologicoAdenoma;
+	private String patologicoCrohn;
+	private String patologicoHiv;
+	private String patologicoNeoplasia;
+	private String neoplasia;
+	private String familiarCancer;
+	private List<Integer> tipoCcrh;
+	private String antecedentesCcrh;
 	// preconsulta
 	private String peso;
 	private String talla;
@@ -149,6 +162,86 @@ public class FilterDTO {
 
 	public void setMotivoEvoMeses(String motivoEvoMeses) {
 		this.motivoEvoMeses = motivoEvoMeses;
+	}
+
+	public String getPatologicoNinguno() {
+		return patologicoNinguno;
+	}
+
+	public void setPatologicoNinguno(String patologicoNinguno) {
+		this.patologicoNinguno = patologicoNinguno;
+	}
+
+	public String getPatologicoColitis() {
+		return patologicoColitis;
+	}
+
+	public void setPatologicoColitis(String patologicoColitis) {
+		this.patologicoColitis = patologicoColitis;
+	}
+
+	public String getPatologicoAdenoma() {
+		return patologicoAdenoma;
+	}
+
+	public void setPatologicoAdenoma(String patologicoAdenoma) {
+		this.patologicoAdenoma = patologicoAdenoma;
+	}
+
+	public String getPatologicoCrohn() {
+		return patologicoCrohn;
+	}
+
+	public void setPatologicoCrohn(String patologicoCrohn) {
+		this.patologicoCrohn = patologicoCrohn;
+	}
+
+	public String getPatologicoHiv() {
+		return patologicoHiv;
+	}
+
+	public void setPatologicoHiv(String patologicoHiv) {
+		this.patologicoHiv = patologicoHiv;
+	}
+
+	public String getPatologicoNeoplasia() {
+		return patologicoNeoplasia;
+	}
+
+	public void setPatologicoNeoplasia(String patologicoNeoplasia) {
+		this.patologicoNeoplasia = patologicoNeoplasia;
+	}
+
+	public String getNeoplasia() {
+		return neoplasia;
+	}
+
+	public void setNeoplasia(String neoplasia) {
+		this.neoplasia = neoplasia;
+	}
+
+	public String getFamiliarCancer() {
+		return familiarCancer;
+	}
+
+	public void setFamiliarCancer(String familiarCancer) {
+		this.familiarCancer = familiarCancer;
+	}
+
+	public String getAntecedentesCcrh() {
+		return antecedentesCcrh;
+	}
+
+	public void setAntecedentesCcrh(String antecedentesCcrh) {
+		this.antecedentesCcrh = antecedentesCcrh;
+	}
+
+	public List<Integer> getTipoCcrh() {
+		return tipoCcrh;
+	}
+
+	public void setTipoCcrh(List<Integer> tipoCcrh) {
+		this.tipoCcrh = tipoCcrh;
 	}
 
 }

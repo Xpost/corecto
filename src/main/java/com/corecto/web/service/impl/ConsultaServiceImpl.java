@@ -224,6 +224,7 @@ public class ConsultaServiceImpl implements ConsultaService {
 			antecedentesDTO.setPatologicoNeoplasia(antecedentes.getPatologicoNeoplasia());
 			antecedentesDTO.setPatologicoAdenoma(antecedentes.getPatologicoAdenoma());
 			antecedentesDTO.setPatologicoNinguno(antecedentes.getPatologicoNinguno());
+			antecedentesDTO.setTipoCcrh(antecedentes.getTipoCcrh());
 		}
 		return antecedentesDTO;
 	}
@@ -233,6 +234,7 @@ public class ConsultaServiceImpl implements ConsultaService {
 		Consulta consulta = new Consulta();
 		consulta.setIdconsulta(antecedentesDTO.getIdConsulta());
 		antecedentes.setConsulta(consulta);
+		antecedentes.setTipoCcrh(antecedentesDTO.getTipoCcrh());
 		antecedentes.setAntecedentesCcrh(antecedentesDTO.getAntecedentesCcrh());
 		antecedentes.setFamiliarCancer(antecedentesDTO.getFamiliarCancer());
 		antecedentes.setNeoplasia(antecedentesDTO.getNeoplasia());
