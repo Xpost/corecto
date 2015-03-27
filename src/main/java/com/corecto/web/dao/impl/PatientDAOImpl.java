@@ -201,15 +201,6 @@ public class PatientDAOImpl extends HibernateDaoSupport implements PatientDAO {
 				}
 				// antecedentes
 				StringBuilder queryAntecedentes = new StringBuilder();
-				// private String patologicoNinguno;
-				// private String patologicoColitis;
-				// private String patologicoAdenoma;
-				// private String patologicoCrohn;
-				// private String patologicoHiv;
-				// private String patologicoNeoplasia;
-				// private String neoplasia;
-				// private String familiarCancer;
-				// private String antecedentesCcrh;
 				if (StringUtils.isNotBlank(filter.getPatologicoNinguno())) {
 					String patologicoNingunoQ = " and An.patologicoNinguno = "
 							+ filter.getPatologicoNinguno();
@@ -247,9 +238,6 @@ public class PatientDAOImpl extends HibernateDaoSupport implements PatientDAO {
 					String[] familiaCancerTypes = filter.getFamiliarCancer().split("-");
 					for (int i = 1; i < familiaCancerTypes.length; i++) {
 						familarAQ += "-" + familiaCancerTypes[i];
-						// String[] familyCancerArrayData =
-						// familiaCancerTypes[i].split("*");
-						// familarAQ+="-"+familyCancerArrayData[0]+"*"+familyCancerArrayData[1];
 					}
 					familarAQ = " and An.familiarCancer like '%" + familarAQ + "%'";
 					queryAntecedentes.append(familarAQ);
@@ -267,6 +255,16 @@ public class PatientDAOImpl extends HibernateDaoSupport implements PatientDAO {
 				if (queryAntecedentes.length() > 0) {
 					otherTables.append(", Antecedentes An");
 					otherTablesJoin.append(" and An.consulta.idconsulta = C.idconsulta");
+				}
+				// eva clínica
+				StringBuilder queryEvaClinica = new StringBuilder();
+				if (StringUtils.isNotBlank(filter.getEvaRecto())) {
+					String evaRectoQ = " and Ec.recto like '%" + filter.getEvaRecto() + "%'";
+					queryEvaClinica.append(evaRectoQ);
+				}
+				if (queryEvaClinica.length() > 0) {
+					otherTables.append(", EvaClinica Ec");
+					otherTablesJoin.append(" and Ec.consulta.idconsulta = C.idconsulta");
 				}
 				// preconsulta
 				StringBuilder queryPreconsulta = new StringBuilder();
@@ -334,6 +332,7 @@ public class PatientDAOImpl extends HibernateDaoSupport implements PatientDAO {
 						+ queryPatient.toString()
 						+ queryMotivos.toString()
 						+ queryAntecedentes.toString()
+						+ queryEvaClinica.toString()
 						+ queryPreconsulta.toString() 
 						+ queryExaProcto.toString() 
 						+ queryTratamiento.toString() 

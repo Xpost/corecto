@@ -313,6 +313,23 @@
 				  	</div>			  	
 				  </div>
 				</fieldset>
+			</div>
+			<div class="row-fluid">
+				<fieldset>
+				<legend style="margin-bottom: 0px !important;border-bottom: 1px solid #9B9B9E !important;">Evaluación clínica<button div="evaClinicaTab" style="float: right; margin-top: 5px" class="colapsableBtn btn btn-primary" ><i class="icon-plus"></i></button> </legend>
+				<div id="evaClinicaTab" style="padding: 5px;border-bottom: 1px solid #9B9B9E;border-left: 1px solid #9B9B9E; border-right: 1px solid #9B9B9E;border-radius:0 0 4px 4px;display: none">
+					<div class="row-fluid">				
+				     	<div class="span3">
+						  <label for=""><strong>Recto</strong></label>
+						  		  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button"   class="btn btn-primary" name="motivoCbox" id="haRecto1"> Tercio superior</button>
+									    <button type="button"   class="btn btn-primary" name="motivoCbox" id="haRecto2"> Tercio medio</button>
+									    <button type="button"   class="btn btn-primary" name="motivoCbox" id="haRecto3"> Tercio inferior</button>
+								    </div>		
+				  		</div>	
+				  	</div>
+		   			</div>
+				</fieldset>
 			</div>								
 			<div class="row-fluid">
 				<fieldset>
@@ -333,7 +350,7 @@
 									    <button type="button" name="fijoRectal" id="opcion1" value="0" class="btn btn-primary">No</button>
 									    <button type="button" name="fijoRectal" id="opcion2" value="1" class="btn btn-primary">Si</button>
 								  </div>
-								</div>	
+							</div>	
 								<div class="span5" style="padding-bottom:1.1em;">	
 								<label for="esfinterRectal"><strong>Infiltra esfinter</strong></label>
 									  <div class="btn-group" data-toggle="buttons-radio">
@@ -345,6 +362,80 @@
 								    </div>				
 								</div>				
 		   			</div>
+		   			<div class="row-fluid">	
+		   					 <label for="tipoComprobanteCaja"><strong>RSC</strong></label>
+							 <div class="span2" style="padding-bottom:1.1em;">	
+								<label for="movilRectal"><strong>Presente</strong></label>
+								    <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="rscPresente" id="opcion1" value="0" class="btn btn-primary">No</button>
+									    <button type="button" name="rscPresente" id="opcion2" value="1" class="btn btn-primary">Si</button>
+									 </div>
+								</div>	
+							<div class="span4" style="padding-bottom:1.1em;">	
+								<label for="esfinterRectal"><strong>Medida</strong></label>
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="rscMedida" id="opcion1" value="0" class="btn btn-primary">0-5cm</button>
+									    <button type="button" name="rscMedida" id="opcion2" value="1" class="btn btn-primary">5-10 cm</button>
+									    <button type="button" name="rscMedida" id="opcion3" value="2" class="btn btn-primary">10-12 cm</button>
+									    <button type="button" name="rscMedida" id="opcion4" value="3" class="btn btn-primary">> 12 cm</button>
+								    </div>				
+							</div>	
+				  		<div class="span2 form-inline" style="margin-top: 25px">	
+								<label for="direccionC"><strong>Altura:</strong></label>
+								 <input type="text" class="span6" id="rscAltura"  name="rscAltura"  />
+						</div>	
+				  		<div class="span2 form-inline" style="margin-top: 25px">	
+								<label for="direccionC"><strong>Fecha</strong></label>
+								<input type="text" class="span7" alt="dateP"  placeholder="dd/MM/yyyy" id="rscFecha" >
+						</div>	
+		   			</div>
+		   			<div class="row-fluid">	
+		   				<label for="tipoComprobanteCaja"><strong>EE</strong></label>
+		   				 	<div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							 <div class="span2" style="padding-bottom:1.1em;">	
+								<label for="movilRectal"><strong>Presente</strong></label>
+								    <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="rscPresente" id="opcion1" value="0" class="btn btn-primary">No</button>
+									    <button type="button" name="rscPresente" id="opcion2" value="1" class="btn btn-primary">Si</button>
+									 </div>
+								</div>	
+							<div class="span4" style="padding-bottom:1.1em;">	
+								<label for="esfinterRectal"><strong>Tipo</strong></label>
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="eeTipo" id="opcion1" value="0" class="btn btn-primary">1</button>
+									    <button type="button" name="eeTipo" id="opcion2" value="1" class="btn btn-primary">2</button>
+									    <button type="button" name="eeTipo" id="opcion3" value="2" class="btn btn-primary">3</button>
+								    </div>
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="eeTipoN" id="opcion1" value="1" class="btn btn-primary">N0</button>
+									    <button type="button" name="eeTipoN" id="opcion2" value="2" class="btn btn-primary">N1</button>
+									    <button type="button" name="eeTipoN" id="opcion3" value="3" class="btn btn-primary">N2</button>
+								    </div>												    				
+							</div>		
+						 </div>		   				
+		   				 	<div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%" >	
+							 <div class="span2" style="padding-bottom:1.1em;">	
+								<label for="movilRectal"><strong>Infiltra esfinter</strong></label>
+								    <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="rscPresente" id="opcion1" value="0" class="btn btn-primary">No</button>
+									    <button type="button" name="rscPresente" id="opcion2" value="1" class="btn btn-primary">Si</button>
+									 </div>
+								</div>	
+							<div class="span4" style="padding-bottom:1.1em;">	
+								<label for="esfinterRectal"><strong>Medida</strong></label>
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="rscMedida" id="opcion1" value="0" class="btn btn-primary">0-5cm</button>
+									    <button type="button" name="rscMedida" id="opcion2" value="1" class="btn btn-primary">5-10 cm</button>
+									    <button type="button" name="rscMedida" id="opcion3" value="2" class="btn btn-primary">10-12 cm</button>
+									    <button type="button" name="rscMedida" id="opcion4" value="3" class="btn btn-primary">> 12 cm</button>
+								    </div>				
+							</div>	
+					  		<div class="span2 form-inline" style="margin-top: 25px">	
+									<label for="direccionC"><strong>Fecha</strong></label>
+									<input type="text" class="span7" alt="dateP"  placeholder="dd/MM/yyyy" id="eeFecha" >
+							</div>	
+						 </div>
+		   			</div>		   			
 				</div>
 				</fieldset>
 			</div>
@@ -615,6 +706,19 @@ jQuery("#searchButton").click(function(){
 			}
 			
 	 }
+	 //evaluacion clínica(hallazgos)
+	  if(jQuery("#evaClinicaTab").css('display') !== 'none'){
+	 		var evaRecto = "";
+			if($("#haRecto1").hasClass('active')) {  
+				evaRecto =  evaRecto+"-"+$("#haRecto1").attr("id");
+			}
+			if($("#haRecto2").hasClass('active')) {  
+				evaRecto =  evaRecto+"-"+$("#haRecto2").attr("id");
+			}
+			if($("#haRecto3").hasClass('active')) {  
+				evaRecto =  evaRecto+"-"+$("#haRecto3").attr("id");
+			}
+	  }	
 	 //examen proctologico
 	 if(jQuery("#exaProctoTab").css('display') !== 'none'){
 		 var movilRectal = jQuery("button[name=movilRectal].active").val();
@@ -631,6 +735,7 @@ jQuery("#searchButton").click(function(){
 			  'patologicoNinguno': apersonalPat1, 'patologicoColitis': apersonalPat2, 'patologicoAdenoma': apersonalPat3,
 			  'patologicoCrohn': apersonalPat4, 'patologicoHiv': apersonalPat5, 'patologicoNeoplasia': neoplasiaVal,
 			  'neoplasia':neoPlasiaText, 'familiarCancer':famCancer, 'tipoCcrh':anteSindrome, 'antecedentesCcrh':siSindrome,
+			  'evaRecto':evaRecto,
 			 "consultaMotivos":motivosConsulta,"consultaMotivoOtro":motivoOtro,'fechaInSintoma':dateStartMotivo,'motivoEvoMeses':mesesMotivo,
 			 "esfinterRectal":esfinterRectal,"udaOndoRadio":udaOndoRadio, "udaOndoOtro":udaOndoOtro, "peso":peso,"talla":talla,
 			 "superficie":superficie,"performance":performance};

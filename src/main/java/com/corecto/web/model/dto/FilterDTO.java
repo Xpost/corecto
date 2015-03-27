@@ -23,6 +23,8 @@ public class FilterDTO {
 	private String familiarCancer;
 	private List<Integer> tipoCcrh;
 	private String antecedentesCcrh;
+	// eva clínica
+	private String evaRecto;
 	// preconsulta
 	private String peso;
 	private String talla;
@@ -242,6 +244,14 @@ public class FilterDTO {
 
 	public void setTipoCcrh(List<Integer> tipoCcrh) {
 		this.tipoCcrh = tipoCcrh;
+	}
+
+	public String getEvaRecto() {
+		return evaRecto;
+	}
+
+	public void setEvaRecto(String evaRecto) {
+		this.evaRecto = evaRecto;
 	}
 
 }
