@@ -17,17 +17,12 @@ public class Consulta implements java.io.Serializable {
 	private String medico;
 	private Boolean diaghistologico;
 	private Date fecha;
-	private Set<AnotomiaPatologica> anotomiaPatologicas = new HashSet<AnotomiaPatologica>(
-			0);
+	private Set<AnatomiaPatologica> anotomiaPatologicas = new HashSet<AnatomiaPatologica>(0);
 	private Set<DescTrataNeo> descTrataNeos = new HashSet<DescTrataNeo>(0);
-	private Set<ConductaPostNeo> conductaPostNeos = new HashSet<ConductaPostNeo>(
-			0);
-	private Set<TratamientoAdyu> tratamientoAdyus = new HashSet<TratamientoAdyu>(
-			0);
-	private Set<RespuestaTrataNeo> respuestaTrataNeos = new HashSet<RespuestaTrataNeo>(
-			0);
-	private Set<AnatomiaPatologicaPost> anatomiaPatologicaPosts = new HashSet<AnatomiaPatologicaPost>(
-			0);
+	private Set<ConductaPostNeo> conductaPostNeos = new HashSet<ConductaPostNeo>(0);
+	private Set<TratamientoAdyu> tratamientoAdyus = new HashSet<TratamientoAdyu>(0);
+	private Set<RespuestaTrataNeo> respuestaTrataNeos = new HashSet<RespuestaTrataNeo>(0);
+	private Set<AnatomiaPatologicaPost> anatomiaPatologicaPosts = new HashSet<AnatomiaPatologicaPost>(0);
 	private Set<Tratamiento> tratamientos = new HashSet<Tratamiento>(0);
 	private Set<Preconsulta> preconsultas = new HashSet<Preconsulta>(0);
 	private Set<Antecedentes> antecedenteses = new HashSet<Antecedentes>(0);
@@ -43,18 +38,13 @@ public class Consulta implements java.io.Serializable {
 		this.idconsulta = idconsulta;
 	}
 
-	public Consulta(long idconsulta, CatHospital catHospital, String medico,
-			Boolean diaghistologico, Date fecha,
-			Set<AnotomiaPatologica> anotomiaPatologicas,
-			Set<DescTrataNeo> descTrataNeos,
-			Set<ConductaPostNeo> conductaPostNeos,
-			Set<TratamientoAdyu> tratamientoAdyus,
-			Set<RespuestaTrataNeo> respuestaTrataNeos,
-			Set<AnatomiaPatologicaPost> anatomiaPatologicaPosts,
-			Set<Tratamiento> tratamientos, Set<Preconsulta> preconsultas,
-			Set<Antecedentes> antecedenteses,
-			Set<Estadificacion> estadificacions, Set<EvaClinica> evaClinicas,
-			Set<Motivo> motivos, Set<ExaProcto> exaProctos) {
+	public Consulta(long idconsulta, CatHospital catHospital, String medico, Boolean diaghistologico,
+			Date fecha, Set<AnatomiaPatologica> anotomiaPatologicas, Set<DescTrataNeo> descTrataNeos,
+			Set<ConductaPostNeo> conductaPostNeos, Set<TratamientoAdyu> tratamientoAdyus,
+			Set<RespuestaTrataNeo> respuestaTrataNeos, Set<AnatomiaPatologicaPost> anatomiaPatologicaPosts,
+			Set<Tratamiento> tratamientos, Set<Preconsulta> preconsultas, Set<Antecedentes> antecedenteses,
+			Set<Estadificacion> estadificacions, Set<EvaClinica> evaClinicas, Set<Motivo> motivos,
+			Set<ExaProcto> exaProctos) {
 		this.idconsulta = idconsulta;
 		this.catHospital = catHospital;
 		this.medico = medico;
@@ -75,7 +65,6 @@ public class Consulta implements java.io.Serializable {
 		this.exaProctos = exaProctos;
 	}
 
-	
 	public Paciente getPaciente() {
 		return paciente;
 	}
@@ -124,12 +113,11 @@ public class Consulta implements java.io.Serializable {
 		this.fecha = fecha;
 	}
 
-	public Set<AnotomiaPatologica> getAnotomiaPatologicas() {
+	public Set<AnatomiaPatologica> getAnotomiaPatologicas() {
 		return this.anotomiaPatologicas;
 	}
 
-	public void setAnotomiaPatologicas(
-			Set<AnotomiaPatologica> anotomiaPatologicas) {
+	public void setAnotomiaPatologicas(Set<AnatomiaPatologica> anotomiaPatologicas) {
 		this.anotomiaPatologicas = anotomiaPatologicas;
 	}
 
@@ -169,8 +157,7 @@ public class Consulta implements java.io.Serializable {
 		return this.anatomiaPatologicaPosts;
 	}
 
-	public void setAnatomiaPatologicaPosts(
-			Set<AnatomiaPatologicaPost> anatomiaPatologicaPosts) {
+	public void setAnatomiaPatologicaPosts(Set<AnatomiaPatologicaPost> anatomiaPatologicaPosts) {
 		this.anatomiaPatologicaPosts = anatomiaPatologicaPosts;
 	}
 

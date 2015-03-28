@@ -302,9 +302,85 @@ public class PatientDAOImpl extends HibernateDaoSupport implements PatientDAO {
 							+ "'";
 					queryExaProcto.append(infilTraQ);
 				}
+				if (!CollectionUtils.isEmpty(filter.getEe())) {
+					String eeQ = " and ExPro.ee in (" + Joiner.on(",").join(filter.getEe()) + ")";
+					queryExaProcto.append(eeQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getEeTipo())) {
+					String eeTipoQ = " and ExPro.eeTipo in (" + Joiner.on(",").join(filter.getEeTipo()) + ")";
+					queryExaProcto.append(eeTipoQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getEeTipoN())) {
+					String eeTipoNQ = " and ExPro.eeTipoN in (" + Joiner.on(",").join(filter.getEeTipoN())
+							+ ")";
+					queryExaProcto.append(eeTipoNQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getEeInfiltra())) {
+					String eeInfiltraQ = " and ExPro.eeInfiltra in ("
+							+ Joiner.on(",").join(filter.getEeInfiltra()) + ")";
+					queryExaProcto.append(eeInfiltraQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getEeInfiltraMedida())) {
+					String eeInfiltraMedidaQ = " and ExPro.eeInfiltraMedida in ("
+							+ Joiner.on(",").join(filter.getEeInfiltraMedida()) + ")";
+					queryExaProcto.append(eeInfiltraMedidaQ);
+				}
+				if (StringUtils.isNotBlank(filter.getEeFecha())) {
+					String fechaeeQ = " and ExPro.eeFecha = '" + filter.getEeFecha() + "'";
+					queryExaProcto.append(fechaeeQ);
+				}
 				if (queryExaProcto.length() > 0) {
 					otherTables.append(", ExaProcto ExPro");
 					otherTablesJoin.append(" and ExPro.consulta.idconsulta = C.idconsulta");
+				}
+				// estadificacion
+				StringBuilder queryEstadificacion = new StringBuilder();
+				if (StringUtils.isNotBlank(filter.getRmCentro())) {
+					String rmCentroQ = " and Estad.rmCentro like '%" + filter.getRmCentro() + "'";
+					queryEstadificacion.append(rmCentroQ);
+				}
+				if (StringUtils.isNotBlank(filter.getRmFecha())) {
+					String getRmFechaQ = " and Estad.rmFecha = '" + filter.getRmFecha() + "'";
+					queryEstadificacion.append(getRmFechaQ);
+				}
+				if (StringUtils.isNotBlank(filter.getRmDistEsfinter())) {
+					String rmDistEsfinterQ = " and Estad.rmDistEsfinter like '%" + filter.getRmDistEsfinter()
+							+ "'";
+					queryEstadificacion.append(rmDistEsfinterQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getRmDistAnal())) {
+					String rmDistAnalQ = " and Estad.rmDistAnal in ("
+							+ Joiner.on(",").join(filter.getRmDistAnal()) + ")";
+					queryEstadificacion.append(rmDistAnalQ);
+				}
+				if (StringUtils.isNotBlank(filter.getRmAltura())) {
+					String rmAlturaQ = " and Estad.rmAltura like '%" + filter.getRmAltura() + "'";
+					queryEstadificacion.append(rmAlturaQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getRmTumor())) {
+					String rmTumorQ = " and Estad.rmTumor in (" + Joiner.on(",").join(filter.getRmTumor())
+							+ ")";
+					queryEstadificacion.append(rmTumorQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getRmTumorN())) {
+					String rmTumorNQ = " and Estad.rmTumorN in (" + Joiner.on(",").join(filter.getRmTumorN())
+							+ ")";
+					queryEstadificacion.append(rmTumorNQ);
+				}
+				if (queryEstadificacion.length() > 0) {
+					otherTables.append(", Estadificacion Estad");
+					otherTablesJoin.append(" and Estad.consulta.idconsulta = C.idconsulta");
+				}
+				// anatomia patologica
+				StringBuilder queryAnaPatologica = new StringBuilder();
+				if (!CollectionUtils.isEmpty(filter.getGradoDif())) {
+					String getGradoDifQ = " and Apat.gradoDif in ("
+							+ Joiner.on(",").join(filter.getGradoDif()) + ")";
+					queryAnaPatologica.append(getGradoDifQ);
+				}
+				if (queryAnaPatologica.length() > 0) {
+					otherTables.append(", AnatomiaPatologica Apat");
+					otherTablesJoin.append(" and Apat.consulta.idconsulta = C.idconsulta");
 				}
 				// tratamiento
 				StringBuilder queryTratamiento = new StringBuilder();
@@ -335,6 +411,8 @@ public class PatientDAOImpl extends HibernateDaoSupport implements PatientDAO {
 						+ queryEvaClinica.toString()
 						+ queryPreconsulta.toString() 
 						+ queryExaProcto.toString() 
+						+ queryEstadificacion.toString()
+						+ queryAnaPatologica.toString()
 						+ queryTratamiento.toString() 
 						+ " ORDER BY P.nombre";
 				// @formatter:on

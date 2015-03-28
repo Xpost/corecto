@@ -27,7 +27,7 @@
             <key>
                 <column name="IDCONSULTA" />
             </key>
-            <one-to-many class="com.corecto.web.model.pojo.extra.AnotomiaPatologica" />
+            <one-to-many class="com.corecto.web.model.pojo.extra.AnatomiaPatologica" />
         </set>
         <set name="descTrataNeos" table="DESC_TRATA_NEO" inverse="true" lazy="true" fetch="select">
             <key>

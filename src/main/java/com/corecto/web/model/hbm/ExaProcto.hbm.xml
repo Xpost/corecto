@@ -35,12 +35,21 @@
         <property name="vccFecha" type="date">
             <column name="VCC_FECHA" length="10" />
         </property>
-        <property name="ee" type="string">
+        <property name="ee" type="java.lang.Integer">
             <column name="EE" length="25" />
         </property>
-        <property name="eeInfiltra" type="string">
-            <column name="EE_INFILTRA" length="25" />
+        <property name="eeTipo" type="java.lang.Integer">
+            <column name="EE_TIPO" />
         </property>
+        <property name="eeTipoN" type="java.lang.Integer">
+            <column name="EE_TIPO_N" />
+        </property>
+        <property name="eeInfiltra" type="java.lang.Integer">
+            <column name="EE_INFILTRA"  />
+        </property>
+        <property name="eeInfiltraMedida" type="java.lang.Integer">
+            <column name="EE_INFILTRA_MEDIDA"  />
+        </property>        
         <property name="eeFecha" type="date">
             <column name="EE_FECHA" length="10" />
         </property>

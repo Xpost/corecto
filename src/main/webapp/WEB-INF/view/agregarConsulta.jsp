@@ -3443,14 +3443,12 @@ function loadExaProctoForm(consultaId){
 		  		jQuery("#vccAltura").val(exaProctologico.vccAltura);
 		  		jQuery("#vccFecha").val(exaProctologico.vccFecha);
 		  		
-		  		var eeRadio = exaProctologico.ee.split("//");
-		      	jQuery("input[name=eePresente][value="+eeRadio[0]+"]").click().attr('checked', true);
-		      	jQuery("input[name=eeTipo][value="+eeRadio[1]+"]").attr('checked', true);
-		      	jQuery("input[name=eeTipoN][value="+eeRadio[2]+"]").attr('checked', true);
+		      	jQuery("input[name=eePresente][value="+exaProctologico.ee+"]").click().attr('checked', true);
+		      	jQuery("input[name=eeTipo][value="+exaProctologico.eeTipo+"]").attr('checked', true);
+		      	jQuery("input[name=eeTipoN][value="+exaProctologico.eeTipoN+"]").attr('checked', true);
 		      	
-		      	var eeInfiltraRadio = exaProctologico.eeInfiltra.split("//");
-		      	jQuery("input[name=eeesfinter][value="+eeInfiltraRadio[0]+"]").click().attr('checked', true);
-		      	jQuery("input[name=eeMedida][value="+eeInfiltraRadio[1]+"]").attr('checked', true);
+		      	jQuery("input[name=eeesfinter][value="+ exaProctologico.eeInfiltra+"]").click().attr('checked', true);
+		      	jQuery("input[name=eeMedida][value="+ exaProctologico.eeInfiltraMedida+"]").attr('checked', true);
 		  		jQuery("#eeFecha").val(exaProctologico.eeFecha);
 		       
 		       EXAPROCTOLOGICO_ID = exaProctologico.idexaprocto;
@@ -3494,7 +3492,9 @@ jQuery("#addExaProctoForm").validate({
 		var eeFecha = jQuery("#eeFecha").val();
 		
 		var exaProcto = {'idConsulta':CONSULTA_ID, 'idexaprocto':EXAPROCTOLOGICO_ID, 'tactoRectal':movilRectal+"//"+fijoRectal,'tactoRectalInfiltra':esfinterRectal,'rsc':rscPresente+"//"+rscMedida,'rscAltura':rscAltura,'rscFecha':rscFecha,
-						 'vcc':vccPresente+"//"+vccTipo+"//"+vccMedida,'vccAltura':vccAltura,'vccFecha':vccFecha,'ee':eePresente+"//"+eeTipo+"//"+eeTipoN,'eeInfiltra':eeesfinter+"//"+eeMedida,'eeFecha':eeFecha};		  		 
+						 'vcc':vccPresente+"//"+vccTipo+"//"+vccMedida,'vccAltura':vccAltura,'vccFecha':vccFecha,
+						 'ee':eePresente, 'eeTipo':eeTipo, 'eeTipoN':eeTipoN,
+						 'eeInfiltra':eeesfinter, 'eeInfiltraMedida':eeMedida,'eeFecha':eeFecha};		  		 
 		 
     jQuery.ajax({
          url: '<c:url value="/addNewExaProcto.htm" />',
@@ -3534,9 +3534,8 @@ function loadEstadificacion(consultaId){
 	    		jQuery("input[name=distanciaMarARadio][value="+estadificacion.rmDistAnal+"]").click().attr('checked', true);
 	    		jQuery("#alturaRM").val(estadificacion.rmAltura);
 	    		
-	    		var rmTumorRadio = estadificacion.rmTumor.split("//");
-	    		jQuery("input[name=numTRadio][value="+rmTumorRadio[0]+"]").click().attr('checked', true);
-	    		jQuery("input[name=numTNRadio][value="+rmTumorRadio[1]+"]").click().attr('checked', true);
+	    		jQuery("input[name=numTRadio][value="+estadificacion.rmTumor+"]").click().attr('checked', true);
+	    		jQuery("input[name=numTNRadio][value="+estadificacion.rmTumorN+"]").click().attr('checked', true);
 	    		
 	    		jQuery("input[name=crmPresente][value="+estadificacion.crm+"]").click().attr('checked', true);
 	    		jQuery("input[name=emviPresente][value="+estadificacion.emvi+"]").click().attr('checked', true);
@@ -3677,7 +3676,7 @@ jQuery("#addEstadificacionForm").validate({
 		var revisionesfinter = jQuery("input[name=revisionesfinter]:checked").val();
 		
 		var estadificacion = {'idConsulta':CONSULTA_ID,'idestadificacion':ESTADIFICACION_ID, 'rmCentro':centroRM,'rmFecha':fechaRM,'rmDistEsfinter':distanciaSupRM,'rmDistAnal':distanciaMarARadio,'rmAltura':alturaRM,
-						 	  'rmTumor':numTRadio+"//"+numTNRadio,'crm':crmPresente,'emvi':emviPresente,'depSatelites':depoSati,'tumoRectoInferior':estaRInterior,'ganglios':inguinales,
+						 	  'rmTumor':numTRadio, 'rmTumorN':numTNRadio,'crm':crmPresente,'emvi':emviPresente,'depSatelites':depoSati,'tumoRectoInferior':estaRInterior,'ganglios':inguinales,
 						 	 'gangliosLate':gaLate, 'infiltraEsfinter':esfinterRM,'tcTorax':tcTorax,'tcAbd':tcAbdomen,'petCt':petTC,'mts':mtsRadio,'suv':suvEstati,
 						 	  'marTumFecha':marcaTuFecha,'ceaAumentado':ceaAument,'ca19':caAument,'tnmT':tnmValT,'tnmN':tnmValN,'tnmM':tnmValM,
 						 	  'tnmPt':ptnmValT,'tnmPn':ptnmValN,'tnmPm':ptnmValM,'metastasis':metastasis,'metastasisOtra':metastaDistOtras, 'revRmFecha':revisionRMFecha,'revDistanEsfinter':revisionRMDistan,

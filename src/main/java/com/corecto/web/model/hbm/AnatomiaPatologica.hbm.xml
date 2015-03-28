@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 11-nov-2013 20:22:21 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.corecto.web.model.pojo.extra.AnotomiaPatologica" table="ANOTOMIA_PATOLOGICA" schema="DBCORECTO" >
+    <class name="com.corecto.web.model.pojo.extra.AnatomiaPatologica" table="ANOTOMIA_PATOLOGICA" schema="DBCORECTO" >
         <id name="idanotomia" type="long">
             <column name="IDANOTOMIA" />
             <generator class="increment" />

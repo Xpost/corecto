@@ -19,8 +19,11 @@ public class ExaProcto implements java.io.Serializable {
 	private String vcc;
 	private String vccAltura;
 	private Date vccFecha;
-	private String ee;
-	private String eeInfiltra;
+	private Integer ee;
+	private Integer eeTipo;
+	private Integer eeTipoN;
+	private Integer eeInfiltra;
+	private Integer eeInfiltraMedida;
 	private Date eeFecha;
 
 	public ExaProcto() {
@@ -28,24 +31,6 @@ public class ExaProcto implements java.io.Serializable {
 
 	public ExaProcto(long idexaprocto) {
 		this.idexaprocto = idexaprocto;
-	}
-
-	public ExaProcto(long idexaprocto, Consulta consulta, String tactoRectal,
-			String rsc, String rscAltura, Date rscFecha, String vcc,
-			String vccAltura, Date vccFecha, String ee, String eeInfiltra,
-			Date eeFecha) {
-		this.idexaprocto = idexaprocto;
-		this.consulta = consulta;
-		this.tactoRectal = tactoRectal;
-		this.rsc = rsc;
-		this.rscAltura = rscAltura;
-		this.rscFecha = rscFecha;
-		this.vcc = vcc;
-		this.vccAltura = vccAltura;
-		this.vccFecha = vccFecha;
-		this.ee = ee;
-		this.eeInfiltra = eeInfiltra;
-		this.eeFecha = eeFecha;
 	}
 
 	public long getIdexaprocto() {
@@ -100,50 +85,6 @@ public class ExaProcto implements java.io.Serializable {
 		return this.vcc;
 	}
 
-	public void setVcc(String vcc) {
-		this.vcc = vcc;
-	}
-
-	public String getVccAltura() {
-		return this.vccAltura;
-	}
-
-	public void setVccAltura(String vccAltura) {
-		this.vccAltura = vccAltura;
-	}
-
-	public Date getVccFecha() {
-		return this.vccFecha;
-	}
-
-	public void setVccFecha(Date vccFecha) {
-		this.vccFecha = vccFecha;
-	}
-
-	public String getEe() {
-		return this.ee;
-	}
-
-	public void setEe(String ee) {
-		this.ee = ee;
-	}
-
-	public String getEeInfiltra() {
-		return this.eeInfiltra;
-	}
-
-	public void setEeInfiltra(String eeInfiltra) {
-		this.eeInfiltra = eeInfiltra;
-	}
-
-	public Date getEeFecha() {
-		return this.eeFecha;
-	}
-
-	public void setEeFecha(Date eeFecha) {
-		this.eeFecha = eeFecha;
-	}
-
 	public String getTactoRectalInfiltra() {
 		return tactoRectalInfiltra;
 	}
@@ -151,7 +92,73 @@ public class ExaProcto implements java.io.Serializable {
 	public void setTactoRectalInfiltra(String tactoRectalInfiltra) {
 		this.tactoRectalInfiltra = tactoRectalInfiltra;
 	}
-	
-	
+
+	public String getVccAltura() {
+		return vccAltura;
+	}
+
+	public void setVccAltura(String vccAltura) {
+		this.vccAltura = vccAltura;
+	}
+
+	public Date getVccFecha() {
+		return vccFecha;
+	}
+
+	public void setVccFecha(Date vccFecha) {
+		this.vccFecha = vccFecha;
+	}
+
+	public Integer getEe() {
+		return ee;
+	}
+
+	public void setEe(Integer ee) {
+		this.ee = ee;
+	}
+
+	public Integer getEeTipo() {
+		return eeTipo;
+	}
+
+	public void setEeTipo(Integer eeTipo) {
+		this.eeTipo = eeTipo;
+	}
+
+	public Integer getEeTipoN() {
+		return eeTipoN;
+	}
+
+	public void setEeTipoN(Integer eeTipoN) {
+		this.eeTipoN = eeTipoN;
+	}
+
+	public Integer getEeInfiltra() {
+		return eeInfiltra;
+	}
+
+	public void setEeInfiltra(Integer eeInfiltra) {
+		this.eeInfiltra = eeInfiltra;
+	}
+
+	public Integer getEeInfiltraMedida() {
+		return eeInfiltraMedida;
+	}
+
+	public void setEeInfiltraMedida(Integer eeInfiltraMedida) {
+		this.eeInfiltraMedida = eeInfiltraMedida;
+	}
+
+	public Date getEeFecha() {
+		return eeFecha;
+	}
+
+	public void setEeFecha(Date eeFecha) {
+		this.eeFecha = eeFecha;
+	}
+
+	public void setVcc(String vcc) {
+		this.vcc = vcc;
+	}
 
 }

@@ -14,9 +14,10 @@ public class Estadificacion implements java.io.Serializable {
 	private String rmCentro;
 	private Date rmFecha;
 	private String rmDistEsfinter;
-	private String rmDistAnal;
+	private Integer rmDistAnal;
 	private String rmAltura;
-	private String rmTumor;
+	private Integer rmTumor;
+	private Integer rmTumorN;
 	private String crm;
 	private String emvi;
 	private String depSatelites;
@@ -59,18 +60,15 @@ public class Estadificacion implements java.io.Serializable {
 		this.idestadificacion = idestadificacion;
 	}
 
-	public Estadificacion(long idestadificacion, Consulta consulta,
-			String rmCentro, Date rmFecha, String rmDistEsfinter,
-			String rmDistAnal, String rmAltura, String rmTumor, String crm,
-			String emvi, String depSatelites, String tumoRectoInferior,
-			String ganglios, String infiltraEsfinter, String tcTorax,
-			String tcAbd, String petCt, String mts, String suv,
-			Date marTumFecha, String ceaAumentado, String ca19, String tnmT,
-			String tnmN, String tnmM, String tnmPt, String tnmPn, String tnmPm,
-			String metastasis, Date revRmFecha, String revDistanEsfinter,
-			String revDistanAnal, String revAltura, String revTumor,
-			String revCrm, String revEmvi, String revEstadifTumores,
-			String revGanIngui, String revGanLateral, String revInfiltraEsf) {
+	public Estadificacion(long idestadificacion, Consulta consulta, String rmCentro, Date rmFecha,
+			String rmDistEsfinter, Integer rmDistAnal, String rmAltura, Integer rmTumor, String crm,
+			String emvi, String depSatelites, String tumoRectoInferior, String ganglios,
+			String infiltraEsfinter, String tcTorax, String tcAbd, String petCt, String mts, String suv,
+			Date marTumFecha, String ceaAumentado, String ca19, String tnmT, String tnmN, String tnmM,
+			String tnmPt, String tnmPn, String tnmPm, String metastasis, Date revRmFecha,
+			String revDistanEsfinter, String revDistanAnal, String revAltura, String revTumor, String revCrm,
+			String revEmvi, String revEstadifTumores, String revGanIngui, String revGanLateral,
+			String revInfiltraEsf) {
 		this.idestadificacion = idestadificacion;
 		this.consulta = consulta;
 		this.rmCentro = rmCentro;
@@ -153,11 +151,11 @@ public class Estadificacion implements java.io.Serializable {
 		this.rmDistEsfinter = rmDistEsfinter;
 	}
 
-	public String getRmDistAnal() {
+	public Integer getRmDistAnal() {
 		return this.rmDistAnal;
 	}
 
-	public void setRmDistAnal(String rmDistAnal) {
+	public void setRmDistAnal(Integer rmDistAnal) {
 		this.rmDistAnal = rmDistAnal;
 	}
 
@@ -169,12 +167,20 @@ public class Estadificacion implements java.io.Serializable {
 		this.rmAltura = rmAltura;
 	}
 
-	public String getRmTumor() {
+	public Integer getRmTumor() {
 		return this.rmTumor;
 	}
 
-	public void setRmTumor(String rmTumor) {
+	public void setRmTumor(Integer rmTumor) {
 		this.rmTumor = rmTumor;
+	}
+
+	public Integer getRmTumorN() {
+		return rmTumorN;
+	}
+
+	public void setRmTumorN(Integer rmTumorN) {
+		this.rmTumorN = rmTumorN;
 	}
 
 	public String getCrm() {
@@ -448,6 +454,5 @@ public class Estadificacion implements java.io.Serializable {
 	public void setMetastasisOtra(String metastasisOtra) {
 		this.metastasisOtra = metastasisOtra;
 	}
-	
 
 }

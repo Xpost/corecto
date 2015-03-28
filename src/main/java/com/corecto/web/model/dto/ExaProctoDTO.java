@@ -12,8 +12,11 @@ public class ExaProctoDTO {
 	private String vcc;
 	private String vccAltura;
 	private String vccFecha;
-	private String ee;
-	private String eeInfiltra;
+	private Integer ee;
+	private Integer eeTipo;
+	private Integer eeTipoN;
+	private Integer eeInfiltra;
+	private Integer eeInfiltraMedida;
 	private String eeFecha;
 
 	public long getIdConsulta() {
@@ -88,20 +91,52 @@ public class ExaProctoDTO {
 		this.vccFecha = vccFecha;
 	}
 
-	public String getEe() {
+	public String getTactoRectalInfiltra() {
+		return tactoRectalInfiltra;
+	}
+
+	public void setTactoRectalInfiltra(String tactoRectalInfiltra) {
+		this.tactoRectalInfiltra = tactoRectalInfiltra;
+	}
+
+	public Integer getEe() {
 		return ee;
 	}
 
-	public void setEe(String ee) {
+	public void setEe(Integer ee) {
 		this.ee = ee;
 	}
 
-	public String getEeInfiltra() {
+	public Integer getEeTipo() {
+		return eeTipo;
+	}
+
+	public void setEeTipo(Integer eeTipo) {
+		this.eeTipo = eeTipo;
+	}
+
+	public Integer getEeTipoN() {
+		return eeTipoN;
+	}
+
+	public void setEeTipoN(Integer eeTipoN) {
+		this.eeTipoN = eeTipoN;
+	}
+
+	public Integer getEeInfiltra() {
 		return eeInfiltra;
 	}
 
-	public void setEeInfiltra(String eeInfiltra) {
+	public void setEeInfiltra(Integer eeInfiltra) {
 		this.eeInfiltra = eeInfiltra;
+	}
+
+	public Integer getEeInfiltraMedida() {
+		return eeInfiltraMedida;
+	}
+
+	public void setEeInfiltraMedida(Integer eeInfiltraMedida) {
+		this.eeInfiltraMedida = eeInfiltraMedida;
 	}
 
 	public String getEeFecha() {
@@ -110,14 +145,6 @@ public class ExaProctoDTO {
 
 	public void setEeFecha(String eeFecha) {
 		this.eeFecha = eeFecha;
-	}
-
-	public String getTactoRectalInfiltra() {
-		return tactoRectalInfiltra;
-	}
-
-	public void setTactoRectalInfiltra(String tactoRectalInfiltra) {
-		this.tactoRectalInfiltra = tactoRectalInfiltra;
 	}
 
 }

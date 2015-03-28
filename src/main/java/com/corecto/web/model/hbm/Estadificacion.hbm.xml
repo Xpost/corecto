@@ -20,14 +20,17 @@
         <property name="rmDistEsfinter" type="string">
             <column name="RM_DIST_ESFINTER" length="25" />
         </property>
-        <property name="rmDistAnal" type="string">
-            <column name="RM_DIST_ANAL" length="25" />
+        <property name="rmDistAnal" type="java.lang.Integer">
+            <column name="RM_DIST_ANAL" />
         </property>
         <property name="rmAltura" type="string">
             <column name="RM_ALTURA" length="25" />
         </property>
-        <property name="rmTumor" type="string">
-            <column name="RM_TUMOR" length="50" />
+        <property name="rmTumor" type="java.lang.Integer">
+            <column name="RM_TUMOR"  />
+        </property>
+        <property name="rmTumorN" type="java.lang.Integer">
+            <column name="RM_TUMOR_N" />
         </property>
         <property name="crm" type="string">
             <column name="CRM" length="25" />

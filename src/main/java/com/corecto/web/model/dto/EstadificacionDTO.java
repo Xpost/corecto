@@ -7,9 +7,10 @@ public class EstadificacionDTO {
 	private String rmCentro;
 	private String rmFecha;
 	private String rmDistEsfinter;
-	private String rmDistAnal;
+	private Integer rmDistAnal;
 	private String rmAltura;
-	private String rmTumor;
+	private Integer rmTumor;
+	private Integer rmTumorN;
 	private String crm;
 	private String emvi;
 	private String depSatelites;
@@ -85,11 +86,11 @@ public class EstadificacionDTO {
 		this.rmDistEsfinter = rmDistEsfinter;
 	}
 
-	public String getRmDistAnal() {
+	public Integer getRmDistAnal() {
 		return rmDistAnal;
 	}
 
-	public void setRmDistAnal(String rmDistAnal) {
+	public void setRmDistAnal(Integer rmDistAnal) {
 		this.rmDistAnal = rmDistAnal;
 	}
 
@@ -101,12 +102,20 @@ public class EstadificacionDTO {
 		this.rmAltura = rmAltura;
 	}
 
-	public String getRmTumor() {
+	public Integer getRmTumor() {
 		return rmTumor;
 	}
 
-	public void setRmTumor(String rmTumor) {
+	public void setRmTumor(Integer rmTumor) {
 		this.rmTumor = rmTumor;
+	}
+
+	public Integer getRmTumorN() {
+		return rmTumorN;
+	}
+
+	public void setRmTumorN(Integer rmTumorN) {
+		this.rmTumorN = rmTumorN;
 	}
 
 	public String getCrm() {

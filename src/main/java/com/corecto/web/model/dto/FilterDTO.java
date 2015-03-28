@@ -34,6 +34,22 @@ public class FilterDTO {
 	private String movilRectal;
 	private String fijoRectal;
 	private String esfinterRectal;
+	private List<Integer> ee;
+	private List<Integer> eeTipo;
+	private List<Integer> eeTipoN;
+	private List<Integer> eeInfiltra;
+	private List<Integer> eeInfiltraMedida;
+	private String eeFecha;
+	// estadificacion
+	private String rmCentro;
+	private String rmFecha;
+	private String rmDistEsfinter;
+	private List<Integer> rmDistAnal;
+	private String rmAltura;
+	private List<Integer> rmTumor;
+	private List<Integer> rmTumorN;
+	// ana patologica
+	private List<Integer> gradoDif;
 	// tratamiento
 	private String udaOndoRadio;
 	private String udaOndoOtro;
@@ -252,6 +268,118 @@ public class FilterDTO {
 
 	public void setEvaRecto(String evaRecto) {
 		this.evaRecto = evaRecto;
+	}
+
+	public List<Integer> getEe() {
+		return ee;
+	}
+
+	public void setEe(List<Integer> ee) {
+		this.ee = ee;
+	}
+
+	public List<Integer> getEeTipo() {
+		return eeTipo;
+	}
+
+	public void setEeTipo(List<Integer> eeTipo) {
+		this.eeTipo = eeTipo;
+	}
+
+	public List<Integer> getEeTipoN() {
+		return eeTipoN;
+	}
+
+	public void setEeTipoN(List<Integer> eeTipoN) {
+		this.eeTipoN = eeTipoN;
+	}
+
+	public List<Integer> getEeInfiltra() {
+		return eeInfiltra;
+	}
+
+	public void setEeInfiltra(List<Integer> eeInfiltra) {
+		this.eeInfiltra = eeInfiltra;
+	}
+
+	public List<Integer> getEeInfiltraMedida() {
+		return eeInfiltraMedida;
+	}
+
+	public void setEeInfiltraMedida(List<Integer> eeInfiltraMedida) {
+		this.eeInfiltraMedida = eeInfiltraMedida;
+	}
+
+	public String getEeFecha() {
+		return eeFecha;
+	}
+
+	public void setEeFecha(String eeFecha) {
+		this.eeFecha = eeFecha;
+	}
+
+	public List<Integer> getGradoDif() {
+		return gradoDif;
+	}
+
+	public void setGradoDif(List<Integer> gradoDif) {
+		this.gradoDif = gradoDif;
+	}
+
+	public String getRmCentro() {
+		return rmCentro;
+	}
+
+	public void setRmCentro(String rmCentro) {
+		this.rmCentro = rmCentro;
+	}
+
+	public String getRmFecha() {
+		return rmFecha;
+	}
+
+	public void setRmFecha(String rmFecha) {
+		this.rmFecha = rmFecha;
+	}
+
+	public String getRmDistEsfinter() {
+		return rmDistEsfinter;
+	}
+
+	public void setRmDistEsfinter(String rmDistEsfinter) {
+		this.rmDistEsfinter = rmDistEsfinter;
+	}
+
+	public List<Integer> getRmDistAnal() {
+		return rmDistAnal;
+	}
+
+	public void setRmDistAnal(List<Integer> rmDistAnal) {
+		this.rmDistAnal = rmDistAnal;
+	}
+
+	public String getRmAltura() {
+		return rmAltura;
+	}
+
+	public void setRmAltura(String rmAltura) {
+		this.rmAltura = rmAltura;
+	}
+
+	public List<Integer> getRmTumor() {
+		return rmTumor;
+	}
+
+	public void setRmTumor(List<Integer> rmTumor) {
+		this.rmTumor = rmTumor;
+	}
+
+	public List<Integer> getRmTumorN() {
+		return rmTumorN;
+	}
+
+	public void setRmTumorN(List<Integer> rmTumorN) {
+		this.rmTumorN = rmTumorN;
 	}
 
 }

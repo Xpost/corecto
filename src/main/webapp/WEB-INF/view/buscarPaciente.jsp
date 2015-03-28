@@ -395,8 +395,8 @@
 							 <div class="span2" style="padding-bottom:1.1em;">	
 								<label for="movilRectal"><strong>Presente</strong></label>
 								    <div class="btn-group" data-toggle="buttons-checkbox">
-									    <button type="button" name="rscPresente" id="opcion1" value="0" class="btn btn-primary">No</button>
-									    <button type="button" name="rscPresente" id="opcion2" value="1" class="btn btn-primary">Si</button>
+									    <button type="button" name="eePresente" id="opcion1" value="0" class="btn btn-primary">No</button>
+									    <button type="button" name="eePresente" id="opcion2" value="1" class="btn btn-primary">Si</button>
 									 </div>
 								</div>	
 							<div class="span4" style="padding-bottom:1.1em;">	
@@ -405,6 +405,7 @@
 									    <button type="button" name="eeTipo" id="opcion1" value="0" class="btn btn-primary">1</button>
 									    <button type="button" name="eeTipo" id="opcion2" value="1" class="btn btn-primary">2</button>
 									    <button type="button" name="eeTipo" id="opcion3" value="2" class="btn btn-primary">3</button>
+									    <button type="button" name="eeTipo" id="opcion3" value="3" class="btn btn-primary">4</button>
 								    </div>
 									  <div class="btn-group" data-toggle="buttons-checkbox">
 									    <button type="button" name="eeTipoN" id="opcion1" value="1" class="btn btn-primary">N0</button>
@@ -415,19 +416,19 @@
 						 </div>		   				
 		   				 	<div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%" >	
 							 <div class="span2" style="padding-bottom:1.1em;">	
-								<label for="movilRectal"><strong>Infiltra esfinter</strong></label>
+								<label for=""><strong>Infiltra esfinter</strong></label>
 								    <div class="btn-group" data-toggle="buttons-checkbox">
-									    <button type="button" name="rscPresente" id="opcion1" value="0" class="btn btn-primary">No</button>
-									    <button type="button" name="rscPresente" id="opcion2" value="1" class="btn btn-primary">Si</button>
+									    <button type="button" name="eeesfinter" id="opcion1" value="0" class="btn btn-primary">No</button>
+									    <button type="button" name="eeesfinter" id="opcion2" value="1" class="btn btn-primary">Si</button>
 									 </div>
 								</div>	
 							<div class="span4" style="padding-bottom:1.1em;">	
-								<label for="esfinterRectal"><strong>Medida</strong></label>
+								<label for=""><strong>Medida</strong></label>
 									  <div class="btn-group" data-toggle="buttons-checkbox">
-									    <button type="button" name="rscMedida" id="opcion1" value="0" class="btn btn-primary">0-5cm</button>
-									    <button type="button" name="rscMedida" id="opcion2" value="1" class="btn btn-primary">5-10 cm</button>
-									    <button type="button" name="rscMedida" id="opcion3" value="2" class="btn btn-primary">10-12 cm</button>
-									    <button type="button" name="rscMedida" id="opcion4" value="3" class="btn btn-primary">> 12 cm</button>
+									    <button type="button" name="eeMedida" id="opcion1" value="0" class="btn btn-primary">0-5cm</button>
+									    <button type="button" name="eeMedida" id="opcion2" value="1" class="btn btn-primary">5-10 cm</button>
+									    <button type="button" name="eeMedida" id="opcion3" value="2" class="btn btn-primary">10-12 cm</button>
+									    <button type="button" name="eeMedida" id="opcion4" value="3" class="btn btn-primary">> 12 cm</button>
 								    </div>				
 							</div>	
 					  		<div class="span2 form-inline" style="margin-top: 25px">	
@@ -441,6 +442,82 @@
 			</div>
 			<div class="row-fluid">
 				<fieldset>
+				<legend style="margin-bottom: 0px !important;border-bottom: 1px solid #9B9B9E !important;">Estadificación <button div="estadificacionTab" style="float: right; margin-top: 5px" class="colapsableBtn btn btn-primary" ><i class="icon-plus"></i></button> </legend>
+				<div id="estadificacionTab" style="padding: 5px;border-bottom: 1px solid #9B9B9E;border-left: 1px solid #9B9B9E; border-right: 1px solid #9B9B9E;border-radius:0 0 4px 4px;display: none">
+					<div class="row-fluid">				
+						<div class="span12">	  	
+						 <label><strong>RM</strong></label>
+								<div style="padding-bottom:1.1em;" class="span10 form-inline">	
+								    <label for="centroRM"><strong>Centro</strong></label>
+									<input type="text" id="centroRM" class="span2">
+								    <label for="fechaRM"><strong>Fecha</strong></label>
+									<input type="text" class="span2" alt="dateP"  placeholder="dd/MM/yyyy" id="fechaRM">
+									<label style="margin-left:25px" for="distanciaSupRM"><strong>Distancia a la porción superior del esfínter</strong></label>
+									<input type="text" id="distanciaSupRM" class="span2">
+								</div>
+						</div>
+						<div class="span10 form-inline" style="padding-bottom:1.1em;">	
+								   <label for="distanciaMarARadio" style="margin-right:24px"><strong>Distancia al margen anal</strong></label>
+								   <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button"   class="btn btn-primary" name="distanciaMarARadio" value="0" > 0-5cm</button>
+									    <button type="button"   class="btn btn-primary" name="distanciaMarARadio" value="1" > 5-10 cm</button>
+									    <button type="button"   class="btn btn-primary" name="distanciaMarARadio" value="2" > 10-12 cm</button>
+									    <button type="button"   class="btn btn-primary" name="distanciaMarARadio" value="3" > > 12 cm</button>
+									</div>    
+								   <label  style="margin-left:25px" for="esfinterRectal"><strong>Altura</strong></label>
+									<input type="text" class="span2" id="alturaRM" >	
+								</div>	
+		   			</div>
+		   			<div class="row-fluid">	
+		   				<label for="tipoComprobanteCaja"><strong>T</strong></label>
+		   				 	<div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span7" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="numTRadio" id="opcion1" value="0" class="btn btn-primary">X</button>
+									    <button type="button" name="numTRadio" id="opcion2" value="1" class="btn btn-primary">1</button>
+									    <button type="button" name="numTRadio" id="opcion3" value="2" class="btn btn-primary">2</button>
+									    <button type="button" name="numTRadio" id="opcion3" value="3" class="btn btn-primary">3a</button>
+									    <button type="button" name="numTRadio" id="opcion1" value="4" class="btn btn-primary">3b</button>
+									    <button type="button" name="numTRadio" id="opcion2" value="5" class="btn btn-primary">3c</button>
+									    <button type="button" name="numTRadio" id="opcion3" value="6" class="btn btn-primary">3d</button>
+									    <button type="button" name="numTRadio" id="opcion3" value="7" class="btn btn-primary">4a</button>
+									    <button type="button" name="numTRadio" id="opcion3" value="8" class="btn btn-primary">4b</button>
+								    </div>
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="numTNRadio" id="opcion1" value="0" class="btn btn-primary">N0</button>
+									    <button type="button" name="numTNRadio" id="opcion2" value="1" class="btn btn-primary">N1a</button>
+									    <button type="button" name="numTNRadio" id="opcion3" value="2" class="btn btn-primary">N1b</button>
+									    <button type="button" name="numTNRadio" id="opcion3" value="3" class="btn btn-primary">N2a</button>
+									    <button type="button" name="numTNRadio" id="opcion3" value="4" class="btn btn-primary">N2b</button>
+								    </div>												    				
+							</div>		
+						 </div>		   				
+		   			</div>			   			
+				</div>
+				</fieldset>
+			</div> 			
+			<div class="row-fluid">
+				<fieldset>
+				<legend style="margin-bottom: 0px !important;border-bottom: 1px solid #9B9B9E !important;">Anatomia patológica<button div="AnotomiaPatTab" style="float: right; margin-top: 5px" class="colapsableBtn btn btn-primary" ><i class="icon-plus"></i></button> </legend>
+				<div id="AnotomiaPatTab" style="padding: 5px;border-bottom: 1px solid #9B9B9E;border-left: 1px solid #9B9B9E; border-right: 1px solid #9B9B9E;border-radius:0 0 4px 4px;display: none">
+					<div class="row-fluid">				
+				     	<div class="span3">
+						  <label for="tipoComprobanteCaja"><strong>Grado de diferenciación</strong></label>
+						  		  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button"   class="btn btn-primary" name="gradoDiferRadio" value="0" > Diferenciado</button>
+									    <button type="button"   class="btn btn-primary" name="gradoDiferRadio" value="1" > Moderadamente diferenciado</button>
+									    <button type="button"   class="btn btn-primary" name="gradoDiferRadio" value="2" > Poco diferenciado</button>
+									    <button type="button"   class="btn btn-primary" name="gradoDiferRadio" value="3" > Indiferenciado</button>
+									    <button type="button"   class="btn btn-primary" name="gradoDiferRadio" value="4" > Anillo de sello</button>
+									    <button type="button"   class="btn btn-primary" name="gradoDiferRadio" value="5" > Mucina</button>
+								    </div>		
+				  		</div>	
+				  	</div>
+		   			</div>
+				</fieldset>
+			</div>
+			<div class="row-fluid">
+				<fieldset>
 				<legend style="margin-bottom: 0px !important;border-bottom: 1px solid #9B9B9E !important;">Tratamiento <button div="tratamientoTab" style="float: right; margin-top: 5px" class="colapsableBtn btn btn-primary" ><i class="icon-plus"></i></button> </legend>
 				<div id="tratamientoTab" style="padding: 5px;border-bottom: 1px solid #9B9B9E;border-left: 1px solid #9B9B9E; border-right: 1px solid #9B9B9E;border-radius:0 0 4px 4px;display: none">
 					<div class="row-fluid">				
@@ -450,15 +527,13 @@
 									    <button type="button" name="udaOndoRadio"  onclick="$('#udaOndoOtro').val('');" value="0" class="btn btn-primary">Si</button>
 									    <button type="button" name="udaOndoRadio"  onclick="$('#udaOndoOtro').val('');" value="1" class="btn btn-primary">No</button>
 									    <button type="button" name="udaOndoRadio" onclick="$('#udaOndoOtro').focus()" value="2" class="btn btn-primary">Otro</button>
-									    
 									 <input type="text" class="" name="udaOndoOtro" id="udaOndoOtro"  onclick="$('button[name=udaOndoRadio][value<2]').removeClass('active');$('button[name=udaOndoRadio][value=2]').addClass('active');" style="margin-bottom: 0px; margin-left:2px">
 								    </div>
 						</div>
 		   			</div>
 				</div>
 				</fieldset>
-			</div>  
-			  
+			</div>  			  
 			  <br>
 				<div class="row-fluid">	 
 				<div class="pull-right">			
@@ -471,6 +546,8 @@
       </div>
       </div><!--/row-->
            <hr>
+ </div>
+     <div class="container" style="width:95%"> <!-- Agregado a mano! -->          
      <div class="row-fluid">
      <div class="span12 thumbnail">
 		  <div class="row-fluid">
@@ -486,6 +563,8 @@
       </div>
       </div>
       <hr>
+      </div>
+  <div class="container" >    
 <!-- edit patient -->
      <div class="row-fluid editClientDiv" style="display: none">
     <div class="bs-docs-example"> 
@@ -724,7 +803,54 @@ jQuery("#searchButton").click(function(){
 		 var movilRectal = jQuery("button[name=movilRectal].active").val();
 		 var fijoRectal = jQuery("button[name=fijoRectal].active").val();
 		 var esfinterRectal = jQuery("button[name=esfinterRectal].active").val();
+		 var eePresente = []; 
+		 jQuery("button[name=eePresente].active").each(function(index, val){	
+			 eePresente.push(val.value);
+	     });
+		 var eeTipo = [];
+		 jQuery("button[name=eeTipo].active").each(function(index, val){	
+			 eeTipo.push(val.value);
+	     });
+		 var eeTipoN = [];
+		 jQuery("button[name=eeTipoN].active").each(function(index, val){	
+			 eeTipoN.push(val.value);
+	     });
+		 var eeesfinter = [];
+		 jQuery("button[name=eeesfinter].active").each(function(index, val){	
+			 eeesfinter.push(val.value);
+	     }); 
+		 var eeMedida = [];
+		 jQuery("button[name=eeMedida].active").each(function(index, val){	
+			 eeMedida.push(val.value);
+	     }); 
+		 var eeFecha = dbFormatDate(jQuery("#eeFecha").val());
 	 }
+	 //estadificacion
+	 if(jQuery("#estadificacionTab").css('display') !== 'none'){
+		 var centroRM = $("#centroRM").val();
+		 var fechaRM = dbFormatDate($("#fechaRM").val());
+		 var distanciaSupRM = $("#distanciaSupRM").val();
+		 var distanciaMarARadio = [];
+		 jQuery("button[name=distanciaMarARadio].active").each(function(index, val){	
+			 distanciaMarARadio.push(val.value);
+	     }); 
+		 var alturaRM = $("#alturaRM").val(); 
+		 var numTRadio = [];
+		 jQuery("button[name=numTRadio].active").each(function(index, val){	
+			 numTRadio.push(val.value);
+	     }); 
+		 var numTNRadio = [];
+		 jQuery("button[name=numTNRadio].active").each(function(index, val){	
+			 numTNRadio.push(val.value);
+	     }); 
+	 } 
+	 //anatomia patologica
+	 if(jQuery("#AnotomiaPatTab").css('display') !== 'none'){
+		 var gradoDiferRadio = [];
+		 jQuery("button[name=gradoDiferRadio].active").each(function(index, val){	
+			 gradoDiferRadio.push(val.value);
+	     }); 
+	 } 
 	 //tratamiento
 	 if(jQuery("#tratamientoTab").css('display') !== 'none'){
 		 var udaOndoRadio = jQuery("button[name=udaOndoRadio].active").val();
@@ -732,13 +858,16 @@ jQuery("#searchButton").click(function(){
 	 }
 	 
 	 var filterObject = {"nombre":name,"dni":dni,"sexo":sexoSelected,"movilRectal":movilRectal,"fijoRectal":fijoRectal,
+			  'ee':eePresente,'eeTipo':eeTipo,'eeTipoN':eeTipoN,'eeInfiltra':eeesfinter,'eeInfiltraMedida':eeMedida,'eeFecha':eeFecha,
 			  'patologicoNinguno': apersonalPat1, 'patologicoColitis': apersonalPat2, 'patologicoAdenoma': apersonalPat3,
 			  'patologicoCrohn': apersonalPat4, 'patologicoHiv': apersonalPat5, 'patologicoNeoplasia': neoplasiaVal,
 			  'neoplasia':neoPlasiaText, 'familiarCancer':famCancer, 'tipoCcrh':anteSindrome, 'antecedentesCcrh':siSindrome,
-			  'evaRecto':evaRecto,
-			 "consultaMotivos":motivosConsulta,"consultaMotivoOtro":motivoOtro,'fechaInSintoma':dateStartMotivo,'motivoEvoMeses':mesesMotivo,
-			 "esfinterRectal":esfinterRectal,"udaOndoRadio":udaOndoRadio, "udaOndoOtro":udaOndoOtro, "peso":peso,"talla":talla,
-			 "superficie":superficie,"performance":performance};
+			  'evaRecto':evaRecto, 'gradoDif':gradoDiferRadio,
+			  'rmCentro':centroRM, 'rmFecha':fechaRM, 'rmDistEsfinter':distanciaSupRM, 'rmDistAnal':distanciaMarARadio,
+			  'rmAltura':alturaRM, 'rmTumor':numTRadio,'rmTumorN':numTNRadio,
+			  "consultaMotivos":motivosConsulta,"consultaMotivoOtro":motivoOtro,'fechaInSintoma':dateStartMotivo,'motivoEvoMeses':mesesMotivo,
+			  "esfinterRectal":esfinterRectal,"udaOndoRadio":udaOndoRadio, "udaOndoOtro":udaOndoOtro, "peso":peso,"talla":talla,
+			  "superficie":superficie,"performance":performance};
 	 
 	  jQuery.ajax({
           url: '<c:url value="/findPatientFilter.htm" />',
@@ -778,16 +907,17 @@ jQuery("#listClientTable").jqGrid({
 	             'Fecha Nac.', 'Localidad','Teléfono','','','','','',''],
 		colModel : [ 
 		        	{name: 'myac',
-						 width:77, 
+						 width:82, 
 						 fixed:true, 
 						 sortable:false, 
 						 resize:false, 
 							search: false,
 							formatter:function(){
-								return "<div style='margin-left: 7px;'>"+
-								'<div onmouseout="jQuery(this).removeClass(\'ui-state-hover\')" onmouseover="jQuery(this).addClass(\'ui-state-hover\');"  class="ui-pg-div ui-inline-edit" style="float: left; cursor: pointer; display: block;margin-left: 4px;margin-right: 4px;" title="Modificar fila seleccionada"><span op="edit" class="ui-icon ui-icon-pencil"></span></div>'+											
+								return "<div style='margin-left: 5px;'>"+
+								'<div onmouseout="jQuery(this).removeClass(\'ui-state-hover\')" onmouseover="jQuery(this).addClass(\'ui-state-hover\');"  class="ui-pg-div ui-inline-edit" style="float: left; cursor: pointer; display: block;margin-left: 0px;margin-right: 4px;" title="Modificar fila seleccionada"><span op="edit" class="ui-icon ui-icon-pencil"></span></div>'+											
 								'<div onmouseout="jQuery(this).removeClass(\'ui-state-hover\')" onmouseover="jQuery(this).addClass(\'ui-state-hover\');"  class="ui-pg-div ui-inline-edit" style="float: left; cursor: pointer; display: block;" title="Eliminar fila seleccionada"><span op="delete" class="ui-icon ui-icon-trash"></span></div>'+
 								'<div onmouseout="jQuery(this).removeClass(\'ui-state-hover\')" onmouseover="jQuery(this).addClass(\'ui-state-hover\');"  class="ui-pg-div ui-inline-edit" style="float: left; cursor: pointer; display: block;margin-left: 4px;margin-right: 4px;" title="Seleccionar paciente"><span op="select" class="ui-icon ui-icon-check"></span></div>'+
+								'<div onmouseout="jQuery(this).removeClass(\'ui-state-hover\')" onmouseover="jQuery(this).addClass(\'ui-state-hover\');"  class="ui-pg-div ui-inline-edit" style="float: left; cursor: pointer; display: block;margin-right: 1px;" title="Ver paciente"><span op="detail" class="ui-icon ui-icon-clipboard"></span></div>'+
 								"</div>";
 								}
 
@@ -893,6 +1023,7 @@ jQuery("#listClientTable").jqGrid({
 	  pginput:false,
 	  rownumbers : true,
 	  //loadonce:true,
+	  hidegrid:false,
 	  jsonReader : {
          root: "rows",
          page: "page",
@@ -1214,6 +1345,22 @@ function cleanScreenSearch(){
 		 jQuery("button[name=movilRectal].active").removeClass("active");
 		 jQuery("button[name=fijoRectal].active").removeClass("active");
 		 jQuery("button[name=esfinterRectal].active").removeClass("active");
+		 jQuery("button[name=eePresente].active").removeClass("active");
+		 jQuery("button[name=eeTipo].active").removeClass("active");
+		 jQuery("button[name=eeTipoN].active").removeClass("active");
+		 jQuery("button[name=eeesfinter].active").removeClass("active");
+		 jQuery("button[name=eeMedida].active").removeClass("active");
+		 jQuery("#eeFecha").val("");
+		 //estadificacion
+		 jQuery("#centroRM").val("");
+		 jQuery("#fechaRM").val("");
+		 jQuery("#distanciaSupRM").val("");
+		 jQuery("button[name=distanciaMarARadio].active").removeClass("active");
+		 jQuery("button[name=numTRadio].active").removeClass("active");
+		 jQuery("button[name=numTNRadio].active").removeClass("active");
+		 jQuery("#alturaRM").val(""); 
+		 //ana patologica
+		 jQuery("button[name=gradoDiferRadio].active").removeClass("active");
 		 //tratamiento
 		 jQuery("button[name=udaOndoRadio].active").removeClass("active");
 		 jQuery("#udaOndoOtro").val("");

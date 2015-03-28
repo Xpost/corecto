@@ -42,8 +42,8 @@ import com.corecto.web.model.dto.PreconsultaDTO;
 import com.corecto.web.model.dto.RespuestaTrataNeoDTO;
 import com.corecto.web.model.dto.TratamientoAdyuDTO;
 import com.corecto.web.model.dto.TratamientoDTO;
+import com.corecto.web.model.pojo.extra.AnatomiaPatologica;
 import com.corecto.web.model.pojo.extra.AnatomiaPatologicaPost;
-import com.corecto.web.model.pojo.extra.AnotomiaPatologica;
 import com.corecto.web.model.pojo.extra.Antecedentes;
 import com.corecto.web.model.pojo.extra.CatHospital;
 import com.corecto.web.model.pojo.extra.ConductaPostNeo;
@@ -306,10 +306,13 @@ public class ConsultaServiceImpl implements ConsultaService {
 		if (exaProcto != null) {
 			exaProctoDTO = new ExaProctoDTO();
 			exaProctoDTO.setEe(exaProcto.getEe());
+			exaProctoDTO.setEeTipo(exaProcto.getEeTipo());
+			exaProctoDTO.setEeTipoN(exaProcto.getEeTipoN());
 			if (exaProcto.getEeFecha() != null) {
 				exaProctoDTO.setEeFecha(dateFormatter.format(exaProcto.getEeFecha()));
 			}
 			exaProctoDTO.setEeInfiltra(exaProcto.getEeInfiltra());
+			exaProctoDTO.setEeInfiltraMedida(exaProcto.getEeInfiltraMedida());
 			exaProctoDTO.setIdConsulta(idConsulta);
 			exaProctoDTO.setIdexaprocto(exaProcto.getIdexaprocto());
 			exaProctoDTO.setRsc(exaProcto.getRsc());
@@ -334,6 +337,8 @@ public class ConsultaServiceImpl implements ConsultaService {
 		consulta.setIdconsulta(exaProctoDTO.getIdConsulta());
 		exaProcto.setConsulta(consulta);
 		exaProcto.setEe(exaProctoDTO.getEe());
+		exaProcto.setEeTipo(exaProctoDTO.getEeTipo());
+		exaProcto.setEeTipoN(exaProctoDTO.getEeTipoN());
 		try {
 			exaProcto.setEeFecha(dateFormatter.parse(exaProctoDTO.getEeFecha()));
 			exaProcto.setVccFecha(dateFormatter.parse(exaProctoDTO.getVccFecha()));
@@ -345,6 +350,7 @@ public class ConsultaServiceImpl implements ConsultaService {
 		}
 
 		exaProcto.setEeInfiltra(exaProctoDTO.getEeInfiltra());
+		exaProcto.setEeInfiltraMedida(exaProctoDTO.getEeInfiltraMedida());
 		exaProcto.setRsc(exaProctoDTO.getRsc());
 		exaProcto.setRscAltura(exaProctoDTO.getRscAltura());
 		exaProcto.setTactoRectal(exaProctoDTO.getTactoRectal());
@@ -407,6 +413,7 @@ public class ConsultaServiceImpl implements ConsultaService {
 				estadificacionDTO.setRmFecha(dateFormatter.format(estadificacion.getRmFecha()));
 			}
 			estadificacionDTO.setRmTumor(estadificacion.getRmTumor());
+			estadificacionDTO.setRmTumorN(estadificacion.getRmTumorN());
 			estadificacionDTO.setSuv(estadificacion.getSuv());
 			estadificacionDTO.setTcAbd(estadificacion.getTcAbd());
 			estadificacionDTO.setTcTorax(estadificacion.getTcTorax());
@@ -460,6 +467,7 @@ public class ConsultaServiceImpl implements ConsultaService {
 		estadificacion.setRevDistanEsfinter(estadificacionDTO.getRevDistanEsfinter());
 
 		estadificacion.setRmTumor(estadificacionDTO.getRmTumor());
+		estadificacion.setRmTumorN(estadificacionDTO.getRmTumorN());
 		estadificacion.setRmAltura(estadificacionDTO.getRmAltura());
 		estadificacion.setRmCentro(estadificacionDTO.getRmCentro());
 		estadificacion.setRmDistAnal(estadificacionDTO.getRmDistAnal());
@@ -490,7 +498,7 @@ public class ConsultaServiceImpl implements ConsultaService {
 	public AnotomiaPatologicaDTO loadAnaPatologica(Long idConsulta) {
 		AnotomiaPatologicaDAO anotomiaPatologicaDAO = DAOLocator.getInstance().lookup(
 				AnotomiaPatologicaDAO.class.getName());
-		AnotomiaPatologica anotomiaPatologica = anotomiaPatologicaDAO
+		AnatomiaPatologica anotomiaPatologica = anotomiaPatologicaDAO
 				.loadAnotomiaPatologicaByConsulta(idConsulta);
 		AnotomiaPatologicaDTO anotomiaPatologicaDTO = null;
 		if (anotomiaPatologica != null) {
@@ -514,7 +522,7 @@ public class ConsultaServiceImpl implements ConsultaService {
 	}
 
 	public Long saveAnaPatologica(AnotomiaPatologicaDTO anotomiaPatologicaDTO) {
-		AnotomiaPatologica anotomiaPatologica = new AnotomiaPatologica();
+		AnatomiaPatologica anotomiaPatologica = new AnatomiaPatologica();
 		Consulta consulta = new Consulta();
 		consulta.setIdconsulta(anotomiaPatologicaDTO.getIdConsulta());
 		anotomiaPatologica.setConsulta(consulta);
