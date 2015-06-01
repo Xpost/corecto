@@ -86,7 +86,7 @@
   	 }
   	 
 	.ui-autocomplete-loading { background: white url('css/images/ui-anim_basic_16x16.gif') right center no-repeat; }
-	.ui-loadingBar { background: transparent url('css/images/load.gif') center / 260px no-repeat;  }
+	.ui-loadingBar { background: transparent url('css/images/load.gif') center / 260px no-repeat !important; height: 12px; border-top: none !important;  }
 	.ui-pg-input { width: 10px !important;  }
 	
 	#formFilter fieldset legend {
@@ -492,7 +492,246 @@
 								    </div>												    				
 							</div>		
 						 </div>		   				
-		   			</div>			   			
+		   			</div>		
+		   			<div class="row-fluid">	
+		   			<div class="span4" style="padding-bottom:1.1em;">	
+		   				<label for="crmPresente"><strong>CRM</strong></label>
+		   				 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span3" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="crmPresente" id="opcion1" value="0" class="btn btn-primary">Positivo</button>
+									    <button type="button" name="crmPresente" id="opcion2" value="1" class="btn btn-primary">Negativo</button>
+								    </div>											    				
+							</div>		
+						 </div>		   	
+						</div>
+						<div class="span4" style="padding-bottom:1.1em;">	 
+		     			 <label for="tipoComprobanteCaja"><strong>EMVI</strong></label>
+		   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span7" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="emviPresente" id="emviPresente" value="0" class="btn btn-primary">Positivo</button>
+									    <button type="button" name="emviPresente" id="emviPresente" value="1" class="btn btn-primary">Negativo</button>
+									    <button type="button" name="emviPresente" id="opcion3" value="2" class="btn btn-primary">0</button>
+									    <button type="button" name="emviPresente" id="opcion3" value="3" class="btn btn-primary">1</button>
+									    <button type="button" name="emviPresente" id="opcion1" value="4" class="btn btn-primary">2</button>
+									    <button type="button" name="emviPresente" id="opcion2" value="5" class="btn btn-primary">3</button>
+									    <button type="button" name="emviPresente" id="opcion3" value="6" class="btn btn-primary">4</button>
+								    </div>										    				
+							</div>		
+						 </div>		
+						</div>	 	
+						<div class="span4" style="padding-bottom:1.1em;">	 
+		     			 <label for="tipoComprobanteCaja"><strong>Depósitos satélites</strong></label>
+		   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span7" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="depoSati" id="opcion1" value="0" class="btn btn-primary">Si</button>
+									    <button type="button" name="depoSati" id="opcion2" value="1" class="btn btn-primary">No</button>
+								    </div>										    				
+							</div>		
+						 </div>		
+						</div>	 								
+		   			</div>		
+		   			<div class="row-fluid">	
+		   			<div class="span4" style="padding-bottom:1.1em;">	
+		   				<label for="estaRInterior"><strong>Estadificación tumores de recto inferior</strong></label>
+		   				 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span3" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="estaRInterior" id="opcion1" value="0" class="btn btn-primary">1</button>
+									    <button type="button" name="estaRInterior" id="opcion2" value="1" class="btn btn-primary">2</button>
+									    <button type="button" name="estaRInterior" id="opcion1" value="2" class="btn btn-primary">3</button>
+									    <button type="button" name="estaRInterior" id="opcion2" value="3" class="btn btn-primary">4</button>
+								    </div>											    				
+							</div>		
+						 </div>		   	
+						</div>
+						<div class="span3" style="padding-bottom:1.1em;">	 
+		     			 <label for="tipoComprobanteCaja"><strong>Ganglios Inguinales</strong></label>
+		   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span7" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="inguinales" id="opcion1" value="0" class="btn btn-primary">Si</button>
+									    <button type="button" name="inguinales" id="opcion2" value="1" class="btn btn-primary">No</button>
+								    </div>										    				
+							</div>		
+						 </div>		
+						</div>	 	
+						<div class="span3" style="padding-bottom:1.1em;">	 
+		     			 <label for="tipoComprobanteCaja"><strong>Ganglios Laterales</strong></label>
+		   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span7" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="gaLate" id="opcion1" value="0" class="btn btn-primary">Si</button>
+									    <button type="button" name="gaLate" id="opcion2" value="1" class="btn btn-primary">No</button>
+								    </div>										    				
+							</div>		
+						 </div>		
+						</div>	 	
+						<div class="span2" style="padding-bottom:1.1em;">	 
+		     			 <label for="tipoComprobanteCaja"><strong>Infiltra Esfinter</strong></label>
+		   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span7" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="esfinterRM" id="opcion1" value="0" class="btn btn-primary">Si</button>
+									    <button type="button" name="esfinterRM" id="opcion2" value="1" class="btn btn-primary">No</button>
+								    </div>										    				
+							</div>		
+						 </div>		
+						</div>	 													
+		   			</div>	
+		   			<div class="row-fluid">	
+		   			<div class="span4" style="padding-bottom:1.1em;">	
+		   				<label for="tcTorax"><strong>TC torax</strong></label>
+		   				 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span3" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="tcTorax" id="opcion1" value="0" class="btn btn-primary">Si</button>
+									    <button type="button" name="tcTorax" id="opcion2" value="1" class="btn btn-primary">No</button>
+								    </div>											    				
+							</div>		
+						 </div>		   	
+						</div>
+						<div class="span3" style="padding-bottom:1.1em;">	 
+		     			 <label for="tcAbdomen"><strong>TC abdomen-pelvis</strong></label>
+		   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span7" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="tcAbdomen" id="opcion1" value="0" class="btn btn-primary">Si</button>
+									    <button type="button" name="tcAbdomen" id="opcion2" value="1" class="btn btn-primary">No</button>
+								    </div>										    				
+							</div>		
+						 </div>		
+						</div>	 	
+						<div class="span3" style="padding-bottom:1.1em;">	 
+		     			 <label for="tipoComprobanteCaja"><strong>PET-CT</strong></label>
+		   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span7" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="petTC" id="opcion1" value="0" class="btn btn-primary">Si</button>
+									    <button type="button" name="petTC" id="opcion2" value="1" class="btn btn-primary">No</button>
+								    </div>										    				
+							</div>		
+						 </div>		
+						</div>	 	
+						<div class="span2" style="padding-bottom:1.1em;">	 
+		     			 <label for="tipoComprobanteCaja"><strong>MTS</strong></label>
+		   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span7" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="mtsRadio" id="opcion1" value="0" class="btn btn-primary">Si</button>
+									    <button type="button" name="mtsRadio" id="opcion2" value="1" class="btn btn-primary">No</button>
+								    </div>										    				
+							</div>		
+						 </div>		
+						</div>	 													
+		   			</div>	
+		   			<div class="row-fluid">	
+		   			<div class="span4" style="padding-bottom:1.1em;">	
+		   				<label for="tcTorax"><strong>Marcadores tumorales</strong></label>
+		   				 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+								<label for="marcaTuFecha">Fecha</label>	
+								<input type="text" class="span5" alt="dateP"  placeholder="dd/MM/yyyy" id="marcaTuFecha" >
+						 </div>		   	
+						</div>
+						<div class="span3" style="padding-bottom:1.1em;">	 
+		     			 <label for="tcAbdomen"><strong>CEA aumentado</strong></label>
+		   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span7" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="ceaAument" id="opcion1" value="0" class="btn btn-primary">Si</button>
+									    <button type="button" name="ceaAument" id="opcion2" value="1" class="btn btn-primary">No</button>
+								    </div>										    				
+							</div>		
+						 </div>		
+						</div>	 	
+						<div class="span3" style="padding-bottom:1.1em;">	 
+		     			 <label for="tipoComprobanteCaja"><strong>CA 19-9 aumentado</strong></label>
+		   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span7" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="caAument" id="opcion1" value="0" class="btn btn-primary">Si</button>
+									    <button type="button" name="caAument" id="opcion2" value="1" class="btn btn-primary">No</button>
+								    </div>										    				
+							</div>		
+						 </div>		
+						</div>	 	
+						<div class="span2" style="padding-bottom:1.1em;">	 
+		     			 <label for="tipoComprobanteCaja"><strong>SUV</strong></label>
+		   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span9" style="padding-bottom:1.1em;">	
+									<input type="text" class="span12" id="suvEstati">									    				
+							</div>		
+						 </div>		
+						</div>	 													
+		   			</div>		
+					<div class="row-fluid">
+							<div class="span5">
+							  <label for=""><strong>TNM</strong></label>
+								<div class="span12 form-inline" style="padding-bottom:1.1em;">	
+								  <label for="esfinterRectal">T</label>
+									<input type="text" class="input-small" id="tnmValT" >
+								 <label for="esfinterRectal">N</label>
+									<input type="text" class="input-small" id="tnmValN" >
+							     <label for="esfinterRectal">M</label>
+									<input type="text" class="input-small" id="tnmValM"  >
+								</div>
+								</div>
+							<div class="span5">
+					           <label for=""><strong>pTNM</strong></label>
+								<div class="span12 form-inline" style="padding-bottom:1.1em;">	
+								  <label for="esfinterRectal">pT</label>
+									<input type="text" class="input-small" id="ptnmValT" >
+								 <label for="esfinterRectal">pN</label>
+									<input type="text" class="input-small" id="ptnmValN" >
+							     <label for="esfinterRectal">pM</label>
+									<input type="text" class="input-small" id="ptnmValM" >
+								</div>
+							</div>
+					</div>
+					<div class="row-fluid">				
+				     	<div class="span3">
+						  <label for="tipoComprobanteCaja"><strong>Metástasis a distancia</strong></label>
+						  		  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button"   class="btn btn-primary" name="metastaDist1" id="metastaDist1"> Ninguna</button>
+									    <button type="button"   class="btn btn-primary" name="metastaDist2" id="metastaDist2"> Hueso</button>
+									    <button type="button"   class="btn btn-primary" name="metastaDist3" id="metastaDist3"> Pulmón</button>
+									    <button type="button"   class="btn btn-primary" name="metastaDist4" id="metastaDist4"> Desc. </button>
+									    <button type="button"   class="btn btn-primary" name="metastaDist5" id="metastaDist5"> Piel y TCS</button>
+									    <button type="button"   class="btn btn-primary" name="metastaDist6" id="metastaDist6"> Cerebro</button>
+									    <button type="button"   class="btn btn-primary" name="metastaDist7" id="metastaDist7"> Ganglios Dist</button>
+									    <button type="button"   class="btn btn-primary" name="metastaDist8" id="metastaDist8"> Ovario</button>
+									    <button type="button"   class="btn btn-primary" name="metastaDist9" id="metastaDist9"> Hígado</button>
+									    <button type="button"   class="btn btn-primary" name="metastaDistOtraCbox" id="metastaDistOtraCbox"onclick="$('#metastaDisOtra').focus()"  >Otras</button>
+									 <input type="text"  name="motivoCbox" id="metastaDisOtra"  onclick="$('#metastaDistOtraCbox').addClass('active');" style="margin-bottom: 0px; margin-left:2px; width:20%;">
+								    </div>		
+				  		</div>	
+				  	</div>
+					<div class="row-fluid">				
+						 <label for="tipoComprobanteCaja"><strong>Revisión RM en Correcto</strong></label>
+							<div class="span2" style="padding-bottom:1.1em;">	
+								<label for="marcaTuFecha">Fecha</label>	
+								<input type="text" class="span7" alt="dateP"  placeholder="dd/MM/yyyy" id="revisionRMFecha" >
+							</div>	
+							<div class="span3" style="padding-bottom:1.1em;">	
+								<label for="marcaTuFecha">Dist. a la porción superior del esfínter</label>	
+								<input type="text" class="span5"  id="revisionRMDistan" >
+							</div>	
+							<div class="span4" style="padding-bottom:1.1em;">	
+								<label for="esfinterRectal"><strong>Distancia al margen anal</strong></label>
+									  <div class="btn-group" data-toggle="buttons-radio">
+									    <button type="button" name="revisionRMMargen" id="opcion1" value="0" class="btn btn-primary">0-5cm</button>
+									    <button type="button" name="revisionRMMargen" id="opcion2" value="1" class="btn btn-primary">5-10 cm </button>
+									    <button type="button" name="revisionRMMargen" id="opcion3" value="2" class="btn btn-primary">10-12 cm </button>
+									    <button type="button" name="revisionRMMargen" id="opcion4" value="3" class="btn btn-primary">> 12 cm</button>
+								    </div>				
+							</div>	
+							<div class="span2" style="padding-bottom:1.1em;">	
+								<label for="marcaTuFecha">Altura</label>	
+								<input type="text" class="span10"  id="revisionAlturaRM" >
+							</div>											
+		   			</div>				  				   				   					   					   			   				   			
 				</div>
 				</fieldset>
 			</div> 			
@@ -654,6 +893,205 @@
       </div><!--/row-->
       
     </div><!--/.fluid-container-->
+    
+ <div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal hide fade in" id="consultInfoModal" style="display: none; width: 880px; margin-left:-440px">
+           <div class="modal-header">
+              <button aria-hidden="true" onclick="$('#consultInfoModal').modal('hide');" class="close" type="button">×</button>
+              <h3 id="myModalLabel">Detalle Paciente</h3>
+          </div>
+          <div class="modal-body">
+          <div class="row-fluid">	 
+	          <div id="accordion-preconsulta" class="accordion span6" style="margin-left: 0px">
+	            <div class="accordion-group">
+	                <div class="accordion-heading" style="height: 40px">
+	                    <a  onclick="javascript:toggleCollapseImg('imgToggleReserva');$('#preconsultaData').collapse('toggle');"  data-parent="accordion-preconsulta" class="accordion-toggle">
+	                    Preconsulta</a>
+	                    <span  onclick="javascript:toggleCollapseImg('imgToggleReserva');$('#preconsultaData').collapse('toggle');" style="position:relative;left:90%;top:-27px;cursor: pointer;">
+	                        <i class="icon-plus-sign" id="imgToggleReserva"></i>
+	                    </span>
+	                </div>
+	                <div id="preconsultaData" class="collapse">
+	                   <div class="accordion-inner">
+	                    <table class="table table-striped table-condensed">
+				        <tbody>
+				            <tr>
+				                <td class="ui-loadingBar"></td>
+				            </tr>
+				        </tbody>
+	    			</table>
+	                 </div>
+	                </div>
+	            </div>
+	         </div>
+	
+	         <div id="accordion-motivoConsultaData" class="accordion span6" style="">
+	            <div class="accordion-group">
+	                <div class="accordion-heading" style="height: 40px">
+	                    <a  onclick="javascript:toggleCollapseImg('imgToggleMotivo');$('#motivoConsultaData').collapse('toggle');"  data-parent="accordion-motivoConsultaData" class="accordion-toggle">
+	                    Motivo de la consulta</a>
+	                    <span  onclick="javascript:toggleCollapseImg('imgToggleMotivo');$('#motivoConsultaData').collapse('toggle');" style="position:relative;left:90%;top:-27px;cursor: pointer;">
+	                        <i class="icon-plus-sign" id="imgToggleMotivo"></i>
+	                    </span>
+	                </div>
+	                <div id="motivoConsultaData" class="collapse">
+	                   <div class="accordion-inner">
+	                    <table class="table table-striped table-condensed">
+				        <tbody>
+				            <tr>
+				                 <td class="ui-loadingBar"></td>
+				            </tr>
+				        </tbody>
+	    			</table>
+	                 </div>
+	                </div>
+	            </div>
+	        </div>
+        </div>
+        <div class="row-fluid">
+          <div id="accordion-antecedentes" class="accordion span6" style="margin-left: 0px">
+	            <div class="accordion-group">
+	                <div class="accordion-heading" style="height: 40px">
+	                    <a  onclick="javascript:toggleCollapseImg('imgToggleReserva');$('#antecedentesData').collapse('toggle');"  data-parent="accordion-antecedentes" class="accordion-toggle">
+	                    Antecedentes</a>
+	                    <span  onclick="javascript:toggleCollapseImg('imgToggleReserva');$('#antecedentesData').collapse('toggle');" style="position:relative;left:90%;top:-27px;cursor: pointer;">
+	                        <i class="icon-minus-sign" id="imgToggleReserva"></i>
+	                    </span>
+	                </div>
+	                <div id="antecedentesData">
+	                   <div class="accordion-inner">
+	                    <table class="table table-striped table-condensed">
+				        <tbody>
+				            <tr>
+				                <td class="ui-loadingBar"></td>
+				            </tr>
+				        </tbody>
+	    			</table>
+	                 </div>
+	                </div>
+	            </div>
+	         </div>
+         	 <div id="accordion-evaClinica" class="accordion span6" >
+	            <div class="accordion-group">
+	                <div class="accordion-heading" style="height: 40px">
+	                    <a  onclick="javascript:toggleCollapseImg('imgToggleReserva');$('#evaClinicaData').collapse('toggle');"  data-parent="accordion-evaClinica" class="accordion-toggle">
+	                    Evaluación Clinica</a>
+	                    <span  onclick="javascript:toggleCollapseImg('imgToggleReserva');$('#evaClinicaData').collapse('toggle');" style="position:relative;left:90%;top:-27px;cursor: pointer;">
+	                        <i class="icon-minus-sign" id="imgToggleReserva"></i>
+	                    </span>
+	                </div>
+	                <div id="evaClinicaData">
+	                   <div class="accordion-inner">
+	                    <table class="table table-striped table-condensed">
+				        <tbody>
+				            <tr>
+				                <td class="ui-loadingBar"></td>
+				            </tr>
+				        </tbody>
+	    			</table>
+	                 </div>
+	                </div>
+	            </div>
+	         </div>	                 	
+        </div>
+        <div class="row-fluid">
+         	 <div id="accordion-exaProcto" class="accordion span6" style="margin-left: 0px">
+	            <div class="accordion-group">
+	                <div class="accordion-heading" style="height: 40px">
+	                    <a  onclick="javascript:toggleCollapseImg('imgToggleReserva');$('#exaProctoData').collapse('toggle');"  data-parent="accordion-exaProcto" class="accordion-toggle">
+	                    Examen Proctológico</a>
+	                    <span  onclick="javascript:toggleCollapseImg('imgToggleReserva');$('#exaProctoData').collapse('toggle');" style="position:relative;left:90%;top:-27px;cursor: pointer;">
+	                        <i class="icon-minus-sign" id="imgToggleReserva"></i>
+	                    </span>
+	                </div>
+	                <div id="exaProctoData">
+	                   <div class="accordion-inner">
+	                    <table class="table table-striped table-condensed">
+				        <tbody>
+				            <tr>
+				                <td class="ui-loadingBar"></td>
+				            </tr>
+				        </tbody>
+	    			</table>
+	                 </div>
+	                </div>
+	            </div>
+	         </div>	 
+         	 <div id="accordion-estadificacion" class="accordion span6">
+	            <div class="accordion-group">
+	                <div class="accordion-heading" style="height: 40px">
+	                    <a  onclick="javascript:toggleCollapseImg('imgToggleReserva');$('#estadificacionData').collapse('toggle');"  data-parent="accordion-estadificacion" class="accordion-toggle">
+	                    Estadificación</a>
+	                    <span  onclick="javascript:toggleCollapseImg('imgToggleReserva');$('#estadificacionData').collapse('toggle');" style="position:relative;left:90%;top:-27px;cursor: pointer;">
+	                        <i class="icon-minus-sign" id="imgToggleReserva"></i>
+	                    </span>
+	                </div>
+	                <div id="estadificacionData">
+	                   <div class="accordion-inner">
+	                    <table class="table table-striped table-condensed">
+				        <tbody>
+				            <tr>
+				                <td class="ui-loadingBar"></td>
+				            </tr>
+				        </tbody>
+	    			</table>
+	                 </div>
+	                </div>
+	            </div>
+	         </div>	 	                 
+        </div>
+        <div class="row-fluid">
+         	 <div id="accordion-anatPatologica" class="accordion span6" style="margin-left: 0px">
+	            <div class="accordion-group">
+	                <div class="accordion-heading" style="height: 40px">
+	                    <a  onclick="javascript:toggleCollapseImg('imgToggleReserva');$('#anatPatologicaData').collapse('toggle');"  data-parent="accordion-anatPatologica" class="accordion-toggle">
+	                    Anatomia patológica</a>
+	                    <span  onclick="javascript:toggleCollapseImg('imgToggleReserva');$('#anatPatologicaData').collapse('toggle');" style="position:relative;left:90%;top:-27px;cursor: pointer;">
+	                        <i class="icon-minus-sign" id="imgToggleReserva"></i>
+	                    </span>
+	                </div>
+	                <div id="anatPatologicaData">
+	                   <div class="accordion-inner">
+	                    <table class="table table-striped table-condensed">
+				        <tbody>
+				            <tr>
+				                <td class="ui-loadingBar"></td>
+				            </tr>
+				        </tbody>
+	    			</table>
+	                 </div>
+	                </div>
+	            </div>
+	         </div>	 
+         	 <div id="accordion-tratamiento" class="accordion span6">
+	            <div class="accordion-group">
+	                <div class="accordion-heading" style="height: 40px">
+	                    <a  onclick="javascript:toggleCollapseImg('imgToggleReserva');$('#tratamientoData').collapse('toggle');"  data-parent="accordion-tratamiento" class="accordion-toggle">
+	                    Tratamiento</a>
+	                    <span  onclick="javascript:toggleCollapseImg('imgToggleReserva');$('#tratamientoData').collapse('toggle');" style="position:relative;left:90%;top:-27px;cursor: pointer;">
+	                        <i class="icon-minus-sign" id="imgToggleReserva"></i>
+	                    </span>
+	                </div>
+	                <div id="tratamientoData">
+	                   <div class="accordion-inner">
+	                    <table class="table table-striped table-condensed">
+				        <tbody>
+				            <tr>
+				                <td class="ui-loadingBar"></td>
+				            </tr>
+				        </tbody>
+	    			</table>
+	                 </div>
+	                </div>
+	            </div>
+	         </div>	 	                 
+        </div>
+       </div>  
+            <div class="modal-footer">
+              <button onclick="$('#consultInfoModal').modal('hide');" class="btn" >Cerrar</button>
+              <button class="btn btn-primary">Ver consulta</button>
+            </div>
+ 		</div>
+             
   <div id="footer" >
       <div class="container">
         <p class="muted credit">Creada por <a href="#">[Matias Iseas]</a>.</p>
@@ -691,7 +1129,7 @@ jQuery(function() {
 cleanScreenSearch();
 
 jQuery.ajax({
-    url: '<c:url value="/loadAllCat.htm" />',
+    url: '<c:url value="/loadAllCat.json" />',
     type: "GET",
     dataType: "json",
     contentType: "application/json",
@@ -842,7 +1280,82 @@ jQuery("#searchButton").click(function(){
 		 var numTNRadio = [];
 		 jQuery("button[name=numTNRadio].active").each(function(index, val){	
 			 numTNRadio.push(val.value);
+	     });
+		 var crmPresente = []; 
+		 jQuery("button[name=crmPresente].active").each(function(index, val){	
+			 crmPresente.push(val.value);
 	     }); 
+		 var emviPresente = []; 
+		 jQuery("button[name=emviPresente].active").each(function(index, val){	
+			 emviPresente.push(val.value);
+	     }); 		
+		 var depoSati = []; 
+		 jQuery("button[name=depoSati].active").each(function(index, val){	
+			 depoSati.push(val.value);
+	     }); 
+		 var estaRInterior = []; 
+		 jQuery("button[name=estaRInterior].active").each(function(index, val){	
+			 estaRInterior.push(val.value);
+	     }); 
+		 var inguinales = []; 
+		 jQuery("button[name=inguinales].active").each(function(index, val){	
+			 inguinales.push(val.value);
+	     }); 
+		 var gaLate = []; 
+		 jQuery("button[name=gaLate].active").each(function(index, val){	
+			 gaLate.push(val.value);
+	     });
+		 var esfinterRM = []; 
+		 jQuery("button[name=esfinterRM].active").each(function(index, val){	
+			 esfinterRM.push(val.value);
+	     });
+		 var tcTorax = []; 
+		 jQuery("button[name=tcTorax].active").each(function(index, val){	
+			 tcTorax.push(val.value);
+	     });
+		 var tcAbdomen = []; 
+		 jQuery("button[name=tcAbdomen].active").each(function(index, val){	
+			 tcAbdomen.push(val.value);
+	     });
+		 var petTC = []; 
+		 jQuery("button[name=petTC].active").each(function(index, val){	
+			 petTC.push(val.value);
+	     });
+		 var mtsRadio = []; 
+		 jQuery("button[name=mtsRadio].active").each(function(index, val){	
+			 mtsRadio.push(val.value);
+	     });
+		 var ceaAument = []; 
+		 jQuery("button[name=ceaAument].active").each(function(index, val){	
+			 ceaAument.push(val.value);
+	     });
+		 var caAument = []; 
+		 jQuery("button[name=caAument].active").each(function(index, val){	
+			 caAument.push(val.value);
+	     });
+		 var marcaTuFecha = dbFormatDate($("#marcaTuFecha").val());
+		 var suvEstati = $("#suvEstati").val();
+		 var tnmValT = jQuery("#tnmValT").val();
+		 var tnmValN = jQuery("#tnmValN").val();
+	 	 var tnmValM = jQuery("#tnmValM").val();
+		 var ptnmValT = jQuery("#ptnmValT").val();
+		 var ptnmValN = jQuery("#ptnmValN").val();
+		 var ptnmValM = jQuery("#ptnmValM").val();
+
+	 	 var metastaDist = "";
+		 for(var i = 1; i < 10; i++) {
+		 	 if($("#metastaDist"+i).hasClass('active')) {  
+		 			metastaDist =  metastaDist+"-"+$("#metastaDist"+i).attr("id");
+			 }
+		 }
+		 var metastaDisOtra = jQuery("#metastaDisOtra").val();
+		 var revisionRMFecha = dbFormatDate($("#revisionRMFecha").val());
+		 var revisionRMDistan = jQuery("#revisionRMDistan").val();
+		 var revisionRMMargen = []; 
+		 jQuery("button[name=revisionRMMargen].active").each(function(index, val){	
+			 revisionRMMargen.push(val.value);
+	     });
+		 var revisionAlturaRM = jQuery("#revisionAlturaRM").val();
 	 } 
 	 //anatomia patologica
 	 if(jQuery("#AnotomiaPatTab").css('display') !== 'none'){
@@ -865,12 +1378,20 @@ jQuery("#searchButton").click(function(){
 			  'evaRecto':evaRecto, 'gradoDif':gradoDiferRadio,
 			  'rmCentro':centroRM, 'rmFecha':fechaRM, 'rmDistEsfinter':distanciaSupRM, 'rmDistAnal':distanciaMarARadio,
 			  'rmAltura':alturaRM, 'rmTumor':numTRadio,'rmTumorN':numTNRadio,
+			  'crm':crmPresente, 'emvi':emviPresente,  'depSatelites':depoSati,  'tumoRectoInferior':estaRInterior,
+			  'ganglios':inguinales, 'gangliosLate':gaLate,'infiltraEsfinter':esfinterRM,'tcTorax':tcTorax,
+			  'tcAbd':tcAbdomen,  'petCt':petTC,  'mts':mtsRadio,'suv':suvEstati,
+			  'marTumFecha':marcaTuFecha,  'ceaAumentado':ceaAument,
+			  'ca19':caAument, 'tnmT':tnmValT, 'tnmN':tnmValN,'tnmM':tnmValM,'tnmPt':ptnmValT,
+			  'tnmPn':ptnmValN,	'tnmPm':ptnmValM,	'metastasis':metastaDist,
+			  'metastasisOtra':metastaDisOtra, 'revRmFecha':revisionRMFecha,
+			  'revDistanEsfinter':revisionRMDistan, 'revDistanAnal':revisionRMMargen, 'revAltura':revisionAlturaRM,  
 			  "consultaMotivos":motivosConsulta,"consultaMotivoOtro":motivoOtro,'fechaInSintoma':dateStartMotivo,'motivoEvoMeses':mesesMotivo,
 			  "esfinterRectal":esfinterRectal,"udaOndoRadio":udaOndoRadio, "udaOndoOtro":udaOndoOtro, "peso":peso,"talla":talla,
 			  "superficie":superficie,"performance":performance};
 	 
 	  jQuery.ajax({
-          url: '<c:url value="/findPatientFilter.htm" />',
+          url: '<c:url value="/findPatientFilter.json" />',
           type: "POST",
           dataType: "json",
           contentType: "application/json",
@@ -899,7 +1420,7 @@ jQuery("#clearSearchButton").click(function(){
 
 
 jQuery("#listClientTable").jqGrid({
-	 url: '<c:url value="/loadlistPatients.htm"/>',
+	 url: '<c:url value="/loadlistPatients.json"/>',
 	 datatype: "json", 
 	 autowidth : true,
 	 height : 200,
@@ -1053,6 +1574,12 @@ jQuery("#listClientTable").jqGrid({
 					 selectPatient(row);		
 		             return false;
 		            }
+				 if(e.target.attributes.op.value=="detail"){		 		
+					 var idPatient = jQuery('#listClientTable').jqGrid('getCell',rowid,"idpaciente");										 
+					 showPatientConsultModal(idPatient);		
+		             return false;
+		            }
+				 
 			 	}
 		
 			 
@@ -1141,7 +1668,7 @@ jQuery("#dialogSuccessOperation").dialog({
 jQuery("#nombreSearch" ).autocomplete({
 	source: function( request, response ) {
 		$.ajax({
-			url: '<c:url value="/searchPatientByName.htm" />',
+			url: '<c:url value="/searchPatientByName.json" />',
 			dataType: "json",
 			type: "POST",
 			data: {
@@ -1309,6 +1836,70 @@ $("#anteSindrome4").click(function(){
 
 });
 //Other functions
+function showPatientConsultModal(idPatient){
+    jQuery.ajax({
+        url: '<c:url value="/consultInfoData.json" />',
+        type: "GET",
+        dataType: "json",
+        contentType: "application/json",
+        data: {'idPat':idPatient}, 
+        success: function(consultDataMap){             
+        	if(consultDataMap.preconsulta !=null){
+        		renderInTable("preconsultaData", consultDataMap.preconsulta);
+        	}
+        	if(consultDataMap.motivo !=null){
+        		renderInTable("motivoConsultaData", consultDataMap.motivo);
+        	}
+        	if(consultDataMap.antecedentes !=null){
+        		renderInTable("antecedentesData", consultDataMap.antecedentes);
+        	}
+        	if(consultDataMap.evaClinica !=null){
+        		renderInTable("evaClinicaData", consultDataMap.evaClinica);
+        	}
+        	if(consultDataMap.exaProcto !=null){
+        		renderInTable("exaProctoData", consultDataMap.exaProcto);
+        	}
+        	if(consultDataMap.estadificacion !=null){
+        		renderInTable("estadificacionData", consultDataMap.estadificacion);
+        	}
+        	if(consultDataMap.anatPatologica !=null){
+        		renderInTable("anatPatologicaData", consultDataMap.anatPatologica);
+        	}
+        	if(consultDataMap.tratamiento !=null){
+        		renderInTable("tratamientoData", consultDataMap.tratamiento);
+        	}
+        }
+      });
+    
+    $("#consultInfoModal").modal('show');	
+}
+
+
+function renderInTable(idTable, dataMap){
+		var table =$("#"+idTable+" table");
+		table.empty();
+		var ignoreFirst = true;
+		var mark = "";
+		var	counterS = 0;
+		for( var key in dataMap){
+			if(ignoreFirst){
+				ignoreFirst = false;
+				continue;
+			}
+    		var tr = $("<tr></tr>");
+    		if(key.indexOf("sz") === 0){
+    			mark = key;
+    			var tdlabel = $("<td colspan='2' style='text-align: center' ><b>"+dataMap[key]+"</b></td>");
+    			tr.append(tdlabel);
+    		}
+    		else{
+				var tdlabel = $("<td><b>"+key.replace("_"+mark,"")+"</b></td>");
+				var tdValue = $("<td>" + dataMap[key] +"</td>");
+				tr.append(tdlabel).append(tdValue);
+    		}
+			table.append(tr);
+		}
+}
 
 function cleanScreenSearch(){
 	 	 jQuery("#nombreSearch").val("");
@@ -1359,6 +1950,39 @@ function cleanScreenSearch(){
 		 jQuery("button[name=numTRadio].active").removeClass("active");
 		 jQuery("button[name=numTNRadio].active").removeClass("active");
 		 jQuery("#alturaRM").val(""); 
+		 jQuery("button[name=crmPresente].active").removeClass("active");
+		 jQuery("button[name=emviPresente].active").removeClass("active");
+		 jQuery("button[name=depoSati].active").removeClass("active");
+		 jQuery("button[name=estaRInterior].active").removeClass("active");
+		 jQuery("button[name=inguinales].active").removeClass("active");
+		 jQuery("button[name=gaLate].active").removeClass("active");
+		 jQuery("button[name=esfinterRM].active").removeClass("active");
+		 jQuery("button[name=tcTorax].active").removeClass("active");
+		 jQuery("button[name=tcAbdomen].active").removeClass("active");
+		 jQuery("button[name=petTC].active").removeClass("active");
+		 jQuery("button[name=mtsRadio].active").removeClass("active");
+		 jQuery("button[name=ceaAument].active").removeClass("active");
+		 jQuery("button[name=caAument].active").removeClass("active");
+		 jQuery("button[name=tcTorax].active").removeClass("active");
+		 jQuery("button[name=tcTorax].active").removeClass("active");
+		 jQuery("button[name=tcTorax].active").removeClass("active");
+		 jQuery("button[name=tcTorax].active").removeClass("active");
+		 jQuery("#marcaTuFecha").val("");
+		 jQuery("#suvEstati").val("");
+		 jQuery("#tnmValT").val("");
+		 jQuery("#tnmValN").val("");
+	 	 jQuery("#tnmValM").val("");
+		 jQuery("#ptnmValT").val("");
+		 jQuery("#ptnmValN").val("");
+		 jQuery("#ptnmValM").val("");
+		 for(var i = 1; i < 10; i++) {
+			 jQuery("#metastaDist"+i+".active").removeClass("active");
+		 }
+		 jQuery("#metastaDisOtra").val("");
+		 jQuery("#revisionRMFecha").val("");
+		 jQuery("#revisionRMDistan").val("");
+		 jQuery("button[name=revisionRMMargen].active").removeClass("active");
+		 jQuery("#revisionAlturaRM").val("");
 		 //ana patologica
 		 jQuery("button[name=gradoDiferRadio].active").removeClass("active");
 		 //tratamiento
@@ -1371,7 +1995,7 @@ function selectPatient(row){
 	jQuery("#selectedPatientName").html(" "+(capitaliseFirstLetter(row.nombre)));
 	jQuery("#idPacienteSelected").val(row.idpaciente);
 	   jQuery.ajax({
-	          url: '<c:url value="/selectPatient.htm" />',
+	          url: '<c:url value="/selectPatient.json" />',
 	          type: "GET",
 	          dataType: "json",
 	          contentType: "application/json",
@@ -1433,7 +2057,7 @@ function updatePatient(row){
 function delPatient(){  
 	      var clientObj = jQuery.data(document.body,"PacienteData");
 		   jQuery.ajax({
-		          url: '<c:url value="/delPatient.htm" />',
+		          url: '<c:url value="/delPatient.json" />',
 		          type: "GET",
 		          dataType: "json",
 		          contentType: "application/json",
@@ -1491,6 +2115,22 @@ function capitaliseFirstLetter(string)
 {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+var toggleCollapseImg = function(id){
+    if(id != null && id != ""){
+        var img = $("#" + id);
+        if(img.size() > 0){
+            if(img.hasClass("icon-minus-sign")){
+                img.removeClass("icon-minus-sign");
+                img.addClass("icon-plus-sign");
+            } else {
+                img.addClass("icon-minus-sign");
+                img.removeClass("icon-plus-sign");
+            }
+        }
+    }
+    return;
+} 
 </script> 
 
   </body>

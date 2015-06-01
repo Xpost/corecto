@@ -7,14 +7,26 @@ package com.corecto.web.service.impl;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.corecto.web.converter.AnatPatologicaConverter;
+import com.corecto.web.converter.AntecedentesConverter;
+import com.corecto.web.converter.EstadificacionConverter;
+import com.corecto.web.converter.EvaClinicaConverter;
+import com.corecto.web.converter.ExaProctoConverter;
+import com.corecto.web.converter.MotivoConverter;
+import com.corecto.web.converter.PreconsultaConverter;
+import com.corecto.web.converter.TratamientoConverter;
+import com.corecto.web.dao.AnatomiaPatologicaDAO;
 import com.corecto.web.dao.AnatomiaPatologicaPostDAO;
-import com.corecto.web.dao.AnotomiaPatologicaDAO;
 import com.corecto.web.dao.AntecedentesDAO;
 import com.corecto.web.dao.ConductaPostNeoDAO;
 import com.corecto.web.dao.DescTrataNeoDAO;
@@ -59,6 +71,7 @@ import com.corecto.web.model.pojo.extra.RespuestaTrataNeo;
 import com.corecto.web.model.pojo.extra.Tratamiento;
 import com.corecto.web.model.pojo.extra.TratamientoAdyu;
 import com.corecto.web.service.ConsultaService;
+import com.google.common.collect.Maps;
 
 /**
  * TODO comment<br>
@@ -74,10 +87,35 @@ import com.corecto.web.service.ConsultaService;
  */
 @Transactional
 @Service
+@EnableTransactionManagement(order = 1)
 public class ConsultaServiceImpl implements ConsultaService {
 
 	Logger LOG = LoggerFactory.getLogger(ConsultaServiceImpl.class);
 	private SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
+
+	@Autowired
+	private PreconsultaConverter preconsultaConverter;
+
+	@Autowired
+	private MotivoConverter motivoConverter;
+
+	@Autowired
+	private AntecedentesConverter antecedentesConverter;
+
+	@Autowired
+	private EvaClinicaConverter evaClinicaConverter;
+
+	@Autowired
+	private ExaProctoConverter exaProctoConverter;
+
+	@Autowired
+	private EstadificacionConverter estadificacionConverter;
+
+	@Autowired
+	private AnatPatologicaConverter anatPatologicaConverter;
+
+	@Autowired
+	private TratamientoConverter tratamientoConverter;
 
 	public Long loadConsulta(long idPaciente) {
 
@@ -99,21 +137,6 @@ public class ConsultaServiceImpl implements ConsultaService {
 			ConsultaDTO consultaDTO = new ConsultaDTO();
 			consultaDTO.setIdconsulta(consulta.getIdconsulta());
 			consultaDTO.setIdpaciente(idPaciente);
-			// consultaDTO.setAnatomiaPatologicaPosts(anatomiaPatologicaPosts);
-			// consultaDTO.setAnotomiaPatologica(anotomiaPatologica);
-			// consultaDTO.setAntecedenteses(antecedenteses);
-			// consultaDTO.setConductaPostNeos(conductaPostNeos);
-			// consultaDTO.setDescTrataNeos(descTrataNeos);
-			// consultaDTO.setEstadificacions(estadificacions);
-			// consultaDTO.setEvaClinicas(evaClinicas);
-			// consultaDTO.setExaProctos(exaProctos);
-			// consultaDTO.setFecha(fecha);
-			//
-			// consultaDTO.setMotivos(motivos);
-			// consultaDTO.setPreconsultas(preconsultas);
-			// consultaDTO.setRespuestaTrataNeos(respuestaTrataNeos);
-			// consultaDTO.setTratamientoAdyu(tratamientoAdyu);
-			// consultaDTO.setTratamientos(tratamientos);
 		}
 		return consulta.getIdconsulta();
 	}
@@ -154,6 +177,114 @@ public class ConsultaServiceImpl implements ConsultaService {
 			preconsultaDTO.setTalla(preconsulta.getTalla().toString());
 		}
 		return preconsultaDTO;
+	}
+
+	public Map<String, Object> loadConsultaRenderedData(Long idPaciente) {
+
+		PatientDAO patientDAO = DAOLocator.getInstance().lookup(PatientDAO.class.getName());
+		Consulta consulta = patientDAO.loadConsultaByIdClient(idPaciente);
+
+		LinkedHashMap<String, Object> studiesMap = Maps.newLinkedHashMap();
+		studiesMap.put("preconsulta", loadPreconsultaDecorated(consulta.getIdconsulta()));
+		studiesMap.put("motivo", loadMotivoDecorated(consulta.getIdconsulta()));
+		studiesMap.put("antecedentes", loadAntecedentesDecorated(consulta.getIdconsulta()));
+		studiesMap.put("evaClinica", loadEvaClinicaDecorated(consulta.getIdconsulta()));
+		studiesMap.put("exaProcto", loadExaProctoDecorated(consulta.getIdconsulta()));
+		studiesMap.put("estadificacion", loadEstadificacionDecorated(consulta.getIdconsulta()));
+		studiesMap.put("anatPatologica", loadAnatomiaPatologicaDecorated(consulta.getIdconsulta()));
+		studiesMap.put("tratamiento", loadTratamientoDecorated(consulta.getIdconsulta()));
+		return studiesMap;
+	}
+
+	public Map<String, Object> loadPreconsultaDecorated(Long idConsulta) {
+
+		PreconsultaDAO preconsultaDAO = DAOLocator.getInstance().lookup(PreconsultaDAO.class.getName());
+		Preconsulta preconsulta = preconsultaDAO.loadPreconsultaByConsulta(idConsulta);
+		Map<String, Object> mapPreconsulta = null;
+		if (preconsulta != null) {
+			mapPreconsulta = preconsultaConverter.convertToMap(preconsulta);
+		}
+		return mapPreconsulta;
+	}
+
+	public Map<String, Object> loadMotivoDecorated(Long idConsulta) {
+
+		MotivoDAO motivoDao = DAOLocator.getInstance().lookup(MotivoDAO.class.getName());
+		Motivo motivo = motivoDao.loadMotivoByConsulta(idConsulta);
+		Map<String, Object> mapPreconsulta = null;
+		if (motivo != null) {
+			mapPreconsulta = motivoConverter.convertToMap(motivo);
+		}
+		return mapPreconsulta;
+	}
+
+	public Map<String, Object> loadAntecedentesDecorated(Long idConsulta) {
+
+		AntecedentesDAO antecedentesDAO = DAOLocator.getInstance().lookup(AntecedentesDAO.class.getName());
+		Antecedentes antecedentes = antecedentesDAO.loadAntecedentesByConsulta(idConsulta);
+		Map<String, Object> mapAntecedentes = null;
+		if (antecedentes != null) {
+			mapAntecedentes = antecedentesConverter.convertToMap(antecedentes);
+		}
+		return mapAntecedentes;
+	}
+
+	public Map<String, Object> loadEvaClinicaDecorated(Long idConsulta) {
+
+		EvaClinicaDAO evaClinicaDAO = DAOLocator.getInstance().lookup(EvaClinicaDAO.class.getName());
+		EvaClinica evaClinica = evaClinicaDAO.loadEvaClinicaByConsulta(idConsulta);
+		Map<String, Object> mapEvaClinica = null;
+		if (evaClinica != null) {
+			mapEvaClinica = evaClinicaConverter.convertToMap(evaClinica);
+		}
+		return mapEvaClinica;
+	}
+
+	public Map<String, Object> loadExaProctoDecorated(Long idConsulta) {
+
+		ExaProctoDAO exaProctoDAO = DAOLocator.getInstance().lookup(ExaProctoDAO.class.getName());
+		ExaProcto exaProcto = exaProctoDAO.loadExaProctoByConsulta(idConsulta);
+		Map<String, Object> mapExaProcto = null;
+		if (exaProcto != null) {
+			mapExaProcto = exaProctoConverter.convertToMap(exaProcto);
+		}
+		return mapExaProcto;
+	}
+
+	public Map<String, Object> loadEstadificacionDecorated(Long idConsulta) {
+
+		EstadificacionDAO estadificacionDAO = DAOLocator.getInstance().lookup(
+				EstadificacionDAO.class.getName());
+		Estadificacion estadificacion = estadificacionDAO.loadEstadificacionByConsulta(idConsulta);
+		Map<String, Object> mapEstadificacion = null;
+		if (estadificacion != null) {
+			mapEstadificacion = estadificacionConverter.convertToMap(estadificacion);
+		}
+		return mapEstadificacion;
+	}
+
+	public Map<String, Object> loadAnatomiaPatologicaDecorated(Long idConsulta) {
+
+		AnatomiaPatologicaDAO anatomiaPatologicaDAO = DAOLocator.getInstance().lookup(
+				AnatomiaPatologicaDAO.class.getName());
+		AnatomiaPatologica anatomiaPatologica = anatomiaPatologicaDAO
+				.loadAnotomiaPatologicaByConsulta(idConsulta);
+		Map<String, Object> mapAnaPatologica = null;
+		if (anatomiaPatologica != null) {
+			mapAnaPatologica = anatPatologicaConverter.convertToMap(anatomiaPatologica);
+		}
+		return mapAnaPatologica;
+	}
+
+	public Map<String, Object> loadTratamientoDecorated(Long idConsulta) {
+
+		TratamientoDAO tratamientoDAO = DAOLocator.getInstance().lookup(TratamientoDAO.class.getName());
+		Tratamiento tratamiento = tratamientoDAO.loadTratamientoByConsulta(idConsulta);
+		Map<String, Object> mapTratamiento = null;
+		if (tratamiento != null) {
+			mapTratamiento = tratamientoConverter.convertToMap(tratamiento);
+		}
+		return mapTratamiento;
 	}
 
 	public MotivoDTO loadMotivo(Long idConsulta) {
@@ -496,8 +627,8 @@ public class ConsultaServiceImpl implements ConsultaService {
 	}
 
 	public AnotomiaPatologicaDTO loadAnaPatologica(Long idConsulta) {
-		AnotomiaPatologicaDAO anotomiaPatologicaDAO = DAOLocator.getInstance().lookup(
-				AnotomiaPatologicaDAO.class.getName());
+		AnatomiaPatologicaDAO anotomiaPatologicaDAO = DAOLocator.getInstance().lookup(
+				AnatomiaPatologicaDAO.class.getName());
 		AnatomiaPatologica anotomiaPatologica = anotomiaPatologicaDAO
 				.loadAnotomiaPatologicaByConsulta(idConsulta);
 		AnotomiaPatologicaDTO anotomiaPatologicaDTO = null;
@@ -544,8 +675,8 @@ public class ConsultaServiceImpl implements ConsultaService {
 		anotomiaPatologica.setGradoDif(anotomiaPatologicaDTO.getGradoDif());
 		anotomiaPatologica.setIhq(anotomiaPatologicaDTO.getIhq());
 
-		AnotomiaPatologicaDAO anotomiaPatologicaDAO = DAOLocator.getInstance().lookup(
-				AnotomiaPatologicaDAO.class.getName());
+		AnatomiaPatologicaDAO anotomiaPatologicaDAO = DAOLocator.getInstance().lookup(
+				AnatomiaPatologicaDAO.class.getName());
 
 		if (anotomiaPatologicaDTO.getIdanotomia() != -1L) {
 			anotomiaPatologica.setIdanotomia(anotomiaPatologicaDTO.getIdanotomia());

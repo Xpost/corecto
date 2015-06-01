@@ -4,7 +4,6 @@
  **************************************************************************************/
 package com.corecto.web.dao.impl;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,10 +13,10 @@ import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
-import org.springframework.orm.hibernate3.HibernateCallback;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.orm.hibernate4.HibernateCallback;
+import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
-import com.corecto.web.dao.AnotomiaPatologicaDAO;
+import com.corecto.web.dao.AnatomiaPatologicaDAO;
 import com.corecto.web.model.pojo.extra.AnatomiaPatologica;
 
 /**
@@ -31,7 +30,7 @@ import com.corecto.web.model.pojo.extra.AnatomiaPatologica;
  * @author Xpost
  * @version 1.0
  */
-public class AnotomiaPatologicaDAOImpl extends HibernateDaoSupport implements AnotomiaPatologicaDAO {
+public class AnotomiaPatologicaDAOImpl extends HibernateDaoSupport implements AnatomiaPatologicaDAO {
 
 	Logger LOG = LoggerFactory.getLogger(AnotomiaPatologicaDAOImpl.class);
 
@@ -50,8 +49,8 @@ public class AnotomiaPatologicaDAOImpl extends HibernateDaoSupport implements An
 	@SuppressWarnings("unchecked")
 	public AnatomiaPatologica loadAnotomiaPatologicaById(final Long idanotomia) throws DataAccessException {
 
-		List<AnatomiaPatologica> listResult = getHibernateTemplate().find(
-				"select C from AnotomiaPatologica as C where C.idanotomia=" + idanotomia);
+		List<AnatomiaPatologica> listResult = (List<AnatomiaPatologica>) getHibernateTemplate().find(
+				"select C from AnatomiaPatologica as C where C.idanotomia=" + idanotomia);
 
 		if (listResult.isEmpty()) {
 			return null;
@@ -66,10 +65,10 @@ public class AnotomiaPatologicaDAOImpl extends HibernateDaoSupport implements An
 		List<AnatomiaPatologica> listResult = new ArrayList<AnatomiaPatologica>();
 		HibernateCallback callback = new HibernateCallback() {
 
-			public Object doInHibernate(Session session) throws HibernateException, SQLException {
+			public Object doInHibernate(Session session) throws HibernateException {
 
 				Query query = session.createQuery("select P "
-						+ " FROM AnotomiaPatologica as P, Consulta as C "
+						+ " FROM AnatomiaPatologica as P, Consulta as C "
 						+ " WHERE P.consulta=C.idconsulta and C.idconsulta=" + idconsulta);
 
 				List result = query.list();

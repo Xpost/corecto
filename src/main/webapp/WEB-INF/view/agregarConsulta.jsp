@@ -1055,19 +1055,19 @@
 										Piel y TCS
 									</label>
 								    <label class="radio inline">
-									    <input type="checkbox" name="metastaDist5" id="metastaDist5" value="1">
+									    <input type="checkbox" name="metastaDist6" id="metastaDist6" value="1">
 										Cerebro
 									</label>
 								    <label class="radio inline">
-									    <input type="checkbox" name="metastaDist6" id="metastaDist6" value="1">
+									    <input type="checkbox" name="metastaDist7" id="metastaDist7" value="1">
 										Ganglios Dist
 									</label>
 								    <label class="radio inline">
-									    <input type="checkbox" name="metastaDist7" id="metastaDist7" value="1">
+									    <input type="checkbox" name="metastaDist8" id="metastaDist8" value="1">
 										Ovario
 									</label>	
 								    <label class="radio inline">
-									    <input type="checkbox" name="metastaDist8" id="metastaDist8" value="1">
+									    <input type="checkbox" name="metastaDist9" id="metastaDist9" value="1">
 										Hígado
 									</label>	
 									 <label class="radio inline" style="margin-left:30px">Otras</label>
@@ -2723,7 +2723,7 @@ jQuery(function() {
 	jQuery("#dialogLoading").dialog("open");
 	
 	jQuery.ajax({
-	     url: '<c:url value="/loadConsultaId.htm" />',
+	     url: '<c:url value="/loadConsultaId.json" />',
 	     type: "GET",
 	     dataType: "json",
 	     contentType: "application/json",
@@ -2956,7 +2956,7 @@ jQuery(function() {
 function loadPreconsulta(consultaId){
 	jQuery("#dialogLoading").dialog("open");
 	jQuery.ajax({
-	     url: '<c:url value="/loadPreconsulta.htm" />',
+	     url: '<c:url value="/loadPreconsulta.json" />',
 	     type: "GET",
 	     dataType: "json",
 	     contentType: "application/json",
@@ -2994,7 +2994,7 @@ jQuery("#addPreconsultaForm").validate({
 		var preConsulta = {'idConsulta':CONSULTA_ID,'idpreconsulta':PRECONSULTA_ID, 'peso':peso,'talla':talla,'supcorporal':superficie,'performanceStatus':performance,'comentario':comentario};		  		 
 		 
     jQuery.ajax({
-         url: '<c:url value="/addNewPreconsulta.htm" />',
+         url: '<c:url value="/addNewPreconsulta.json" />',
          type: "POST",
          dataType: "json",
          contentType: "application/json",
@@ -3016,7 +3016,7 @@ jQuery("#addPreconsultaForm").validate({
 function loadMotivo(consultaId){
 	//jQuery("#dialogLoading").dialog("open");
 	jQuery.ajax({
-	     url: '<c:url value="/loadMotivo.htm" />',
+	     url: '<c:url value="/loadMotivo.json" />',
 	     type: "GET",
 	     dataType: "json",
 	     contentType: "application/json",
@@ -3082,7 +3082,7 @@ jQuery("#addMotivoAntecedentesForm").validate({
 		var motivo = {'idConsulta':CONSULTA_ID,'idmotivo':MOTIVO_ID, 'motivo':motivosX,'motivoOtro':otroMotivo,'fechaInicio':fechaMotivo,'evoMeses':mesesMotivo};		  		 
 		 
     jQuery.ajax({
-         url: '<c:url value="/addNewMotivo.htm" />',
+         url: '<c:url value="/addNewMotivo.json" />',
          type: "POST",
          dataType: "json",
          contentType: "application/json",
@@ -3106,7 +3106,7 @@ jQuery("#addMotivoAntecedentesForm").validate({
 function loadAntecedentes(consultaId){
 	//jQuery("#dialogLoading").dialog("open");
 	jQuery.ajax({
-	     url: '<c:url value="/loadAntecedentes.htm" />',
+	     url: '<c:url value="/loadAntecedentes.json" />',
 	     type: "GET",
 	     dataType: "json",
 	     contentType: "application/json",
@@ -3258,7 +3258,7 @@ function submitAntecedentes(){
 			'familiarCancer':famCancer, 'tipoCcrh':anteSindrome,'antecedentesCcrh':siSindrome};		  		 
 		 
     jQuery.ajax({
-         url: '<c:url value="/addNewAntecedente.htm" />',
+         url: '<c:url value="/addNewAntecedente.json" />',
          type: "POST",
          dataType: "json",
          contentType: "application/json",
@@ -3279,7 +3279,7 @@ function submitAntecedentes(){
 function loadEvaClinica(consultaId){
 	//jQuery("#dialogLoading").dialog("open");
 	jQuery.ajax({
-	     url: '<c:url value="/loadEvaClinica.htm" />',
+	     url: '<c:url value="/loadEvaClinica.json" />',
 	     type: "GET",
 	     dataType: "json",
 	     contentType: "application/json",
@@ -3394,7 +3394,7 @@ jQuery("#addEvaClinicaForm").validate({
 		var evaClinica = {'idConsulta':CONSULTA_ID,'idevaclinica':EVACLINICA_ID, 'abdomen':evaAbdomen,'colon':evaColon,'recto':evaRecto,'adenopatias':evaAdenopatia,'notas':notasEvaCli};		  		 
 		 
     jQuery.ajax({
-         url: '<c:url value="/addNewEvaClinica.htm" />',
+         url: '<c:url value="/addNewEvaClinica.json" />',
          type: "POST",
          dataType: "json",
          contentType: "application/json",
@@ -3417,7 +3417,7 @@ jQuery("#addEvaClinicaForm").validate({
 function loadExaProctoForm(consultaId){
 	//jQuery("#dialogLoading").dialog("open");
 	jQuery.ajax({
-	     url: '<c:url value="/loadExaProctologico.htm" />',
+	     url: '<c:url value="/loadExaProctologico.json" />',
 	     type: "GET",
 	     dataType: "json",
 	     contentType: "application/json",
@@ -3497,7 +3497,7 @@ jQuery("#addExaProctoForm").validate({
 						 'eeInfiltra':eeesfinter, 'eeInfiltraMedida':eeMedida,'eeFecha':eeFecha};		  		 
 		 
     jQuery.ajax({
-         url: '<c:url value="/addNewExaProcto.htm" />',
+         url: '<c:url value="/addNewExaProcto.json" />',
          type: "POST",
          dataType: "json",
          contentType: "application/json",
@@ -3520,7 +3520,7 @@ jQuery("#addExaProctoForm").validate({
 function loadEstadificacion(consultaId){
 	//jQuery("#dialogLoading").dialog("open");
 	jQuery.ajax({
-	     url: '<c:url value="/loadEstadificacion.htm" />',
+	     url: '<c:url value="/loadEstadificacion.json" />',
 	     type: "GET",
 	     dataType: "json",
 	     contentType: "application/json",
@@ -3660,6 +3660,9 @@ jQuery("#addEstadificacionForm").validate({
 		if($("#metastaDist8").is(':checked')) {  
 			metastasis =  metastasis+"-"+$("#metastaDist8").attr("id");
 		}
+		if($("#metastaDist9").is(':checked')) {  
+			metastasis =  metastasis+"-"+$("#metastaDist9").attr("id");
+		}		
 		var metastaDistOtras = jQuery("#metastaDistOtras").val();
 		
 		var revisionRMFecha = jQuery("#revisionRMFecha").val();
@@ -3684,7 +3687,7 @@ jQuery("#addEstadificacionForm").validate({
 						 	 'revEstadifTumores':revisionEstaTu,'revGanIngui':revisioninguinales,'revGanLateral':revisiongaLate,'revInfiltraEsf':revisionesfinter};		  		 
 		 
     jQuery.ajax({
-         url: '<c:url value="/addNewEstadificacion.htm" />',
+         url: '<c:url value="/addNewEstadificacion.json" />',
          type: "POST",
          dataType: "json",
          contentType: "application/json",
@@ -3707,7 +3710,7 @@ jQuery("#addEstadificacionForm").validate({
 function loadAnatomiaPatalogiaForm(consultaId){
 	//jQuery("#dialogLoading").dialog("open");
 	jQuery.ajax({
-	     url: '<c:url value="/loadAnaPatologica.htm" />',
+	     url: '<c:url value="/loadAnaPatologica.json" />',
 	     type: "GET",
 	     dataType: "json",
 	     contentType: "application/json",
@@ -3766,7 +3769,7 @@ jQuery("#addAnatomiaPatalogiaForm").validate({
 						 	  'baseDiagCirugia':cirugiaHayRadio,'baseDiag':otroBaseDiag};		  		 
 		 
     jQuery.ajax({
-         url: '<c:url value="/addNewAnaPatologica.htm" />',
+         url: '<c:url value="/addNewAnaPatologica.json" />',
          type: "POST",
          dataType: "json",
          contentType: "application/json",
@@ -3787,7 +3790,7 @@ jQuery("#addAnatomiaPatalogiaForm").validate({
 function loadTratamientoForm(consultaId){
 	//jQuery("#dialogLoading").dialog("open");
 	jQuery.ajax({
-	     url: '<c:url value="/loadTratamiento.htm" />',
+	     url: '<c:url value="/loadTratamiento.json" />',
 	     type: "GET",
 	     dataType: "json",
 	     contentType: "application/json",
@@ -3853,7 +3856,7 @@ jQuery("#addtratamientoForm").validate({
 							 'quimioterapiaInter':quimioIntervalRadio+"//"+quimioIntervalRadioOtro,'quimioteInterNroCiclos':quimioIntervalCiclos};		  		 
 		 
     jQuery.ajax({
-         url: '<c:url value="/addTratamiento.htm" />',
+         url: '<c:url value="/addTratamiento.json" />',
          type: "POST",
          dataType: "json",
          contentType: "application/json",
@@ -3875,7 +3878,7 @@ jQuery("#addtratamientoForm").validate({
 function loadTratamientoNeoAdForm(consultaId){
 	//jQuery("#dialogLoading").dialog("open");
 	jQuery.ajax({
-	     url: '<c:url value="/loadDescTrataNeoadyuante.htm" />',
+	     url: '<c:url value="/loadDescTrataNeoadyuante.json" />',
 	     type: "GET",
 	     dataType: "json",
 	     contentType: "application/json",
@@ -3941,7 +3944,7 @@ jQuery("#addTratamientoNeoAdForm").validate({
 							 'quimioFechaInicio':fechaInicioQuimio,'quimioFechaFinal':fechaFinQuimio,'toxicidad':toxiRadio,'toxGrado':gradoIII};		  		 
 		 
     jQuery.ajax({
-         url: '<c:url value="/addNewdescTrataNeoadyuante.htm" />',
+         url: '<c:url value="/addNewdescTrataNeoadyuante.json" />',
          type: "POST",
          dataType: "json",
          contentType: "application/json",
@@ -3964,7 +3967,7 @@ jQuery("#addTratamientoNeoAdForm").validate({
 function loadRespuestaNeoadyuante(consultaId){
 	//jQuery("#dialogLoading").dialog("open");
 	jQuery.ajax({
-	     url: '<c:url value="/loadRespuestaNeoadyuante.htm" />',
+	     url: '<c:url value="/loadRespuestaNeoadyuante.json" />',
 	     type: "GET",
 	     dataType: "json",
 	     contentType: "application/json",
@@ -4080,7 +4083,7 @@ function addRespuestaNeoadyuante() {
 							 'eeFecha':eePostFecha};		  		 
 		 
     jQuery.ajax({
-         url: '<c:url value="/addNewRespuestaNeoadyuante.htm" />',
+         url: '<c:url value="/addNewRespuestaNeoadyuante.json" />',
          type: "POST",
          dataType: "json",
          contentType: "application/json",
@@ -4102,7 +4105,7 @@ function addRespuestaNeoadyuante() {
 function loadConductaPostNeo(consultaId){
 	//jQuery("#dialogLoading").dialog("open");
 	jQuery.ajax({
-	     url: '<c:url value="/loadConductaPostNeoadyuante.htm" />',
+	     url: '<c:url value="/loadConductaPostNeoadyuante.json" />',
 	     type: "GET",
 	     dataType: "json",
 	     contentType: "application/json",
@@ -4151,7 +4154,7 @@ function loadConductaPostNeo(consultaId){
 							 'fechaInicio':fechaInicioConducta};		  		 
 		 
     jQuery.ajax({
-         url: '<c:url value="/addNewConductaPostNeo.htm" />',
+         url: '<c:url value="/addNewConductaPostNeo.json" />',
          type: "POST",
          dataType: "json",
          contentType: "application/json",
@@ -4174,7 +4177,7 @@ function loadConductaPostNeo(consultaId){
  function loadAnatomiaPostForm(consultaId){
 		//jQuery("#dialogLoading").dialog("open");
 		jQuery.ajax({
-		     url: '<c:url value="/loadAnaPatologicaPost.htm" />',
+		     url: '<c:url value="/loadAnaPatologicaPost.json" />',
 		     type: "GET",
 		     dataType: "json",
 		     contentType: "application/json",
@@ -4254,7 +4257,7 @@ jQuery("#addAnatomiaPostForm").validate({
 							 'ihq':ihqRadio,'kras':krasRadio+"//"+tipoKrasRadio};		  		 
 		 
     jQuery.ajax({
-         url: '<c:url value="/addNewAnaPatoPost.htm" />',
+         url: '<c:url value="/addNewAnaPatoPost.json" />',
          type: "POST",
          dataType: "json",
          contentType: "application/json",
@@ -4277,7 +4280,7 @@ jQuery("#addAnatomiaPostForm").validate({
 function loadTrataAdyuForm(consultaId){
 	//jQuery("#dialogLoading").dialog("open");
 	jQuery.ajax({
-	     url: '<c:url value="/loadTrataAdyuvante.htm" />',
+	     url: '<c:url value="/loadTrataAdyuvante.json" />',
 	     type: "GET",
 	     dataType: "json",
 	     contentType: "application/json",
@@ -4339,7 +4342,7 @@ jQuery("#addTrataAdyuForm").validate({
 							 'suspendio':suspendioYesRadio+"//"+suspenTrataDias,'notas':comentCTrataAdyu};		  		 
 		 
     jQuery.ajax({
-         url: '<c:url value="/addNewTrataAdyuvante.htm" />',
+         url: '<c:url value="/addNewTrataAdyuvante.json" />',
          type: "POST",
          dataType: "json",
          contentType: "application/json",
@@ -4380,7 +4383,7 @@ jQuery("#dialogErrorOperation").dialog({
 		buttons: {
 			"Ok": function() {
 				jQuery( this ).dialog( "close" );
-	              window.location.href = "<%=request.getContextPath()%>/buscarPaciente.htm";
+	              window.location.href = "<%=request.getContextPath()%>/buscarPaciente.json";
 			}
 		},
 		resizable: false,

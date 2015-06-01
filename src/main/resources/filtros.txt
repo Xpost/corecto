@@ -17,6 +17,9 @@ Revisión RM en Correcto PRIMERO
 Anatomia patológica:
 Grado de diferenciación
 
+// DONE HASTA ACA
+
+
 Tratamiento:TODO
 
 Tratamiento Neoadyuante:
@@ -32,5 +35,5 @@ Tratamiento adyuvante:
 Quimioterapia
 
 
-Agregar a ka tabla
+Agregar a La tabla
 edad, estadio

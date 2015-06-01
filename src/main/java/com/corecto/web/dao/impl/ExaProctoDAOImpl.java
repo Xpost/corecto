@@ -4,7 +4,6 @@
  **************************************************************************************/
 package com.corecto.web.dao.impl;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +13,8 @@ import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
-import org.springframework.orm.hibernate3.HibernateCallback;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.orm.hibernate4.HibernateCallback;
+import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import com.corecto.web.dao.ExaProctoDAO;
 import com.corecto.web.model.pojo.extra.ExaProcto;
@@ -50,7 +49,7 @@ public class ExaProctoDAOImpl extends HibernateDaoSupport implements ExaProctoDA
 	@SuppressWarnings("unchecked")
 	public ExaProcto loadExaProctoById(final Long idexaprocto) throws DataAccessException {
 
-		List<ExaProcto> listResult = getHibernateTemplate().find(
+		List<ExaProcto> listResult = (List<ExaProcto>) getHibernateTemplate().find(
 				"select C from ExaProcto as C where C.idexaprocto=" + idexaprocto);
 
 		if (listResult.isEmpty()) {
@@ -65,7 +64,7 @@ public class ExaProctoDAOImpl extends HibernateDaoSupport implements ExaProctoDA
 		List<ExaProcto> listResult = new ArrayList<ExaProcto>();
 		HibernateCallback callback = new HibernateCallback() {
 
-			public Object doInHibernate(Session session) throws HibernateException, SQLException {
+			public Object doInHibernate(Session session) throws HibernateException {
 
 				Query query = session.createQuery("select P " + " FROM ExaProcto as P, Consulta as C "
 						+ " WHERE P.consulta=C.idconsulta and C.idconsulta=" + idconsulta);
@@ -78,7 +77,7 @@ public class ExaProctoDAOImpl extends HibernateDaoSupport implements ExaProctoDA
 
 		listResult = (List<ExaProcto>) this.getHibernateTemplate().execute(callback);
 		LOG.info("Cantidad:" + listResult.size());
-		if(listResult.isEmpty()){
+		if (listResult.isEmpty()) {
 			return null;
 		}
 		return listResult.get(0);

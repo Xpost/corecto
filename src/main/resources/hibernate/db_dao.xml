@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
 
-    	<bean id="hibernateDaoSupport" abstract="true" class="org.springframework.orm.hibernate3.support.HibernateDaoSupport" >
+    	<bean id="hibernateDaoSupport" abstract="true" class="org.springframework.orm.hibernate4.support.HibernateDaoSupport" >
     		<property name="hibernateTemplate" ref="hibernateTemplate" />
     	</bean>
     	
@@ -17,7 +17,7 @@
     		   	  <bean id="anatomiaPatologicaPostDAO" parent="hibernateDaoSupport"
     		class="com.corecto.web.dao.impl.AnatomiaPatologicaPostDAOImpl" />
     		
-    		   	  <bean id="anotomiaPatologicaDAO" parent="hibernateDaoSupport"
+    		   	  <bean id="anatomiaPatologicaDAO" parent="hibernateDaoSupport"
     		class="com.corecto.web.dao.impl.AnotomiaPatologicaDAOImpl" />
     		
     		   	 <bean id="antecedentesDAO" parent="hibernateDaoSupport"

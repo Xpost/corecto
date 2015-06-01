@@ -216,7 +216,7 @@ locationInfoWMessage = "Esta bien esta ubicación?<br>Sino es asi, <strong>arras
 	jQuery("#nombreC").focus();
 	
 	 jQuery.ajax({
-         url: '<c:url value="/loadAllCat.htm" />',
+         url: '<c:url value="/loadAllCat.json" />',
          type: "GET",
          dataType: "json",
          contentType: "application/json",
@@ -288,7 +288,7 @@ locationInfoWMessage = "Esta bien esta ubicación?<br>Sino es asi, <strong>arras
   						'notas':comentNew,'fechanac':fechaNac,'nroOs':numOS,"sexo":sexoSelected, "dni":cuitNew};		  		 
   		 
         jQuery.ajax({
-             url: '<c:url value="/addNewPatient.htm" />',
+             url: '<c:url value="/addNewPatient.json" />',
              type: "POST",
              dataType: "json",
              contentType: "application/json",

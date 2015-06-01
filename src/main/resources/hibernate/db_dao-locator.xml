@@ -11,7 +11,7 @@
                 <entry key="com.corecto.web.dao.PatientDAO" value-ref="patientDAO"/>               
                 <entry key="com.corecto.web.dao.PreconsultaDAO" value-ref="preconsultaDAO"/>
                 <entry key="com.corecto.web.dao.AnatomiaPatologicaPostDAO" value-ref="anatomiaPatologicaPostDAO"/>
-                <entry key="com.corecto.web.dao.AnotomiaPatologicaDAO" value-ref="anotomiaPatologicaDAO"/>
+                <entry key="com.corecto.web.dao.AnatomiaPatologicaDAO" value-ref="anatomiaPatologicaDAO"/>
                 <entry key="com.corecto.web.dao.AntecedentesDAO" value-ref="antecedentesDAO"/>
                 <entry key="com.corecto.web.dao.ConductaPostNeoDAO" value-ref="conductaPostNeoDAO"/>
                 <entry key="com.corecto.web.dao.DescTrataNeoDAO" value-ref="descTrataNeoDAO"/>

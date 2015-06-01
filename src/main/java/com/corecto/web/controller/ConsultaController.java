@@ -4,6 +4,8 @@
  **************************************************************************************/
 package com.corecto.web.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -31,6 +33,7 @@ import com.corecto.web.model.dto.RespuestaTrataNeoDTO;
 import com.corecto.web.model.dto.TratamientoAdyuDTO;
 import com.corecto.web.model.dto.TratamientoDTO;
 import com.corecto.web.service.ConsultaService;
+import com.google.common.collect.Maps;
 
 import fr.xebia.audit.Audited;
 
@@ -56,7 +59,7 @@ public class ConsultaController {
 	ConsultaService consultaService;
 
 	@Audited(message = "Accion: Cargar consulta")
-	@RequestMapping(value = "/loadConsultaId", method = RequestMethod.GET)
+	@RequestMapping(value = "/loadConsultaId.json", method = RequestMethod.GET)
 	public @ResponseBody
 	long loadConsultaId(HttpServletRequest request, HttpServletResponse response) {
 		LOG.info("ConsultaController.loadConsultaId()");
@@ -72,6 +75,23 @@ public class ConsultaController {
 		}
 
 		return returnConsultaId;
+	}
+
+	@Audited(message = "Accion: Render preconsulta")
+	@RequestMapping(value = "/consultInfoData.json", method = RequestMethod.GET)
+	public @ResponseBody
+	Map<String, Object> renderPreconsulta(
+			@RequestParam(value = "idPat", required = false, defaultValue = "") Long idPaciente,
+			HttpServletRequest request, HttpServletResponse response) {
+		LOG.info("ConsultaController.renderPreconsulta()");
+		Map<String, Object> consultaDataRendered = Maps.newHashMap();
+		try {
+			consultaDataRendered = consultaService.loadConsultaRenderedData(idPaciente);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return consultaDataRendered;
 	}
 
 	@Audited(message = "Accion: Cargar preconsulta")
@@ -271,8 +291,7 @@ public class ConsultaController {
 
 		return returnNewId;
 	}
-	
-	
+
 	@Audited(message = "Accion: Cargar Anatomia Patalogica")
 	@RequestMapping(value = "/loadAnaPatologica", method = RequestMethod.GET)
 	public @ResponseBody
@@ -320,7 +339,7 @@ public class ConsultaController {
 		}
 		return tratamientoDTO;
 	}
-	
+
 	@Audited(message = "Accion: Agregar Tratamiento")
 	@RequestMapping(value = "/addTratamiento", method = RequestMethod.POST)
 	public @ResponseBody
@@ -336,7 +355,7 @@ public class ConsultaController {
 
 		return returnNewId;
 	}
-	
+
 	@Audited(message = "Accion: Cargar Desc Tratamiento NeoAdyuante")
 	@RequestMapping(value = "/loadDescTrataNeoadyuante", method = RequestMethod.GET)
 	public @ResponseBody
@@ -384,7 +403,7 @@ public class ConsultaController {
 		}
 		return respuestaTrataNeoDTO;
 	}
-	
+
 	@Audited(message = "Accion: Agregar Respuesta NeoAdyuante")
 	@RequestMapping(value = "/addNewRespuestaNeoadyuante", method = RequestMethod.POST)
 	public @ResponseBody
@@ -400,7 +419,7 @@ public class ConsultaController {
 
 		return returnNewId;
 	}
-	
+
 	@Audited(message = "Accion: Cargar Conducta post neoadyuante")
 	@RequestMapping(value = "/loadConductaPostNeoadyuante", method = RequestMethod.GET)
 	public @ResponseBody
@@ -416,7 +435,6 @@ public class ConsultaController {
 		}
 		return conductaPostNeoDTO;
 	}
-	
 
 	@Audited(message = "Accion: Agregar Conducta post neoadyuante")
 	@RequestMapping(value = "/addNewConductaPostNeo", method = RequestMethod.POST)
@@ -449,8 +467,7 @@ public class ConsultaController {
 		}
 		return patologicaPostDTO;
 	}
-	
-	
+
 	@Audited(message = "Accion: Agregar Anatomia Patologica post")
 	@RequestMapping(value = "/addNewAnaPatoPost", method = RequestMethod.POST)
 	public @ResponseBody
@@ -466,7 +483,7 @@ public class ConsultaController {
 
 		return returnNewId;
 	}
-	
+
 	@Audited(message = "Accion: Cargar Tratamiento adyuvante")
 	@RequestMapping(value = "/loadTrataAdyuvante", method = RequestMethod.GET)
 	public @ResponseBody
@@ -482,7 +499,7 @@ public class ConsultaController {
 		}
 		return tratamientoAdyuDTO;
 	}
-	
+
 	@Audited(message = "Accion: Agregar Tratamiento adyuvante")
 	@RequestMapping(value = "/addNewTrataAdyuvante", method = RequestMethod.POST)
 	public @ResponseBody
@@ -498,8 +515,6 @@ public class ConsultaController {
 
 		return returnNewId;
 	}
-
-
 
 	/*
 	 * // @Autowired // EmailSenderService emailSenderService;

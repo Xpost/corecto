@@ -15,6 +15,7 @@ import org.apache.commons.lang3.text.WordUtils;
 import org.joda.time.LocalDateTime;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.corecto.web.dao.PatientDAO;
@@ -39,6 +40,7 @@ import com.corecto.web.service.PatientService;
  * @version 1.0
  */
 @Transactional
+@EnableTransactionManagement(order = 1)
 @Service
 public class PatientServiceImpl implements PatientService {
 
@@ -117,12 +119,10 @@ public class PatientServiceImpl implements PatientService {
 
 	}
 
-	public List<PacienteDTO> listPatients(String name, Long patientID, String direction, String fieldOrder,
-			String order) {
+	public List<PacienteDTO> listPatients(String name, Long patientID, String direction) {
 		List<PacienteDTO> resultList = new ArrayList<PacienteDTO>();
 		try {
-			resultList = getPatientDAO().getPatientsByParameters(null, patientID, direction, fieldOrder,
-					order);
+			resultList = getPatientDAO().getPatientsByParameters(patientID, direction);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

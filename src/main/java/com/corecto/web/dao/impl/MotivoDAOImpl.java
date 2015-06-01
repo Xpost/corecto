@@ -4,7 +4,6 @@
  **************************************************************************************/
 package com.corecto.web.dao.impl;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +13,8 @@ import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
-import org.springframework.orm.hibernate3.HibernateCallback;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.orm.hibernate4.HibernateCallback;
+import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import com.corecto.web.dao.MotivoDAO;
 import com.corecto.web.model.pojo.extra.Motivo;
@@ -50,7 +49,7 @@ public class MotivoDAOImpl extends HibernateDaoSupport implements MotivoDAO {
 	@SuppressWarnings("unchecked")
 	public Motivo loadMotivoById(final Long idMotivo) throws DataAccessException {
 
-		List<Motivo> listResult = getHibernateTemplate().find(
+		List<Motivo> listResult = (List<Motivo>) getHibernateTemplate().find(
 				"select C from Motivo as C where C.idmotivo=" + idMotivo);
 
 		if (listResult.isEmpty()) {
@@ -65,7 +64,7 @@ public class MotivoDAOImpl extends HibernateDaoSupport implements MotivoDAO {
 		List<Motivo> listResult = new ArrayList<Motivo>();
 		HibernateCallback callback = new HibernateCallback() {
 
-			public Object doInHibernate(Session session) throws HibernateException, SQLException {
+			public Object doInHibernate(Session session) throws HibernateException {
 
 				Query query = session.createQuery("select P " + " FROM Motivo as P, Consulta as C "
 						+ " WHERE P.consulta=C.idconsulta and C.idconsulta=" + idconsulta);
@@ -78,7 +77,7 @@ public class MotivoDAOImpl extends HibernateDaoSupport implements MotivoDAO {
 
 		listResult = (List<Motivo>) this.getHibernateTemplate().execute(callback);
 		LOG.info("Cantidad:" + listResult.size());
-		if(listResult.isEmpty()){
+		if (listResult.isEmpty()) {
 			return null;
 		}
 		return listResult.get(0);

@@ -1,5 +1,7 @@
 package com.corecto.web.service;
 
+import java.util.Map;
+
 import com.corecto.web.model.dto.AnatomiaPatologicaPostDTO;
 import com.corecto.web.model.dto.AnotomiaPatologicaDTO;
 import com.corecto.web.model.dto.AntecedentesDTO;
@@ -22,6 +24,8 @@ public interface ConsultaService {
 
 	PreconsultaDTO loadPreconsulta(Long idConsulta);
 
+	Map<String, Object> loadPreconsultaDecorated(Long idConsulta);
+
 	Long saveMotivo(MotivoDTO motivoDTO);
 
 	MotivoDTO loadMotivo(Long idConsulta);
@@ -43,30 +47,32 @@ public interface ConsultaService {
 	EstadificacionDTO loadEstadificacion(Long idConsulta);
 
 	Long saveAnaPatologica(AnotomiaPatologicaDTO anotomiaPatologicaDTO);
-	
+
 	AnotomiaPatologicaDTO loadAnaPatologica(Long idConsulta);
 
 	Long saveTratamiento(TratamientoDTO tratamientoDTO);
-	
+
 	TratamientoDTO loadTratamiento(Long idConsulta);
 
 	Long saveDescTrataNeoadyuante(DescTrataNeoDTO descTrataNeoDTO);
-	
+
 	DescTrataNeoDTO loadDescTrataNeoadyuante(Long idConsulta);
 
 	Long saveRespuestaTrataNeoadyuante(RespuestaTrataNeoDTO respuestaTrataNeoDTO);
-	
+
 	RespuestaTrataNeoDTO loadRespuestaTrataNeoadyuante(Long idConsulta);
 
 	Long saveConducataPostNeoAdyuante(ConductaPostNeoDTO conductaPostNeoDTO);
-	
+
 	ConductaPostNeoDTO loadConducataPostNeoAdyuante(Long idConsulta);
 
 	Long saveTratamientoAdyuvante(TratamientoAdyuDTO tratamientoAdyuDTO);
-	
+
 	TratamientoAdyuDTO loadTratamientoAdyuvante(Long idConsulta);
-	
+
 	Long saveAnatomiaPatologicaPost(AnatomiaPatologicaPostDTO anatomiaPatologicaPostDTO);
 
 	AnatomiaPatologicaPostDTO loadAnatomiaPatologicaPost(Long idConsulta);
+
+	Map<String, Object> loadConsultaRenderedData(Long idConsulta);
 }

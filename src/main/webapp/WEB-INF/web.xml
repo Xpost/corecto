@@ -35,6 +35,7 @@
       <servlet-mapping>
         <servlet-name>servletDispatcher</servlet-name>
    		<url-pattern>*.htm</url-pattern>
+   		<url-pattern>*.json</url-pattern>
    		<url-pattern>/login.htm</url-pattern>   		
       </servlet-mapping>
 

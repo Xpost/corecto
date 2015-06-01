@@ -4,8 +4,6 @@
  **************************************************************************************/
 package com.corecto.web.controller;
 
-
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -50,232 +48,151 @@ public class PatientController {
 
 	Logger LOG = LoggerFactory.getLogger(PatientController.class);
 
-	 @Autowired
-	 PatientService patientService;
-	 
-	 
-	    @RequestMapping(value = "/findPatientFilter", method = RequestMethod.POST)
-	    public @ResponseBody
-	    List<PacienteDTO> findPatientFilter(@RequestBody FilterDTO filterDTO) {
-	    	LOG.info("ClientController.findPatientFilter()");
-	    	List<PacienteDTO> resultList = new ArrayList<PacienteDTO>();
-	        PageResult pageResult = new PageResult();
-	        try {
-	        	resultList = patientService.listPatientByFilter(filterDTO);
-	        	   pageResult.setPage("1");
-		           pageResult.setRecords(resultList.size() + "");
-		           pageResult.setRows(resultList);
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
+	@Autowired
+	PatientService patientService;
 
-	        return resultList;
-	    }
+	@RequestMapping(value = "/findPatientFilter.json", method = RequestMethod.POST)
+	public @ResponseBody
+	List<PacienteDTO> findPatientFilter(@RequestBody FilterDTO filterDTO) {
+		LOG.info("ClientController.findPatientFilter()");
+		List<PacienteDTO> resultList = new ArrayList<PacienteDTO>();
+		PageResult pageResult = new PageResult();
+		try {
+			resultList = patientService.listPatientByFilter(filterDTO);
+			pageResult.setPage("1");
+			pageResult.setRecords(resultList.size() + "");
+			pageResult.setRows(resultList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-	 
-	  @Audited(message = "Accion: Agregar Paciente")
-	    @RequestMapping(value = "/addNewPatient", method = RequestMethod.POST)
-	    public @ResponseBody
-	    long saveNewPaciente(@RequestBody PacienteDTO pacienteDTO ) {
-	    	LOG.info("PatientController.saveNewPaciente()");
-	        long returnNewId = -1;
-	        try {
-	        	returnNewId = patientService.savePatient(pacienteDTO);
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	            return -1;
-	        }
+		return resultList;
+	}
 
-	        return 	returnNewId;
-	    }
-	 
-	    @RequestMapping(value = "/editPatient", method = RequestMethod.POST)
-	    public @ResponseBody
-	    boolean editPatient(@RequestBody PacienteDTO pacienteDTO) {
-	    	LOG.info("PatientController.editPatient()");
-	        try {
-	        	patientService.updatePatient(pacienteDTO);
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	            return false;
-	        }
+	@Audited(message = "Accion: Agregar Paciente")
+	@RequestMapping(value = "/addNewPatient.json", method = RequestMethod.POST)
+	public @ResponseBody
+	long saveNewPaciente(@RequestBody PacienteDTO pacienteDTO) {
+		LOG.info("PatientController.saveNewPaciente()");
+		long returnNewId = -1;
+		try {
+			returnNewId = patientService.savePatient(pacienteDTO);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
 
-	        return true;
-	    }
-	    
-	   @Audited(message = "Accion: Busqueda inical de pacientes en Listado")
-	    @RequestMapping(value = "/loadlistPatients", method = RequestMethod.GET)
-	    public @ResponseBody
-	    PageResult loadlistPatients(@RequestParam(value = "idpatient", required = false, defaultValue = "") String patientID,
-	    		@RequestParam(value = "domic", required = false, defaultValue = "") String domicilio,
-	    		@RequestParam(value = "sidx", required = false, defaultValue = "") String fieldName,
-	  		  @RequestParam(value = "sord", required = false, defaultValue = "") String order) {
-	    	LOG.info("ClientController.loadlistPatients()");
-	        List<PacienteDTO> listPatients = new ArrayList<PacienteDTO>();
-	        PageResult pageResult = new PageResult();
-	        try {
-	            listPatients = patientService.listPatients("", null, domicilio, "", "");
-	            pageResult.setPage("1");
-	            pageResult.setRecords(listPatients.size() + "");
-	            pageResult.setRows(listPatients);
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
+		return returnNewId;
+	}
 
-	        return pageResult;
-	    }
-	   
-	   
-	    @Audited(message = "Accion: Seleccionar Paciente")
-	    @RequestMapping(value = "/selectPatient", method = RequestMethod.GET)
-	    public @ResponseBody
-	    Long seleccionarPaciente(@RequestParam(value = "idPatient", required = false, defaultValue = "") long idPatient,
-	    		@RequestParam(value = "paName", required = false, defaultValue = "") String paName,
-	    		@RequestParam(value = "op", required = false, defaultValue = "") boolean operation, HttpServletRequest request, HttpServletResponse response) {
-	    	LOG.info("PatientController.seleccionarPaciente()");
-	    	Long idConsult = -2l;
-	        try {
-	        	if(operation){ 
-	        	 idConsult = patientService.alreadyHasConsultCreated(idPatient);
-	        	 request.getSession().setAttribute("PACIENTE_ID", idPatient);
-	        	 request.getSession().setAttribute("PACIENTE_NOMBRE",  WordUtils.capitalize(paName));
-	        	}
-	        	else{
-		            request.getSession().removeAttribute("PACIENTE_ID");
-		            request.getSession().removeAttribute("PACIENTE_NOMBRE");
-	        	}
-	        	
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	            return idConsult;
-	        }
+	@RequestMapping(value = "/editPatient.json", method = RequestMethod.POST)
+	public @ResponseBody
+	boolean editPatient(@RequestBody PacienteDTO pacienteDTO) {
+		LOG.info("PatientController.editPatient()");
+		try {
+			patientService.updatePatient(pacienteDTO);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 
-	        return idConsult;
-	    }
-	   
-	    
-	    @RequestMapping(value = "/searchPatientByName", method = RequestMethod.POST)
-	    public @ResponseBody
-	    Object[] searchPatientByName(@RequestParam(value = "nameStartWith", required = false, defaultValue = "") String name,
-	            @RequestParam(value = "maxRows", required = false, defaultValue = "5") int maxRows) {
-	        List<PacienteDTO> listClients = new ArrayList<PacienteDTO>();
-	        try {
-	            listClients = patientService.listPatientByName(name,"","", maxRows);
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
+		return true;
+	}
 
-	        return listClients.toArray();
-	    }
-	    
-	    @Audited(message = "Accion: Eliminar Paciente")
-	    @RequestMapping(value = "/delPatient", method = RequestMethod.GET)
-	    public @ResponseBody
-	    boolean deletePatient(@RequestParam(value = "idPaciente", required = false, defaultValue = "") Long idPatient) {
-	    	LOG.info("PatientController.deletePatient()");
-	        try {
-	        	patientService.deletePatientById(idPatient);
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	            return false;
-	        }
+	@Audited(message = "Accion: Busqueda inical de pacientes en Listado")
+	@RequestMapping(value = "/loadlistPatients.json", method = RequestMethod.GET)
+	public @ResponseBody
+	PageResult loadlistPatients(
+			@RequestParam(value = "idpatient", required = false, defaultValue = "") String patientID,
+			@RequestParam(value = "domic", required = false, defaultValue = "") String domicilio,
+			@RequestParam(value = "sidx", required = false, defaultValue = "") String fieldName,
+			@RequestParam(value = "sord", required = false, defaultValue = "") String order) {
+		LOG.info("ClientController.loadlistPatients()");
+		List<PacienteDTO> listPatients = new ArrayList<PacienteDTO>();
+		PageResult pageResult = new PageResult();
+		try {
+			listPatients = patientService.listPatients("", null, domicilio);
+			pageResult.setPage("1");
+			pageResult.setRecords(listPatients.size() + "");
+			pageResult.setRows(listPatients);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-	        return true;
-	    }
-	    
-/*   
+		return pageResult;
+	}
 
-    
-    
-  
+	@Audited(message = "Accion: Seleccionar Paciente")
+	@RequestMapping(value = "/selectPatient.json", method = RequestMethod.GET)
+	public @ResponseBody
+	Long seleccionarPaciente(
+			@RequestParam(value = "idPatient", required = false, defaultValue = "") long idPatient,
+			@RequestParam(value = "paName", required = false, defaultValue = "") String paName,
+			@RequestParam(value = "op", required = false, defaultValue = "") boolean operation,
+			HttpServletRequest request, HttpServletResponse response) {
+		LOG.info("PatientController.seleccionarPaciente()");
+		Long idConsult = -2l;
+		try {
+			if (operation) {
+				idConsult = patientService.alreadyHasConsultCreated(idPatient);
+				request.getSession().setAttribute("PACIENTE_ID", idPatient);
+				request.getSession().setAttribute("PACIENTE_NOMBRE", WordUtils.capitalize(paName));
+			} else {
+				request.getSession().removeAttribute("PACIENTE_ID");
+				request.getSession().removeAttribute("PACIENTE_NOMBRE");
+			}
 
-    
+		} catch (Exception e) {
+			e.printStackTrace();
+			return idConsult;
+		}
 
+		return idConsult;
+	}
 
-    
- 
-    
-//  @Audited(message = "Accion: Ver historial pedidos")
-  @RequestMapping(value = "/loadListClientsByParameter", method = RequestMethod.GET)
-  public @ResponseBody
-  PageResult loadlistClientsByParameters(@RequestParam(value = "name", required = false, defaultValue = "") String name,
-		  @RequestParam(value = "lastName", required = false, defaultValue = "") String lastName,
-		  @RequestParam(value = "cuit", required = false, defaultValue = "") String cuit,
-		  @RequestParam(value = "score", required = false, defaultValue = "") String score,
-		  @RequestParam(value = "sidx", required = false, defaultValue = "") String fieldName,
-  		  @RequestParam(value = "sord", required = false, defaultValue = "") String order) {
-	  LOG.info("ClientController.listClients()");
-      List<ClienteDTO> listClientes = new ArrayList<ClienteDTO>();
-      PageResult pageResult = new PageResult();
-      try {
-          listClientes = clientService.listClientsByParameters(name.isEmpty()?null:name.toLowerCase(), lastName.isEmpty()?null:lastName.toLowerCase(), cuit.isEmpty()?null:cuit, score.isEmpty()?null:score,fieldName,order);
-          pageResult.setPage("1");
-          pageResult.setTotal("1");
-          pageResult.setRecords(listClientes.size() + "");
-          pageResult.setRows(listClientes);
-      } catch (Exception e) {
-          e.printStackTrace();
-      }
+	@RequestMapping(value = "/searchPatientByName.json", method = RequestMethod.POST)
+	public @ResponseBody
+	Object[] searchPatientByName(
+			@RequestParam(value = "nameStartWith", required = false, defaultValue = "") String name,
+			@RequestParam(value = "maxRows", required = false, defaultValue = "5") int maxRows) {
+		List<PacienteDTO> listClients = new ArrayList<PacienteDTO>();
+		try {
+			listClients = patientService.listPatientByName(name, "", "", maxRows);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-      return pageResult;
-  }
-    
-    @Audited(message = "Accion: Eliminar Cliente")
-    @RequestMapping(value = "/delClient", method = RequestMethod.GET)
-    public @ResponseBody
-    boolean deleteClient(@RequestParam(value = "idClient", required = false, defaultValue = "") Integer idClient) {
-    	LOG.info("ClientController.deleteClient()");
-        try {
-        	clientService.deleteClientById(idClient);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+		return listClients.toArray();
+	}
 
-        return true;
-    }
-    
-    @RequestMapping(value = "/loadClientById", method = RequestMethod.GET)
-    public @ResponseBody
-    ClienteDTO loadClientById(@RequestParam(value = "idClient", required = false, defaultValue = "") Integer idClient) {
-    	LOG.info("ClientController.loadClientById()");
-    	ClienteDTO clienteDTO = null;
-        try {
-        	clienteDTO = clientService.loadClientById(idClient);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+	@Audited(message = "Accion: Eliminar Paciente")
+	@RequestMapping(value = "/delPatient.json", method = RequestMethod.GET)
+	public @ResponseBody
+	boolean deletePatient(
+			@RequestParam(value = "idPaciente", required = false, defaultValue = "") Long idPatient) {
+		LOG.info("PatientController.deletePatient()");
+		try {
+			patientService.deletePatientById(idPatient);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 
-        return clienteDTO;
-    }
-    
-    // @Audited(message = "Accion: Eliminar alertas")
-    @RequestMapping(value = "/loadLastClientNum", method = RequestMethod.GET)
-    public @ResponseBody
-    Integer loadLastClientId() {
-        Integer lastId = -1;
-        try {
-        	lastId = Integer.parseInt(clientService.loadClientLastNum());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+		return true;
+	}
 
-        return lastId;
-    }
-    
-   */ 
-    @RequestMapping(value = "/loadAllCat", method = RequestMethod.GET)
-    public @ResponseBody
-    Map<String, Object> loadAllCat() {
-    	LOG.info("ClientController.listClients()");
-        Map<String, Object> catalogs = new HashMap<String, Object>();
-        try {
-            catalogs = patientService.loadAllAddPatientCat();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+	@RequestMapping(value = "/loadAllCat.json", method = RequestMethod.GET)
+	public @ResponseBody
+	Map<String, Object> loadAllCat() {
+		LOG.info("ClientController.listClients()");
+		Map<String, Object> catalogs = new HashMap<String, Object>();
+		try {
+			catalogs = patientService.loadAllAddPatientCat();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-        return catalogs;
-    }
+		return catalogs;
+	}
 
 }

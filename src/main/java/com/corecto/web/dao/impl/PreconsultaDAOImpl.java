@@ -4,7 +4,6 @@
  **************************************************************************************/
 package com.corecto.web.dao.impl;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +13,8 @@ import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
-import org.springframework.orm.hibernate3.HibernateCallback;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.orm.hibernate4.HibernateCallback;
+import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import com.corecto.web.dao.PreconsultaDAO;
 import com.corecto.web.model.pojo.extra.Preconsulta;
@@ -66,7 +65,7 @@ public class PreconsultaDAOImpl extends HibernateDaoSupport implements Preconsul
 	@SuppressWarnings("unchecked")
 	public Preconsulta loadPreconsultaById(final Long idpreconsulta) throws DataAccessException {
 
-		List<Preconsulta> listResult = getHibernateTemplate().find(
+		List<Preconsulta> listResult = (List<Preconsulta>) getHibernateTemplate().find(
 				"select C from Preconsulta as C where C.idpreconsulta=" + idpreconsulta);
 
 		if (listResult.isEmpty()) {
@@ -89,7 +88,7 @@ public class PreconsultaDAOImpl extends HibernateDaoSupport implements Preconsul
 		List<Preconsulta> listResult = new ArrayList<Preconsulta>();
 		HibernateCallback callback = new HibernateCallback() {
 
-			public Object doInHibernate(Session session) throws HibernateException, SQLException {
+			public Object doInHibernate(Session session) throws HibernateException {
 
 				Query query = session.createQuery("select P " + " FROM Preconsulta as P, Consulta as C "
 						+ " WHERE P.consulta=C.idconsulta and C.idconsulta=" + idconsulta);

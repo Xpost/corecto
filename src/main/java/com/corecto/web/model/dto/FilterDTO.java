@@ -48,6 +48,33 @@ public class FilterDTO {
 	private String rmAltura;
 	private List<Integer> rmTumor;
 	private List<Integer> rmTumorN;
+	private List<Integer> crm;
+	private List<Integer> emvi;
+	private List<Integer> depSatelites;
+	private List<Integer> tumoRectoInferior;
+	private List<Integer> ganglios;
+	private List<Integer> gangliosLate;
+	private List<Integer> infiltraEsfinter;
+	private List<Integer> tcTorax;
+	private List<Integer> tcAbd;
+	private List<Integer> petCt;
+	private List<Integer> mts;
+	private String suv;
+	private String marTumFecha;
+	private List<Integer> ceaAumentado;
+	private List<Integer> ca19;
+	private String tnmT;
+	private String tnmN;
+	private String tnmM;
+	private String tnmPt;
+	private String tnmPn;
+	private String tnmPm;
+	private String metastasis;
+	private String metastasisOtra;
+	private String revRmFecha;
+	private String revDistanEsfinter;
+	private List<Integer> revDistanAnal;
+	private String revAltura;
 	// ana patologica
 	private List<Integer> gradoDif;
 	// tratamiento
@@ -380,6 +407,222 @@ public class FilterDTO {
 
 	public void setRmTumorN(List<Integer> rmTumorN) {
 		this.rmTumorN = rmTumorN;
+	}
+
+	public List<Integer> getCrm() {
+		return crm;
+	}
+
+	public void setCrm(List<Integer> crm) {
+		this.crm = crm;
+	}
+
+	public List<Integer> getEmvi() {
+		return emvi;
+	}
+
+	public void setEmvi(List<Integer> emvi) {
+		this.emvi = emvi;
+	}
+
+	public List<Integer> getDepSatelites() {
+		return depSatelites;
+	}
+
+	public void setDepSatelites(List<Integer> depSatelites) {
+		this.depSatelites = depSatelites;
+	}
+
+	public List<Integer> getTumoRectoInferior() {
+		return tumoRectoInferior;
+	}
+
+	public void setTumoRectoInferior(List<Integer> tumoRectoInferior) {
+		this.tumoRectoInferior = tumoRectoInferior;
+	}
+
+	public List<Integer> getGanglios() {
+		return ganglios;
+	}
+
+	public void setGanglios(List<Integer> ganglios) {
+		this.ganglios = ganglios;
+	}
+
+	public List<Integer> getGangliosLate() {
+		return gangliosLate;
+	}
+
+	public void setGangliosLate(List<Integer> gangliosLate) {
+		this.gangliosLate = gangliosLate;
+	}
+
+	public List<Integer> getInfiltraEsfinter() {
+		return infiltraEsfinter;
+	}
+
+	public void setInfiltraEsfinter(List<Integer> infiltraEsfinter) {
+		this.infiltraEsfinter = infiltraEsfinter;
+	}
+
+	public List<Integer> getTcTorax() {
+		return tcTorax;
+	}
+
+	public void setTcTorax(List<Integer> tcTorax) {
+		this.tcTorax = tcTorax;
+	}
+
+	public List<Integer> getTcAbd() {
+		return tcAbd;
+	}
+
+	public void setTcAbd(List<Integer> tcAbd) {
+		this.tcAbd = tcAbd;
+	}
+
+	public List<Integer> getPetCt() {
+		return petCt;
+	}
+
+	public void setPetCt(List<Integer> petCt) {
+		this.petCt = petCt;
+	}
+
+	public List<Integer> getMts() {
+		return mts;
+	}
+
+	public void setMts(List<Integer> mts) {
+		this.mts = mts;
+	}
+
+	public String getSuv() {
+		return suv;
+	}
+
+	public void setSuv(String suv) {
+		this.suv = suv;
+	}
+
+	public String getMarTumFecha() {
+		return marTumFecha;
+	}
+
+	public void setMarTumFecha(String marTumFecha) {
+		this.marTumFecha = marTumFecha;
+	}
+
+	public List<Integer> getCeaAumentado() {
+		return ceaAumentado;
+	}
+
+	public void setCeaAumentado(List<Integer> ceaAumentado) {
+		this.ceaAumentado = ceaAumentado;
+	}
+
+	public List<Integer> getCa19() {
+		return ca19;
+	}
+
+	public void setCa19(List<Integer> ca19) {
+		this.ca19 = ca19;
+	}
+
+	public String getTnmT() {
+		return tnmT;
+	}
+
+	public void setTnmT(String tnmT) {
+		this.tnmT = tnmT;
+	}
+
+	public String getTnmN() {
+		return tnmN;
+	}
+
+	public void setTnmN(String tnmN) {
+		this.tnmN = tnmN;
+	}
+
+	public String getTnmM() {
+		return tnmM;
+	}
+
+	public void setTnmM(String tnmM) {
+		this.tnmM = tnmM;
+	}
+
+	public String getTnmPt() {
+		return tnmPt;
+	}
+
+	public void setTnmPt(String tnmPt) {
+		this.tnmPt = tnmPt;
+	}
+
+	public String getTnmPn() {
+		return tnmPn;
+	}
+
+	public void setTnmPn(String tnmPn) {
+		this.tnmPn = tnmPn;
+	}
+
+	public String getTnmPm() {
+		return tnmPm;
+	}
+
+	public void setTnmPm(String tnmPm) {
+		this.tnmPm = tnmPm;
+	}
+
+	public String getMetastasis() {
+		return metastasis;
+	}
+
+	public void setMetastasis(String metastasis) {
+		this.metastasis = metastasis;
+	}
+
+	public String getMetastasisOtra() {
+		return metastasisOtra;
+	}
+
+	public void setMetastasisOtra(String metastasisOtra) {
+		this.metastasisOtra = metastasisOtra;
+	}
+
+	public String getRevRmFecha() {
+		return revRmFecha;
+	}
+
+	public void setRevRmFecha(String revRmFecha) {
+		this.revRmFecha = revRmFecha;
+	}
+
+	public String getRevDistanEsfinter() {
+		return revDistanEsfinter;
+	}
+
+	public void setRevDistanEsfinter(String revDistanEsfinter) {
+		this.revDistanEsfinter = revDistanEsfinter;
+	}
+
+	public List<Integer> getRevDistanAnal() {
+		return revDistanAnal;
+	}
+
+	public void setRevDistanAnal(List<Integer> revDistanAnal) {
+		this.revDistanAnal = revDistanAnal;
+	}
+
+	public String getRevAltura() {
+		return revAltura;
+	}
+
+	public void setRevAltura(String revAltura) {
+		this.revAltura = revAltura;
 	}
 
 }

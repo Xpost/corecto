@@ -4,7 +4,6 @@
  **************************************************************************************/
 package com.corecto.web.dao.impl;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +13,8 @@ import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
-import org.springframework.orm.hibernate3.HibernateCallback;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.orm.hibernate4.HibernateCallback;
+import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import com.corecto.web.dao.EvaClinicaDAO;
 import com.corecto.web.model.pojo.extra.EvaClinica;
@@ -50,7 +49,7 @@ public class EvaClinicaDAOImpl extends HibernateDaoSupport implements EvaClinica
 	@SuppressWarnings("unchecked")
 	public EvaClinica loadEvaClinicaById(final Long idevaclinica) throws DataAccessException {
 
-		List<EvaClinica> listResult = getHibernateTemplate().find(
+		List<EvaClinica> listResult = (List<EvaClinica>) getHibernateTemplate().find(
 				"select C from EvaClinica as C where C.idevaclinica=" + idevaclinica);
 
 		if (listResult.isEmpty()) {
@@ -65,7 +64,7 @@ public class EvaClinicaDAOImpl extends HibernateDaoSupport implements EvaClinica
 		List<EvaClinica> listResult = new ArrayList<EvaClinica>();
 		HibernateCallback callback = new HibernateCallback() {
 
-			public Object doInHibernate(Session session) throws HibernateException, SQLException {
+			public Object doInHibernate(Session session) throws HibernateException {
 
 				Query query = session.createQuery("select P " + " FROM EvaClinica as P, Consulta as C "
 						+ " WHERE P.consulta=C.idconsulta and C.idconsulta=" + idconsulta);
@@ -78,7 +77,7 @@ public class EvaClinicaDAOImpl extends HibernateDaoSupport implements EvaClinica
 
 		listResult = (List<EvaClinica>) this.getHibernateTemplate().execute(callback);
 		LOG.info("Cantidad:" + listResult.size());
-		if(listResult.isEmpty()){
+		if (listResult.isEmpty()) {
 			return null;
 		}
 		return listResult.get(0);
