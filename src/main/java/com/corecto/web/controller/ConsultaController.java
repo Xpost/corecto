@@ -82,11 +82,16 @@ public class ConsultaController {
 	public @ResponseBody
 	Map<String, Object> renderPreconsulta(
 			@RequestParam(value = "idPat", required = false, defaultValue = "") Long idPaciente,
+			@RequestParam(value = "dtPart", required = false, defaultValue = "0") int dataPart,
 			HttpServletRequest request, HttpServletResponse response) {
 		LOG.info("ConsultaController.renderPreconsulta()");
 		Map<String, Object> consultaDataRendered = Maps.newHashMap();
 		try {
-			consultaDataRendered = consultaService.loadConsultaRenderedData(idPaciente);
+			if (dataPart == 0) {
+				consultaDataRendered = consultaService.loadConsultaRenderedFirstData(idPaciente);
+			} else if (dataPart == 1) {
+				consultaDataRendered = consultaService.loadConsultaRenderedSecondData(idPaciente);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

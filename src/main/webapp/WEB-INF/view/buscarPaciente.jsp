@@ -1083,12 +1083,82 @@
 	                 </div>
 	                </div>
 	            </div>
-	         </div>	 	                 
+	         </div>	 	 
+	         <div class="row-fluid">      
+         	 <div id="accordion-tratamientoNeoGlobal" class="accordion span6">
+	            <div class="accordion-group">
+	                <div class="accordion-heading" style="height: 40px">
+	                    <a  onclick="javascript:toggleCollapseImg('imgToggleReserva');$('#tratamientoNeoGlobalData').collapse('toggle');"  data-parent="accordion-tratamientoNeoGlobal" class="accordion-toggle">
+	                    Tratamiento Neoadyuante</a>
+	                    <span  onclick="javascript:toggleCollapseImg('imgToggleReserva');$('#tratamientoNeoGlobalData').collapse('toggle');" style="position:relative;left:90%;top:-27px;cursor: pointer;">
+	                        <i class="icon-minus-sign" id="imgToggleReserva"></i>
+	                    </span>
+	                </div>
+	                <div id="tratamientoNeoGlobalData">
+	                   <div class="accordion-inner">
+	                    <table class="table table-striped table-condensed">
+				        <tbody>
+				            <tr>
+				                <td class="ui-loadingBar"></td>
+				            </tr>
+				        </tbody>
+	    			</table>
+	                 </div>
+	                </div>
+	            </div>
+	         </div>	
+         	 <div id="accordion-anatomiaPatologicaPost" class="accordion span6">
+	            <div class="accordion-group">
+	                <div class="accordion-heading" style="height: 40px">
+	                    <a  onclick="javascript:toggleCollapseImg('imgToggleReserva');$('#anatomiaPatologicaPostData').collapse('toggle');"  data-parent="accordion-anatomiaPatologicaPost" class="accordion-toggle">
+	                    Anatomia patológica Post</a>
+	                    <span  onclick="javascript:toggleCollapseImg('imgToggleReserva');$('#anatomiaPatologicaPostData').collapse('toggle');" style="position:relative;left:90%;top:-27px;cursor: pointer;">
+	                        <i class="icon-minus-sign" id="imgToggleReserva"></i>
+	                    </span>
+	                </div>
+	                <div id="anatomiaPatologicaPostData">
+	                   <div class="accordion-inner">
+	                    <table class="table table-striped table-condensed">
+				        <tbody>
+				            <tr>
+				                <td class="ui-loadingBar"></td>
+				            </tr>
+				        </tbody>
+	    			</table>
+	                 </div>
+	                </div>
+	            </div>
+	         </div>	 	
+	        </div>
+	        <div class="row-fluid"> 
+         	 <div id="accordion-tratamientoAdyu" class="accordion span6">
+	            <div class="accordion-group">
+	                <div class="accordion-heading" style="height: 40px">
+	                    <a  onclick="javascript:toggleCollapseImg('imgToggleReserva');$('#tratamientoAdyuData').collapse('toggle');"  data-parent="accordion-tratamientoAdyu" class="accordion-toggle">
+	                    Tratamiento adyuvante</a>
+	                    <span  onclick="javascript:toggleCollapseImg('imgToggleReserva');$('#tratamientoAdyuData').collapse('toggle');" style="position:relative;left:90%;top:-27px;cursor: pointer;">
+	                        <i class="icon-minus-sign" id="imgToggleReserva"></i>
+	                    </span>
+	                </div>
+	                <div id="tratamientoAdyuData">
+	                   <div class="accordion-inner">
+	                    <table class="table table-striped table-condensed">
+				        <tbody>
+				            <tr>
+				                <td class="ui-loadingBar"></td>
+				            </tr>
+				        </tbody>
+	    			</table>
+	                 </div>
+	                </div>
+	            </div>
+	         </div>	 	
+	        </div> 	         	          	                   
         </div>
        </div>  
             <div class="modal-footer">
               <button onclick="$('#consultInfoModal').modal('hide');" class="btn" >Cerrar</button>
-              <button class="btn btn-primary">Ver consulta</button>
+              <button class="btn btn-primary" id="dialogSeeConsult">Ver consulta</button>
             </div>
  		</div>
              
@@ -1575,8 +1645,8 @@ jQuery("#listClientTable").jqGrid({
 		             return false;
 		            }
 				 if(e.target.attributes.op.value=="detail"){		 		
-					 var idPatient = jQuery('#listClientTable').jqGrid('getCell',rowid,"idpaciente");										 
-					 showPatientConsultModal(idPatient);		
+					 var row = jQuery('#listClientTable').jqGrid('getRowData',rowid);									 
+					 showPatientConsultModal(row);		
 		             return false;
 		            }
 				 
@@ -1836,13 +1906,13 @@ $("#anteSindrome4").click(function(){
 
 });
 //Other functions
-function showPatientConsultModal(idPatient){
+function showPatientConsultModal(row){
     jQuery.ajax({
         url: '<c:url value="/consultInfoData.json" />',
         type: "GET",
         dataType: "json",
         contentType: "application/json",
-        data: {'idPat':idPatient}, 
+        data: {'idPat':row.idpaciente,'dtPart':0}, 
         success: function(consultDataMap){             
         	if(consultDataMap.preconsulta !=null){
         		renderInTable("preconsultaData", consultDataMap.preconsulta);
@@ -1862,12 +1932,39 @@ function showPatientConsultModal(idPatient){
         	if(consultDataMap.estadificacion !=null){
         		renderInTable("estadificacionData", consultDataMap.estadificacion);
         	}
-        	if(consultDataMap.anatPatologica !=null){
-        		renderInTable("anatPatologicaData", consultDataMap.anatPatologica);
-        	}
-        	if(consultDataMap.tratamiento !=null){
-        		renderInTable("tratamientoData", consultDataMap.tratamiento);
-        	}
+        	
+            jQuery.ajax({
+                url: '<c:url value="/consultInfoData.json" />',
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json",
+                data: {'idPat':row.idpaciente,'dtPart':1}, 
+                success: function(consultDataMap){
+                	if(consultDataMap.anatPatologica !=null){
+            			renderInTable("anatPatologicaData", consultDataMap.anatPatologica);
+            		}
+	            	if(consultDataMap.tratamiento !=null){
+	            		renderInTable("tratamientoData", consultDataMap.tratamiento);
+	            	}
+	            	// los 3 sig dentro de Trat. Neoadyuante
+	            	if(consultDataMap.descTrataNeo !=null){
+	            		renderInTable("tratamientoNeoGlobalData", consultDataMap.descTrataNeo);
+	            	}
+	            	if(consultDataMap.respuestaTrataNeo !=null){
+	            		renderInTable("tratamientoNeoGlobalData", consultDataMap.respuestaTrataNeo,true);
+	            	}
+	            	if(consultDataMap.conductaPostNeo !=null){
+	            		renderInTable("tratamientoNeoGlobalData", consultDataMap.conductaPostNeo,true);
+	            	}
+	            	if(consultDataMap.anatomiaPatologicaPost !=null){
+	            		renderInTable("anatomiaPatologicaPostData", consultDataMap.anatomiaPatologicaPost);
+	            	}
+	            	if(consultDataMap.tratamientoAdyu !=null){
+	            		renderInTable("tratamientoAdyuData", consultDataMap.tratamientoAdyu);
+	            	}
+                }
+            });   
+            selectConsult(row);
         }
       });
     
@@ -1875,9 +1972,18 @@ function showPatientConsultModal(idPatient){
 }
 
 
-function renderInTable(idTable, dataMap){
+function selectConsult(row){
+	$("#dialogSeeConsult").unbind();
+	$("#dialogSeeConsult").click(function(){
+		selectPatient(row, function(){ jQuery("#seeConsultBtn").click(); });
+	});
+}
+
+function renderInTable(idTable, dataMap, avoidClean){
 		var table =$("#"+idTable+" table");
-		table.empty();
+		if(!avoidClean){
+			table.empty();
+		}
 		var ignoreFirst = true;
 		var mark = "";
 		var	counterS = 0;
@@ -1991,7 +2097,7 @@ function cleanScreenSearch(){
 }
 
 
-function selectPatient(row){
+function selectPatient(row, callback){
 	jQuery("#selectedPatientName").html(" "+(capitaliseFirstLetter(row.nombre)));
 	jQuery("#idPacienteSelected").val(row.idpaciente);
 	   jQuery.ajax({
@@ -2008,6 +2114,9 @@ function selectPatient(row){
          		}
          		else{
          			jQuery("#seeConsultBtn").hide();
+         		}
+         		if(callback!=null){
+         			callback.call();
          		}
          	 }
          	 else{

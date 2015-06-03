@@ -18,12 +18,17 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.corecto.web.converter.AnatPatologicaConverter;
+import com.corecto.web.converter.AnatPatologicaPostConverter;
 import com.corecto.web.converter.AntecedentesConverter;
+import com.corecto.web.converter.ConductaPostNeoConverter;
+import com.corecto.web.converter.DescTrataNeoConverter;
 import com.corecto.web.converter.EstadificacionConverter;
 import com.corecto.web.converter.EvaClinicaConverter;
 import com.corecto.web.converter.ExaProctoConverter;
 import com.corecto.web.converter.MotivoConverter;
 import com.corecto.web.converter.PreconsultaConverter;
+import com.corecto.web.converter.RespuestaTrataNeoConverter;
+import com.corecto.web.converter.TratamientoAdyuConverter;
 import com.corecto.web.converter.TratamientoConverter;
 import com.corecto.web.dao.AnatomiaPatologicaDAO;
 import com.corecto.web.dao.AnatomiaPatologicaPostDAO;
@@ -117,6 +122,21 @@ public class ConsultaServiceImpl implements ConsultaService {
 	@Autowired
 	private TratamientoConverter tratamientoConverter;
 
+	@Autowired
+	private DescTrataNeoConverter descTrataNeoConverter;
+
+	@Autowired
+	TratamientoAdyuConverter tratamientoAdyuConverter;
+
+	@Autowired
+	RespuestaTrataNeoConverter respuestaTrataNeoConverter;
+
+	@Autowired
+	ConductaPostNeoConverter conductaPostNeoConverter;
+
+	@Autowired
+	AnatPatologicaPostConverter anatPatologicaPostConverter;
+
 	public Long loadConsulta(long idPaciente) {
 
 		PatientDAO patientDAO = DAOLocator.getInstance().lookup(PatientDAO.class.getName());
@@ -179,7 +199,7 @@ public class ConsultaServiceImpl implements ConsultaService {
 		return preconsultaDTO;
 	}
 
-	public Map<String, Object> loadConsultaRenderedData(Long idPaciente) {
+	public Map<String, Object> loadConsultaRenderedFirstData(Long idPaciente) {
 
 		PatientDAO patientDAO = DAOLocator.getInstance().lookup(PatientDAO.class.getName());
 		Consulta consulta = patientDAO.loadConsultaByIdClient(idPaciente);
@@ -191,8 +211,21 @@ public class ConsultaServiceImpl implements ConsultaService {
 		studiesMap.put("evaClinica", loadEvaClinicaDecorated(consulta.getIdconsulta()));
 		studiesMap.put("exaProcto", loadExaProctoDecorated(consulta.getIdconsulta()));
 		studiesMap.put("estadificacion", loadEstadificacionDecorated(consulta.getIdconsulta()));
+		return studiesMap;
+	}
+
+	public Map<String, Object> loadConsultaRenderedSecondData(Long idPaciente) {
+		PatientDAO patientDAO = DAOLocator.getInstance().lookup(PatientDAO.class.getName());
+		Consulta consulta = patientDAO.loadConsultaByIdClient(idPaciente);
+		LinkedHashMap<String, Object> studiesMap = Maps.newLinkedHashMap();
 		studiesMap.put("anatPatologica", loadAnatomiaPatologicaDecorated(consulta.getIdconsulta()));
 		studiesMap.put("tratamiento", loadTratamientoDecorated(consulta.getIdconsulta()));
+		studiesMap.put("descTrataNeo", loadDescTrataNeoDecorated(consulta.getIdconsulta()));
+		studiesMap.put("respuestaTrataNeo", loadRespuestaTrataNeoDecorated(consulta.getIdconsulta()));
+		studiesMap.put("conductaPostNeo", loadConductaPostNeoDecorated(consulta.getIdconsulta()));
+		studiesMap.put("anatomiaPatologicaPost",
+				loadAnatomiaPatologicaPostDecorated(consulta.getIdconsulta()));
+		studiesMap.put("tratamientoAdyu", loadTratamientoAdyuDecorated(consulta.getIdconsulta()));
 		return studiesMap;
 	}
 
@@ -285,6 +318,67 @@ public class ConsultaServiceImpl implements ConsultaService {
 			mapTratamiento = tratamientoConverter.convertToMap(tratamiento);
 		}
 		return mapTratamiento;
+	}
+
+	public Map<String, Object> loadDescTrataNeoDecorated(Long idConsulta) {
+
+		DescTrataNeoDAO tratamientoDAO = DAOLocator.getInstance().lookup(DescTrataNeoDAO.class.getName());
+		DescTrataNeo descTrataNeo = tratamientoDAO.loadDescTrataNeoByConsulta(idConsulta);
+		Map<String, Object> mapDescTrataNeo = null;
+		if (descTrataNeo != null) {
+			mapDescTrataNeo = descTrataNeoConverter.convertToMap(descTrataNeo);
+		}
+		return mapDescTrataNeo;
+	}
+
+	public Map<String, Object> loadRespuestaTrataNeoDecorated(Long idConsulta) {
+
+		RespuestaTrataNeoDAO respuestaTrataNeoDAO = DAOLocator.getInstance().lookup(
+				RespuestaTrataNeoDAO.class.getName());
+		RespuestaTrataNeo respuestaTrataNeo = respuestaTrataNeoDAO
+				.loadRespuestaTrataNeoByConsulta(idConsulta);
+		Map<String, Object> mapRespuestaTrataNeo = null;
+		if (respuestaTrataNeo != null) {
+			mapRespuestaTrataNeo = respuestaTrataNeoConverter.convertToMap(respuestaTrataNeo);
+		}
+		return mapRespuestaTrataNeo;
+	}
+
+	public Map<String, Object> loadConductaPostNeoDecorated(Long idConsulta) {
+
+		ConductaPostNeoDAO conductaPostNeoDAO = DAOLocator.getInstance().lookup(
+				ConductaPostNeoDAO.class.getName());
+		ConductaPostNeo conductaPostNeo = conductaPostNeoDAO.loadConductaPostNeoByConsulta(idConsulta);
+		Map<String, Object> mapconductaPostNeo = null;
+		if (conductaPostNeo != null) {
+			mapconductaPostNeo = conductaPostNeoConverter.convertToMap(conductaPostNeo);
+		}
+		return mapconductaPostNeo;
+	}
+
+	public Map<String, Object> loadTratamientoAdyuDecorated(Long idConsulta) {
+
+		TratamientoAdyuDAO tratamientoDAO = DAOLocator.getInstance().lookup(
+				TratamientoAdyuDAO.class.getName());
+		TratamientoAdyu tratamiento = tratamientoDAO.loadTratamientoAdyuByConsulta(idConsulta);
+		Map<String, Object> mapTratamientoAdyu = null;
+		if (tratamiento != null) {
+			mapTratamientoAdyu = tratamientoAdyuConverter.convertToMap(tratamiento);
+		}
+		return mapTratamientoAdyu;
+	}
+
+	public Map<String, Object> loadAnatomiaPatologicaPostDecorated(Long idConsulta) {
+
+		AnatomiaPatologicaPostDAO anatomiaPatologicaPostDAO = DAOLocator.getInstance().lookup(
+				AnatomiaPatologicaPostDAO.class.getName());
+		AnatomiaPatologicaPost anatomiaPatologicaPost = anatomiaPatologicaPostDAO
+				.loadAnatomiaPatologicaPostByConsulta(idConsulta);
+		Map<String, Object> mapanatPatologicaPost = null;
+		if (anatomiaPatologicaPost != null) {
+			mapanatPatologicaPost = anatPatologicaPostConverter.convertToMap(anatomiaPatologicaPost);
+		}
+		return mapanatPatologicaPost;
 	}
 
 	public MotivoDTO loadMotivo(Long idConsulta) {

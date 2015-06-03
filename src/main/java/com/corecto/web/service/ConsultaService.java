@@ -74,5 +74,7 @@ public interface ConsultaService {
 
 	AnatomiaPatologicaPostDTO loadAnatomiaPatologicaPost(Long idConsulta);
 
-	Map<String, Object> loadConsultaRenderedData(Long idConsulta);
+	Map<String, Object> loadConsultaRenderedFirstData(Long idConsulta);
+
+	Map<String, Object> loadConsultaRenderedSecondData(Long idConsulta);
 }
