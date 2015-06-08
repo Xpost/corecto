@@ -2498,7 +2498,7 @@
 								</div>	
 								<div class="span5" style="padding-bottom:1.1em;display: none" id="krasDiv">	
 								    <label class="radio inline">
-									    <input type="radio" name="tipoKrasRadio" id="opcion1" value="0" checked="checked">
+									    <input type="radio" name="tipoKrasRadio" id="opcion1" value="0" >
 										WT
 									</label>
 								    <label class="radio inline">
@@ -2606,7 +2606,7 @@
 											<input type="text" class="span7" alt="dateP"  placeholder="dd/MM/yyyy"  id="dosisTRataFechaFin"  >		
 									</div>	
 									<div class="span2">
-										<label for=""><strong>Suspendio</strong></label>					
+										<label for=""><strong>Suspendió</strong></label>					
 								     	<label class="radio inline">
 				    			 		<input type="radio" name="suspendioYesRadio" id="opcion1" value="0" >
 											No

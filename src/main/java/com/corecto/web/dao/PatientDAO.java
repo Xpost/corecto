@@ -12,32 +12,6 @@ import com.corecto.web.model.pojo.extra.Paciente;
 
 public interface PatientDAO extends DAO {
 
-	// Cliente loadClientByName(final String name) throws DataAccessException;
-	//
-	// void deleteClient(Cliente cliente) throws DataAccessException;
-	//
-	// Cliente loadClientById(final Integer idClient) throws
-	// DataAccessException;
-	//
-	// List<Cliente> getClientsByParameters(final String name,final String
-	// lastName, final String cuit, final String score,final String fieldSort,
-	// final String sort) throws DataAccessException;
-	//
-	// Integer loadLastClientId() throws DataAccessException;
-	//
-	// EstadoCli loadEstadoClientById(final Integer idEstadoClient) throws
-	// DataAccessException;
-	//
-	// Localidad loadLocalidadById(final Integer idLocalidad) throws
-	// DataAccessException;
-	//
-	//
-	// List<CatDnitipo> loadAllTypeDni() throws DataAccessException;
-	//
-	// List<EstadoCli> loadAllClientState() throws DataAccessException;
-	//
-	// String loadLastClientNum() throws DataAccessException ;
-
 	List<Paciente> getPatientsByName(final String name, final String fieldSort, final String sort,
 			final int maxResult) throws DataAccessException;
 

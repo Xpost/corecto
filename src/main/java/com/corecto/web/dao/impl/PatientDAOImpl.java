@@ -25,6 +25,7 @@ import com.corecto.web.model.pojo.extra.CatOs;
 import com.corecto.web.model.pojo.extra.Consulta;
 import com.corecto.web.model.pojo.extra.Paciente;
 import com.google.common.base.Joiner;
+import com.google.common.collect.Lists;
 
 /**
  * TODO comment<br>
@@ -523,10 +524,393 @@ public class PatientDAOImpl extends HibernateDaoSupport implements PatientDAO {
 							+ StringUtils.defaultString(filter.getUdaOndoOtro(), "%") + "'";
 					queryTratamiento.append(udaondoQ);
 				}
+				if (!CollectionUtils.isEmpty(filter.getCirugia())) {
+					String cirugiaQ = " and Trat.cirugia in (" + Joiner.on(",").join(filter.getCirugia())
+							+ ")";
+					queryTratamiento.append(cirugiaQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getQuimioterapiaInduc())) {
+					List<String> quimioterapiaInducList = Lists.newArrayList();
+					String quimioInducOtra = filter.getQuimioterapiaInducOtra();
+					for (Integer quimioTerInd : filter.getQuimioterapiaInduc()) {
+						quimioterapiaInducList.add("Trat.quimioterapiaInduc ='" + quimioTerInd + "//"
+								+ quimioInducOtra + "'");
+					}
+					String quimioterapiaInducQ = " and (" + Joiner.on(" or ").join(quimioterapiaInducList)
+							+ ") ";
+					queryTratamiento.append(quimioterapiaInducQ);
+				}
+				if (StringUtils.isNotBlank(filter.getQuimioteInducNroCiclos())) {
+					String quimioteInducNroCiclosQ = " and Trat.quimioteInducNroCiclos = '"
+							+ filter.getQuimioteInducNroCiclos() + "'";
+					queryTratamiento.append(quimioteInducNroCiclosQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getQuimioOtra())) {
+					List<String> quimioOtraList = Lists.newArrayList();
+					String quimioOtroText = filter.getQuimioOtraOtra();
+					for (Integer quimioOtraInd : filter.getQuimioOtra()) {
+						quimioOtraList
+								.add("Trat.quimioOtra ='" + quimioOtraInd + "//" + quimioOtroText + "'");
+					}
+					String quimioOtraQ = " and (" + Joiner.on(" or ").join(quimioOtraList) + ") ";
+					queryTratamiento.append(quimioOtraQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getQuimioterapiaInter())) {
+					List<String> quimioterapiaInterList = Lists.newArrayList();
+					String quimioterapiaInterOtra = filter.getQuimioterapiaInterOtra();
+					for (Integer quimioTerapInter : filter.getQuimioterapiaInter()) {
+						quimioterapiaInterList.add("Trat.quimioterapiaInter ='" + quimioTerapInter + "//"
+								+ quimioterapiaInterOtra + "'");
+					}
+					String quimioterapiaInterQ = " and (" + Joiner.on(" or ").join(quimioterapiaInterList)
+							+ ") ";
+					queryTratamiento.append(quimioterapiaInterQ);
+				}
+				if (StringUtils.isNotBlank(filter.getQuimioteInterNroCiclos())) {
+					String quimioInterNroCiclosQ = " and Trat.quimioteInterNroCiclos = '"
+							+ filter.getQuimioteInterNroCiclos() + "'";
+					queryTratamiento.append(quimioInterNroCiclosQ);
+				}
 				if (queryTratamiento.length() > 0) {
 					otherTables.append(", Tratamiento Trat");
 					otherTablesJoin.append(" and Trat.consulta.idconsulta = C.idconsulta");
 				}
+				// tratemiento neoady
+				StringBuilder queryTratamientoNeoAdy = new StringBuilder();
+				if (!CollectionUtils.isEmpty(filter.getRadioterapia())) {
+					String radioterapiaQ = " and DescTratNeo.radioterapia in ("
+							+ Joiner.on(",").join(filter.getRadioterapia()) + ")";
+					queryTratamientoNeoAdy.append(radioterapiaQ);
+				}
+				if (StringUtils.isNotBlank(filter.getRadioDosis())) {
+					String radioDosisQ = " and DescTratNeo.radioDosis = '" + filter.getRadioDosis() + "'";
+					queryTratamientoNeoAdy.append(radioDosisQ);
+				}
+				if (StringUtils.isNotBlank(filter.getRadioFechaInicio())) {
+					String radioFechaInicioQ = " and DescTratNeo.radioFechaInicio =  '"
+							+ filter.getRadioFechaInicio() + "'";
+					queryTratamientoNeoAdy.append(radioFechaInicioQ);
+				}
+				if (StringUtils.isNotBlank(filter.getRadioFechaFinal())) {
+					String radioFechaFinalQ = " and DescTratNeo.radioFechaFinal =  '"
+							+ filter.getRadioFechaFinal() + "'";
+					queryTratamientoNeoAdy.append(radioFechaFinalQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getQuimio())) {
+					List<String> quimioList = Lists.newArrayList();
+					String quimioEsquema = filter.getQuimioEsquema();
+					for (Integer quimio : filter.getQuimio()) {
+						quimioList.add(" DescTratNeo.quimioEsquema ='" + quimio + "//" + quimioEsquema + "'");
+					}
+					String quimioQ = " and (" + Joiner.on(" or ").join(quimioList) + ") ";
+					queryTratamientoNeoAdy.append(quimioQ);
+				}
+				if (StringUtils.isNotBlank(filter.getQuimioNroCiclos())) {
+					String radioFechaInicioQ = " and DescTratNeo.quimioNroCiclos =  '"
+							+ filter.getQuimioNroCiclos() + "'";
+					queryTratamientoNeoAdy.append(radioFechaInicioQ);
+				}
+				if (StringUtils.isNotBlank(filter.getQuimioFechaInicio())) {
+					String quimioFechaInicioQ = " and DescTratNeo.quimioFechaInicio =  '"
+							+ filter.getQuimioFechaInicio() + "'";
+					queryTratamientoNeoAdy.append(quimioFechaInicioQ);
+				}
+				if (StringUtils.isNotBlank(filter.getQuimioFechaFinal())) {
+					String quimioFechaFinalQ = " and DescTratNeo.quimioFechaFinal =  '"
+							+ filter.getQuimioFechaFinal() + "'";
+					queryTratamientoNeoAdy.append(quimioFechaFinalQ);
+				}
+				if (queryTratamientoNeoAdy.length() > 0) {
+					otherTables.append(", DescTrataNeo DescTratNeo");
+					otherTablesJoin.append(" and DescTratNeo.consulta.idconsulta = C.idconsulta");
+				}
+				// resp tratamiento neoady
+				StringBuilder queryRespTratamientoNeoAdy = new StringBuilder();
+				if (StringUtils.isNotBlank(filter.getRmCentroResp())) {
+					String rmCentroQ = " and respTratNeo.rmCentro = '" + filter.getRmCentroResp() + "'";
+					queryRespTratamientoNeoAdy.append(rmCentroQ);
+				}
+				if (StringUtils.isNotBlank(filter.getRmFechaResp())) {
+					String rmFechaQ = " and respTratNeo.rmFecha =  '" + filter.getRmFechaResp() + "'";
+					queryRespTratamientoNeoAdy.append(rmFechaQ);
+				}
+				if (StringUtils.isNotBlank(filter.getRmDistEsfinterResp())) {
+					String rmFechaQ = " and respTratNeo.rmDistEsfinter =  '" + filter.getRmDistEsfinterResp()
+							+ "'";
+					queryRespTratamientoNeoAdy.append(rmFechaQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getRmDistAnalResp())) {
+					String rmDistAnalQ = " and respTratNeo.rmDistAnal in ("
+							+ Joiner.on(",").join(filter.getRmDistAnalResp()) + ")";
+					queryRespTratamientoNeoAdy.append(rmDistAnalQ);
+				}
+				if (StringUtils.isNotBlank(filter.getRmAlturaResp())) {
+					String rmAlturaQ = " and respTratNeo.rmAltura = '" + filter.getRmAlturaResp() + "'";
+					queryRespTratamientoNeoAdy.append(rmAlturaQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getRmTumorResp())) {
+					List<String> tumorList = Lists.newArrayList();
+					for (Integer tumor : filter.getRmTumorResp()) {
+						tumorList.add(" respTratNeo.rmTumor like '" + tumor + "//%'");
+					}
+					String tumorQ = " and (" + Joiner.on(" or ").join(tumorList) + ") ";
+					queryRespTratamientoNeoAdy.append(tumorQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getRmTumorNResp())) {
+					List<String> tumorList = Lists.newArrayList();
+					for (Integer tumorN : filter.getRmTumorNResp()) {
+						tumorList.add(" respTratNeo.rmTumor like '%//" + tumorN + "'");
+					}
+					String tumorNQ = " and (" + Joiner.on(" or ").join(tumorList) + ") ";
+					queryRespTratamientoNeoAdy.append(tumorNQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getCrmResp())) {
+					String rmDistAnalQ = " and respTratNeo.crm in ("
+							+ Joiner.on(",").join(filter.getCrmResp()) + ")";
+					queryRespTratamientoNeoAdy.append(rmDistAnalQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getEmviResp())) {
+					String rmDistAnalQ = " and respTratNeo.emvi in ("
+							+ Joiner.on(",").join(filter.getEmviResp()) + ")";
+					queryRespTratamientoNeoAdy.append(rmDistAnalQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getDepSatelitesResp())) {
+					String rmDistAnalQ = " and respTratNeo.depSatelites in ("
+							+ Joiner.on(",").join(filter.getDepSatelitesResp()) + ")";
+					queryRespTratamientoNeoAdy.append(rmDistAnalQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getEstadifTumor())) {
+					String rmDistAnalQ = " and respTratNeo.estadifTumor in ("
+							+ Joiner.on(",").join(filter.getEstadifTumor()) + ")";
+					queryRespTratamientoNeoAdy.append(rmDistAnalQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getGradoRegre())) {
+					String rmDistAnalQ = " and respTratNeo.gradoRegre in ("
+							+ Joiner.on(",").join(filter.getGradoRegre()) + ")";
+					queryRespTratamientoNeoAdy.append(rmDistAnalQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getGangliosImguiResp())) {
+					String rmDistAnalQ = " and respTratNeo.gangliosImgui in ("
+							+ Joiner.on(",").join(filter.getGangliosImguiResp()) + ")";
+					queryRespTratamientoNeoAdy.append(rmDistAnalQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getGangliosLateral())) {
+					String rmDistAnalQ = " and respTratNeo.gangliosLateral in ("
+							+ Joiner.on(",").join(filter.getGangliosLateral()) + ")";
+					queryRespTratamientoNeoAdy.append(rmDistAnalQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getInfiltraEsf())) {
+					String rmDistAnalQ = " and respTratNeo.infiltraEsf in ("
+							+ Joiner.on(",").join(filter.getInfiltraEsf()) + ")";
+					queryRespTratamientoNeoAdy.append(rmDistAnalQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getEvaRespuesta())) {
+					String rmDistAnalQ = " and respTratNeo.evaRespuesta in ("
+							+ Joiner.on(",").join(filter.getEvaRespuesta()) + ")";
+					queryRespTratamientoNeoAdy.append(rmDistAnalQ);
+				}
+				if (queryRespTratamientoNeoAdy.length() > 0) {
+					otherTables.append(", RespuestaTrataNeoDTO respTratNeo");
+					otherTablesJoin.append(" and respTratNeo.idconsulta = C.idconsulta");
+				}
+				// conducta trat neoady
+				StringBuilder queryConductaPostNeo = new StringBuilder();
+				if (!CollectionUtils.isEmpty(filter.getCirugiaCond())) {
+					List<String> tumorList = Lists.newArrayList();
+					for (Integer cirugia : filter.getCirugiaCond()) {
+						tumorList.add(" conductaNeo.cirugia like '" + cirugia + "//%'");
+					}
+					String tumorQ = " and (" + Joiner.on(" or ").join(tumorList) + ") ";
+					queryConductaPostNeo.append(tumorQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getCirugiaProcedCond())) {
+					List<String> tumorList = Lists.newArrayList();
+					for (Integer cirugia : filter.getCirugiaProcedCond()) {
+						tumorList.add(" conductaNeo.cirugia like '%//" + cirugia + "'");
+					}
+					String tumorQ = " and (" + Joiner.on(" or ").join(tumorList) + ") ";
+					queryConductaPostNeo.append(tumorQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getMilesCilindrico())) {
+					List<String> quimioterapiaInterList = Lists.newArrayList();
+					String milesCilindricoOtro = filter.getMilesCilindricoOtro();
+					for (Integer milisCilindricco : filter.getMilesCilindrico()) {
+						quimioterapiaInterList.add(" conductaNeo.milesCilindrico ='" + milisCilindricco
+								+ "//" + milesCilindricoOtro + "'");
+					}
+					String quimioterapiaInterQ = " and (" + Joiner.on(" or ").join(quimioterapiaInterList)
+							+ ") ";
+					queryConductaPostNeo.append(quimioterapiaInterQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getUrgencia())) {
+					String rmDistAnalQ = " and conductaNeo.urgencia in ("
+							+ Joiner.on(",").join(filter.getUrgencia()) + ")";
+					queryConductaPostNeo.append(rmDistAnalQ);
+				}
+				if (StringUtils.isNotBlank(filter.getUrgenciaFecha())) {
+					String rmFechaQ = " and conductaNeo.urgenciaFecha =  '" + filter.getUrgenciaFecha() + "'";
+					queryConductaPostNeo.append(rmFechaQ);
+				}
+				if (StringUtils.isNotBlank(filter.getCirujano())) {
+					String rmFechaQ = " and conductaNeo.cirujano =  '" + filter.getCirujano() + "'";
+					queryConductaPostNeo.append(rmFechaQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getWaitAndSee())) {
+					String rmDistAnalQ = " and conductaNeo.WS in ("
+							+ Joiner.on(",").join(filter.getWaitAndSee()) + ")";
+					queryConductaPostNeo.append(rmDistAnalQ);
+				}
+				if (StringUtils.isNotBlank(filter.getFechaInicio())) {
+					String rmFechaQ = " and conductaNeo.fechaInicio =  '" + filter.getFechaInicio() + "'";
+					queryConductaPostNeo.append(rmFechaQ);
+				}
+				if (queryConductaPostNeo.length() > 0) {
+					otherTables.append(", ConductaPostNeo conductaNeo");
+					otherTablesJoin.append(" and conductaNeo.consulta.idconsulta = C.idconsulta");
+				}
+				// ana patologia post
+				StringBuilder queryAnatomiaPatologicaPost = new StringBuilder();
+				if (!CollectionUtils.isEmpty(filter.getTumor())) {
+					List<String> tumorList = Lists.newArrayList();
+					for (Integer tumor : filter.getTumor()) {
+						tumorList.add(" anatPatPost.tumor like '" + tumor + "//%'");
+					}
+					String tumorQ = " and (" + Joiner.on(" or ").join(tumorList) + ") ";
+					queryAnatomiaPatologicaPost.append(tumorQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getTumorN())) {
+					List<String> tumorList = Lists.newArrayList();
+					for (Integer tumorN : filter.getTumorN()) {
+						tumorList.add(" anatPatPost.tumor like '%//" + tumorN + "'");
+					}
+					String tumorNQ = " and (" + Joiner.on(" or ").join(tumorList) + ") ";
+					queryAnatomiaPatologicaPost.append(tumorNQ);
+				}
+				if (StringUtils.isNotBlank(filter.getGanResecados())) {
+					String rmFechaQ = " and anatPatPost.ganResecados =  '" + filter.getGanResecados() + "'";
+					queryAnatomiaPatologicaPost.append(rmFechaQ);
+				}
+				if (StringUtils.isNotBlank(filter.getGanPositivos())) {
+					String rmFechaQ = " and anatPatPost.ganPositivos =  '" + filter.getGanPositivos() + "'";
+					queryAnatomiaPatologicaPost.append(rmFechaQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getInvVascular())) {
+					String rmDistAnalQ = " and anatPatPost.invVascular in ("
+							+ Joiner.on(",").join(filter.getInvVascular()) + ")";
+					queryAnatomiaPatologicaPost.append(rmDistAnalQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getInvPeri())) {
+					String rmDistAnalQ = " and anatPatPost.invPeri in ("
+							+ Joiner.on(",").join(filter.getInvPeri()) + ")";
+					queryAnatomiaPatologicaPost.append(rmDistAnalQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getLinfa())) {
+					String rmDistAnalQ = " and anatPatPost.linfa in ("
+							+ Joiner.on(",").join(filter.getLinfa()) + ")";
+					queryAnatomiaPatologicaPost.append(rmDistAnalQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getBuddingTumoral())) {
+					String rmDistAnalQ = " and anatPatPost.buddingTumoral in ("
+							+ Joiner.on(",").join(filter.getBuddingTumoral()) + ")";
+					queryAnatomiaPatologicaPost.append(rmDistAnalQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getPushingBorder())) {
+					String rmDistAnalQ = " and anatPatPost.pushingBorder in ("
+							+ Joiner.on(",").join(filter.getPushingBorder()) + ")";
+					queryAnatomiaPatologicaPost.append(rmDistAnalQ);
+				}
+				if (StringUtils.isNotBlank(filter.getGradoRegresion())) {
+					String rmFechaQ = " and anatPatPost.gradoRegresion =  '" + filter.getGradoRegresion()
+							+ "'";
+					queryAnatomiaPatologicaPost.append(rmFechaQ);
+				}
+				if (StringUtils.isNotBlank(filter.getCap())) {
+					String rmFechaQ = " and anatPatPost.cap =  '" + filter.getCap() + "'";
+					queryAnatomiaPatologicaPost.append(rmFechaQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getRtaComPato())) {
+					String rmDistAnalQ = " and anatPatPost.rtaComPato in ("
+							+ Joiner.on(",").join(filter.getRtaComPato()) + ")";
+					queryAnatomiaPatologicaPost.append(rmDistAnalQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getIhq())) {
+					String rmDistAnalQ = " and anatPatPost.ihq in (" + Joiner.on(",").join(filter.getIhq())
+							+ ")";
+					queryAnatomiaPatologicaPost.append(rmDistAnalQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getKras())) {
+					List<String> krasList = Lists.newArrayList();
+					for (Integer kras : filter.getKras()) {
+						krasList.add(" anatPatPost.kras like '" + kras + "//%'");
+					}
+					String tumorQ = " and (" + Joiner.on(" or ").join(krasList) + ") ";
+					queryAnatomiaPatologicaPost.append(tumorQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getKrasTipo())) {
+					List<String> krasTipoList = Lists.newArrayList();
+					for (Integer krasTipo : filter.getKrasTipo()) {
+						krasTipoList.add(" anatPatPost.tumor like '%//" + krasTipo + "'");
+					}
+					String tumorNQ = " and (" + Joiner.on(" or ").join(krasTipoList) + ") ";
+					queryAnatomiaPatologicaPost.append(tumorNQ);
+				}
+				if (queryAnatomiaPatologicaPost.length() > 0) {
+					otherTables.append(", AnatomiaPatologicaPost anatPatPost");
+					otherTablesJoin.append(" and anatPatPost.consulta.idconsulta = C.idconsulta");
+				}
+				// tratamiento adyuvante post
+				StringBuilder queryTratamientoAdyu = new StringBuilder();
+				if (!CollectionUtils.isEmpty(filter.getQuimioterapia())) {
+					List<String> quimioterapiaInterList = Lists.newArrayList();
+					String quimioOtro = filter.getQuimioterapiaOtro();
+					for (Integer quimioTerap : filter.getQuimioterapia()) {
+						quimioterapiaInterList.add(" tratAdyuPost.quimioterapia ='1//" + quimioTerap + "//"
+								+ quimioOtro + "'");
+					}
+					String quimioterapiaInterQ = " and (" + Joiner.on(" or ").join(quimioterapiaInterList)
+							+ ") ";
+					queryTratamientoAdyu.append(quimioterapiaInterQ);
+				}
+				if (StringUtils.isNotBlank(filter.getQuimioNroCiclosPost())) {
+					String rmFechaQ = " and tratAdyuPost.quimioNroCiclos =  '"
+							+ filter.getQuimioNroCiclosPost() + "'";
+					queryTratamientoAdyu.append(rmFechaQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getRadioterapiaPost())) {
+					String rmDistAnalQ = " and tratAdyuPost.radioterapia in ("
+							+ Joiner.on(",").join(filter.getRadioterapiaPost()) + ")";
+					queryTratamientoAdyu.append(rmDistAnalQ);
+				}
+				if (StringUtils.isNotBlank(filter.getRadioDosisPost())) {
+					String rmFechaQ = " and tratAdyuPost.radioDosis =  '" + filter.getRadioDosisPost() + "'";
+					queryTratamientoAdyu.append(rmFechaQ);
+				}
+				if (StringUtils.isNotBlank(filter.getRadioFechaInicioPost())) {
+					String rmFechaQ = " and tratAdyuPost.radioFechaInicio =  '"
+							+ filter.getRadioFechaInicioPost() + "'";
+					queryTratamientoAdyu.append(rmFechaQ);
+				}
+				if (StringUtils.isNotBlank(filter.getRadioFechaFinalPost())) {
+					String rmFechaQ = " and tratAdyuPost.radioFechaFinalPost =  '"
+							+ filter.getRadioFechaFinalPost() + "'";
+					queryTratamientoAdyu.append(rmFechaQ);
+				}
+				if (!CollectionUtils.isEmpty(filter.getSuspendio())) {
+					List<String> quimioterapiaInterList = Lists.newArrayList();
+					String suspendioDia = filter.getSuspendioDia();
+					for (Integer suspendio : filter.getSuspendio()) {
+						quimioterapiaInterList.add(" tratAdyuPost.suspendio ='" + suspendio + "//"
+								+ suspendioDia + "'");
+					}
+					String quimioterapiaInterQ = " and (" + Joiner.on(" or ").join(quimioterapiaInterList)
+							+ ") ";
+					queryTratamientoAdyu.append(quimioterapiaInterQ);
+				}
+				if (queryTratamientoAdyu.length() > 0) {
+					otherTables.append(", TratamientoAdyu tratAdyuPost");
+					otherTablesJoin.append(" and tratAdyuPost.consulta.idconsulta = C.idconsulta");
+				}
+				// -----------
 
 				// finally check if we need to add Consulta
 				if (otherTables.length() > 0) {
@@ -546,6 +930,10 @@ public class PatientDAOImpl extends HibernateDaoSupport implements PatientDAO {
 						+ queryEstadificacion.toString()
 						+ queryAnaPatologica.toString()
 						+ queryTratamiento.toString() 
+						+ queryTratamientoNeoAdy.toString()
+						+ queryRespTratamientoNeoAdy.toString()
+						+ queryAnatomiaPatologicaPost.toString()
+						+ queryTratamientoAdyu.toString()
 						+ " ORDER BY P.nombre";
 				// @formatter:on
 				LOG.info(queryString);

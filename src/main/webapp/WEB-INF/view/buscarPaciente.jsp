@@ -134,18 +134,11 @@
 				</div>
 				<div class="span6">
 				  	<label for="tipoComprobanteCaja"><strong>Sexo</strong></label>
-				  	<label class="radio inline">
-						    <input type="radio" name="sexo" id="both" value="" checked="checked" >
-							Ambos
-						</label>
-				   <label class="radio inline">
-						    <input type="radio" name="sexo" id="masSex" value="M" >
-							M
-						</label>
-				   <label class="radio inline">
-						    <input type="radio" name="sexo" id="femSex" value="F" >
-							F
-						</label>
+				  	<div class="btn-group" data-toggle="buttons-radio">
+									    <button type="button"   class="btn btn-primary" name="sexo" value=""  id="both">Ambos</button>
+									    <button type="button"   class="btn btn-primary" name="sexo" value="M" id="masSex">M</button>
+									    <button type="button"   class="btn btn-primary" name="sexo" value="F" id="femSex">F</button>
+					</div>				    
 				  </div>	
 			</div>	
 			<div class="row-fluid">
@@ -760,7 +753,7 @@
 				<legend style="margin-bottom: 0px !important;border-bottom: 1px solid #9B9B9E !important;">Tratamiento <button div="tratamientoTab" style="float: right; margin-top: 5px" class="colapsableBtn btn btn-primary" ><i class="icon-plus"></i></button> </legend>
 				<div id="tratamientoTab" style="padding: 5px;border-bottom: 1px solid #9B9B9E;border-left: 1px solid #9B9B9E; border-right: 1px solid #9B9B9E;border-radius:0 0 4px 4px;display: none">
 					<div class="row-fluid">				
-						<div class="span10">	  	
+						<div class="span6">	  	
 						 <label><strong>Udaondo</strong></label>
 						 		  <div class="btn-group" data-toggle="buttons-radio">
 									    <button type="button" name="udaOndoRadio"  onclick="$('#udaOndoOtro').val('');" value="0" class="btn btn-primary">Si</button>
@@ -769,10 +762,627 @@
 									 <input type="text" class="" name="udaOndoOtro" id="udaOndoOtro"  onclick="$('button[name=udaOndoRadio][value<2]').removeClass('active');$('button[name=udaOndoRadio][value=2]').addClass('active');" style="margin-bottom: 0px; margin-left:2px">
 								    </div>
 						</div>
+						<div class="span3" style="padding-bottom:1.1em;">	 
+		     			 <label for="tipoComprobanteCaja"><strong>Cirugía (ir a AP)</strong></label>
+		   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span5" style="">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="cirugiaTrataRadio" id="opcion1" value="0" class="btn btn-primary">Si</button>
+									    <button type="button" name="cirugiaTrataRadio" id="opcion2" value="1" class="btn btn-primary">No</button>
+								    </div>										    				
+							</div>		
+						 </div>		
+						</div>	
 		   			</div>
+		   			<div class="row-fluid">
+			   			<div class="span7" style="padding-bottom: 1.1em;">	  	
+							 <label><strong>Quimioterapia de inducción</strong></label>
+							 		  <div class="btn-group" data-toggle="buttons-checkbox">
+										    <button type="button" name="quimioInduccion"   value="0" class="btn btn-primary">XELOX</button>
+										    <button type="button" name="quimioInduccion"   value="1" class="btn btn-primary">BFOL</button>
+										    <button type="button" name="quimioInduccion"   value="2" class="btn btn-primary">FOLFOX</button>
+										    <button type="button" name="quimioInduccion"   value="3" class="btn btn-primary">CAPECITABINA</button>
+										    <button type="button" name="quimioInduccion" onclick="$('#quimioInduccionOtro').focus()" value="4" class="btn btn-primary">Otro</button>
+										 <input type="text" class="" name="quimioInduccionOtro" id="quimioInduccionOtro"  onclick="$('button[name=quimioInduccion][value=4]').addClass('active');" style="margin-bottom: 0px; margin-left:2px">
+									    </div>
+						</div>
+						<div class="span5" style="margin-top: 20px">	 
+						<label class="radio inline">
+									<strong>N Ciclos:</strong>
+								<select id="quimioInduccionCiclos" class="input-mini">
+								<option value="0">0</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								</select>
+					    </label>
+					    </div>
+		   			</div>
+		   			<div class="row-fluid">
+		  				<div class="span5">	  	
+						 <label><strong>Quimioradioterapia</strong></label>
+						 		  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="quimioradioInduRadio"  value="0" class="btn btn-primary">Capecitabina</button>
+									    <button type="button" name="quimioradioInduRadio" onclick="$('#quimioradioInduRadioOtro').focus()" value="1" class="btn btn-primary">Otro</button>
+									 <input type="text" class="" name="quimioradioInduRadioOtro" id="quimioradioInduRadioOtro"  onclick="$('button[name=quimioradioInduRadio][value=1]').addClass('active');" style="margin-bottom: 0px; margin-left:1px">
+								    </div>
+						</div>
+			   			<div class="span4" style="margin-left: -15px">	  	
+							 <label><strong>Quimioterapia de Intervalo precirugia</strong></label>
+							 		  <div class="btn-group" data-toggle="buttons-checkbox">
+										    <button type="button" name="quimioIntervalRadio"   value="0" class="btn btn-primary">Si</button>
+										    <button type="button" name="quimioIntervalRadio"   value="1" class="btn btn-primary">No</button>
+										    <button type="button" name="quimioIntervalRadio"   value="2" class="btn btn-primary">Capecitabina</button>
+										    <button type="button" name="quimioIntervalRadio" onclick="$('#quimioIntervalRadioOtro').focus()" value="3" class="btn btn-primary">Otro</button>
+										 <input type="text" class="" name="quimioIntervalRadioOtro" id="quimioIntervalRadioOtro"  onclick="$('button[name=quimioIntervalRadio][value=3]').addClass('active');" style="margin-bottom: 0px; margin-left:1px">
+									    </div>
+						</div>	
+						<div class="span2" style="margin-top: 20px;margin-left: 100px">	 
+						<label class="radio inline">
+									<strong>N Ciclos:</strong>
+								<select id="quimioIntervalCiclos" class="input-mini">
+								<option value="0">0</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								</select>
+					    </label>
+					    </div>											
+					</div>	
 				</div>
 				</fieldset>
-			</div>  			  
+			</div>  			 
+			<div class="row-fluid">
+				<fieldset>
+				<legend style="margin-bottom: 0px !important;border-bottom: 1px solid #9B9B9E !important;">Tratamiento Neoadyuante <button div="tratNeoadyuanteTab" style="float: right; margin-top: 5px" class="colapsableBtn btn btn-primary" ><i class="icon-plus"></i></button> </legend>
+				<div id="tratNeoadyuanteTab" style="padding: 5px;border-bottom: 1px solid #9B9B9E;border-left: 1px solid #9B9B9E; border-right: 1px solid #9B9B9E;border-radius:0 0 4px 4px;display: none">
+					<div class="row-fluid">				
+						<div class="span12">	  	
+						 		<div class="span2" style="">	 
+						     			 <label for="tipoComprobanteCaja"><strong>Radioterapia</strong></label>
+						   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+											<div class="span7" style="padding-bottom:1.1em;">	
+													  <div class="btn-group" data-toggle="buttons-checkbox">
+													    <button type="button" name="radioTera" id="opcion1" value="0" class="btn btn-primary">Si</button>
+													    <button type="button" name="radioTera" id="opcion2" value="1" class="btn btn-primary">No</button>
+												    </div>										    				
+											</div>		
+										 </div>		
+								</div>		
+								<div style="padding-bottom:1.1em; margin-top:24px" class="span10 form-inline">	
+								    <label for="centroRM"><strong>Dosis total</strong></label>
+									<input type="text" id="dosisTotalRadioTer" class="span2">
+								    <label for="fechaRM" style="margin-left:25px"><strong>Fecha inicio</strong></label>
+									<input type="text" class="span2" alt="dateP"  placeholder="dd/MM/yyyy" id="fechaInicioRadioTer">
+									<label for="fechaRM" style="margin-left:25px"><strong>Fecha final</strong></label>
+									<input type="text" class="span2" alt="dateP"  placeholder="dd/MM/yyyy" id="fechaFinRadioTer">
+								</div>
+						</div>
+		   			</div>
+					<div class="row-fluid">				
+						<div class="span12">	  	
+						 		<div class="span2" style="">	 
+						     			 <label for="tipoComprobanteCaja"><strong>Quimioterapia</strong></label>
+						   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+											<div class="span7" style="padding-bottom:1.1em;">	
+													  <div class="btn-group" data-toggle="buttons-checkbox">
+													    <button type="button" name="quimioRadio" id="opcion1" value="0" class="btn btn-primary">Si</button>
+													    <button type="button" name="quimioRadio" id="opcion2" value="1" class="btn btn-primary">No</button>
+												    </div>										    				
+											</div>		
+										 </div>		
+								</div>		
+								<div style="padding-bottom:1.1em; margin-top:24px" class="span10 form-inline">	
+								    <label for="centroRM"><strong>Esquema</strong></label>
+									<input type="text" id="quimioEsquema" class="span2">
+									<label class="radio inline">
+											<strong>N Ciclos:</strong>
+											<select id="quimioNroCiclos" class="input-mini">
+											<option value="0">0</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											</select>
+								    </label>									
+								    <label for="fechaRM" style="margin-left:25px"><strong>Fecha inicio</strong></label>
+									<input type="text" class="span2" alt="dateP"  placeholder="dd/MM/yyyy" id="fechaInicioQuimio">
+									<label for="fechaRM" style="margin-left:25px"><strong>Fecha final</strong></label>
+									<input type="text" class="span2" alt="dateP"  placeholder="dd/MM/yyyy" id="fechaFinQuimio">
+								</div>
+						</div>
+		   			</div>		   			
+		   			<div class="row-fluid">	
+		   				<label for="tipoComprobanteCaja" style="font-size: 21px;padding-bottom:1.1em;"><strong>Respuesta al tratamiento neoadyuante</strong></label>
+		   			</div>	
+		   			<div class="row-fluid">	
+						<div class="span12">	  	
+						 <label><strong>RM post tratamiento</strong></label>
+								<div style="padding-bottom:1.1em;" class="span10 form-inline">	
+								    <label for="centroRM"><strong>Centro</strong></label>
+									<input type="text" id="centroPostTrata" class="span2">
+								    <label for="fechaRM"><strong>Fecha</strong></label>
+									<input type="text" class="span2" alt="dateP"  placeholder="dd/MM/yyyy" id="fechaPostTrata">
+									<label style="margin-left:25px" for="distanciaSupRM"><strong>Distancia a la porción superior del esfínter</strong></label>
+									<input type="text" id="distanciaPostTrata" class="span2">
+								</div>
+						</div>
+						<div class="span10 form-inline" style="padding-bottom:1.1em;">	
+								   <label for="distanciaMarARadio" style="margin-right:24px"><strong>Distancia al margen anal</strong></label>
+								   <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button"   class="btn btn-primary" name="distMargenPostTrataRadio" value="0" > 0-5cm</button>
+									    <button type="button"   class="btn btn-primary" name="distMargenPostTrataRadio" value="1" > 5-10 cm</button>
+									    <button type="button"   class="btn btn-primary" name="distMargenPostTrataRadio" value="2" > 10-12 cm</button>
+									    <button type="button"   class="btn btn-primary" name="distMargenPostTrataRadio" value="3" > > 12 cm</button>
+									</div>    
+								   <label  style="margin-left:25px" for="alturaPostTrataRadio"><strong>Altura</strong></label>
+									<input type="text" class="span2" id="alturaPostTrataRadio" >	
+						</div>	
+	 				</div>
+	 				<div class="row-fluid">	
+		   				<label for="tipoComprobanteCaja"><strong>T</strong></label>
+		   				 	<div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span7" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="tumorPostTrataRadio" id="opcion1" value="0" class="btn btn-primary">X</button>
+									    <button type="button" name="tumorPostTrataRadio" id="opcion2" value="1" class="btn btn-primary">1</button>
+									    <button type="button" name="tumorPostTrataRadio" id="opcion3" value="2" class="btn btn-primary">2</button>
+									    <button type="button" name="tumorPostTrataRadio" id="opcion3" value="3" class="btn btn-primary">3a</button>
+									    <button type="button" name="tumorPostTrataRadio" id="opcion1" value="4" class="btn btn-primary">3b</button>
+									    <button type="button" name="tumorPostTrataRadio" id="opcion2" value="5" class="btn btn-primary">3c</button>
+									    <button type="button" name="tumorPostTrataRadio" id="opcion3" value="6" class="btn btn-primary">3d</button>
+									    <button type="button" name="tumorPostTrataRadio" id="opcion3" value="7" class="btn btn-primary">4a</button>
+									    <button type="button" name="tumorPostTrataRadio" id="opcion3" value="8" class="btn btn-primary">4b</button>
+								    </div>
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="tumorPostTrataNRadio" id="opcion1" value="0" class="btn btn-primary">N0</button>
+									    <button type="button" name="tumorPostTrataNRadio" id="opcion2" value="1" class="btn btn-primary">N1a</button>
+									    <button type="button" name="tumorPostTrataNRadio" id="opcion3" value="2" class="btn btn-primary">N1b</button>
+									    <button type="button" name="tumorPostTrataNRadio" id="opcion3" value="3" class="btn btn-primary">N2a</button>
+									    <button type="button" name="tumorPostTrataNRadio" id="opcion3" value="4" class="btn btn-primary">N2b</button>
+								    </div>												    				
+							</div>		
+						 </div>		   				
+		   			</div>	 
+		   			<div class="row-fluid">	
+		   			<div class="span4" style="padding-bottom:1.1em;">	
+		   				<label for="crmPresente"><strong>CRM</strong></label>
+		   				 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span3" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="crmPostTrataRadio" id="opcion1" value="0" class="btn btn-primary">Positivo</button>
+									    <button type="button" name="crmPostTrataRadio" id="opcion2" value="1" class="btn btn-primary">Negativo</button>
+								    </div>											    				
+							</div>		
+						 </div>		   	
+						</div>
+						<div class="span4" style="padding-bottom:1.1em;">	 
+		     			 <label for="tipoComprobanteCaja"><strong>EMVI</strong></label>
+		   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span7" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="emviPostTrataRadio" id="opcion3" value="0" class="btn btn-primary">Positivo</button>
+									    <button type="button" name="emviPostTrataRadio" id="opcion3" value="1" class="btn btn-primary">Negativo</button>
+									    <button type="button" name="emviPostTrataRadio" id="opcion3" value="2" class="btn btn-primary">0</button>
+									    <button type="button" name="emviPostTrataRadio" id="opcion3" value="3" class="btn btn-primary">1</button>
+									    <button type="button" name="emviPostTrataRadio" id="opcion1" value="4" class="btn btn-primary">2</button>
+									    <button type="button" name="emviPostTrataRadio" id="opcion2" value="5" class="btn btn-primary">3</button>
+									    <button type="button" name="emviPostTrataRadio" id="opcion3" value="6" class="btn btn-primary">4</button>
+								    </div>										    				
+							</div>		
+						 </div>		
+						</div>	 	
+						<div class="span4" style="padding-bottom:1.1em;">	 
+		     			 <label for="tipoComprobanteCaja"><strong>Depósitos satélites</strong></label>
+		   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span7" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="depoSatiRadio" id="opcion1" value="0" class="btn btn-primary">Si</button>
+									    <button type="button" name="depoSatiRadio" id="opcion2" value="1" class="btn btn-primary">No</button>
+								    </div>										    				
+							</div>		
+						 </div>		
+						</div>	 								
+		   			</div>		
+		   			<div class="row-fluid">	
+		   				<div class="span4" style="padding-bottom:1.1em;">	
+		   				<label for="estaRInterior"><strong>Estadificación tumores de recto inferior</strong></label>
+		   				 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span3" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="estaRInteriorRadio" id="opcion1" value="0" class="btn btn-primary">1</button>
+									    <button type="button" name="estaRInteriorRadio" id="opcion2" value="1" class="btn btn-primary">2</button>
+									    <button type="button" name="estaRInteriorRadio" id="opcion1" value="2" class="btn btn-primary">3</button>
+									    <button type="button" name="estaRInteriorRadio" id="opcion2" value="3" class="btn btn-primary">4</button>
+								    </div>											    				
+							</div>		
+						 </div>		   	
+						</div>
+		   				<div class="span4" style="padding-bottom:1.1em;">	
+		   				<label for="estaRInterior"><strong>Grado de regresion</strong></label>
+		   				 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span3" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="gradoRegresionRadio" id="opcion1" value="0" class="btn btn-primary">5</button>
+									    <button type="button" name="gradoRegresionRadio" id="opcion2" value="1" class="btn btn-primary">4</button>
+									    <button type="button" name="gradoRegresionRadio" id="opcion1" value="2" class="btn btn-primary">3</button>
+									    <button type="button" name="gradoRegresionRadio" id="opcion2" value="3" class="btn btn-primary">2</button>
+									    <button type="button" name="gradoRegresionRadio" id="opcion2" value="3" class="btn btn-primary">1</button>
+								    </div>											    				
+							</div>		
+						 </div>		   	
+						</div>						
+						<div class="span3" style="padding-bottom:1.1em;">	 
+		     			 <label for="tipoComprobanteCaja"><strong>Ganglios Inguinales</strong></label>
+		   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span7" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="inguinalesRadio" id="opcion1" value="0" class="btn btn-primary">Si</button>
+									    <button type="button" name="inguinalesRadio" id="opcion2" value="1" class="btn btn-primary">No</button>
+								    </div>										    				
+							</div>		
+						 </div>		
+						</div>	 															
+		   			</div>	
+		  			<div class="row-fluid">		
+		  				 <div class="span3" style="">	 
+		     			 <label for="tipoComprobanteCaja"><strong>Ganglios Laterales</strong></label>
+		   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span7" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="gaLateRadio" id="opcion1" value="0" class="btn btn-primary">Si</button>
+									    <button type="button" name="gaLateRadio" id="opcion2" value="1" class="btn btn-primary">No</button>
+								    </div>										    				
+							</div>		
+						 </div>		
+						</div>	 
+		  				<div class="span2" style="">	 
+		     			 <label for="tipoComprobanteCaja"><strong>Infiltra Esfinter</strong></label>
+		   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span7" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="infiltraEsPostRadio" id="opcion1" value="0" class="btn btn-primary">Si</button>
+									    <button type="button" name="infiltraEsPostRadio" id="opcion2" value="1" class="btn btn-primary">No</button>
+								    </div>										    				
+							</div>		
+						 </div>		
+						</div>	   
+		   				<div class="span4" style="">	
+		   				<label for="estaRInterior"><strong>Evaluación de la respuesta</strong></label>
+		   				 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span3" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="evaPostRadio" id="opcion1" value="0" class="btn btn-primary">RC</button>
+									    <button type="button" name="evaPostRadio" id="opcion2" value="1" class="btn btn-primary">RP</button>
+									    <button type="button" name="evaPostRadio" id="opcion1" value="2" class="btn btn-primary">EE</button>
+									    <button type="button" name="evaPostRadio" id="opcion2" value="3" class="btn btn-primary">PE</button>
+									    <button type="button" name="evaPostRadio" id="opcion2" value="3" class="btn btn-primary">No evaluable</button>
+								    </div>											    				
+							</div>		
+						 </div>		   	
+						</div>						 				   					   					   			   				   			
+				</div>
+				<div class="row-fluid">	
+		   				<label for="tipoComprobanteCaja" style="font-size: 21px;padding-bottom:1.1em;"><strong>Conducta post neoadyuvancia</strong></label>
+		   		</div>
+		   		<div class="row-fluid">	
+						<div class="span12">	  	
+						 <label><strong>Cirugia</strong></label>
+			  				 <div class="span3" style="padding-bottom:1.1em;">	 
+			     			 <label for="tipoComprobanteCaja"><strong>Presente</strong></label>
+			   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+								<div class="span7" style="padding-bottom:1.1em;">	
+										  <div class="btn-group" data-toggle="buttons-checkbox">
+										    <button type="button" name="ciruNeoRadio" id="opcion1" value="0" class="btn btn-primary">Si</button>
+										    <button type="button" name="ciruNeoRadio" id="opcion2" value="1" class="btn btn-primary">No</button>
+									    </div>										    				
+								</div>		
+							 </div>		
+							</div>	 
+							<div class="span3" style="padding-bottom:1.1em;">	 
+			     			 <label for="tipoComprobanteCaja"><strong>Procedimiento</strong></label>
+			   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+								<div class="span7" style="padding-bottom:1.1em;">	
+										  <div class="btn-group" data-toggle="buttons-checkbox">
+										    <button type="button" name="prodCiruRadio" id="opcion1" value="0" class="btn btn-primary">Si</button>
+										    <button type="button" name="prodCiruRadio" id="opcion2" value="1" class="btn btn-primary">No</button>
+									    </div>										    				
+								</div>		
+							 </div>		
+							</div>
+							<div class="span3" style="padding-bottom:1.1em;">	 
+			     			 <label for="tipoComprobanteCaja"><strong>Miles cilíndrico:</strong></label>
+			   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+								<div class="span7" style="padding-bottom:1.1em;">	
+										  <div class="btn-group" data-toggle="buttons-checkbox">
+										    <button type="button" name="milesCiliRadio" id="opcion1" value="0" class="btn btn-primary">Si</button>
+										    <button type="button" name="milesCiliRadio" id="opcion2" value="1" class="btn btn-primary">No</button>
+										    <button type="button" name="milesCiliRadio" onclick="$('#milesCiliOtro').focus()" value="2" class="btn btn-primary">Otro</button>
+										 <input type="text" class="" name="milesCiliOtro" id="milesCiliOtro"  onclick="$('button[name=milesCiliRadio][value=2]').addClass('active');" style="margin-bottom: 0px; margin-left:1px">
+									    </div>										    				
+								</div>		
+							 </div>		
+							</div>		
+						</div>
+	 			 </div>		
+	 			 <div class="row-fluid">	
+			  				 <div class="span4" style="padding-bottom:1.1em;">	 
+			     			 <label for="tipoComprobanteCaja"><strong>Urgencia</strong></label>
+			   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+								<div class="span3" style="padding-bottom:1.1em;">	
+										  <div class="btn-group" data-toggle="buttons-checkbox">
+										    <button type="button" name="urgenciaRadio" id="opcion1" value="0" class="btn btn-primary">No</button>
+										    <button type="button" name="urgenciaRadio" id="opcion2" value="1" class="btn btn-primary">Si</button>
+									    </div>										    				
+								</div>
+								<div class="span7 form-inline" style="padding-bottom:1.1em;">	
+										<label for="fechaRM" style="margin-left:25px"><strong>Fecha</strong></label>
+										<input type="text" class="span6" alt="dateP"  placeholder="dd/MM/yyyy" id="urgenciaFecha">
+								</div>				
+							 </div>		
+							</div>
+			  				 <div class="span3" style="padding-bottom:1.1em;">	 
+			     			 <label for="tipoComprobanteCaja"><strong>Cirujano Nombre</strong></label>
+			   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+								<input type="text" class="" name="cirujaName" id="cirujaName" style="margin-bottom: 0px; margin-left:1px">	
+							 </div>		
+							</div>
+							<div class="span5" style="padding-bottom:1.1em;">	 
+			     			 <label for="tipoComprobanteCaja"><strong>WAIT AND SEE</strong></label>
+			   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+								<div class="span3" style="padding-bottom:1.1em;">	
+										  <div class="btn-group" data-toggle="buttons-checkbox">
+										    <button type="button" name="waitSeeRadio" id="opcion1" value="0" class="btn btn-primary">No</button>
+										    <button type="button" name="waitSeeRadio" id="opcion2" value="1" class="btn btn-primary">Si</button>
+									    </div>										    				
+								</div>
+								<div class="span7 form-inline" style="padding-bottom:1.1em;">	
+										<label for="fechaRM" style="margin-left:05px"><strong>Fecha inicio</strong></label>
+										<input type="text" class="span6" alt="dateP"  placeholder="dd/MM/yyyy" id="fechaInicioConducta">
+								</div>				
+							 </div>		
+							</div>										 			 
+	 			 </div>   			
+				</fieldset>
+			</div> 
+			<div class="row-fluid">
+				<fieldset>
+				<legend style="margin-bottom: 0px !important;border-bottom: 1px solid #9B9B9E !important;">Anatomia patológica Post<button div="anotomiaPatPostTab" style="float: right; margin-top: 5px" class="colapsableBtn btn btn-primary" ><i class="icon-plus"></i></button> </legend>
+				<div id="anotomiaPatPostTab" style="padding: 5px;border-bottom: 1px solid #9B9B9E;border-left: 1px solid #9B9B9E; border-right: 1px solid #9B9B9E;border-radius:0 0 4px 4px;display: none">
+	 				<div class="row-fluid">	
+		   				<label for="tipoComprobanteCaja"><strong>Tumor</strong></label>
+		   				 	<div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span4" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="tumorAnatPostRadio" id="opcion2" value="1" class="btn btn-primary">1</button>
+									    <button type="button" name="tumorAnatPostRadio" id="opcion3" value="2" class="btn btn-primary">2</button>
+									    <button type="button" name="tumorAnatPostRadio" id="opcion3" value="3" class="btn btn-primary">3</button>
+									    <button type="button" name="tumorAnatPostRadio" id="opcion3" value="7" class="btn btn-primary">4a</button>
+									    <button type="button" name="tumorAnatPostRadio" id="opcion3" value="8" class="btn btn-primary">4b</button>
+								    </div>
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="tumorAnatPostNRadio" id="opcion1" value="0" class="btn btn-primary">N0</button>
+									    <button type="button" name="tumorAnatPostNRadio" id="opcion2" value="1" class="btn btn-primary">N1</button>
+									    <button type="button" name="tumorAnatPostNRadio" id="opcion3" value="3" class="btn btn-primary">N2</button>
+								    </div>												    				
+							</div>
+							<div style="padding-bottom:1.1em;" class="span8 form-inline">	
+								    <label for="centroRM"><strong>Ganglios resecados</strong></label>
+									<input type="text" id="gangliosResaPost" class="span3">
+								    <label for="fechaRM" style="margin-left:25px"><strong>Ganglios positivos</strong></label>
+									<input type="text" id="gangliosPosiPost" class="span3">
+							</div>		
+						 </div>		   				
+		   			</div>	
+		  			<div class="row-fluid">		
+		  				 <div class="span2" style="">	 
+		     			 <label for="tipoComprobanteCaja"><strong>Invasión Vascular</strong></label>
+		   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span7" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="invaVascularRadio" id="opcion1" value="0" class="btn btn-primary">Si</button>
+									    <button type="button" name="invaVascularRadio" id="opcion2" value="1" class="btn btn-primary">No</button>
+								    </div>										    				
+							</div>		
+						 </div>		
+						</div>	 
+		  				<div class="span2" style="">	 
+		     			 <label for="tipoComprobanteCaja"><strong>Invasión Perineural</strong></label>
+		   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span7" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="invaPeriRadio" id="opcion1" value="0" class="btn btn-primary">Si</button>
+									    <button type="button" name="invaPeriRadio" id="opcion2" value="1" class="btn btn-primary">No</button>
+								    </div>										    				
+							</div>		
+						 </div>		
+						</div>
+						<div class="span2" style="">	 
+		     			 <label for="tipoComprobanteCaja"><strong>Linfatica</strong></label>
+		   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span7" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="linfaTicaRadio" id="opcion1" value="0" class="btn btn-primary">Si</button>
+									    <button type="button" name="linfaTicaRadio" id="opcion2" value="1" class="btn btn-primary">No</button>
+								    </div>										    				
+							</div>		
+						 </div>		
+						</div>	
+						<div class="span2" style="">	 
+		     			 <label for="tipoComprobanteCaja"><strong>Budding Tumoral</strong></label>
+		   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span7" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="buddTomoralRadio" id="opcion1" value="0" class="btn btn-primary">Si</button>
+									    <button type="button" name="buddTomoralRadio" id="opcion2" value="1" class="btn btn-primary">No</button>
+								    </div>										    				
+							</div>		
+						 </div>		
+						</div>		
+						<div class="span2" style="">	 
+		     			 <label for="tipoComprobanteCaja"><strong>Pushing Border</strong></label>
+		   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span7" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="pushBorderRadio" id="opcion1" value="0" class="btn btn-primary">Si</button>
+									    <button type="button" name="pushBorderRadio" id="opcion2" value="1" class="btn btn-primary">No</button>
+								    </div>										    				
+							</div>		
+						 </div>		 
+						</div>											   					 				   					   					   			   				   			
+				</div>	
+		   		<div class="row-fluid">	
+						<div class="span5">	  	
+						 <label><strong>Grado de regresión</strong></label>
+							<div style="padding-bottom:1.1em;" class="span12 form-inline">	
+								    <label for="centroRM"><strong>Dvorak</strong></label>
+									<input type="text" id="gradoRegresionDvorak" class="span4">
+								    <label for="fechaRM" style="margin-left:25px"><strong>CAP </strong></label>
+									<input type="text" id="capVal" class="span4">
+							</div>
+						</div>		 
+							<div class="span3" style="">	 
+			     			 <label for="tipoComprobanteCaja"><strong>Rta completa patológica</strong></label>
+			   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+								<div class="span7" style="padding-bottom:1.1em;">	
+										  <div class="btn-group" data-toggle="buttons-checkbox">
+										    <button type="button" name="rtaCompletaRadio" id="opcion1" value="0" class="btn btn-primary">Si</button>
+										    <button type="button" name="rtaCompletaRadio" id="opcion2" value="1" class="btn btn-primary">No</button>
+									    </div>										    				
+								</div>		
+							 </div>		
+						</div>
+	 			 </div>			
+		  		<div class="row-fluid">		
+		  				 <div class="span2" style="">	 
+		     			 <label for="tipoComprobanteCaja"><strong>IHQ</strong></label>
+		   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span7" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="ihqRadio" id="opcion1" value="0" class="btn btn-primary">Si</button>
+									    <button type="button" name="ihqRadio" id="opcion2" value="1" class="btn btn-primary">No</button>
+								    </div>										    				
+							</div>		
+						 </div>		
+						</div>	 
+		  				<div class="span2" style="">	 
+		     			 <label for="tipoComprobanteCaja"><strong>KRAS</strong></label>
+		   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span7" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="krasRadio" id="opcion1" value="0" class="btn btn-primary">Si</button>
+									    <button type="button" name="krasRadio" id="opcion2" value="1" class="btn btn-primary">No</button>
+								    </div>										    				
+							</div>		
+						 </div>		
+						</div>				
+						<div class="span2" style="">	 
+		     			 <label for="tipoComprobanteCaja"><strong>Tipo KRAS</strong></label>
+		   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+							<div class="span7" style="padding-bottom:1.1em;">	
+									  <div class="btn-group" data-toggle="buttons-checkbox">
+									    <button type="button" name="tipoKrasRadio" id="opcion1" value="0" class="btn btn-primary">WT</button>
+									    <button type="button" name="tipoKrasRadio" id="opcion2" value="1" class="btn btn-primary">M</button>
+								    </div>										    				
+							</div>		
+						 </div>		
+						</div>							   					 				   					   					   			   				   			
+				</div>		 			 			   			 
+		   		</div>
+				</fieldset>
+			</div>
+			<div class="row-fluid">
+				<fieldset>
+				<legend style="margin-bottom: 0px !important;border-bottom: 1px solid #9B9B9E !important;">Tratamiento adyuvante<button div="TratamientoAdytTab" style="float: right; margin-top: 5px" class="colapsableBtn btn btn-primary" ><i class="icon-plus"></i></button> </legend>
+				<div id="TratamientoAdytTab" style="padding: 5px;border-bottom: 1px solid #9B9B9E;border-left: 1px solid #9B9B9E; border-right: 1px solid #9B9B9E;border-radius:0 0 4px 4px;display: none">
+		   			<div class="row-fluid">
+			   			<div class="span7" style="padding-bottom: 1.1em;">	  	
+							 <label><strong>Quimioterapia</strong></label>
+							 		  <div class="btn-group" data-toggle="buttons-checkbox">
+										    <button type="button" name="quimiotrataRadio"   value="0" class="btn btn-primary">XELOX</button>
+										    <button type="button" name="quimiotrataRadio"   value="1" class="btn btn-primary">BFOL</button>
+										    <button type="button" name="quimiotrataRadio"   value="2" class="btn btn-primary">FOLFOX</button>
+										    <button type="button" name="quimiotrataRadio"   value="3" class="btn btn-primary">CAPECITABINA</button>
+										    <button type="button" name="quimiotrataRadio" onclick="$('#quimiotrataOtro').focus()" value="4" class="btn btn-primary">Otro</button>
+										 <input type="text" class="" name="quimiotrataOtro" id="quimiotrataOtro"  onclick="$('button[name=quimiotrataRadio][value=4]').addClass('active');" style="margin-bottom: 0px; margin-left:2px">
+									    </div>
+						</div>
+						<div class="span5" style="margin-top: 20px">	 
+						<label class="radio inline">
+									<strong>N Ciclos:</strong>
+								<select id="nroCiclosTrata" class="input-mini">
+								<option value="0">0</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								</select>
+					    </label>
+					    </div>
+		   			</div>	
+					<div class="row-fluid">				
+						<div class="span12">	  	
+						 		<div class="span2" style="">	 
+						     			 <label for="tipoComprobanteCaja"><strong>Radioterapia</strong></label>
+						   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+											<div class="span7" style="padding-bottom:1.1em;">	
+													  <div class="btn-group" data-toggle="buttons-checkbox">
+													    <button type="button" name="radioTeRadio" id="opcion1" value="0" class="btn btn-primary">Si</button>
+													    <button type="button" name="radioTeRadio" id="opcion2" value="1" class="btn btn-primary">No</button>
+												    </div>										    				
+											</div>		
+										 </div>		
+								</div>		
+								<div style="padding-bottom:1.1em; margin-top:24px" class="span10 form-inline">	
+								    <label for="centroRM"><strong>Dosis total</strong></label>
+									<input type="text" id="dosisTotalTrata" class="span2">
+								    <label for="fechaRM" style="margin-left:25px"><strong>Fecha inicio</strong></label>
+									<input type="text" class="span2" alt="dateP"  placeholder="dd/MM/yyyy" id="dosisTRataFechaInicio">
+									<label for="fechaRM" style="margin-left:25px"><strong>Fecha finalización</strong></label>
+									<input type="text" class="span2" alt="dateP"  placeholder="dd/MM/yyyy" id="dosisTRataFechaFin">
+								</div>
+						</div>
+		   			</div>		
+					<div class="row-fluid">				
+						<div class="span12">	  	
+						 		<div class="span2" style="">	 
+						     			 <label for="tipoComprobanteCaja"><strong>Suspendió</strong></label>
+						   		  	 	 <div class="row-fluid" style="padding-bottom:1.1em;margin-left:2.5641%">	
+											<div class="span7" style="padding-bottom:1.1em;">	
+													  <div class="btn-group" data-toggle="buttons-checkbox">
+													    <button type="button" name="suspendioYesRadio" id="opcion2" value="0" class="btn btn-primary">No</button>
+													    <button type="button" name="suspendioYesRadio" id="opcion1" value="1" class="btn btn-primary">Si</button>
+												    </div>										    				
+											</div>		
+										 </div>		
+								</div>		
+								<div style="padding-bottom:1.1em; margin-top:24px" class="span10 form-inline">	
+								    <label for="centroRM"><strong>Dias</strong></label>
+									<input type="text" id="suspenTrataDias" class="span2">
+								</div>
+						</div>
+		   			</div>			   			   				 			   			 
+		   		</div>
+				</fieldset>
+			</div>												 
 			  <br>
 				<div class="row-fluid">	 
 				<div class="pull-right">			
@@ -793,7 +1403,7 @@
 <!-- 		  Tabla -->
 		     		<div style="width: 100%" align="center" >
 			    		<div style="height: 1px" ></div>
-	  						 <table style="text-align: center;font-size: 18px" align="center" width="100%" id="listClientTable">
+	  						 <table style="text-align: center;font-size: 15px" align="center" width="100%" id="listClientTable">
 	             			 </table>	
 	             		<div id="listClientTableGrid"></div>
               		</div>
@@ -1222,7 +1832,7 @@ jQuery("#searchButton").click(function(){
 	 //var filterObject = {};
 	 var name = jQuery("#nombreSearch").val();
 	 var dni = jQuery("#cuitSearch").val();
-	 var sexoSelected = jQuery("input[name=sexo]:checked").val();
+	 var sexoSelected = jQuery("button[name=sexo].active").val(); //jQuery("input[name=sexo]:checked").val();
 	 //preconsulta
 	 if(jQuery("#preconsultaTab").css('display') !== 'none'){
 		 var peso = jQuery("#pesoPre").val();
@@ -1438,6 +2048,202 @@ jQuery("#searchButton").click(function(){
 	 if(jQuery("#tratamientoTab").css('display') !== 'none'){
 		 var udaOndoRadio = jQuery("button[name=udaOndoRadio].active").val();
 		 var udaOndoOtro =  jQuery("#udaOndoOtro").val();
+		 
+		 var cirugiaTrataRadio = []; 
+		 jQuery("button[name=cirugiaTrataRadio].active").each(function(index, val){	
+			 cirugiaTrataRadio.push(val.value);
+	     }); 			 
+		 var quimioInduccion = "";
+		 jQuery("button[name=quimioInduccion].active").each(function(index, val){	
+			 quimioInduccion.push(val.value);
+	     });
+		 var quimioInduccionOtra = jQuery("#quimioInduccionOtro").val();
+		 var quimioInduccionCiclos = jQuery("#quimioInduccionCiclos").val();
+		 
+		 var quimioradioInduRadio = "";
+		 jQuery("button[name=quimioradioInduRadio].active").each(function(index, val){	
+			 quimioradioInduRadio.push(val.value);
+	     });
+		 var quimioradioInduRadioOtro = jQuery("#quimioradioInduRadioOtro").val();
+		 
+		 var quimioIntervalRadio = "";
+		 jQuery("button[name=quimioIntervalRadio].active").each(function(index, val){	
+			 quimioIntervalRadio.push(val.value);
+	     });
+		 var quimioIntervalRadioOtro = jQuery("#quimioIntervalRadioOtro").val();
+		 var quimioIntervalCiclos = jQuery("#quimioIntervalCiclos").val();
+	 }
+	 //Tratamiento NeoAdtuante
+	 if(jQuery("#tratNeoadyuanteTab").css('display') !== 'none'){
+		 var radioTera = []; 
+		 jQuery("button[name=radioTera].active").each(function(index, val){	
+			 radioTera.push(val.value);
+	     }); 
+		 var dosisTotalRadioTer = $("#dosisTotalRadioTer").val();
+		 var fechaInicioRadioTer = dbFormatDate($("#fechaInicioRadioTer").val());
+		 var fechaFinRadioTer = dbFormatDate($("#fechaFinRadioTer").val());
+		 
+		 var quimioRadio = []; 
+		 jQuery("button[name=quimioRadio].active").each(function(index, val){	
+			 quimioRadio.push(val.value);
+	     }); 
+		 var quimioEsquema = $("#quimioEsquema").val();
+		 var quimioNroCiclos = $("#quimioNroCiclos").val();
+		 var fechaInicioQuimio = dbFormatDate($("#fechaInicioQuimio").val());
+		 var fechaFinQuimio = dbFormatDate($("#fechaFinQuimio").val());
+		 
+		 var centroPostTrata = $("#centroPostTrata").val();
+		 var fechaPostTrata = dbFormatDate($("#fechaPostTrata").val());		 
+		 var distanciaPostTrata = $("#distanciaPostTrata").val();
+		 var distMargenPostTrataRadio = [];
+		 jQuery("button[name=distMargenPostTrataRadio].active").each(function(index, val){	
+			 distMargenPostTrataRadio.push(val.value);
+	     }); 
+		 var alturaPostTrataRadio = $("#alturaPostTrataRadio").val(); 
+		 
+		 var tumorPostTrataRadio = [];
+		 jQuery("button[name=tumorPostTrataRadio].active").each(function(index, val){	
+			 tumorPostTrataRadio.push(val.value);
+	     }); 
+		 var tumorPostTrataNRadio = [];
+		 jQuery("button[name=tumorPostTrataNRadio].active").each(function(index, val){	
+			 tumorPostTrataNRadio.push(val.value);
+	     }); 
+		 
+		 var crmPostTrataRadio = []; 
+		 jQuery("button[name=crmPostTrataRadio].active").each(function(index, val){	
+			 crmPostTrataRadio.push(val.value);
+	     }); 
+		 var emviPostTrataRadio = []; 
+		 jQuery("button[name=emviPostTrataRadio].active").each(function(index, val){	
+			 emviPostTrataRadio.push(val.value);
+	     }); 				 
+		 var depoSatiRadio = []; 
+		 jQuery("button[name=depoSatiRadio].active").each(function(index, val){	
+			 depoSatiRadio.push(val.value);
+	     }); 
+		 var estaRInteriorRadio = []; 
+		 jQuery("button[name=estaRInteriorRadio].active").each(function(index, val){	
+			 estaRInteriorRadio.push(val.value);
+	     }); 		 
+		 var gradoRegresionRadio = []; 
+		 jQuery("button[name=gradoRegresionRadio].active").each(function(index, val){	
+			 gradoRegresionRadio.push(val.value);
+	     }); 
+		 var inguinalesRadio = []; 
+		 jQuery("button[name=inguinalesRadio].active").each(function(index, val){	
+			 inguinalesRadio.push(val.value);
+	     });	 
+		 var gaLateRadio = []; 
+		 jQuery("button[name=gaLateRadio].active").each(function(index, val){	
+			 gaLateRadio.push(val.value);
+	     });
+		 var infiltraEsPostRadio = []; 
+		 jQuery("button[name=infiltraEsPostRadio].active").each(function(index, val){	
+			 infiltraEsPostRadio.push(val.value);
+	     });		 
+		 var evaPostRadio = []; 
+		 jQuery("button[name=evaPostRadio].active").each(function(index, val){	
+			 evaPostRadio.push(val.value);
+	     });
+		 
+		 var ciruNeoRadio = []; 
+		 jQuery("button[name=ciruNeoRadio].active").each(function(index, val){	
+			 ciruNeoRadio.push(val.value);
+	     }); 
+		 var prodCiruRadio = []; 
+		 jQuery("button[name=prodCiruRadio].active").each(function(index, val){	
+			 prodCiruRadio.push(val.value);
+	     }); 
+		 var milesCiliRadio = []; 
+		 jQuery("button[name=milesCiliRadio].active").each(function(index, val){	
+			 milesCiliRadio.push(val.value);
+	     });
+		 var milesCiliOtro = $("#milesCiliOtro").val();
+		 
+		 var urgenciaRadio = []; 
+		 jQuery("button[name=urgenciaRadio].active").each(function(index, val){	
+			 urgenciaRadio.push(val.value);
+	     }); 
+		 var urgenciaFecha = dbFormatDate($("#urgenciaFecha").val());
+		 var cirujaName = $("#cirujaName").val();
+		 var waitSeeRadio = []; 
+		 jQuery("button[name=waitSeeRadio].active").each(function(index, val){	
+			 waitSeeRadio.push(val.value);
+	     }); 
+		 var fechaInicioConducta = dbFormatDate($("#fechaInicioConducta").val());
+	 }
+	 //Anatomia patológica Post
+	 if(jQuery("#anotomiaPatPostTab").css('display') !== 'none'){
+		 var tumorAnatPostRadio = [];
+		 jQuery("button[name=tumorAnatPostRadio].active").each(function(index, val){	
+			 tumorAnatPostRadio.push(val.value);
+	     }); 
+		 var tumorAnatPostNRadio = [];
+		 jQuery("button[name=tumorAnatPostNRadio].active").each(function(index, val){	
+			 tumorAnatPostNRadio.push(val.value);
+	     });  
+		 var gangliosResaPost = $("#gangliosResaPost").val();
+		 var gangliosPosiPost = $("#gangliosPosiPost").val();
+		 var invaVascularRadio = []; 
+		 jQuery("button[name=invaVascularRadio].active").each(function(index, val){	
+			 invaVascularRadio.push(val.value);
+	     });	
+		 var invaPeriRadio = []; 
+		 jQuery("button[name=invaPeriRadio].active").each(function(index, val){	
+			 invaPeriRadio.push(val.value);
+	     });	
+		 var linfaTicaRadio = []; 
+		 jQuery("button[name=linfaTicaRadio].active").each(function(index, val){	
+			 linfaTicaRadio.push(val.value);
+	     });	
+		 var buddTomoralRadio = []; 
+		 jQuery("button[name=buddTomoralRadio].active").each(function(index, val){	
+			 buddTomoralRadio.push(val.value);
+	     });	
+		 var pushBorderRadio = []; 
+		 jQuery("button[name=pushBorderRadio].active").each(function(index, val){	
+			 pushBorderRadio.push(val.value);
+	     });	
+		 var gradoRegresionDvorak = $("#gradoRegresionDvorak").val();
+		 var capVal = $("#capVal").val();
+		 var rtaCompletaRadio = []; 
+		 jQuery("button[name=rtaCompletaRadio].active").each(function(index, val){	
+			 rtaCompletaRadio.push(val.value);
+	     });	
+		 var ihqRadio = []; 
+		 jQuery("button[name=ihqRadio].active").each(function(index, val){	
+			 ihqRadio.push(val.value);
+	     });	
+		 var krasRadio = []; 
+		 jQuery("button[name=krasRadio].active").each(function(index, val){	
+			 krasRadio.push(val.value);
+	     });
+		 var tipoKrasRadio = []; 
+		 jQuery("button[name=tipoKrasRadio].active").each(function(index, val){	
+			 tipoKrasRadio.push(val.value);
+	     });		 
+	 }
+	 //Anatomia patológica Post
+	 if(jQuery("#TratamientoAdytTab").css('display') !== 'none'){
+		 var quimiotrataRadio = []; 
+		 jQuery("button[name=quimiotrataRadio].active").each(function(index, val){	
+			 quimiotrataRadio.push(val.value);
+	     });
+		 var quimiotrataOtro = $("#quimiotrataOtro").val();
+		 var nroCiclosTrata = $("#nroCiclosTrata").val();
+		 var radioTeRadio = []; 
+		 jQuery("button[name=radioTeRadio].active").each(function(index, val){	
+			 radioTeRadio.push(val.value);
+	     });
+		 var dosisTotalTrata = $("#dosisTotalTrata").val();
+		 var dosisTRataFechaInicio = dbFormatDate($("#dosisTRataFechaInicio").val());
+		 var dosisTRataFechaFin = dbFormatDate($("#dosisTRataFechaFin").val());
+		 var suspendioYesRadio = []; 
+		 jQuery("button[name=suspendioYesRadio].active").each(function(index, val){	
+			 suspendioYesRadio.push(val.value);
+	     });
+		 var suspenTrataDias = $("#suspenTrataDias").val();		 
 	 }
 	 
 	 var filterObject = {"nombre":name,"dni":dni,"sexo":sexoSelected,"movilRectal":movilRectal,"fijoRectal":fijoRectal,
@@ -1458,8 +2264,26 @@ jQuery("#searchButton").click(function(){
 			  'revDistanEsfinter':revisionRMDistan, 'revDistanAnal':revisionRMMargen, 'revAltura':revisionAlturaRM,  
 			  "consultaMotivos":motivosConsulta,"consultaMotivoOtro":motivoOtro,'fechaInSintoma':dateStartMotivo,'motivoEvoMeses':mesesMotivo,
 			  "esfinterRectal":esfinterRectal,"udaOndoRadio":udaOndoRadio, "udaOndoOtro":udaOndoOtro, "peso":peso,"talla":talla,
-			  "superficie":superficie,"performance":performance};
-	 
+			  "superficie":superficie,"performance":performance,"cirugia":cirugiaTrataRadio,"quimioterapiaInduc":quimioInduccion,
+			  "quimioterapiaInducOtra":quimioInduccionOtra,"quimioteInducNroCiclos":quimioInduccionCiclos,"quimioOtra":quimioradioInduRadio,
+			  "quimioOtraOtra":quimioradioInduRadioOtro,"quimioterapiaInter":quimioIntervalRadio,"quimioterapiaInterOtra":quimioIntervalRadioOtro,
+			  "quimioteInterNroCiclos":quimioIntervalCiclos,"radioterapia":radioTera ,"radioDosis":dosisTotalRadioTer ,"radioFechaInicio":fechaInicioRadioTer,
+			  "radioFechaFinal":fechaFinRadioTer ,"quimio":quimioRadio, "quimioEsquema":quimioEsquema ,"quimioNroCiclos":quimioNroCiclos ,
+			  "quimioFechaInicio":fechaInicioQuimio ,"quimioFechaFinal":fechaFinQuimio ,"rmFechaResp":fechaPostTrata ,"rmCentroResp":centroPostTrata ,
+			  "rmDistEsfinterResp":distanciaPostTrata ,	"rmDistAnalResp":distMargenPostTrataRadio ,"rmAlturaResp":alturaPostTrataRadio ,"rmTumorResp":tumorPostTrataRadio ,
+			  "rmTumorNResp":tumorPostTrataNRadio , "crmResp":crmPostTrataRadio ,"emviResp":emviPostTrataRadio ,"depSatelitesResp":depoSatiRadio,
+			  "estadifTumor": estaRInteriorRadio,"gradoRegre":gradoRegresionRadio ,"gangliosImguiResp": inguinalesRadio,"gangliosLateral": gaLateRadio,"infiltraEsf": infiltraEsPostRadio,
+			  "evaRespuesta": evaPostRadio,"cirugiaCond":ciruNeoRadio ,"cirugiaProcedCond":prodCiruRadio ,"milesCilindrico":milesCiliRadio ,"milesCilindricoOtro":milesCiliOtro,
+			  "urgencia":urgenciaRadio ,"urgenciaFecha":urgenciaFecha ,"cirujano": cirujaName, "waitAndSee": waitSeeRadio,"fechaInicio":fechaInicioConducta,
+			  "tumor":tumorAnatPostRadio,"tumorN":tumorAnatPostNRadio,"ganResecados":gangliosResaPost,"ganPositivos":gangliosPosiPost,"invVascular":invaVascularRadio,
+			  "invPeri":invaPeriRadio,"linfa":linfaTicaRadio,"buddingTumoral":buddTomoralRadio,
+			  "pushingBorder":pushBorderRadio,"gradoRegresion":gradoRegresionDvorak,"cap":capVal,"rtaComPato":rtaCompletaRadio,"ihq":ihqRadio,"kras":krasRadio,
+			  "krasTipo":tipoKrasRadio,"quimioterapia":quimiotrataRadio,"quimioterapiaOtro":quimiotrataOtro,
+			  "quimioNroCiclosPost":nroCiclosTrata,"radioterapiaPost":radioTeRadio,"radioDosisPost":dosisTotalTrata,"radioFechaInicioPost":dosisTRataFechaInicio,
+			  "radioFechaFinalPost":dosisTRataFechaFin,"suspendio":suspendioYesRadio,
+			  "suspendioDia":suspenTrataDias};
+	 		
+		
 	  jQuery.ajax({
           url: '<c:url value="/findPatientFilter.json" />',
           type: "POST",
@@ -2010,6 +2834,7 @@ function renderInTable(idTable, dataMap, avoidClean){
 function cleanScreenSearch(){
 	 	 jQuery("#nombreSearch").val("");
 		 jQuery("#cuitSearch").val("");		 
+		 jQuery("button[name=sexo].active").removeClass("active");
 		 jQuery("#localidadSearch").val("");
 		 jQuery("#both").attr("checked","checked");
 		 jQuery("#nombreSearch").focus();

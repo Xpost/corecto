@@ -17,16 +17,16 @@ Revisión RM en Correcto PRIMERO
 Anatomia patológica:
 Grado de diferenciación
 
-// DONE HASTA ACA
-
-
 Tratamiento:TODO
+
+// DONE HASTA ACA
 
 Tratamiento Neoadyuante:
 Radioterapia SI/NO
 Respuesta al tratamiento neoadyuante TODO
 Examen proctologico NO
 Conducta post neoadyuvancia TODO
+
 
 Anatomia patológica:
 Desde Tumor a Rta completa patológica

@@ -80,6 +80,78 @@ public class FilterDTO {
 	// tratamiento
 	private String udaOndoRadio;
 	private String udaOndoOtro;
+	private List<Integer> cirugia;
+	private List<Integer> quimioterapiaInduc;
+	private String quimioterapiaInducOtra;
+	private String quimioteInducNroCiclos;
+	private List<Integer> quimioOtra;
+	private String quimioOtraOtra;
+	private List<Integer> quimioterapiaInter;
+	private String quimioterapiaInterOtra;
+	private String quimioteInterNroCiclos;
+	// tratemiento neoady
+	private List<Integer> radioterapia;
+	private String radioDosis;
+	private String radioFechaInicio;
+	private String radioFechaFinal;
+	private List<Integer> quimio;
+	private String quimioEsquema;
+	private String quimioNroCiclos;
+	private String quimioFechaInicio;
+	private String quimioFechaFinal;
+	// resp tratamiento neoady
+	private String rmCentroResp;
+	private String rmFechaResp;
+	private String rmDistEsfinterResp;
+	private List<Integer> rmDistAnalResp;
+	private String rmAlturaResp;
+	private List<Integer> rmTumorResp;
+	private List<Integer> rmTumorNResp;
+	private List<Integer> crmResp;
+	private List<Integer> emviResp;
+	private List<Integer> depSatelitesResp;
+	private List<Integer> estadifTumor;
+	private List<Integer> gradoRegre;
+	private List<Integer> gangliosImguiResp;
+	private List<Integer> gangliosLateral;
+	private List<Integer> infiltraEsf;
+	private List<Integer> evaRespuesta;
+	// conducta trat neoady
+	private List<Integer> cirugiaCond;
+	private List<Integer> cirugiaProcedCond;
+	private List<Integer> milesCilindrico;
+	private String milesCilindricoOtro;
+	private List<Integer> urgencia;
+	private String urgenciaFecha;
+	private String cirujano;
+	private List<Integer> waitAndSee;
+	private String fechaInicio;
+	// ana patologia post
+	private List<Integer> tumor;
+	private List<Integer> tumorN;
+	private String ganResecados;
+	private String ganPositivos;
+	private List<Integer> invVascular;
+	private List<Integer> invPeri;
+	private List<Integer> linfa;
+	private List<Integer> buddingTumoral;
+	private List<Integer> pushingBorder;
+	private String gradoRegresion;
+	private String cap;
+	private List<Integer> rtaComPato;
+	private List<Integer> ihq;
+	private List<Integer> kras;
+	private List<Integer> krasTipo;
+	// tratamiento adyuvante post
+	private List<Integer> quimioterapia;
+	private String quimioterapiaOtro;
+	private String quimioNroCiclosPost;
+	private List<Integer> radioterapiaPost;
+	private String radioDosisPost;
+	private String radioFechaInicioPost;
+	private String radioFechaFinalPost;
+	private List<Integer> suspendio;
+	private String suspendioDia;
 
 	public String getNombre() {
 		return nombre;
@@ -623,6 +695,542 @@ public class FilterDTO {
 
 	public void setRevAltura(String revAltura) {
 		this.revAltura = revAltura;
+	}
+
+	public List<Integer> getCirugia() {
+		return cirugia;
+	}
+
+	public void setCirugia(List<Integer> cirugia) {
+		this.cirugia = cirugia;
+	}
+
+	public List<Integer> getQuimioterapiaInduc() {
+		return quimioterapiaInduc;
+	}
+
+	public void setQuimioterapiaInduc(List<Integer> quimioterapiaInduc) {
+		this.quimioterapiaInduc = quimioterapiaInduc;
+	}
+
+	public String getQuimioterapiaInducOtra() {
+		return quimioterapiaInducOtra;
+	}
+
+	public void setQuimioterapiaInducOtra(String quimioterapiaInducOtra) {
+		this.quimioterapiaInducOtra = quimioterapiaInducOtra;
+	}
+
+	public String getQuimioteInducNroCiclos() {
+		return quimioteInducNroCiclos;
+	}
+
+	public void setQuimioteInducNroCiclos(String quimioteInducNroCiclos) {
+		this.quimioteInducNroCiclos = quimioteInducNroCiclos;
+	}
+
+	public List<Integer> getQuimioOtra() {
+		return quimioOtra;
+	}
+
+	public void setQuimioOtra(List<Integer> quimioOtra) {
+		this.quimioOtra = quimioOtra;
+	}
+
+	public String getQuimioOtraOtra() {
+		return quimioOtraOtra;
+	}
+
+	public void setQuimioOtraOtra(String quimioOtraOtra) {
+		this.quimioOtraOtra = quimioOtraOtra;
+	}
+
+	public List<Integer> getQuimioterapiaInter() {
+		return quimioterapiaInter;
+	}
+
+	public void setQuimioterapiaInter(List<Integer> quimioterapiaInter) {
+		this.quimioterapiaInter = quimioterapiaInter;
+	}
+
+	public String getQuimioterapiaInterOtra() {
+		return quimioterapiaInterOtra;
+	}
+
+	public void setQuimioterapiaInterOtra(String quimioterapiaInterOtra) {
+		this.quimioterapiaInterOtra = quimioterapiaInterOtra;
+	}
+
+	public String getQuimioteInterNroCiclos() {
+		return quimioteInterNroCiclos;
+	}
+
+	public void setQuimioteInterNroCiclos(String quimioteInterNroCiclos) {
+		this.quimioteInterNroCiclos = quimioteInterNroCiclos;
+	}
+
+	public List<Integer> getRadioterapia() {
+		return radioterapia;
+	}
+
+	public void setRadioterapia(List<Integer> radioterapia) {
+		this.radioterapia = radioterapia;
+	}
+
+	public String getRadioDosis() {
+		return radioDosis;
+	}
+
+	public void setRadioDosis(String radioDosis) {
+		this.radioDosis = radioDosis;
+	}
+
+	public String getRadioFechaInicio() {
+		return radioFechaInicio;
+	}
+
+	public void setRadioFechaInicio(String radioFechaInicio) {
+		this.radioFechaInicio = radioFechaInicio;
+	}
+
+	public String getRadioFechaFinal() {
+		return radioFechaFinal;
+	}
+
+	public void setRadioFechaFinal(String radioFechaFinal) {
+		this.radioFechaFinal = radioFechaFinal;
+	}
+
+	public List<Integer> getQuimio() {
+		return quimio;
+	}
+
+	public void setQuimio(List<Integer> quimio) {
+		this.quimio = quimio;
+	}
+
+	public String getQuimioEsquema() {
+		return quimioEsquema;
+	}
+
+	public void setQuimioEsquema(String quimioEsquema) {
+		this.quimioEsquema = quimioEsquema;
+	}
+
+	public String getQuimioNroCiclos() {
+		return quimioNroCiclos;
+	}
+
+	public void setQuimioNroCiclos(String quimioNroCiclos) {
+		this.quimioNroCiclos = quimioNroCiclos;
+	}
+
+	public String getQuimioFechaInicio() {
+		return quimioFechaInicio;
+	}
+
+	public void setQuimioFechaInicio(String quimioFechaInicio) {
+		this.quimioFechaInicio = quimioFechaInicio;
+	}
+
+	public String getQuimioFechaFinal() {
+		return quimioFechaFinal;
+	}
+
+	public void setQuimioFechaFinal(String quimioFechaFinal) {
+		this.quimioFechaFinal = quimioFechaFinal;
+	}
+
+	public String getRmFechaResp() {
+		return rmFechaResp;
+	}
+
+	public void setRmFechaResp(String rmFechaResp) {
+		this.rmFechaResp = rmFechaResp;
+	}
+
+	public String getRmCentroResp() {
+		return rmCentroResp;
+	}
+
+	public void setRmCentroResp(String rmCentroResp) {
+		this.rmCentroResp = rmCentroResp;
+	}
+
+	public String getRmDistEsfinterResp() {
+		return rmDistEsfinterResp;
+	}
+
+	public void setRmDistEsfinterResp(String rmDistEsfinterResp) {
+		this.rmDistEsfinterResp = rmDistEsfinterResp;
+	}
+
+	public List<Integer> getRmDistAnalResp() {
+		return rmDistAnalResp;
+	}
+
+	public void setRmDistAnalResp(List<Integer> rmDistAnalResp) {
+		this.rmDistAnalResp = rmDistAnalResp;
+	}
+
+	public String getRmAlturaResp() {
+		return rmAlturaResp;
+	}
+
+	public void setRmAlturaResp(String rmAlturaResp) {
+		this.rmAlturaResp = rmAlturaResp;
+	}
+
+	public List<Integer> getRmTumorResp() {
+		return rmTumorResp;
+	}
+
+	public void setRmTumorResp(List<Integer> rmTumorResp) {
+		this.rmTumorResp = rmTumorResp;
+	}
+
+	public List<Integer> getRmTumorNResp() {
+		return rmTumorNResp;
+	}
+
+	public void setRmTumorNResp(List<Integer> rmTumorNResp) {
+		this.rmTumorNResp = rmTumorNResp;
+	}
+
+	public List<Integer> getCrmResp() {
+		return crmResp;
+	}
+
+	public void setCrmResp(List<Integer> crmResp) {
+		this.crmResp = crmResp;
+	}
+
+	public List<Integer> getEmviResp() {
+		return emviResp;
+	}
+
+	public void setEmviResp(List<Integer> emviResp) {
+		this.emviResp = emviResp;
+	}
+
+	public List<Integer> getDepSatelitesResp() {
+		return depSatelitesResp;
+	}
+
+	public void setDepSatelitesResp(List<Integer> depSatelitesResp) {
+		this.depSatelitesResp = depSatelitesResp;
+	}
+
+	public List<Integer> getEstadifTumor() {
+		return estadifTumor;
+	}
+
+	public void setEstadifTumor(List<Integer> estadifTumor) {
+		this.estadifTumor = estadifTumor;
+	}
+
+	public List<Integer> getGradoRegre() {
+		return gradoRegre;
+	}
+
+	public void setGradoRegre(List<Integer> gradoRegre) {
+		this.gradoRegre = gradoRegre;
+	}
+
+	public List<Integer> getGangliosImguiResp() {
+		return gangliosImguiResp;
+	}
+
+	public void setGangliosImguiResp(List<Integer> gangliosImguiResp) {
+		this.gangliosImguiResp = gangliosImguiResp;
+	}
+
+	public List<Integer> getGangliosLateral() {
+		return gangliosLateral;
+	}
+
+	public void setGangliosLateral(List<Integer> gangliosLateral) {
+		this.gangliosLateral = gangliosLateral;
+	}
+
+	public List<Integer> getInfiltraEsf() {
+		return infiltraEsf;
+	}
+
+	public void setInfiltraEsf(List<Integer> infiltraEsf) {
+		this.infiltraEsf = infiltraEsf;
+	}
+
+	public List<Integer> getEvaRespuesta() {
+		return evaRespuesta;
+	}
+
+	public void setEvaRespuesta(List<Integer> evaRespuesta) {
+		this.evaRespuesta = evaRespuesta;
+	}
+
+	public List<Integer> getCirugiaCond() {
+		return cirugiaCond;
+	}
+
+	public void setCirugiaCond(List<Integer> cirugiaCond) {
+		this.cirugiaCond = cirugiaCond;
+	}
+
+	public List<Integer> getCirugiaProcedCond() {
+		return cirugiaProcedCond;
+	}
+
+	public void setCirugiaProcedCond(List<Integer> cirugiaProcedCond) {
+		this.cirugiaProcedCond = cirugiaProcedCond;
+	}
+
+	public List<Integer> getMilesCilindrico() {
+		return milesCilindrico;
+	}
+
+	public void setMilesCilindrico(List<Integer> milesCilindrico) {
+		this.milesCilindrico = milesCilindrico;
+	}
+
+	public String getMilesCilindricoOtro() {
+		return milesCilindricoOtro;
+	}
+
+	public void setMilesCilindricoOtro(String milesCilindricoOtro) {
+		this.milesCilindricoOtro = milesCilindricoOtro;
+	}
+
+	public List<Integer> getUrgencia() {
+		return urgencia;
+	}
+
+	public void setUrgencia(List<Integer> urgencia) {
+		this.urgencia = urgencia;
+	}
+
+	public String getUrgenciaFecha() {
+		return urgenciaFecha;
+	}
+
+	public void setUrgenciaFecha(String urgenciaFecha) {
+		this.urgenciaFecha = urgenciaFecha;
+	}
+
+	public String getCirujano() {
+		return cirujano;
+	}
+
+	public void setCirujano(String cirujano) {
+		this.cirujano = cirujano;
+	}
+
+	public List<Integer> getWaitAndSee() {
+		return waitAndSee;
+	}
+
+	public void setWaitAndSee(List<Integer> waitAndSee) {
+		this.waitAndSee = waitAndSee;
+	}
+
+	public String getFechaInicio() {
+		return fechaInicio;
+	}
+
+	public void setFechaInicio(String fechaInicio) {
+		this.fechaInicio = fechaInicio;
+	}
+
+	public List<Integer> getTumor() {
+		return tumor;
+	}
+
+	public void setTumor(List<Integer> tumor) {
+		this.tumor = tumor;
+	}
+
+	public List<Integer> getTumorN() {
+		return tumorN;
+	}
+
+	public void setTumorN(List<Integer> tumorN) {
+		this.tumorN = tumorN;
+	}
+
+	public String getGanResecados() {
+		return ganResecados;
+	}
+
+	public void setGanResecados(String ganResecados) {
+		this.ganResecados = ganResecados;
+	}
+
+	public String getGanPositivos() {
+		return ganPositivos;
+	}
+
+	public void setGanPositivos(String ganPositivos) {
+		this.ganPositivos = ganPositivos;
+	}
+
+	public List<Integer> getInvVascular() {
+		return invVascular;
+	}
+
+	public void setInvVascular(List<Integer> invVascular) {
+		this.invVascular = invVascular;
+	}
+
+	public List<Integer> getInvPeri() {
+		return invPeri;
+	}
+
+	public void setInvPeri(List<Integer> invPeri) {
+		this.invPeri = invPeri;
+	}
+
+	public List<Integer> getLinfa() {
+		return linfa;
+	}
+
+	public void setLinfa(List<Integer> linfa) {
+		this.linfa = linfa;
+	}
+
+	public List<Integer> getBuddingTumoral() {
+		return buddingTumoral;
+	}
+
+	public void setBuddingTumoral(List<Integer> buddingTumoral) {
+		this.buddingTumoral = buddingTumoral;
+	}
+
+	public List<Integer> getPushingBorder() {
+		return pushingBorder;
+	}
+
+	public void setPushingBorder(List<Integer> pushingBorder) {
+		this.pushingBorder = pushingBorder;
+	}
+
+	public String getGradoRegresion() {
+		return gradoRegresion;
+	}
+
+	public void setGradoRegresion(String gradoRegresion) {
+		this.gradoRegresion = gradoRegresion;
+	}
+
+	public String getCap() {
+		return cap;
+	}
+
+	public void setCap(String cap) {
+		this.cap = cap;
+	}
+
+	public List<Integer> getRtaComPato() {
+		return rtaComPato;
+	}
+
+	public void setRtaComPato(List<Integer> rtaComPato) {
+		this.rtaComPato = rtaComPato;
+	}
+
+	public List<Integer> getIhq() {
+		return ihq;
+	}
+
+	public void setIhq(List<Integer> ihq) {
+		this.ihq = ihq;
+	}
+
+	public List<Integer> getKras() {
+		return kras;
+	}
+
+	public void setKras(List<Integer> kras) {
+		this.kras = kras;
+	}
+
+	public List<Integer> getKrasTipo() {
+		return krasTipo;
+	}
+
+	public void setKrasTipo(List<Integer> krasTipo) {
+		this.krasTipo = krasTipo;
+	}
+
+	public List<Integer> getQuimioterapia() {
+		return quimioterapia;
+	}
+
+	public void setQuimioterapia(List<Integer> quimioterapia) {
+		this.quimioterapia = quimioterapia;
+	}
+
+	public String getQuimioterapiaOtro() {
+		return quimioterapiaOtro;
+	}
+
+	public void setQuimioterapiaOtro(String quimioterapiaOtro) {
+		this.quimioterapiaOtro = quimioterapiaOtro;
+	}
+
+	public String getQuimioNroCiclosPost() {
+		return quimioNroCiclosPost;
+	}
+
+	public void setQuimioNroCiclosPost(String quimioNroCiclosPost) {
+		this.quimioNroCiclosPost = quimioNroCiclosPost;
+	}
+
+	public List<Integer> getRadioterapiaPost() {
+		return radioterapiaPost;
+	}
+
+	public void setRadioterapiaPost(List<Integer> radioterapiaPost) {
+		this.radioterapiaPost = radioterapiaPost;
+	}
+
+	public String getRadioDosisPost() {
+		return radioDosisPost;
+	}
+
+	public void setRadioDosisPost(String radioDosisPost) {
+		this.radioDosisPost = radioDosisPost;
+	}
+
+	public String getRadioFechaInicioPost() {
+		return radioFechaInicioPost;
+	}
+
+	public void setRadioFechaInicioPost(String radioFechaInicioPost) {
+		this.radioFechaInicioPost = radioFechaInicioPost;
+	}
+
+	public String getRadioFechaFinalPost() {
+		return radioFechaFinalPost;
+	}
+
+	public void setRadioFechaFinalPost(String radioFechaFinalPost) {
+		this.radioFechaFinalPost = radioFechaFinalPost;
+	}
+
+	public List<Integer> getSuspendio() {
+		return suspendio;
+	}
+
+	public void setSuspendio(List<Integer> suspendio) {
+		this.suspendio = suspendio;
+	}
+
+	public String getSuspendioDia() {
+		return suspendioDia;
+	}
+
+	public void setSuspendioDia(String suspendioDia) {
+		this.suspendioDia = suspendioDia;
 	}
 
 }
